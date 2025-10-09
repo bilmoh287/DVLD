@@ -22,7 +22,7 @@ namespace DVLDDataAccessLayer
 			                            WHEN 1 THen 'Female'
 			                            ELSE 'Uknown'
 			                            END AS Gendor,
-		                            People.Phone, People.Email, Countries.CountryName
+		                            Countries.CountryName AS Nationality, People.Phone, People.Email
                             FROM     People INNER JOIN
                                               Countries ON People.NationalityCountryID = Countries.CountryID;";
 
