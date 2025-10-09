@@ -16,7 +16,15 @@ namespace DVLDDataAccessLayer
 
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
-            string Query = "SELECT * FROM People;";
+            string Query = @"SELECT People.PersonID, People.NationalNo, People.FirstName, People.SecondName, People.ThirdName, People.LastName, People.DateOfBirth, 
+		                            Case People.Gender
+			                            WHEN 0 THEN 'Male'
+			                            WHEN 1 THen 'Female'
+			                            ELSE 'Uknown'
+			                            END AS Gendor,
+		                            People.Phone, People.Email, Countries.CountryName
+                            FROM     People INNER JOIN
+                                              Countries ON People.NationalityCountryID = Countries.CountryID;";
 
             SqlCommand command = new SqlCommand(Query, connection);
 

@@ -1,6 +1,6 @@
 ﻿namespace DVLDPresentationLayer
 {
-    partial class Form1
+    partial class frmMainMenu
     {
         /// <summary>
         /// Required designer variable.
