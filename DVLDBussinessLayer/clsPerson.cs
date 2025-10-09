@@ -9,12 +9,13 @@ using DVLDDataAccessLayer;
 
 namespace DVLDBussinessLayer
 {
-    public class clsPeople
+    public class clsPerson
     {
         public enum enMode { AddNewMode, UpdateMode };
         public enMode _Mode = enMode.UpdateMode;
 
         public int PersonID { get; set; }
+        public string NationalNo { get; set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string ThirdName { get; set; }
@@ -27,9 +28,10 @@ namespace DVLDBussinessLayer
         public int CountryID { get; set; }
         public string ImagePath { get; set; }
 
-        public clsPeople()
+        public clsPerson()
         {
             PersonID = -1;
+            NationalNo = "";
             FirstName = "";
             SecondName = "";
             ThirdName = "";
@@ -45,12 +47,13 @@ namespace DVLDBussinessLayer
             _Mode = enMode.AddNewMode;
         }
 
-        private clsPeople(int PersonID, string FirstName, string SecondName, string ThirdName, string LastName
+        private clsPerson(int PersonID, string NationalNo, string FirstName, string SecondName, string ThirdName, string LastName
             , DateTime DateOfBirth, int Gender, string Address, string Phone, string Email, int CountryID, string ImagePath)
         {
             this.PersonID = PersonID;
+            this.NationalNo = NationalNo;
             this.FirstName = FirstName;
-            this.LastName = LastName;
+            this.SecondName = SecondName;
             this.ThirdName = ThirdName;
             this.LastName = LastName;
             this.DateOfBirth = DateOfBirth;
@@ -64,24 +67,24 @@ namespace DVLDBussinessLayer
             _Mode = enMode.UpdateMode;
         }
 
-        public static DataTable GetAllPeople()
+        public static DataTable GetAllPerson()
         {
-            return clsPeopleData.GetAllPeople();
+            return clsPersonData.GetAllPersonList();
         }
 
-        public static clsPeople Find(string FirstName)
+        public static clsPerson Find(string FirstName)
         {
             int PersonID = -1;
-            string SecondName = "", ThirdName = "", LastName = "", Address = "", Phone = "", Email = "";
+            string NationalNo = "", SecondName = "", ThirdName = "", LastName = "", Address = "", Phone = "", Email = "";
             int Gender = 0, CountryID = -1;
             DateTime DateOfBirth = DateTime.Now;
             string ImagePath = "";
 
-            if (clsPeopleData.FindByName(FirstName, ref PersonID, ref SecondName, ref ThirdName, ref LastName,
+            if (clsPersonData.FindByName(FirstName, ref NationalNo, ref PersonID, ref SecondName, ref ThirdName, ref LastName,
                                          ref DateOfBirth, ref Gender, ref Address, ref Phone, ref Email,
                                          ref CountryID, ref ImagePath))
             {
-                return new clsPeople(PersonID, FirstName, SecondName, ThirdName, LastName,
+                return new clsPerson(PersonID, NationalNo, FirstName, SecondName, ThirdName, LastName,
                                      DateOfBirth, Gender, Address, Phone, Email, CountryID, ImagePath);
             }
             else
@@ -90,18 +93,18 @@ namespace DVLDBussinessLayer
             }
         }
 
-        public static clsPeople Find(int PersonID)
+        public static clsPerson Find(int PersonID)
         {
-            string FirstName = "", SecondName = "", ThirdName = "", LastName = "";
+            string NationalNo = "", FirstName = "", SecondName = "", ThirdName = "", LastName = "";
             string Address = "", Phone = "", Email = "", ImagePath = "";
-            int Gender = 0, CountryID = 0;
+            int Gender = 0, CountryID = -1;
             DateTime DateOfBirth = DateTime.Now;
 
-            if (clsPeopleData.FindByID(PersonID, ref FirstName, ref SecondName, ref ThirdName, ref LastName,
+            if (clsPersonData.FindByID(PersonID, ref NationalNo, ref FirstName, ref SecondName, ref ThirdName, ref LastName,
                                        ref DateOfBirth, ref Gender, ref Address, ref Phone, ref Email,
                                        ref CountryID, ref ImagePath))
             {
-                return new clsPeople(PersonID, FirstName, SecondName, ThirdName, LastName,
+                return new clsPerson(PersonID, NationalNo, FirstName, SecondName, ThirdName, LastName,
                                      DateOfBirth, Gender, Address, Phone, Email, CountryID, ImagePath);
             }
             else
@@ -112,7 +115,7 @@ namespace DVLDBussinessLayer
 
         private bool _AddNewPerson()
         {
-            this.PersonID = clsPeopleData.AddNewPeople(this.PersonID, this.FirstName, this.SecondName, this.ThirdName,
+            this.PersonID = clsPersonData.AddNewPerson(this.NationalNo, this.FirstName, this.SecondName, this.ThirdName,
                                                        this.LastName, this.DateOfBirth, this.Gender, this.Address,
                                                        this.Phone, this.Email, this.CountryID, this.ImagePath);
 
@@ -122,19 +125,19 @@ namespace DVLDBussinessLayer
         // Update person
         private bool _UpdatePerson()
         {
-            return clsPeopleData.UpdatePeople(this.PersonID, this.FirstName, this.SecondName, this.ThirdName,
+            return clsPersonData.UpdatePerson(this.PersonID, this.NationalNo, this.FirstName, this.SecondName, this.ThirdName,
                                               this.LastName, this.DateOfBirth, this.Gender, this.Address,
                                               this.Phone, this.Email, this.CountryID, this.ImagePath);
         }
 
         public static bool DeletePersonByID(int ID)
         {
-            return clsPeopleData.DeletePeople(ID);
+            return clsPersonData.DeletePerson(ID);
         }
 
         public static bool IsPersonExist(string NationalNo)
         {
-            return clsPeopleData.IsPersonExist(NationalNo);
+            return clsPersonData.IsPersonExist(NationalNo);
         }
 
         public bool Save()

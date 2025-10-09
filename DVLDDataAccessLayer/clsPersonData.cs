@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace DVLDDataAccessLayer
 {
-    public class clsPeopleData
+    public class clsPersonData
     {
-        public static DataTable GetAllPeople()
+        public static DataTable GetAllPersonList()
         {
             DataTable dtPeople = new DataTable();
 
@@ -47,7 +47,7 @@ namespace DVLDDataAccessLayer
             return dtPeople;
         }
 
-        public static bool FindByName(string FirstName, ref int PersonID, ref string SecondName, ref string ThirdName, ref string LastName,
+        public static bool FindByName(string FirstName, ref string NationalNo,ref int PersonID, ref string SecondName, ref string ThirdName, ref string LastName,
                                      ref DateTime DateOfBirth, ref int Gender, ref string Address,
                                      ref string Phone, ref string Email, ref int CountryID, ref string ImagePath)
         {
@@ -71,6 +71,7 @@ namespace DVLDDataAccessLayer
                         if (Reader.Read())
                         {
                             PersonID = (int)Reader["PersonID"];
+                            NationalNo = (string)Reader["NationalNo"];
                             SecondName = (string)Reader["SecondName"];
                             ThirdName = Reader["ThirdName"] != DBNull.Value ? (string)Reader["ThirdName"] : "";  // nullable
                             LastName = (string)Reader["LastName"];
@@ -98,7 +99,7 @@ namespace DVLDDataAccessLayer
 
 
 
-        public static bool FindByID(int PersonID, ref string FirstName, ref string SecondName, ref string ThirdName,
+        public static bool FindByID(int PersonID, ref string NationalNo, ref string FirstName, ref string SecondName, ref string ThirdName,
                                     ref string LastName, ref DateTime DateOfBirth, ref int Gender,
                                     ref string Address, ref string Phone, ref string Email,
                                     ref int CountryID, ref string ImagePath)
@@ -120,7 +121,8 @@ namespace DVLDDataAccessLayer
 
                         if (Reader.Read())
                         {
-                            FirstName = (string)Reader["FirstName"];    
+                            NationalNo = (string)Reader["NationalNo"];    
+                            FirstName = (string)Reader["FirstName"];
                             SecondName = (string)Reader["SecondName"];
                             ThirdName = Reader["ThirdName"] != DBNull.Value ? (string)Reader["ThirdName"] : "";  // nullable
                             DateOfBirth = (DateTime)Reader["DateOfBirth"];
@@ -147,7 +149,7 @@ namespace DVLDDataAccessLayer
         }
 
 
-        public static int AddNewPeople(int PersonID, string FirstName, string SecondName, string ThirdName, string LastName,
+        public static int AddNewPerson(string NationalNo, string FirstName, string SecondName, string ThirdName, string LastName,
                                        DateTime DateOfBirth, int Gender, string Address, string Phone, string Email, int CountryID, string ImagePath)
         {
             int ID = -1;
@@ -156,15 +158,16 @@ namespace DVLDDataAccessLayer
             {
                 string Query = @"
                                 INSERT INTO [dbo].[People]
-                                           ([FirstName], [SecondName], [ThirdName], [LastName], [DateOfBirth], [Gendor], 
+                                           ([NationalNo], [FirstName], [SecondName], [ThirdName], [LastName], [DateOfBirth], [Gendor], 
                                             [Address], [Phone], [Email], [CountryID], [ImagePath])
                                 VALUES
-                                           (@FirstName, @SecondName, @ThirdName, @LastName, @DateOfBirth, @Gender,
+                                           (@NationalNo, @FirstName, @SecondName, @ThirdName, @LastName, @DateOfBirth, @Gender,
                                             @Address, @Phone, @Email, @CountryID, @ImagePath);
                                 SELECT SCOPE_IDENTITY();";
 
                 using (SqlCommand command = new SqlCommand(Query, connection))
                 {
+                    command.Parameters.AddWithValue("@NationalNo", NationalNo);
                     command.Parameters.AddWithValue("@FirstName", FirstName);
                     command.Parameters.AddWithValue("@SecondName", SecondName);
                     command.Parameters.AddWithValue("@ThirdName", string.IsNullOrEmpty(ThirdName) ? (object)DBNull.Value : ThirdName);
@@ -195,7 +198,7 @@ namespace DVLDDataAccessLayer
         }
 
 
-        public static bool UpdatePeople(int PersonID, string FirstName, string SecondName, string ThirdName, string LastName,
+        public static bool UpdatePerson(int PersonID, string NationalNo, string FirstName, string SecondName, string ThirdName, string LastName,
                                         DateTime DateOfBirth, int Gender, string Address, string Phone, string Email, int CountryID, string ImagePath)
         {
             bool isUpdated = false;
@@ -204,7 +207,8 @@ namespace DVLDDataAccessLayer
             {
                 string Query = @"
                                 UPDATE [dbo].[People]
-                                SET FirstName = @FirstName,
+                                SET NationalNo = @NationalNo,                                
+                                    FirstName = @FirstName,
                                     SecondName = @SecondName,
                                     ThirdName = @ThirdName,
                                     LastName = @LastName,
@@ -220,6 +224,7 @@ namespace DVLDDataAccessLayer
                 using (SqlCommand command = new SqlCommand(Query, connection))
                 {
                     command.Parameters.AddWithValue("@PersonID", PersonID);
+                    command.Parameters.AddWithValue("@NationalNo", NationalNo);
                     command.Parameters.AddWithValue("@FirstName", FirstName);
                     command.Parameters.AddWithValue("@SecondName", SecondName);
                     command.Parameters.AddWithValue("@ThirdName", string.IsNullOrEmpty(ThirdName) ? (object)DBNull.Value : ThirdName);
@@ -249,12 +254,12 @@ namespace DVLDDataAccessLayer
         }
 
 
-        public static bool DeletePeople(int ID)
+        public static bool DeletePerson(int ID)
         {
             bool IsDeleted = false;
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
-            string Query = "DELETE People WHERE PeopleID = @ID";
+            string Query = "DELETE People WHERE PersonID = @ID";
 
             SqlCommand command = new SqlCommand(Query, connection);
 
