@@ -132,6 +132,11 @@ namespace DVLDBussinessLayer
             return clsPeopleData.DeletePeople(ID);
         }
 
+        public static bool IsPersonExist(string NationalNo)
+        {
+            return clsPeopleData.IsPersonExist(NationalNo);
+        }
+
         public bool Save()
         {
             switch (_Mode)

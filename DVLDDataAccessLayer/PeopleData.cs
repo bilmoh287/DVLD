@@ -280,5 +280,33 @@ namespace DVLDDataAccessLayer
             }
             return IsDeleted;
         }
+
+        public static bool IsPersonExist(String NationalNumber)
+        {
+            bool IsExists = false;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string Query = @"SELECT 1 FROM People WHERE NationalNo = @NationalNo";
+
+                using (SqlCommand command = new SqlCommand(Query, connection))
+                {
+                    command.Parameters.AddWithValue("@NationalNo", NationalNumber);
+
+                    try
+                    {
+                        connection.Open();
+                        object res = command.ExecuteScalar();
+                        IsExists = res != null;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+
+            return IsExists;
+        }
     }
 }
