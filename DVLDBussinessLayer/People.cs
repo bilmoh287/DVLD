@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using DVLDDataAccessLayer;
@@ -66,6 +67,89 @@ namespace DVLDBussinessLayer
         public static DataTable GetAllPeople()
         {
             return clsPeopleData.GetAllPeople();
+        }
+
+        public static clsPeople Find(string FirstName)
+        {
+            int PersonID = -1;
+            string SecondName = "", ThirdName = "", LastName = "", Address = "", Phone = "", Email = "";
+            int Gender = 0, CountryID = -1;
+            DateTime DateOfBirth = DateTime.Now;
+            string ImagePath = "";
+
+            if (clsPeopleData.FindByName(FirstName, ref PersonID, ref SecondName, ref ThirdName, ref LastName,
+                                         ref DateOfBirth, ref Gender, ref Address, ref Phone, ref Email,
+                                         ref CountryID, ref ImagePath))
+            {
+                return new clsPeople(PersonID, FirstName, SecondName, ThirdName, LastName,
+                                     DateOfBirth, Gender, Address, Phone, Email, CountryID, ImagePath);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static clsPeople Find(int PersonID)
+        {
+            string FirstName = "", SecondName = "", ThirdName = "", LastName = "";
+            string Address = "", Phone = "", Email = "", ImagePath = "";
+            int Gender = 0, CountryID = 0;
+            DateTime DateOfBirth = DateTime.Now;
+
+            if (clsPeopleData.FindByID(PersonID, ref FirstName, ref SecondName, ref ThirdName, ref LastName,
+                                       ref DateOfBirth, ref Gender, ref Address, ref Phone, ref Email,
+                                       ref CountryID, ref ImagePath))
+            {
+                return new clsPeople(PersonID, FirstName, SecondName, ThirdName, LastName,
+                                     DateOfBirth, Gender, Address, Phone, Email, CountryID, ImagePath);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        private bool _AddNewPerson()
+        {
+            this.PersonID = clsPeopleData.AddNewPeople(this.PersonID, this.FirstName, this.SecondName, this.ThirdName,
+                                                       this.LastName, this.DateOfBirth, this.Gender, this.Address,
+                                                       this.Phone, this.Email, this.CountryID, this.ImagePath);
+
+            return this.PersonID != -1;
+        }
+
+        // Update person
+        private bool _UpdatePerson()
+        {
+            return clsPeopleData.UpdatePeople(this.PersonID, this.FirstName, this.SecondName, this.ThirdName,
+                                              this.LastName, this.DateOfBirth, this.Gender, this.Address,
+                                              this.Phone, this.Email, this.CountryID, this.ImagePath);
+        }
+
+        public static bool DeletePersonByID(int ID)
+        {
+            return clsPeopleData.DeletePeople(ID);
+        }
+
+        public bool Save()
+        {
+            switch (_Mode)
+            {
+                case enMode.AddNewMode:
+                    if(_AddNewPerson())
+                    {
+                        _Mode = enMode.UpdateMode;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case enMode.UpdateMode:
+                    return _UpdatePerson();
+            }
+            return false;
         }
     }
 }
