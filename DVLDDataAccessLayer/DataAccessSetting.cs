@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DVLDDataAccessLayer
 {
-    public class Class1
+    public class clsDataAccessSetting
     {
+        public static string ConnectionString = "Server=localhost\\SQL22;Database=My_DVLD;Trusted_Connection=True;";
     }
 }
