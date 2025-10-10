@@ -76,11 +76,11 @@ namespace DVLDDataAccessLayer
                             ThirdName = Reader["ThirdName"] != DBNull.Value ? (string)Reader["ThirdName"] : "";  // nullable
                             LastName = (string)Reader["LastName"];
                             DateOfBirth = (DateTime)Reader["DateOfBirth"];
-                            Gender = (int)Reader["Gendor"];
+                            Gender = Convert.ToInt32(Reader["Gender"]);
                             Address = (string)Reader["Address"];
                             Phone = (string)Reader["Phone"];
                             Email = Reader["Email"] != DBNull.Value ? (string)Reader["Email"] : "";            // nullable
-                            CountryID = (int)Reader["CountryID"];
+                            CountryID = (int)Reader["NationalityCountryID"];
                             ImagePath = Reader["ImagePath"] != DBNull.Value ? (string)Reader["ImagePath"] : ""; // nullable
 
                             IsFound = true;
@@ -125,12 +125,13 @@ namespace DVLDDataAccessLayer
                             FirstName = (string)Reader["FirstName"];
                             SecondName = (string)Reader["SecondName"];
                             ThirdName = Reader["ThirdName"] != DBNull.Value ? (string)Reader["ThirdName"] : "";  // nullable
+                            LastName = (string)Reader["LastName"];
                             DateOfBirth = (DateTime)Reader["DateOfBirth"];
-                            Gender = (int)Reader["Gendor"];
+                            Gender = Convert.ToInt32(Reader["Gender"]);
                             Address = (string)Reader["Address"];            
                             Phone = (string)Reader["Phone"];                
                             Email = Reader["Email"] != DBNull.Value ? (string)Reader["Email"] : "";            // nullable
-                            CountryID = (int)Reader["CountryID"];
+                            CountryID = (int)Reader["NationalityCountryID"];
                             ImagePath = Reader["ImagePath"] != DBNull.Value ? (string)Reader["ImagePath"] : ""; // nullable
 
                             IsFound = true;
@@ -150,7 +151,7 @@ namespace DVLDDataAccessLayer
 
 
         public static int AddNewPerson(string NationalNo, string FirstName, string SecondName, string ThirdName, string LastName,
-                                       DateTime DateOfBirth, int Gender, string Address, string Phone, string Email, int CountryID, string ImagePath)
+                                       DateTime DateOfBirth, int Gender, string Address, string Phone, string Email, int NationalityCountryID, string ImagePath)
         {
             int ID = -1;
 
@@ -158,11 +159,11 @@ namespace DVLDDataAccessLayer
             {
                 string Query = @"
                                 INSERT INTO [dbo].[People]
-                                           ([NationalNo], [FirstName], [SecondName], [ThirdName], [LastName], [DateOfBirth], [Gendor], 
-                                            [Address], [Phone], [Email], [CountryID], [ImagePath])
+                                           ([NationalNo], [FirstName], [SecondName], [ThirdName], [LastName], [DateOfBirth], [Gender], 
+                                            [Address], [Phone], [Email], [NationalityCountryID], [ImagePath])
                                 VALUES
                                            (@NationalNo, @FirstName, @SecondName, @ThirdName, @LastName, @DateOfBirth, @Gender,
-                                            @Address, @Phone, @Email, @CountryID, @ImagePath);
+                                            @Address, @Phone, @Email, @NationalityCountryID, @ImagePath);
                                 SELECT SCOPE_IDENTITY();";
 
                 using (SqlCommand command = new SqlCommand(Query, connection))
@@ -177,7 +178,7 @@ namespace DVLDDataAccessLayer
                     command.Parameters.AddWithValue("@Address", Address);
                     command.Parameters.AddWithValue("@Phone", Phone);
                     command.Parameters.AddWithValue("@Email", string.IsNullOrEmpty(Email) ? (object)DBNull.Value : Email);
-                    command.Parameters.AddWithValue("@CountryID", CountryID);
+                    command.Parameters.AddWithValue("@NationalityCountryID", NationalityCountryID);
                     command.Parameters.AddWithValue("@ImagePath", string.IsNullOrEmpty(ImagePath) ? (object)DBNull.Value : ImagePath);
 
                     try
@@ -199,7 +200,7 @@ namespace DVLDDataAccessLayer
 
 
         public static bool UpdatePerson(int PersonID, string NationalNo, string FirstName, string SecondName, string ThirdName, string LastName,
-                                        DateTime DateOfBirth, int Gender, string Address, string Phone, string Email, int CountryID, string ImagePath)
+                                        DateTime DateOfBirth, int Gender, string Address, string Phone, string Email, int NationalityCountryID, string ImagePath)
         {
             bool isUpdated = false;
 
@@ -213,11 +214,11 @@ namespace DVLDDataAccessLayer
                                     ThirdName = @ThirdName,
                                     LastName = @LastName,
                                     DateOfBirth = @DateOfBirth,
-                                    Gendor = @Gender,
+                                    Gender = @Gender,
                                     Address = @Address,
                                     Phone = @Phone,
                                     Email = @Email,
-                                    CountryID = @CountryID,
+                                    NationalityCountryID = @NationalityCountryID,
                                     ImagePath = @ImagePath
                                 WHERE PersonID = @PersonID;";
 
@@ -234,7 +235,7 @@ namespace DVLDDataAccessLayer
                     command.Parameters.AddWithValue("@Address", Address);
                     command.Parameters.AddWithValue("@Phone", Phone);
                     command.Parameters.AddWithValue("@Email", string.IsNullOrEmpty(Email) ? (object)DBNull.Value : Email);
-                    command.Parameters.AddWithValue("@CountryID", CountryID);
+                    command.Parameters.AddWithValue("@NationalityCountryID", NationalityCountryID);
                     command.Parameters.AddWithValue("@ImagePath", string.IsNullOrEmpty(ImagePath) ? (object)DBNull.Value : ImagePath);
 
                     try

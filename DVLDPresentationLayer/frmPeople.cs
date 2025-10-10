@@ -20,16 +20,27 @@ namespace DVLDPresentationLayer
 
         private void _RefreshPeople()
         {
-            dgvListPeople.DataSource = clsPeople.GetAllPeople();
+            dgvListPeople.DataSource = clsPerson.GetAllPerson();
+            lblRecord.Text = dgvListPeople.RowCount.ToString();
         }
         private void frmPeople_Load(object sender, EventArgs e)
         {
             _RefreshPeople();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void btnAddNewPerson_Click(object sender, EventArgs e)
         {
+            frmAddEditPerson frm = new frmAddEditPerson(-1);
+            frm.OnPersonSaved += _RefreshPeople;
+            frm.ShowDialog();
+        }
 
+        private void editPersonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int PersonID = (int)dgvListPeople.CurrentRow.Cells[0].Value;
+            frmAddEditPerson frm = new frmAddEditPerson(PersonID);
+            frm.OnPersonSaved += _RefreshPeople;
+            frm.ShowDialog();
         }
     }
 }
