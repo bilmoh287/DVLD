@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDBussinessLayer;
+using DVLDPresentationLayer.Properties;
 
 namespace DVLDPresentationLayer
 {
@@ -55,12 +56,20 @@ namespace DVLDPresentationLayer
                 rbMale.Checked = true;
             else
                 rbFemale.Checked = true;
-            if(_Person.ImagePath != null)
+            if(_Person.ImagePath != "")
             {
                 pbImage.Load(_Person.ImagePath);
             }
             else
             {
+                if(rbMale.Checked)
+                {
+                    pbImage.Image = Resources.Male_512;
+                }
+                else
+                {
+                    pbImage.Image = Resources.Female_512;
+                }
                 llRemove.Visible = false;
             }
             _FillComboBox();
@@ -120,6 +129,14 @@ namespace DVLDPresentationLayer
             if (_Mode == enMode.AddNewMode)
             {
                 _Person = new clsPerson();
+                if (rbMale.Checked)
+                {
+                    pbImage.Image = Resources.Male_512;
+                }
+                else
+                {
+                    pbImage.Image = Resources.Female_512;
+                }
                 llRemove.Visible = false;
                 return;
             }
@@ -139,11 +156,29 @@ namespace DVLDPresentationLayer
         {
             pbImage.ImageLocation = null;
             llRemove.Visible = false;
+            if (rbMale.Checked)
+            {
+                pbImage.Image = Resources.Male_512;
+            }
+            else
+            {
+                pbImage.Image = Resources.Female_512;
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void rbMale_CheckedChanged(object sender, EventArgs e)
+        {
+            pbImage.Image = (_Person.ImagePath == "") ? Resources.Male_512 : Resources.Female_512;
+        }
+
+        private void rbFemale_CheckedChanged(object sender, EventArgs e)
+        {
+            pbImage.Image = (_Person.ImagePath == "") ? Resources.Female_512 : Resources.Male_512;
         }
     }
 }

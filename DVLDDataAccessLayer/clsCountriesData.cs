@@ -38,5 +38,34 @@ namespace DVLDDataAccessLayer
 
             return dtCountries;
         }
+
+        public static string FindCountryByID(int CountryID)
+        {
+            string CountryName = "";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string Query = @"SELECT CountryName FROM Countries WHERE CountryID = @CountryID";
+
+                using (SqlCommand command = new SqlCommand(Query, connection))
+                {
+                    command.Parameters.AddWithValue("@CountryID", CountryID);
+
+                    try
+                    {
+                        connection.Open();
+                        object res = command.ExecuteScalar();
+                        CountryName = (res != null) ? res.ToString() : "";
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+
+            return CountryName;
+        }
     }
 }
+

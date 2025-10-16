@@ -14,5 +14,10 @@ namespace DVLDBussinessLayer
         {
             return clsCountriesData.GetAllCountriesList();
         }
+
+        public static string FindCountryByID(int CountryID)
+        {
+            return clsCountriesData.FindCountryByID(CountryID);
+        }
     }
 }

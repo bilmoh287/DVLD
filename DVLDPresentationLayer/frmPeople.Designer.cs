@@ -67,13 +67,14 @@
             this.editPersonToolStripMenuItem,
             this.addNNewPersonToolStripMenuItem});
             this.cmsPeopleMenu.Name = "cmsPeopleMenu";
-            this.cmsPeopleMenu.Size = new System.Drawing.Size(229, 100);
+            this.cmsPeopleMenu.Size = new System.Drawing.Size(229, 128);
             // 
             // showDetailsToolStripMenuItem
             // 
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
             this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(228, 32);
             this.showDetailsToolStripMenuItem.Text = "Show Details";
+            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
             // editPersonToolStripMenuItem
             // 

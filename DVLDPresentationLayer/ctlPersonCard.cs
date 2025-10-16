@@ -8,70 +8,87 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDBussinessLayer;
+using DVLDPresentationLayer.Properties;
 
 namespace DVLDPresentationLayer
 {
     public partial class ctlPersonCard : UserControl
     {
-        enum enMode { AddNewMode, UpdateMode };
-        enMode _Mode;
+        private clsPerson _Person;
 
-        int _PersonID;
-        clsPerson _Person;
+        private int _PersonID = -1;
+
         public ctlPersonCard()
         {
             InitializeComponent();
-            _Mode = (_PersonID != -1) ? enMode.UpdateMode : enMode.UpdateMode;
         }
 
-        public void _FillComboBox()
+        public void LoadPersonInfo(int PersonID)
         {
-            DataTable dtCountries = clsCountries.GetAllCountriesList();
-            foreach (DataRow row in dtCountries.Rows)
+            _Person = clsPerson.Find(PersonID);
+            if (_Person == null)
             {
-                cbCountry.Items.Add(row["CountryName"]);
+                ResetPersonInfo();
+                MessageBox.Show("No Person with PersonID = " + PersonID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+            _FillPersonInfo();
         }
 
-        public void LoadPersonData(clsPerson person)
+        private void _FillPersonInfo()
         {
-            txtFirstName.Text = person.FirstName;
-            txtSecondName.Text = person.SecondName;
-            txtThirdName.Text = person.ThirdName;
-            txtLastName.Text = person.LastName;
-            dtpDateOfBirth.Value = person.DateOfBirth;
-            txtNationalNo.Text = person.NationalNo;
-            txtEmail.Text = person.Email;
-            txtPhone.Text = person.Phone;
-            txtAddress.Text = person.Address;
-            if (person.Gender == 0)
-                rbMale.Checked = true;
-            else
-                rbFemale.Checked = true;
-            _FillComboBox();
+            lblPersonID.Text = _Person.PersonID.ToString();
+            _PersonID = _Person.PersonID;
+            lblPersonID.Text = _Person.PersonID.ToString();
+            lblNationalNo.Text = _Person.NationalNo;
+            lblName.Text = _Person.FullName;
+            lblGendor.Text = _Person.Gender == 0 ? "Male" : "Female";
+            lblEmail.Text = _Person.Email;
+            lblPhone.Text = _Person.Phone;
+            lblDateOfBirth.Text = _Person.DateOfBirth.ToShortDateString();
+            lblCountry.Text = clsCountries.FindCountryByID(_Person.CountryID);
+            lblAddress.Text = _Person.Address;
+
+            _LoadPersonImage();
         }
 
-        public clsPerson GetPersonData()
+        private void _LoadPersonImage()
         {
-            _Person.NationalNo = txtNationalNo.Text;
-            _Person.FirstName = txtFirstName.Text;
-            _Person.LastName = txtLastName.Text;
-            _Person.ThirdName = txtThirdName.Text;
-            _Person.LastName = txtLastName.Text;
-            _Person.DateOfBirth = dtpDateOfBirth.Value;
-            _Person.Phone = txtPhone.Text;
-            _Person.Address = txtAddress.Text;
-            _Person.Email = txtEmail.Text;
-            if(rbMale.Checked)
-                _Person.Gender = (int)rbMale.Tag;
-            else
-                _Person.Gender = (int)rbFemale.Tag;
-
-            return _Person;
+            string ImagePath = _Person.ImagePath;
+            if (ImagePath != "")
+                pbPersonImage.ImageLocation = ImagePath;
         }
+
+        public void ResetPersonInfo()
+        {
+            _PersonID = -1;
+            lblPersonID.Text = "[????]";
+            lblNationalNo.Text = "[????]";
+            lblName.Text = "[????]";
+            //pbGendor.Image = Resources.Man_32;
+            lblGendor.Text = "[????]";
+            lblEmail.Text = "[????]";
+            lblPhone.Text = "[????]";
+            lblDateOfBirth.Text = "[????]";
+            lblCountry.Text = "[????]";
+            lblAddress.Text = "[????]";
+            //pbPersonImage.Image = Resources.Male_512;
+
+        }
+
         private void ctlPersonCard_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void llEditPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmAddEditPerson frm = new frmAddEditPerson(_Person.PersonID);
+            frm.ShowDialog();
+
+            //refresh
+            LoadPersonInfo(_Person.PersonID);
         }
     }
 }
