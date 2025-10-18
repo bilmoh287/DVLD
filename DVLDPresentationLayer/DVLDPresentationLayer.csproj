@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clsValidation.cs" />
+    <Compile Include="Global Classes\clsValidation.cs" />
     <Compile Include="ctlPersonCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -80,6 +80,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Global Classes\Util.cs" />
     <EmbeddedResource Include="ctlPersonCard.resx">
       <DependentUpon>ctlPersonCard.cs</DependentUpon>
     </EmbeddedResource>

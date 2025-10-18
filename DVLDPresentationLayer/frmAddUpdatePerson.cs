@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -127,6 +128,50 @@ namespace DVLDPresentationLayer
             txtEmail.Text = "";
             txtAddress.Text = "";
         }
+
+        private bool _HandlePersonImage()
+        {
+            //this procedure will handle the person image,
+            //it will take care of deleting the old image from the folder
+            //in case the image changed. and it will rename the new image with guid and 
+            // place it in the images folder.
+
+            //_Person.ImagePath contains the old Image, we check if it changed then we copy the new image
+            if (_Person.ImagePath != pbPersonImage.ImageLocation)
+            {
+                //first we delete the old image from the folder in case there is any.
+                if (_Person.ImagePath != "")
+                {
+                    try
+                    {
+                        File.Delete(_Person.ImagePath);
+                    }
+                    catch (IOException iox)
+                    {
+                        //Could not Delete ImagePath} 
+                    }
+                }
+
+                if(pbPersonImage.ImageLocation != null)
+                {
+                    //then we copy the new image to the image folder after we rename it
+                    string SourceImageFile = pbPersonImage.ImageLocation.ToString();
+
+                    if(clsUtil.CopyImageToProjectImagesFolder(ref SourceImageFile))
+                    {
+                        pbPersonImage.ImageLocation = SourceImageFile;
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error Copying Image File", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
         private void btnSave_Click(object sender, EventArgs e)
         {
             // Step 1: Validate form
@@ -136,6 +181,9 @@ namespace DVLDPresentationLayer
                 MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            if (!_HandlePersonImage())
+                return;
 
             // Step 2: Assign values from UI to business object
             _Person.NationalNo = txtNationalNo.Text.Trim();
@@ -147,7 +195,7 @@ namespace DVLDPresentationLayer
             _Person.Phone = txtPhone.Text.Trim();
             _Person.Address = txtAddress.Text.Trim();
             _Person.Email = txtEmail.Text.Trim();
-            _Person.Gender = rbMale.Checked ? (short)enGendor.Male : 1;
+            _Person.Gender = rbMale.Checked ? (short)enGendor.Male : (short)enGendor.Female;
             _Person.ImagePath = (pbPersonImage.ImageLocation != null) ? pbPersonImage.ImageLocation.ToString() : "";
             _Person.CountryID = (int)cbCountry.SelectedValue;
 
