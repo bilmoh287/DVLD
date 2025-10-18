@@ -1,6 +1,6 @@
 ﻿namespace DVLDPresentationLayer
 {
-    partial class frmAddEditPerson
+    partial class frmAddUpdatePerson
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.lblPersonID = new System.Windows.Forms.Label();
-            this.lblAddEdit = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
-            this.llRemove = new System.Windows.Forms.LinkLabel();
+            this.llRemoveImage = new System.Windows.Forms.LinkLabel();
             this.llSetImage = new System.Windows.Forms.LinkLabel();
             this.cbCountry = new System.Windows.Forms.ComboBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
@@ -59,9 +60,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.pbImage = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -71,8 +69,11 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.pbPersonImage = new System.Windows.Forms.PictureBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -82,6 +83,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -104,16 +107,16 @@
             this.lblPersonID.TabIndex = 4;
             this.lblPersonID.Text = "N/A";
             // 
-            // lblAddEdit
+            // lblTitle
             // 
-            this.lblAddEdit.AutoSize = true;
-            this.lblAddEdit.Font = new System.Drawing.Font("Modern No. 20", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddEdit.ForeColor = System.Drawing.Color.Brown;
-            this.lblAddEdit.Location = new System.Drawing.Point(308, 9);
-            this.lblAddEdit.Name = "lblAddEdit";
-            this.lblAddEdit.Size = new System.Drawing.Size(301, 41);
-            this.lblAddEdit.TabIndex = 5;
-            this.lblAddEdit.Text = "Add New Person";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Modern No. 20", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.Brown;
+            this.lblTitle.Location = new System.Drawing.Point(308, 9);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(301, 41);
+            this.lblTitle.TabIndex = 5;
+            this.lblTitle.Text = "Add New Person";
             // 
             // dtpDateOfBirth
             // 
@@ -125,17 +128,17 @@
             this.dtpDateOfBirth.TabIndex = 55;
             this.dtpDateOfBirth.Value = new System.DateTime(2007, 1, 25, 23, 59, 59, 999);
             // 
-            // llRemove
+            // llRemoveImage
             // 
-            this.llRemove.AutoSize = true;
-            this.llRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llRemove.Location = new System.Drawing.Point(821, 266);
-            this.llRemove.Name = "llRemove";
-            this.llRemove.Size = new System.Drawing.Size(70, 20);
-            this.llRemove.TabIndex = 54;
-            this.llRemove.TabStop = true;
-            this.llRemove.Text = "Remove";
-            this.llRemove.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llRemove_LinkClicked);
+            this.llRemoveImage.AutoSize = true;
+            this.llRemoveImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llRemoveImage.Location = new System.Drawing.Point(821, 266);
+            this.llRemoveImage.Name = "llRemoveImage";
+            this.llRemoveImage.Size = new System.Drawing.Size(70, 20);
+            this.llRemoveImage.TabIndex = 54;
+            this.llRemoveImage.TabStop = true;
+            this.llRemoveImage.Text = "Remove";
+            this.llRemoveImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llRemove_LinkClicked);
             // 
             // llSetImage
             // 
@@ -165,6 +168,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(161, 27);
             this.txtPhone.TabIndex = 50;
+            this.txtPhone.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmpityTextBox);
             // 
             // rbFemale
             // 
@@ -202,6 +206,7 @@
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(509, 93);
             this.txtAddress.TabIndex = 47;
+            this.txtAddress.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmpityTextBox);
             // 
             // txtNationalNo
             // 
@@ -210,6 +215,7 @@
             this.txtNationalNo.Name = "txtNationalNo";
             this.txtNationalNo.Size = new System.Drawing.Size(161, 27);
             this.txtNationalNo.TabIndex = 46;
+            this.txtNationalNo.Validating += new System.ComponentModel.CancelEventHandler(this.txtNationalNo_Validating);
             // 
             // txtEmail
             // 
@@ -218,6 +224,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(161, 27);
             this.txtEmail.TabIndex = 45;
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
             // 
             // label12
             // 
@@ -266,6 +273,7 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(161, 27);
             this.txtLastName.TabIndex = 40;
+            this.txtLastName.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmpityTextBox);
             // 
             // txtThirdName
             // 
@@ -282,6 +290,7 @@
             this.txtSecondName.Name = "txtSecondName";
             this.txtSecondName.Size = new System.Drawing.Size(161, 27);
             this.txtSecondName.TabIndex = 38;
+            this.txtSecondName.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmpityTextBox);
             // 
             // txtFirstName
             // 
@@ -290,6 +299,7 @@
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(161, 27);
             this.txtFirstName.TabIndex = 37;
+            this.txtFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmpityTextBox);
             // 
             // label9
             // 
@@ -390,7 +400,7 @@
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.pictureBox8);
             this.groupBox1.Controls.Add(this.llSetImage);
-            this.groupBox1.Controls.Add(this.llRemove);
+            this.groupBox1.Controls.Add(this.llRemoveImage);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
@@ -403,43 +413,6 @@
             this.groupBox1.Size = new System.Drawing.Size(928, 388);
             this.groupBox1.TabIndex = 57;
             this.groupBox1.TabStop = false;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Image = global::DVLDPresentationLayer.Properties.Resources.Save_32;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(589, 337);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(156, 45);
-            this.btnSave.TabIndex = 56;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Image = global::DVLDPresentationLayer.Properties.Resources.Close_32;
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(420, 337);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(156, 45);
-            this.btnClose.TabIndex = 1;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // pbImage
-            // 
-            this.pbImage.Image = global::DVLDPresentationLayer.Properties.Resources.Male_512;
-            this.pbImage.Location = new System.Drawing.Point(755, 155);
-            this.pbImage.Name = "pbImage";
-            this.pbImage.Size = new System.Drawing.Size(161, 172);
-            this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbImage.TabIndex = 52;
-            this.pbImage.TabStop = false;
             // 
             // pictureBox9
             // 
@@ -531,14 +504,56 @@
             this.pictureBox8.TabIndex = 106;
             this.pictureBox8.TabStop = false;
             // 
+            // btnSave
+            // 
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Image = global::DVLDPresentationLayer.Properties.Resources.Save_32;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(589, 337);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(156, 45);
+            this.btnSave.TabIndex = 56;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Image = global::DVLDPresentationLayer.Properties.Resources.Close_32;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(420, 337);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(156, 45);
+            this.btnClose.TabIndex = 1;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // pbPersonImage
+            // 
+            this.pbPersonImage.Image = global::DVLDPresentationLayer.Properties.Resources.Male_512;
+            this.pbPersonImage.Location = new System.Drawing.Point(755, 155);
+            this.pbPersonImage.Name = "pbPersonImage";
+            this.pbPersonImage.Size = new System.Drawing.Size(161, 172);
+            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPersonImage.TabIndex = 52;
+            this.pbPersonImage.TabStop = false;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmAddEditPerson
             // 
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(964, 475);
-            this.Controls.Add(this.pbImage);
+            this.Controls.Add(this.pbPersonImage);
             this.Controls.Add(this.rbFemale);
             this.Controls.Add(this.rbMale);
             this.Controls.Add(this.txtAddress);
@@ -556,7 +571,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.lblAddEdit);
+            this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblPersonID);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
@@ -566,7 +581,6 @@
             this.Load += new System.EventHandler(this.frmAddEditPerson_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
@@ -576,6 +590,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -585,12 +601,12 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblPersonID;
-        private System.Windows.Forms.Label lblAddEdit;
+        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.DateTimePicker dtpDateOfBirth;
-        private System.Windows.Forms.LinkLabel llRemove;
+        private System.Windows.Forms.LinkLabel llRemoveImage;
         private System.Windows.Forms.LinkLabel llSetImage;
-        private System.Windows.Forms.PictureBox pbImage;
+        private System.Windows.Forms.PictureBox pbPersonImage;
         private System.Windows.Forms.ComboBox cbCountry;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.RadioButton rbFemale;
@@ -625,5 +641,6 @@
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

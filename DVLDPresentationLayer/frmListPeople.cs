@@ -11,9 +11,9 @@ using DVLDBussinessLayer;
 
 namespace DVLDPresentationLayer
 {
-    public partial class frmPeople : Form
+    public partial class frmListPeople : Form
     {
-        public frmPeople()
+        public frmListPeople()
         {
             InitializeComponent();
         }
@@ -30,7 +30,7 @@ namespace DVLDPresentationLayer
 
         private void btnAddNewPerson_Click(object sender, EventArgs e)
         {
-            frmAddEditPerson frm = new frmAddEditPerson(-1);
+            frmAddUpdatePerson frm = new frmAddUpdatePerson();
             frm.OnPersonSaved += _RefreshPeople;
             frm.ShowDialog();
         }
@@ -38,7 +38,7 @@ namespace DVLDPresentationLayer
         private void editPersonToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int PersonID = (int)dgvListPeople.CurrentRow.Cells[0].Value;
-            frmAddEditPerson frm = new frmAddEditPerson(PersonID);
+            frmAddUpdatePerson frm = new frmAddUpdatePerson(PersonID);
             frm.OnPersonSaved += _RefreshPeople;
             frm.ShowDialog();
         }

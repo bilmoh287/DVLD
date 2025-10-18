@@ -47,7 +47,7 @@ namespace DVLDPresentationLayer
             lblEmail.Text = _Person.Email;
             lblPhone.Text = _Person.Phone;
             lblDateOfBirth.Text = _Person.DateOfBirth.ToShortDateString();
-            lblCountry.Text = clsCountries.FindCountryByID(_Person.CountryID);
+            lblCountry.Text = clsCountries.FindCountry(_Person.CountryID).CountryName;
             lblAddress.Text = _Person.Address;
 
             _LoadPersonImage();
@@ -84,7 +84,7 @@ namespace DVLDPresentationLayer
 
         private void llEditPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmAddEditPerson frm = new frmAddEditPerson(_Person.PersonID);
+            frmAddUpdatePerson frm = new frmAddUpdatePerson(_Person.PersonID);
             frm.ShowDialog();
 
             //refresh

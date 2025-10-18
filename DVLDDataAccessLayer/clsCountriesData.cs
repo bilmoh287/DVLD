@@ -38,14 +38,12 @@ namespace DVLDDataAccessLayer
 
             return dtCountries;
         }
-
-        public static string FindCountryByID(int CountryID)
+        public static bool GetCountryInfoByID(int CountryID, ref string CountryName)
         {
-            string CountryName = "";
-
+            bool IsFound = false;
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
-                string Query = @"SELECT CountryName FROM Countries WHERE CountryID = @CountryID";
+                string Query = @"SELECT * FROM Countries WHERE CountryID = @CountryID";
 
                 using (SqlCommand command = new SqlCommand(Query, connection))
                 {
@@ -54,8 +52,13 @@ namespace DVLDDataAccessLayer
                     try
                     {
                         connection.Open();
-                        object res = command.ExecuteScalar();
-                        CountryName = (res != null) ? res.ToString() : "";
+                        SqlDataReader reader = command.ExecuteReader(); 
+                        if (reader.Read())
+                        {
+                            CountryName = (string)reader["CountryName"];
+                            IsFound = true;
+                        }
+
                     }
                     catch (Exception ex)
                     {
@@ -64,7 +67,41 @@ namespace DVLDDataAccessLayer
                 }
             }
 
-            return CountryName;
+            return IsFound;
+        }
+        public static bool GetCountryInfoByName(string CountryName, ref int CountryID)
+        {
+            bool IsFound = false;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string Query = @"SELECT * FROM Countries WHERE CountryName = @CountryName";
+
+                using (SqlCommand command = new SqlCommand(Query, connection))
+                {
+                    command.Parameters.AddWithValue("@CountryName", CountryName);
+
+                    try
+                    {
+                        connection.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            // Cast the result back to the ref integer parameter
+                            CountryID = (int)reader["CountryID"];
+                            IsFound = true;
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+
+            return IsFound;
         }
     }
 }

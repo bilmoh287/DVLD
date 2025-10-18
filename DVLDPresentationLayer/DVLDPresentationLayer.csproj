@@ -47,17 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsValidation.cs" />
     <Compile Include="ctlPersonCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ctlPersonCard.Designer.cs">
       <DependentUpon>ctlPersonCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAddEditPerson.cs">
+    <Compile Include="frmAddUpdatePerson.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAddEditPerson.Designer.cs">
-      <DependentUpon>frmAddEditPerson.cs</DependentUpon>
+    <Compile Include="frmAddUpdatePerson.Designer.cs">
+      <DependentUpon>frmAddUpdatePerson.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMainMenu.cs">
       <SubType>Form</SubType>
@@ -65,11 +66,11 @@
     <Compile Include="frmMainMenu.Designer.cs">
       <DependentUpon>frmMainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPeople.cs">
+    <Compile Include="frmListPeople.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPeople.Designer.cs">
-      <DependentUpon>frmPeople.cs</DependentUpon>
+    <Compile Include="frmListPeople.Designer.cs">
+      <DependentUpon>frmListPeople.cs</DependentUpon>
     </Compile>
     <Compile Include="frmShowPersonInfo.cs">
       <SubType>Form</SubType>
@@ -82,11 +83,11 @@
     <EmbeddedResource Include="ctlPersonCard.resx">
       <DependentUpon>ctlPersonCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAddEditPerson.resx">
-      <DependentUpon>frmAddEditPerson.cs</DependentUpon>
+    <EmbeddedResource Include="frmAddUpdatePerson.resx">
+      <DependentUpon>frmAddUpdatePerson.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPeople.resx">
-      <DependentUpon>frmPeople.cs</DependentUpon>
+    <EmbeddedResource Include="frmListPeople.resx">
+      <DependentUpon>frmListPeople.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmShowPersonInfo.resx">
       <DependentUpon>frmShowPersonInfo.cs</DependentUpon>

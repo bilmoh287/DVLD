@@ -33,6 +33,8 @@ namespace DVLDBussinessLayer
         public int CountryID { get; set; }
         public string ImagePath { get; set; }
 
+        public clsCountries CountryInfo;
+
         public clsPerson()
         {
             PersonID = -1;
@@ -68,6 +70,7 @@ namespace DVLDBussinessLayer
             this.Email = Email;
             this.CountryID = CountryID;
             this.ImagePath = ImagePath;
+            this.CountryInfo = clsCountries.FindCountry(CountryID);
 
             _Mode = enMode.UpdateMode;
         }
