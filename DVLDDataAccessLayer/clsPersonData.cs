@@ -47,7 +47,7 @@ namespace DVLDDataAccessLayer
             return dtPeople;
         }
 
-        public static bool FindByName(string FirstName, ref string NationalNo,ref int PersonID, ref string SecondName, ref string ThirdName, ref string LastName,
+        public static bool FindByNationalNo(string NationalNo, ref int PersonID, ref string FirstName, ref string SecondName, ref string ThirdName, ref string LastName,
                                      ref DateTime DateOfBirth, ref int Gender, ref string Address,
                                      ref string Phone, ref string Email, ref int CountryID, ref string ImagePath)
         {
@@ -57,11 +57,11 @@ namespace DVLDDataAccessLayer
             {
                 string Query = @"
                                 SELECT * FROM People 
-                                WHERE FirstName = @FirstName";
+                                WHERE NationalNo = @NationalNo";
 
                 using (SqlCommand Command = new SqlCommand(Query, Connection))
                 {
-                    Command.Parameters.AddWithValue("@FirstName", FirstName);
+                    Command.Parameters.AddWithValue("@NationalNo", NationalNo);
 
                     try
                     {
@@ -71,7 +71,7 @@ namespace DVLDDataAccessLayer
                         if (Reader.Read())
                         {
                             PersonID = (int)Reader["PersonID"];
-                            NationalNo = (string)Reader["NationalNo"];
+                            FirstName = (string)Reader["FirstName"];
                             SecondName = (string)Reader["SecondName"];
                             ThirdName = Reader["ThirdName"] != DBNull.Value ? (string)Reader["ThirdName"] : "";  // nullable
                             LastName = (string)Reader["LastName"];

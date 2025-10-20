@@ -80,15 +80,15 @@ namespace DVLDBussinessLayer
             return clsPersonData.GetAllPersonList();
         }
 
-        public static clsPerson Find(string FirstName)
+        public static clsPerson Find(string NationalNo)
         {
             int PersonID = -1;
-            string NationalNo = "", SecondName = "", ThirdName = "", LastName = "", Address = "", Phone = "", Email = "";
+            string FirstName = "", SecondName = "", ThirdName = "", LastName = "", Address = "", Phone = "", Email = "";
             int Gender = 0, CountryID = -1;
             DateTime DateOfBirth = DateTime.Now;
             string ImagePath = "";
 
-            if (clsPersonData.FindByName(FirstName, ref NationalNo, ref PersonID, ref SecondName, ref ThirdName, ref LastName,
+            if (clsPersonData.FindByNationalNo(NationalNo, ref PersonID, ref FirstName, ref SecondName, ref ThirdName, ref LastName,
                                          ref DateOfBirth, ref Gender, ref Address, ref Phone, ref Email,
                                          ref CountryID, ref ImagePath))
             {

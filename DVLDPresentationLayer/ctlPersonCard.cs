@@ -21,6 +21,7 @@ namespace DVLDPresentationLayer
         public ctlPersonCard()
         {
             InitializeComponent();
+            //this.AutoScaleMode = AutoScaleMode.None;
         }
 
         public void LoadPersonInfo(int PersonID)
@@ -30,6 +31,19 @@ namespace DVLDPresentationLayer
             {
                 ResetPersonInfo();
                 MessageBox.Show("No Person with PersonID = " + PersonID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            _FillPersonInfo();
+        }
+
+        public void LoadPersonInfo(string NationalNo)
+        {
+            _Person = clsPerson.Find(NationalNo);
+            if(_Person == null)
+            {
+                ResetPersonInfo();
+                MessageBox.Show("No Person with National No. = " + NationalNo.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -90,5 +104,6 @@ namespace DVLDPresentationLayer
             //refresh
             LoadPersonInfo(_Person.PersonID);
         }
+
     }
 }

@@ -28,26 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctlPersonCard1 = new DVLDPresentationLayer.ctlPersonCard();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
+            this.ctlPersonCard1 = new DVLDPresentationLayer.ctlPersonCard();
             this.SuspendLayout();
-            // 
-            // ctlPersonCard1
-            // 
-            this.ctlPersonCard1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctlPersonCard1.Location = new System.Drawing.Point(-3, 50);
-            this.ctlPersonCard1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
-            this.ctlPersonCard1.Name = "ctlPersonCard1";
-            this.ctlPersonCard1.Size = new System.Drawing.Size(887, 280);
-            this.ctlPersonCard1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Brown;
-            this.label1.Location = new System.Drawing.Point(361, 9);
+            this.label1.Location = new System.Drawing.Point(353, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(153, 46);
             this.label1.TabIndex = 1;
@@ -55,36 +47,52 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(707, 331);
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Image = global::DVLDPresentationLayer.Properties.Resources.Close_32;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(700, 340);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(121, 36);
+            this.btnClose.Size = new System.Drawing.Size(123, 41);
             this.btnClose.TabIndex = 2;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // ctlPersonCard1
+            // 
+            this.ctlPersonCard1.BackColor = System.Drawing.Color.White;
+            this.ctlPersonCard1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctlPersonCard1.Location = new System.Drawing.Point(-4, 48);
+            this.ctlPersonCard1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctlPersonCard1.Name = "ctlPersonCard1";
+            this.ctlPersonCard1.Size = new System.Drawing.Size(841, 285);
+            this.ctlPersonCard1.TabIndex = 3;
+            // 
             // frmShowPersonInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(882, 379);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(833, 389);
+            this.Controls.Add(this.ctlPersonCard1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.ctlPersonCard1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmShowPersonInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmShowPersonInfo";
+            this.Load += new System.EventHandler(this.frmShowPersonInfo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private ctlPersonCard ctlPersonCard1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnClose;
+        private ctlPersonCard ctlPersonCard1;
     }
 }

@@ -333,5 +333,6 @@ namespace DVLDPresentationLayer
                 errorProvider1.SetError(txtEmail, null);
             }
         }
+
     }
 }
