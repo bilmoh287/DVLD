@@ -16,7 +16,7 @@ namespace DVLDPresentationLayer
     public partial class frmAddUpdatePerson : Form
     {
         // Declare a delegate
-        public delegate void PersonSavedHandler();
+        public delegate void PersonSavedHandler(object sender, int PersonID);
 
         // Declare an event using the delegate
         public event PersonSavedHandler OnPersonSaved;
@@ -205,7 +205,7 @@ namespace DVLDPresentationLayer
                 MessageBox.Show("Data Saved Successfully");
                 lblPersonID.Text = _PersonID.ToString();
                 lblTitle.Text = "Update Person";
-                OnPersonSaved?.Invoke();
+                OnPersonSaved?.Invoke(this, _Person.PersonID);
             }
             else
             {

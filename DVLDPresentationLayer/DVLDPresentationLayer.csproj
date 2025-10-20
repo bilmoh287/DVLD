@@ -47,6 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ctlPersonCardWithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctlPersonCardWithFilter.Designer.cs">
+      <DependentUpon>ctlPersonCardWithFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFindPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFindPerson.Designer.cs">
+      <DependentUpon>frmFindPerson.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global Classes\clsValidation.cs" />
     <Compile Include="ctlPersonCard.cs">
       <SubType>UserControl</SubType>
@@ -90,8 +102,14 @@
     <EmbeddedResource Include="ctlPersonCard.resx">
       <DependentUpon>ctlPersonCard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ctlPersonCardWithFilter.resx">
+      <DependentUpon>ctlPersonCardWithFilter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAddUpdatePerson.resx">
       <DependentUpon>frmAddUpdatePerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFindPerson.resx">
+      <DependentUpon>frmFindPerson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmListPeople.resx">
       <DependentUpon>frmListPeople.cs</DependentUpon>
@@ -172,6 +190,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\People 400.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add Person 40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddPerson 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SearchPerson.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

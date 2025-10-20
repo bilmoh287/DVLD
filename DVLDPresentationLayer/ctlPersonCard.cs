@@ -18,6 +18,15 @@ namespace DVLDPresentationLayer
 
         private int _PersonID = -1;
 
+        public int PersonID
+        {
+            get { return _PersonID; }
+        }
+
+        public clsPerson SelectedPersonInfo
+        {
+            get { return _Person; }
+        }
         public ctlPersonCard()
         {
             InitializeComponent();
@@ -72,6 +81,8 @@ namespace DVLDPresentationLayer
             string ImagePath = _Person.ImagePath;
             if (ImagePath != "")
                 pbPersonImage.ImageLocation = ImagePath;
+            else
+                pbPersonImage.Image = (_Person.Gender == 0) ? Resources.Male_512 : Resources.Female_512;
         }
 
         public void ResetPersonInfo()
@@ -80,14 +91,13 @@ namespace DVLDPresentationLayer
             lblPersonID.Text = "[????]";
             lblNationalNo.Text = "[????]";
             lblName.Text = "[????]";
-            //pbGendor.Image = Resources.Man_32;
             lblGendor.Text = "[????]";
             lblEmail.Text = "[????]";
             lblPhone.Text = "[????]";
             lblDateOfBirth.Text = "[????]";
             lblCountry.Text = "[????]";
             lblAddress.Text = "[????]";
-            //pbPersonImage.Image = Resources.Male_512;
+            pbPersonImage.Image = Resources.Male_512;
 
         }
 

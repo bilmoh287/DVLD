@@ -18,14 +18,14 @@ namespace DVLDPresentationLayer
             InitializeComponent();
         }
 
-        private void _RefreshPeople()
+        private void _RefreshPeople(object sender, int PersonID)
         {
             dgvListPeople.DataSource = clsPerson.GetAllPerson();
             lblRecord.Text = dgvListPeople.RowCount.ToString();
         }
         private void frmPeople_Load(object sender, EventArgs e)
         {
-            _RefreshPeople();
+            _RefreshPeople(this,-1);
         }
 
         private void btnAddNewPerson_Click(object sender, EventArgs e)
