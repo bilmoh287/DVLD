@@ -18,24 +18,19 @@ namespace DVLDPresentationLayer
         public frmShowPersonInfo(int PersonID)
         {
             InitializeComponent();
-            this.AutoScaleMode = AutoScaleMode.None;
+            //this.AutoScaleMode = AutoScaleMode.None;
             ctlPersonCard1.LoadPersonInfo(PersonID);
+        }
+        public frmShowPersonInfo(string NationalNo)
+        {
+            InitializeComponent();
+            //this.AutoScaleMode = AutoScaleMode.None;
+            ctlPersonCard1.LoadPersonInfo(NationalNo);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-
-        private void frmShowPersonInfo_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ctlPersonCard1_Load_1(object sender, EventArgs e)
-        {
-            this.AutoScaleMode = AutoScaleMode.None;
         }
 
     }
