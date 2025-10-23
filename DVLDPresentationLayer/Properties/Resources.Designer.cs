@@ -253,6 +253,26 @@ namespace DVLDPresentationLayer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Flag_map_of_Ethiopia_svg {
+            get {
+                object obj = ResourceManager.GetObject("Flag_map_of_Ethiopia.svg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap key {
+            get {
+                object obj = ResourceManager.GetObject("key", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap location {
             get {
                 object obj = ResourceManager.GetObject("location", resourceCulture);
@@ -296,6 +316,16 @@ namespace DVLDPresentationLayer.Properties {
         internal static System.Drawing.Bitmap Number_32 {
             get {
                 object obj = ResourceManager.GetObject("Number 32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap password {
+            get {
+                object obj = ResourceManager.GetObject("password", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -386,6 +416,16 @@ namespace DVLDPresentationLayer.Properties {
         internal static System.Drawing.Bitmap send_envelope {
             get {
                 object obj = ResourceManager.GetObject("send_envelope", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sign_in_32 {
+            get {
+                object obj = ResourceManager.GetObject("sign_in 32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

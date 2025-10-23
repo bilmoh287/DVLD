@@ -19,7 +19,7 @@ namespace DVLDPresentationLayer
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmFindPerson());
             //Application.Run(new frmListPeople());
-            Application.Run(new frmMain());
+            Application.Run(new frmLogin());
         }
     }
 }
