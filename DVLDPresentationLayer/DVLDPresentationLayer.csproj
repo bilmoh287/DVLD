@@ -47,16 +47,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ctlPersonCardWithFilter.cs">
+    <Compile Include="People\ctlPersonCardWithFilter.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ctlPersonCardWithFilter.Designer.cs">
+    <Compile Include="People\ctlPersonCardWithFilter.Designer.cs">
       <DependentUpon>ctlPersonCardWithFilter.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmFindPerson.cs">
+    <Compile Include="People\frmFindPerson.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmFindPerson.Designer.cs">
+    <Compile Include="People\frmFindPerson.Designer.cs">
       <DependentUpon>frmFindPerson.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
@@ -66,16 +66,16 @@
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Global Classes\clsValidation.cs" />
-    <Compile Include="ctlPersonCard.cs">
+    <Compile Include="People\ctlPersonCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ctlPersonCard.Designer.cs">
+    <Compile Include="People\ctlPersonCard.Designer.cs">
       <DependentUpon>ctlPersonCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAddUpdatePerson.cs">
+    <Compile Include="People\frmAddUpdatePerson.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAddUpdatePerson.Designer.cs">
+    <Compile Include="People\frmAddUpdatePerson.Designer.cs">
       <DependentUpon>frmAddUpdatePerson.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMainMenu.cs">
@@ -84,16 +84,16 @@
     <Compile Include="frmMainMenu.Designer.cs">
       <DependentUpon>frmMainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmListPeople.cs">
+    <Compile Include="People\frmListPeople.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmListPeople.Designer.cs">
+    <Compile Include="People\frmListPeople.Designer.cs">
       <DependentUpon>frmListPeople.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmShowPersonInfo.cs">
+    <Compile Include="People\frmShowPersonInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmShowPersonInfo.Designer.cs">
+    <Compile Include="People\frmShowPersonInfo.Designer.cs">
       <DependentUpon>frmShowPersonInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -105,19 +105,19 @@
     <Compile Include="testForm.Designer.cs">
       <DependentUpon>testForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ctlPersonCard.resx">
+    <EmbeddedResource Include="People\ctlPersonCard.resx">
       <DependentUpon>ctlPersonCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ctlPersonCardWithFilter.resx">
+    <EmbeddedResource Include="People\ctlPersonCardWithFilter.resx">
       <DependentUpon>ctlPersonCardWithFilter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAddUpdatePerson.resx">
+    <EmbeddedResource Include="People\frmAddUpdatePerson.resx">
       <DependentUpon>frmAddUpdatePerson.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmFindPerson.resx">
+    <EmbeddedResource Include="People\frmFindPerson.resx">
       <DependentUpon>frmFindPerson.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmListPeople.resx">
+    <EmbeddedResource Include="People\frmListPeople.resx">
       <DependentUpon>frmListPeople.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
@@ -126,7 +126,7 @@
     <EmbeddedResource Include="frmMainMenu.resx">
       <DependentUpon>frmMainMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmShowPersonInfo.resx">
+    <EmbeddedResource Include="People\frmShowPersonInfo.resx">
       <DependentUpon>frmShowPersonInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
