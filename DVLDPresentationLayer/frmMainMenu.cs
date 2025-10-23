@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace DVLDPresentationLayer
 {
-    public partial class frmMainMenu : Form
+    public partial class frmMain : Form
     {
-        public frmMainMenu()
+        public frmMain()
         {
             InitializeComponent();
+        }
+
+        private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListPeople frm = new frmListPeople();
+            frm.ShowDialog();
         }
     }
 }

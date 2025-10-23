@@ -18,7 +18,8 @@ namespace DVLDPresentationLayer
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmFindPerson());
-            Application.Run(new frmListPeople());
+            //Application.Run(new frmListPeople());
+            Application.Run(new frmMain());
         }
     }
 }

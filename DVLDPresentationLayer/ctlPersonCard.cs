@@ -14,6 +14,7 @@ namespace DVLDPresentationLayer
 {
     public partial class ctlPersonCard : UserControl
     {
+        
         private clsPerson _Person;
 
         private int _PersonID = -1;

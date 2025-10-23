@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDBussinessLayer;
@@ -95,7 +96,7 @@ namespace DVLDPresentationLayer
                 case "Person ID":
                     FilterColumn = "PersonID";
                     break;
-                case "National No":
+                case "National No.":
                     FilterColumn = "NationalNo";
                     break;
                 case "First Name":
@@ -115,7 +116,7 @@ namespace DVLDPresentationLayer
                     break;
 
                 case "Nationality":
-                    FilterColumn = "CountryName";
+                    FilterColumn = "Nationality";
                     break;
 
                 case "Gender":
@@ -154,7 +155,7 @@ namespace DVLDPresentationLayer
                 _dtPeople.DefaultView.RowFilter = $"[{FilterColumn}] LIKE '{txtFilterValue.Text.Trim()}%'";
             }
 
-            lblRecord.Text = dgvListPeople.Rows.Count.ToString();
+            lblRecord.Text = _dtPeople.DefaultView.Count.ToString();
         }
 
         private void btnAddNewPerson_Click(object sender, EventArgs e)
@@ -176,6 +177,7 @@ namespace DVLDPresentationLayer
         {
             int PersonID = (int)dgvListPeople.CurrentRow.Cells[0].Value;
             frmShowPersonInfo frm = new frmShowPersonInfo(PersonID);
+            //f
             frm.ShowDialog();
         }
 
@@ -199,6 +201,47 @@ namespace DVLDPresentationLayer
             //we allow number incase person id is selected.
             if (cbFilterBy.Text == "Person ID")
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void addNNewPersonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddUpdatePerson frm = new frmAddUpdatePerson();
+            frm.OnPersonSaved += _RefreshPeople;
+            frm.ShowDialog();
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to delete Person [" + dgvListPeople.CurrentRow.Cells[0].Value + "]", "Confirm Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                if(clsPerson.DeletePersonByID((int)dgvListPeople.CurrentRow.Cells[0].Value))
+                {
+                    MessageBox.Show("Person Deleted Successfully.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _RefreshPeople(this, -1);
+                }
+                else
+                {
+                    MessageBox.Show("Person was not deleted because it has data linked to it.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
+
+        private void sendEmailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+        }
+
+        private void phoneCallToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
         }
     }
 }
