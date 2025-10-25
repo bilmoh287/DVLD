@@ -109,5 +109,27 @@ namespace DVLDPresentationLayer
 
             lblRecordsCount.Text = _dtUsers.DefaultView.Count.ToString();
         }
+
+        private void cbIsActive_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string filterValue = cbIsActive.Text.Trim();
+            if(filterValue == "All")
+            {
+                _dtUsers.DefaultView.RowFilter = "";
+            }
+            else
+            {
+                int isActive = (filterValue == "Yes") ? 1 : 0;
+                _dtUsers.DefaultView.RowFilter = $"[IsActive] = {isActive}";
+            }
+            lblRecordsCount.Text = _dtUsers.DefaultView.Count.ToString();
+        }
+
+        private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //we allow number incase person id is selected.
+            if (cbFilterBy.Text == "Person ID" || cbFilterBy.Text == "User ID")
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
     }
 }

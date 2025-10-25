@@ -87,6 +87,7 @@
             this.cbIsActive.Size = new System.Drawing.Size(121, 33);
             this.cbIsActive.TabIndex = 108;
             this.cbIsActive.Visible = false;
+            this.cbIsActive.SelectedIndexChanged += new System.EventHandler(this.cbIsActive_SelectedIndexChanged);
             // 
             // cbFilterBy
             // 
@@ -115,6 +116,7 @@
             this.txtFilterValue.TabIndex = 106;
             this.txtFilterValue.Visible = false;
             this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
+            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
             // 
             // label1
             // 
