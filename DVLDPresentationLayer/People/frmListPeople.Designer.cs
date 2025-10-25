@@ -67,7 +67,7 @@
             this.sendEmailToolStripMenuItem,
             this.phoneCallToolStripMenuItem});
             this.cmsPeopleMenu.Name = "cmsPeopleMenu";
-            this.cmsPeopleMenu.Size = new System.Drawing.Size(233, 272);
+            this.cmsPeopleMenu.Size = new System.Drawing.Size(233, 244);
             // 
             // showDetailsToolStripMenuItem
             // 

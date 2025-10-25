@@ -16,10 +16,10 @@ namespace DVLDDataAccessLayer
 
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
-            string Query = @"SELECT Users.UserID, Users.UserID, FullName = People.FirstName + ' ' + People.SecondName + ' ' + 
+            string Query = @"SELECT Users.UserID, Users.PersonID, FullName = People.FirstName + ' ' + People.SecondName + ' ' + 
 		                             ISNULL(People.ThirdName, '') + ' ' +  People.LastName, Users.UserName, Users.Password, Users.IsActive
                              FROM     Users INNER JOIN
-                                              People ON Users.UserID = People.UserID";
+                                              People ON Users.PersonID = People.PersonID";
 
             SqlCommand command = new SqlCommand(Query, connection);
 
