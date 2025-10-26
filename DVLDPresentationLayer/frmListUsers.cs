@@ -21,7 +21,7 @@ namespace DVLDPresentationLayer
             InitializeComponent();
         }
 
-        private void frmListUsers_Load(object sender, EventArgs e)
+        private void _RefreshUsersList()
         {
             dgvListUsers.DataSource = _dtUsers;
             cbFilterBy.SelectedIndex = 0;
@@ -44,6 +44,11 @@ namespace DVLDPresentationLayer
 
             dgvListUsers.Columns[5].HeaderText = "Is Active";
             dgvListUsers.Columns[5].Width = 110;
+        }
+
+        private void frmListUsers_Load(object sender, EventArgs e)
+        {
+            _RefreshUsersList();
         }
 
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
@@ -130,6 +135,33 @@ namespace DVLDPresentationLayer
             //we allow number incase person id is selected.
             if (cbFilterBy.Text == "Person ID" || cbFilterBy.Text == "User ID")
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void btnAddUser_Click(object sender, EventArgs e)
+        {
+            frmAddUpdateUser frm = new frmAddUpdateUser();
+            frm.ShowDialog();
+        }
+
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmAddUpdateUser frm = new frmAddUpdateUser();
+            frm.ShowDialog();
+            _RefreshUsersList();
+
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int UserID = (int)dgvListUsers.CurrentRow.Cells[0].Value;
+            frmAddUpdateUser frm = new frmAddUpdateUser(UserID);
+            frm.ShowDialog();
+            _RefreshUsersList();
         }
     }
 }

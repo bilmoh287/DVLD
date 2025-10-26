@@ -291,5 +291,61 @@ namespace DVLDDataAccessLayer
 
             return IsExists;
         }
+
+        public static bool IsUserExist(string UserName)
+        {
+            bool IsExists = false;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string Query = @"SELECT 1 FROM Users WHERE  UserName= @UserName";
+
+                using (SqlCommand command = new SqlCommand(Query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserName", UserName);
+
+                    try
+                    {
+                        connection.Open();
+                        object res = command.ExecuteScalar();
+                        IsExists = res != null;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+
+            return IsExists;
+        }
+
+        public static bool IsUserExistByPersonID(int PersonID)
+        {
+            bool IsExists = false;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string Query = @"SELECT 1 FROM Users WHERE PersonID = @PersonID";
+
+                using (SqlCommand command = new SqlCommand(Query, connection))
+                {
+                    command.Parameters.AddWithValue("@PersonID", PersonID);
+
+                    try
+                    {
+                        connection.Open();
+                        object res = command.ExecuteScalar();
+                        IsExists = res != null;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+
+            return IsExists;
+        }
     }
 }

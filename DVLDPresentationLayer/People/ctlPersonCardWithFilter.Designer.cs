@@ -29,27 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.ctlPersonCard1 = new DVLDPresentationLayer.ctlPersonCard();
             this.gbFilter = new System.Windows.Forms.GroupBox();
-            this.cbFilterBy = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtFilterValue = new System.Windows.Forms.TextBox();
             this.btnAddNewAddPerson = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
+            this.txtFilterValue = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ctlPersonCard1 = new DVLDPresentationLayer.ctlPersonCard();
             this.gbFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ctlPersonCard1
-            // 
-            this.ctlPersonCard1.BackColor = System.Drawing.Color.White;
-            this.ctlPersonCard1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctlPersonCard1.Location = new System.Drawing.Point(0, 108);
-            this.ctlPersonCard1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ctlPersonCard1.Name = "ctlPersonCard1";
-            this.ctlPersonCard1.Size = new System.Drawing.Size(841, 285);
-            this.ctlPersonCard1.TabIndex = 0;
             // 
             // gbFilter
             // 
@@ -64,37 +54,6 @@
             this.gbFilter.TabIndex = 1;
             this.gbFilter.TabStop = false;
             this.gbFilter.Text = "Filter";
-            // 
-            // cbFilterBy
-            // 
-            this.cbFilterBy.FormattingEnabled = true;
-            this.cbFilterBy.Items.AddRange(new object[] {
-            "National No",
-            "Person ID"});
-            this.cbFilterBy.Location = new System.Drawing.Point(104, 31);
-            this.cbFilterBy.Name = "cbFilterBy";
-            this.cbFilterBy.Size = new System.Drawing.Size(207, 33);
-            this.cbFilterBy.TabIndex = 0;
-            this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 25);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Find By:";
-            // 
-            // txtFilterValue
-            // 
-            this.txtFilterValue.Location = new System.Drawing.Point(317, 33);
-            this.txtFilterValue.Name = "txtFilterValue";
-            this.txtFilterValue.Size = new System.Drawing.Size(224, 30);
-            this.txtFilterValue.TabIndex = 2;
-            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
-            this.txtFilterValue.Validating += new System.ComponentModel.CancelEventHandler(this.txtFilterValue_Validating);
             // 
             // btnAddNewAddPerson
             // 
@@ -118,9 +77,51 @@
             this.btnFind.UseVisualStyleBackColor = true;
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
+            // txtFilterValue
+            // 
+            this.txtFilterValue.Location = new System.Drawing.Point(317, 33);
+            this.txtFilterValue.Name = "txtFilterValue";
+            this.txtFilterValue.Size = new System.Drawing.Size(224, 30);
+            this.txtFilterValue.TabIndex = 2;
+            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
+            this.txtFilterValue.Validating += new System.ComponentModel.CancelEventHandler(this.txtFilterValue_Validating);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(6, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 25);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Find By:";
+            // 
+            // cbFilterBy
+            // 
+            this.cbFilterBy.FormattingEnabled = true;
+            this.cbFilterBy.Items.AddRange(new object[] {
+            "National No",
+            "Person ID"});
+            this.cbFilterBy.Location = new System.Drawing.Point(104, 31);
+            this.cbFilterBy.Name = "cbFilterBy";
+            this.cbFilterBy.Size = new System.Drawing.Size(207, 33);
+            this.cbFilterBy.TabIndex = 0;
+            this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // ctlPersonCard1
+            // 
+            this.ctlPersonCard1.BackColor = System.Drawing.Color.White;
+            this.ctlPersonCard1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctlPersonCard1.Location = new System.Drawing.Point(0, 108);
+            this.ctlPersonCard1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctlPersonCard1.Name = "ctlPersonCard1";
+            this.ctlPersonCard1.Size = new System.Drawing.Size(841, 285);
+            this.ctlPersonCard1.TabIndex = 0;
+            this.ctlPersonCard1.Load += new System.EventHandler(this.ctlPersonCard1_Load);
             // 
             // ctlPersonCardWithFilter
             // 
@@ -133,6 +134,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ctlPersonCardWithFilter";
             this.Size = new System.Drawing.Size(842, 394);
+            this.Load += new System.EventHandler(this.ctlPersonCardWithFilter_Load);
             this.gbFilter.ResumeLayout(false);
             this.gbFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

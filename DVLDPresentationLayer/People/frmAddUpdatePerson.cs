@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDBussinessLayer;
 using DVLDPresentationLayer.Properties;
@@ -115,7 +111,7 @@ namespace DVLDPresentationLayer
             //should not allow adding age more than 100 years
             dtpDateOfBirth.MinDate = DateTime.Now.AddYears(-100);
 
-            //this will set default country to jordan.
+            //this will set default country to Ethiopia.
             cbCountry.SelectedIndex = cbCountry.FindString("Ethiopia");
 
             txtFirstName.Text = "";

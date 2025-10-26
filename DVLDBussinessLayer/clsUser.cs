@@ -16,12 +16,12 @@ namespace DVLDBussinessLayer
         public enum enMode { AddNewMode = 0, UpdateMode = 1 };
         public enMode _Mode = enMode.UpdateMode;
 
-        int UserID { get; set; }
-        int PersonID { get; set; }
+        public int UserID { get; set; }
+        public int PersonID { get; set; }
         clsPerson PersonInfo;
-        string UserName { get; set; }
-        string Password { get; set; }
-        bool IsActive { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public bool IsActive { get; set; }
 
         public clsUser()
         {
@@ -120,6 +120,16 @@ namespace DVLDBussinessLayer
         public static bool IsUserExist(int UserID)
         {
             return clsUserData.IsUserExist(UserID);
+        }
+
+        public static bool IsUserExist(string UserName)
+        {
+            return clsUserData.IsUserExist(UserName);
+        }
+
+        public static bool IsUserExistByPersonID(int PersonID)
+        {
+            return clsUserData.IsUserExistByPersonID(PersonID);
         }
 
         public bool Save()

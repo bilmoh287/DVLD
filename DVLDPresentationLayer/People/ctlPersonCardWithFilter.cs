@@ -57,6 +57,10 @@ namespace DVLDPresentationLayer
             get { return ctlPersonCard1.SelectedPersonInfo; }
         }
 
+        public void FilterFocus()
+        {
+            txtFilterValue.Focus();
+        }
 
         public ctlPersonCardWithFilter()
         {
@@ -149,6 +153,17 @@ namespace DVLDPresentationLayer
             //this will allow only digits if person id is selected
             if (cbFilterBy.Text == "Person ID")
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+
+        }
+
+        private void ctlPersonCardWithFilter_Load(object sender, EventArgs e)
+        {
+            cbFilterBy.SelectedIndex = 0;
+            txtFilterValue.Focus();
+        }
+
+        private void ctlPersonCard1_Load(object sender, EventArgs e)
+        {
 
         }
     }
