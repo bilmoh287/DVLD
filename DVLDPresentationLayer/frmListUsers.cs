@@ -158,8 +158,10 @@ namespace DVLDPresentationLayer
 
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //int PersonID = (int)dgvListUsers.CurrentRow.Cells[1].Value;
-            //frmShowPersonInfo frm = new frmShowPersonInfo(PersonID);
+            int UserID = (int)dgvListUsers.CurrentRow.Cells[0].Value;
+            //MessageBox.Show (UserID.ToString());
+            frmShowUserInfo frm = new frmShowUserInfo(UserID);
+            frm.ShowDialog();
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)

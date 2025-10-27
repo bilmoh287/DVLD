@@ -65,6 +65,12 @@
     <Compile Include="frmListUsers.Designer.cs">
       <DependentUpon>frmListUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmShowUserInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShowUserInfo.Designer.cs">
+      <DependentUpon>frmShowUserInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global Classes\clsGlobal.cs" />
     <Compile Include="People\ctlPersonCardWithFilter.cs">
       <SubType>UserControl</SubType>
@@ -137,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmListUsers.resx">
       <DependentUpon>frmListUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShowUserInfo.resx">
+      <DependentUpon>frmShowUserInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="People\ctlPersonCard.resx">
       <DependentUpon>ctlPersonCard.cs</DependentUpon>

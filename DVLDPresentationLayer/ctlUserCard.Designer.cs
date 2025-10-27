@@ -30,15 +30,15 @@
         {
             this.ctlPersonCard1 = new DVLDPresentationLayer.ctlPersonCard();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblUserID = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblIsActive = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -74,16 +74,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Login Information";
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::DVLDPresentationLayer.Properties.Resources.help;
-            this.pictureBox3.Location = new System.Drawing.Point(638, 40);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 136;
-            this.pictureBox3.TabStop = false;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -94,16 +84,6 @@
             this.label3.TabIndex = 135;
             this.label3.Text = "Is Active:";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::DVLDPresentationLayer.Properties.Resources.user;
-            this.pictureBox1.Location = new System.Drawing.Point(404, 40);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 134;
-            this.pictureBox1.TabStop = false;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -113,16 +93,6 @@
             this.label2.Size = new System.Drawing.Size(120, 25);
             this.label2.TabIndex = 133;
             this.label2.Text = "UserName:";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::DVLDPresentationLayer.Properties.Resources.id;
-            this.pictureBox2.Location = new System.Drawing.Point(185, 39);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 132;
-            this.pictureBox2.TabStop = false;
             // 
             // label1
             // 
@@ -138,7 +108,7 @@
             // 
             this.lblUserID.AutoSize = true;
             this.lblUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserID.Location = new System.Drawing.Point(222, 39);
+            this.lblUserID.Location = new System.Drawing.Point(213, 40);
             this.lblUserID.Name = "lblUserID";
             this.lblUserID.Size = new System.Drawing.Size(36, 25);
             this.lblUserID.TabIndex = 137;
@@ -148,7 +118,7 @@
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.Location = new System.Drawing.Point(441, 39);
+            this.lblUsername.Location = new System.Drawing.Point(431, 38);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(36, 25);
             this.lblUsername.TabIndex = 138;
@@ -158,11 +128,41 @@
             // 
             this.lblIsActive.AutoSize = true;
             this.lblIsActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIsActive.Location = new System.Drawing.Point(675, 41);
+            this.lblIsActive.Location = new System.Drawing.Point(675, 38);
             this.lblIsActive.Name = "lblIsActive";
             this.lblIsActive.Size = new System.Drawing.Size(36, 25);
             this.lblIsActive.TabIndex = 139;
             this.lblIsActive.Text = "??";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::DVLDPresentationLayer.Properties.Resources.help;
+            this.pictureBox3.Location = new System.Drawing.Point(638, 38);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 136;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::DVLDPresentationLayer.Properties.Resources.user;
+            this.pictureBox1.Location = new System.Drawing.Point(394, 38);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 134;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::DVLDPresentationLayer.Properties.Resources.id;
+            this.pictureBox2.Location = new System.Drawing.Point(176, 38);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 132;
+            this.pictureBox2.TabStop = false;
             // 
             // ctlUserCard
             // 
