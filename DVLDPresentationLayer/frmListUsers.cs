@@ -62,11 +62,13 @@ namespace DVLDPresentationLayer
             {
                 txtFilterValue.Visible = false;
                 cbIsActive.Visible = true;
-                cbFilterBy.SelectedIndex = 0;
+                cbIsActive.SelectedIndex = 0;
             }
             else
             {
                 txtFilterValue.Visible = (cbFilterBy.Text != "None");
+                cbIsActive.Visible = false;
+
                 if (cbFilterBy.Text == "None")
                     txtFilterValue.Enabled = false;
                 else

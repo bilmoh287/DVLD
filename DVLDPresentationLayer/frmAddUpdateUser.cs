@@ -64,6 +64,7 @@ namespace DVLDPresentationLayer
 
             //lblTitle.Text = "Update User";
             ctlPersonCardWithFilter1.FilterEnables = false;
+            lblUserID.Text = _User.UserID.ToString();
             txtUserName.Text = _User.UserName;
             txtPassword.Text = _User.Password;
             txtConfirmPassword.Text = _User.Password;
@@ -78,11 +79,6 @@ namespace DVLDPresentationLayer
             {
                 _LoadUserInfo();
             }
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -148,11 +144,6 @@ namespace DVLDPresentationLayer
                 MessageBox.Show("Please Select a Person", "Select a Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ctlPersonCardWithFilter1.FilterFocus();
             }
-        }
-
-        private void txtUserName_TextChanged(object sender, EventArgs e)
-        {
-            
         }
 
         private void txtUserName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -248,5 +239,6 @@ namespace DVLDPresentationLayer
         {
             this.Close();
         }
+
     }
 }
