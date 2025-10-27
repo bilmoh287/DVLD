@@ -22,5 +22,16 @@ namespace DVLDPresentationLayer
             frmListPeople frm = new frmListPeople();
             frm.ShowDialog();
         }
+
+        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListUsers frm = new frmListUsers();
+            frm.ShowDialog();
+        }
+
+        private void currentUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //frmShowUserInfo
+        }
     }
 }

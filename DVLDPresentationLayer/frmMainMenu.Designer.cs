@@ -29,12 +29,16 @@
         private void InitializeComponent()
         {
             this.msMainMenu = new System.Windows.Forms.MenuStrip();
-            this.pbMain = new System.Windows.Forms.PictureBox();
             this.applicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peopleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.driversToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.currentUserInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.signOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pbMain = new System.Windows.Forms.PictureBox();
             this.msMainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).BeginInit();
             this.SuspendLayout();
@@ -54,17 +58,6 @@
             this.msMainMenu.Size = new System.Drawing.Size(1406, 72);
             this.msMainMenu.TabIndex = 1;
             this.msMainMenu.Text = "msMainMenu";
-            // 
-            // pbMain
-            // 
-            this.pbMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbMain.Image = global::DVLDPresentationLayer.Properties.Resources.wallpaper;
-            this.pbMain.Location = new System.Drawing.Point(0, 72);
-            this.pbMain.Name = "pbMain";
-            this.pbMain.Size = new System.Drawing.Size(1406, 699);
-            this.pbMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbMain.TabIndex = 2;
-            this.pbMain.TabStop = false;
             // 
             // applicationToolStripMenuItem
             // 
@@ -98,14 +91,61 @@
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
             this.usersToolStripMenuItem.Size = new System.Drawing.Size(141, 68);
             this.usersToolStripMenuItem.Text = "Users";
+            this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
             // 
             // accountSettingsToolStripMenuItem
             // 
+            this.accountSettingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.currentUserInfoToolStripMenuItem,
+            this.changePasswordToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.signOutToolStripMenuItem});
             this.accountSettingsToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.account_settings_64;
             this.accountSettingsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.accountSettingsToolStripMenuItem.Name = "accountSettingsToolStripMenuItem";
             this.accountSettingsToolStripMenuItem.Size = new System.Drawing.Size(251, 68);
             this.accountSettingsToolStripMenuItem.Text = "Account Settings";
+            // 
+            // currentUserInfoToolStripMenuItem
+            // 
+            this.currentUserInfoToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.PersonDetails_32;
+            this.currentUserInfoToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.currentUserInfoToolStripMenuItem.Name = "currentUserInfoToolStripMenuItem";
+            this.currentUserInfoToolStripMenuItem.Size = new System.Drawing.Size(275, 38);
+            this.currentUserInfoToolStripMenuItem.Text = "&Current User Info";
+            this.currentUserInfoToolStripMenuItem.Click += new System.EventHandler(this.currentUserInfoToolStripMenuItem_Click);
+            // 
+            // changePasswordToolStripMenuItem
+            // 
+            this.changePasswordToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.password2;
+            this.changePasswordToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(275, 38);
+            this.changePasswordToolStripMenuItem.Text = "Change Password";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(272, 6);
+            // 
+            // signOutToolStripMenuItem
+            // 
+            this.signOutToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.sign_out_32__2;
+            this.signOutToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.signOutToolStripMenuItem.Name = "signOutToolStripMenuItem";
+            this.signOutToolStripMenuItem.Size = new System.Drawing.Size(275, 38);
+            this.signOutToolStripMenuItem.Text = "Sign &Out";
+            // 
+            // pbMain
+            // 
+            this.pbMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbMain.Image = global::DVLDPresentationLayer.Properties.Resources.wallpaper;
+            this.pbMain.Location = new System.Drawing.Point(0, 72);
+            this.pbMain.Name = "pbMain";
+            this.pbMain.Size = new System.Drawing.Size(1406, 699);
+            this.pbMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbMain.TabIndex = 2;
+            this.pbMain.TabStop = false;
             // 
             // frmMain
             // 
@@ -140,6 +180,10 @@
         private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem accountSettingsToolStripMenuItem;
         private System.Windows.Forms.PictureBox pbMain;
+        private System.Windows.Forms.ToolStripMenuItem currentUserInfoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem signOutToolStripMenuItem;
     }
 }
 

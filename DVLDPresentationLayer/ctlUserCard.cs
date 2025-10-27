@@ -19,6 +19,10 @@ namespace DVLDPresentationLayer
             InitializeComponent();
         }
 
+        public int UseriD()
+        {
+            return _User.UserID;
+        }
         private void _ResetPersonInfo()
         {
             lblUserID.Text = "???";
@@ -30,7 +34,7 @@ namespace DVLDPresentationLayer
         {
             ctlPersonCard1.LoadPersonInfo(_User.PersonID);
             lblUserID.Text = _User.UserID.ToString();
-            lblUsername.Text = _User.UserName.ToString();
+            lblUsername.Text = "[" + _User.UserName.ToString()+ "]";
             lblIsActive.Text = (_User.IsActive) ? "Yes" : "No";
         }
         public void LoadUserInfo(int UserID)
@@ -43,6 +47,16 @@ namespace DVLDPresentationLayer
                 return;
             }
             _FillUserInfo();
+        }
+
+        private void lblUsername_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblIsActive_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
