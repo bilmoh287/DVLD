@@ -15,7 +15,7 @@ namespace DVLDPresentationLayer
     public partial class frmListUsers : Form
     {
         private static DataTable _dtAllUsers = clsUser.GetAllUser();
-        private static DataTable _dtUsers = _dtAllUsers.DefaultView.ToTable(false, "UserID", "PersonID", "FullName", "UserName", "Password", "IsActive");
+        private DataTable _dtUsers = _dtAllUsers.DefaultView.ToTable(false, "UserID", "PersonID", "FullName", "UserName", "Password", "IsActive");
         public frmListUsers()
         {
             InitializeComponent();
@@ -23,6 +23,15 @@ namespace DVLDPresentationLayer
 
         private void _RefreshUsersList()
         {
+            _dtAllUsers = clsUser.GetAllUser();
+            _dtUsers = _dtAllUsers.DefaultView.ToTable(false, "UserID", "PersonID", "FullName", "UserName", "Password", "IsActive");
+            dgvListUsers.DataSource = _dtUsers;
+            lblRecordsCount.Text = dgvListUsers.RowCount.ToString();
+        }
+
+        private void frmListUsers_Load(object sender, EventArgs e)
+        {
+            //_RefreshUsersList();
             dgvListUsers.DataSource = _dtUsers;
             cbFilterBy.SelectedIndex = 0;
             lblRecordsCount.Text = dgvListUsers.Rows.Count.ToString();
@@ -44,11 +53,6 @@ namespace DVLDPresentationLayer
 
             dgvListUsers.Columns[5].HeaderText = "Is Active";
             dgvListUsers.Columns[5].Width = 110;
-        }
-
-        private void frmListUsers_Load(object sender, EventArgs e)
-        {
-            _RefreshUsersList();
         }
 
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
@@ -159,9 +163,9 @@ namespace DVLDPresentationLayer
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             frmAddUpdateUser frm = new frmAddUpdateUser();
+            frm.OnUserSaved += OnPersonSelected;
             frm.ShowDialog();
-            _RefreshUsersList();
-
+            //_RefreshUsersList();
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)

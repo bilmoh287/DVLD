@@ -194,14 +194,14 @@ namespace DVLDDataAccessLayer
         }
 
 
-        public static bool UpdateUser(int PersonID, string UserName, string PassWord, bool IsActive)
+        public static bool UpdateUser(int UserID, int PersonID, string UserName, string PassWord, bool IsActive)
         {
             bool isUpdated = false;
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
                 string Query = @"
-                                UPDATE [dbo].[People]
+                                UPDATE [dbo].[Users]
                                 SET PersonID = @PersonID,                                
                                     UserName = @UserName,
                                     PassWord = @PassWord,
@@ -214,6 +214,7 @@ namespace DVLDDataAccessLayer
                     command.Parameters.AddWithValue("@UserName", UserName);
                     command.Parameters.AddWithValue("@PassWord", PassWord);
                     command.Parameters.AddWithValue("@IsActive", IsActive);
+                    command.Parameters.AddWithValue("@UserID", UserID);
 
                     try
                     {

@@ -54,7 +54,7 @@ namespace DVLDPresentationLayer
 
         private void _LoadUserInfo()
         {
-            _User = clsUser.Find(_UserID);
+            _User = clsUser.FindByUserID(_UserID);
             if( _User == null )
             {
                 MessageBox.Show("No User with ID = " + _UserID, "User Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -106,7 +106,7 @@ namespace DVLDPresentationLayer
             if (_User.Save())
             {
                 lblTitle.Text = _User.UserID.ToString();
-                lblTitle.Text = "Update Person";
+                lblTitle.Text = "Update User";
                 this.Text = lblTitle.Text;
                 OnUserSaved?.Invoke(this, _User.UserID);
                 MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);

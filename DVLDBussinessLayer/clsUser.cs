@@ -51,7 +51,7 @@ namespace DVLDBussinessLayer
             return clsUserData.GetAllUsersList();
         }
 
-        public static clsUser Find(int UserID)
+        public static clsUser FindByUserID(int UserID)
         {
             int PersonID = -1;
             string UserName = "", Password = "";
@@ -109,7 +109,7 @@ namespace DVLDBussinessLayer
         // Update User
         private bool _UpdateUser()
         {
-            return clsUserData.UpdateUser(this.PersonID, this.UserName, this.Password, this.IsActive);
+            return clsUserData.UpdateUser(this.UserID, this.PersonID, this.UserName, this.Password, this.IsActive);
         }
 
         public static bool DeleteUserByID(int ID)
