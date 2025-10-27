@@ -32,6 +32,7 @@
             this.tcLogin = new System.Windows.Forms.TabControl();
             this.tpUserInfo = new System.Windows.Forms.TabPage();
             this.btnNext = new System.Windows.Forms.Button();
+            this.ctlPersonCardWithFilter1 = new DVLDPresentationLayer.ctlPersonCardWithFilter();
             this.tpLoginInfo = new System.Windows.Forms.TabPage();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -49,7 +50,6 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.ctlPersonCardWithFilter1 = new DVLDPresentationLayer.ctlPersonCardWithFilter();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.tcLogin.SuspendLayout();
             this.tpUserInfo.SuspendLayout();
@@ -96,6 +96,18 @@
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // ctlPersonCardWithFilter1
+            // 
+            this.ctlPersonCardWithFilter1.BackColor = System.Drawing.Color.White;
+            this.ctlPersonCardWithFilter1.FilterEnables = true;
+            this.ctlPersonCardWithFilter1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctlPersonCardWithFilter1.Location = new System.Drawing.Point(7, 8);
+            this.ctlPersonCardWithFilter1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctlPersonCardWithFilter1.Name = "ctlPersonCardWithFilter1";
+            this.ctlPersonCardWithFilter1.ShowAddPerson = true;
+            this.ctlPersonCardWithFilter1.Size = new System.Drawing.Size(836, 392);
+            this.ctlPersonCardWithFilter1.TabIndex = 1;
             // 
             // tpLoginInfo
             // 
@@ -187,6 +199,7 @@
             this.txtConfirmPassword.Size = new System.Drawing.Size(244, 30);
             this.txtConfirmPassword.TabIndex = 6;
             this.txtConfirmPassword.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.txtConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtConfirmPassword_Validating);
             // 
             // txtPassword
             // 
@@ -194,6 +207,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(244, 30);
             this.txtPassword.TabIndex = 5;
+            this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtPassword_Validating);
             // 
             // txtUserName
             // 
@@ -282,18 +296,6 @@
             this.btnClose.TabIndex = 114;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
-            // 
-            // ctlPersonCardWithFilter1
-            // 
-            this.ctlPersonCardWithFilter1.BackColor = System.Drawing.Color.White;
-            this.ctlPersonCardWithFilter1.FilterEnables = true;
-            this.ctlPersonCardWithFilter1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctlPersonCardWithFilter1.Location = new System.Drawing.Point(7, 8);
-            this.ctlPersonCardWithFilter1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ctlPersonCardWithFilter1.Name = "ctlPersonCardWithFilter1";
-            this.ctlPersonCardWithFilter1.ShowAddPerson = true;
-            this.ctlPersonCardWithFilter1.Size = new System.Drawing.Size(836, 392);
-            this.ctlPersonCardWithFilter1.TabIndex = 1;
             // 
             // errorProvider1
             // 

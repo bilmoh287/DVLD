@@ -66,8 +66,9 @@ namespace DVLDPresentationLayer
             ctlPersonCardWithFilter1.FilterEnables = false;
             txtUserName.Text = _User.UserName;
             txtPassword.Text = _User.Password;
-            ctlPersonCardWithFilter1.LoadPersonInfo(_UserID);
-            //btnNext.Enabled = true;
+            txtConfirmPassword.Text = _User.Password;
+            chkIsActive.Checked = _User.IsActive;
+            ctlPersonCardWithFilter1.LoadPersonInfo(_User.PersonID);
         }
         private void frmAddUpdateUser_Load(object sender, EventArgs e)
         {
@@ -86,12 +87,23 @@ namespace DVLDPresentationLayer
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            // Step 1: Validate form
+            if (!ValidateChildren())
+            {
+                //Here we dont continue becuase the form is not valid
+                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro",
+                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Step 2: Assign values from UI to business object
             _User.PersonID = ctlPersonCardWithFilter1.PersonID;
             _User.UserName = txtUserName.Text.Trim();
             _User.Password = txtPassword.Text.Trim();
             _User.IsActive = chkIsActive.Checked;
 
-            if(_User.Save())
+            // Step 3: Save
+            if (_User.Save())
             {
                 lblTitle.Text = _User.UserID.ToString();
                 lblTitle.Text = "Update Person";
@@ -145,10 +157,91 @@ namespace DVLDPresentationLayer
 
         private void txtUserName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //if(clsUser.IsUserExist(txtUserName.Text.Trim()))
-            //{
+            // check if username is empty
+            if (string.IsNullOrEmpty(txtUserName.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtUserName, "Username cannot be blank");
+                return;
+            }
+            else
+            {
+                errorProvider1.SetError(txtUserName, null);
+            };
 
-            //}
+            // in case of AddNew Mode 
+            if(_Mode == enMode.AddNew)
+            {
+                // checks if username is used by another user.
+                if (clsUser.IsUserExist(txtUserName.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(txtUserName, "username is used by another user");
+                }
+                else
+                {
+                    errorProvider1.SetError(txtUserName, null);
+                }
+            }
+
+            // In case of Update Mode
+            else
+            {
+                // if he is using old username 
+                if(_User.UserName != txtUserName.Text.Trim())
+                {
+                    // checks if username is used by another user.
+                    if (clsUser.IsUserExist(txtUserName.Text.Trim()))
+                    {
+                        e.Cancel = true;
+                        errorProvider1.SetError(txtUserName, "username is used by another user");
+                    }
+                    else
+                    {
+                        errorProvider1.SetError(txtUserName, null);
+                    }
+                }
+            }
+        }
+
+        private void txtPassword_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // check if password is empty
+            if (string.IsNullOrEmpty(txtPassword.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtPassword, "password cannot be blank");
+                return;
+            }
+            else
+            {
+                errorProvider1.SetError(txtPassword, null);
+            };
+        }
+
+        private void txtConfirmPassword_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // check if password is empty
+            if (string.IsNullOrEmpty(txtConfirmPassword.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtConfirmPassword, "Confirm password cannot be blank");
+                return;
+            }
+            else
+            {
+                errorProvider1.SetError(txtConfirmPassword, null);
+            };
+
+            if (txtConfirmPassword.Text.Trim() != txtPassword.Text.Trim())
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtConfirmPassword, "Password Confirmation does not match Password!");
+            }
+            else
+            {
+                errorProvider1.SetError(txtConfirmPassword, null);
+            };
         }
     }
 }

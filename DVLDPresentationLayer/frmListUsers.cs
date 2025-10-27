@@ -130,6 +130,11 @@ namespace DVLDPresentationLayer
             lblRecordsCount.Text = _dtUsers.DefaultView.Count.ToString();
         }
 
+        private void OnPersonSelected(object sender, int UserID)
+        {
+            _RefreshUsersList();
+        }
+
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
             //we allow number incase person id is selected.
@@ -140,12 +145,15 @@ namespace DVLDPresentationLayer
         private void btnAddUser_Click(object sender, EventArgs e)
         {
             frmAddUpdateUser frm = new frmAddUpdateUser();
+            frm.OnUserSaved += OnPersonSelected;
             frm.ShowDialog();
+            //_RefreshUsersList();
         }
 
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            //int PersonID = (int)dgvListUsers.CurrentRow.Cells[1].Value;
+            //frmShowPersonInfo frm = new frmShowPersonInfo(PersonID);
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -160,8 +168,10 @@ namespace DVLDPresentationLayer
         {
             int UserID = (int)dgvListUsers.CurrentRow.Cells[0].Value;
             frmAddUpdateUser frm = new frmAddUpdateUser(UserID);
+            frm.OnUserSaved += OnPersonSelected;
             frm.ShowDialog();
-            _RefreshUsersList();
+            //_RefreshUsersList();
+            
         }
     }
 }
