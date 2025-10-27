@@ -13,7 +13,7 @@ namespace DVLDPresentationLayer
 {
     public partial class ctlUserCard : UserControl
     {
-        clsUser _User;
+        private clsUser _User;
         public ctlUserCard()
         {
             InitializeComponent();

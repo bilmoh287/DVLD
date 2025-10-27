@@ -200,7 +200,10 @@ namespace DVLDPresentationLayer
 
         private void ChangePasswordtoolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            int UserID = (int)dgvListUsers.CurrentRow.Cells[0].Value;
+            frmChangePassword frm = new frmChangePassword(UserID);
+            frm.OnUserSaved += OnPersonSelected;
+            frm.ShowDialog();
         }
 
         private void sendEmailToolStripMenuItem_Click(object sender, EventArgs e)
