@@ -243,5 +243,10 @@ namespace DVLDPresentationLayer
                 errorProvider1.SetError(txtConfirmPassword, null);
             };
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

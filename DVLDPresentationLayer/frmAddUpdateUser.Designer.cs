@@ -32,7 +32,6 @@
             this.tcLogin = new System.Windows.Forms.TabControl();
             this.tpUserInfo = new System.Windows.Forms.TabPage();
             this.btnNext = new System.Windows.Forms.Button();
-            this.ctlPersonCardWithFilter1 = new DVLDPresentationLayer.ctlPersonCardWithFilter();
             this.tpLoginInfo = new System.Windows.Forms.TabPage();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -51,6 +50,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ctlPersonCardWithFilter1 = new DVLDPresentationLayer.ctlPersonCardWithFilter();
             this.tcLogin.SuspendLayout();
             this.tpUserInfo.SuspendLayout();
             this.tpLoginInfo.SuspendLayout();
@@ -96,18 +96,6 @@
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // ctlPersonCardWithFilter1
-            // 
-            this.ctlPersonCardWithFilter1.BackColor = System.Drawing.Color.White;
-            this.ctlPersonCardWithFilter1.FilterEnables = true;
-            this.ctlPersonCardWithFilter1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctlPersonCardWithFilter1.Location = new System.Drawing.Point(7, 8);
-            this.ctlPersonCardWithFilter1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ctlPersonCardWithFilter1.Name = "ctlPersonCardWithFilter1";
-            this.ctlPersonCardWithFilter1.ShowAddPerson = true;
-            this.ctlPersonCardWithFilter1.Size = new System.Drawing.Size(836, 392);
-            this.ctlPersonCardWithFilter1.TabIndex = 1;
             // 
             // tpLoginInfo
             // 
@@ -286,6 +274,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.Image = global::DVLDPresentationLayer.Properties.Resources.closeBlack32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -296,16 +285,31 @@
             this.btnClose.TabIndex = 114;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // ctlPersonCardWithFilter1
+            // 
+            this.ctlPersonCardWithFilter1.BackColor = System.Drawing.Color.White;
+            this.ctlPersonCardWithFilter1.FilterEnables = true;
+            this.ctlPersonCardWithFilter1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctlPersonCardWithFilter1.Location = new System.Drawing.Point(7, 8);
+            this.ctlPersonCardWithFilter1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctlPersonCardWithFilter1.Name = "ctlPersonCardWithFilter1";
+            this.ctlPersonCardWithFilter1.ShowAddPerson = true;
+            this.ctlPersonCardWithFilter1.Size = new System.Drawing.Size(836, 392);
+            this.ctlPersonCardWithFilter1.TabIndex = 1;
+            // 
             // frmAddUpdateUser
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(882, 609);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnClose);
