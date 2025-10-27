@@ -38,7 +38,7 @@ namespace DVLDBussinessLayer
         {
             this.UserID = UserID;
             this.PersonID = PersonID;
-            PersonInfo = clsPerson.Find(PersonID);
+            this.PersonInfo = clsPerson.Find(PersonID);
             this.UserName = UserName;
             this.Password = PassWord;
             this.IsActive = IsActive;
@@ -83,7 +83,7 @@ namespace DVLDBussinessLayer
             }
         }
 
-        public static clsUser Find(string UserName, string Password)
+        public static clsUser FindByUserNameAndPassword(string UserName, string Password)
         {
             int UserID = -1;
             int PersonID = -1;
