@@ -50,5 +50,11 @@ namespace DVLDPresentationLayer
             _frmLogin.Show();
             this.Close();
         }
+
+        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            clsGlobal.Logout();
+            Application.Exit();
+        }
     }
 }

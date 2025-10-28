@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.msMainMenu = new System.Windows.Forms.MenuStrip();
             this.applicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peopleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,7 +62,7 @@
             // 
             // applicationToolStripMenuItem
             // 
-            this.applicationToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.Applications_64;
+            this.applicationToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("applicationToolStripMenuItem.Image")));
             this.applicationToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.applicationToolStripMenuItem.Name = "applicationToolStripMenuItem";
             this.applicationToolStripMenuItem.Size = new System.Drawing.Size(199, 68);
@@ -69,7 +70,7 @@
             // 
             // peopleToolStripMenuItem
             // 
-            this.peopleToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.People_64;
+            this.peopleToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("peopleToolStripMenuItem.Image")));
             this.peopleToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.peopleToolStripMenuItem.Name = "peopleToolStripMenuItem";
             this.peopleToolStripMenuItem.Size = new System.Drawing.Size(153, 68);
@@ -78,7 +79,7 @@
             // 
             // driversToolStripMenuItem
             // 
-            this.driversToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.Drivers_64;
+            this.driversToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("driversToolStripMenuItem.Image")));
             this.driversToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.driversToolStripMenuItem.Name = "driversToolStripMenuItem";
             this.driversToolStripMenuItem.Size = new System.Drawing.Size(158, 68);
@@ -86,7 +87,7 @@
             // 
             // usersToolStripMenuItem
             // 
-            this.usersToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.Users_2_64;
+            this.usersToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("usersToolStripMenuItem.Image")));
             this.usersToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
             this.usersToolStripMenuItem.Size = new System.Drawing.Size(141, 68);
@@ -100,7 +101,7 @@
             this.changePasswordToolStripMenuItem,
             this.toolStripMenuItem1,
             this.signOutToolStripMenuItem});
-            this.accountSettingsToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.account_settings_64;
+            this.accountSettingsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("accountSettingsToolStripMenuItem.Image")));
             this.accountSettingsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.accountSettingsToolStripMenuItem.Name = "accountSettingsToolStripMenuItem";
             this.accountSettingsToolStripMenuItem.Size = new System.Drawing.Size(251, 68);
@@ -108,7 +109,7 @@
             // 
             // currentUserInfoToolStripMenuItem
             // 
-            this.currentUserInfoToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.PersonDetails_32;
+            this.currentUserInfoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("currentUserInfoToolStripMenuItem.Image")));
             this.currentUserInfoToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.currentUserInfoToolStripMenuItem.Name = "currentUserInfoToolStripMenuItem";
             this.currentUserInfoToolStripMenuItem.Size = new System.Drawing.Size(275, 38);
@@ -117,7 +118,7 @@
             // 
             // changePasswordToolStripMenuItem
             // 
-            this.changePasswordToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.password2;
+            this.changePasswordToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("changePasswordToolStripMenuItem.Image")));
             this.changePasswordToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
             this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(275, 38);
@@ -131,7 +132,7 @@
             // 
             // signOutToolStripMenuItem
             // 
-            this.signOutToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.sign_out_32__2;
+            this.signOutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("signOutToolStripMenuItem.Image")));
             this.signOutToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.signOutToolStripMenuItem.Name = "signOutToolStripMenuItem";
             this.signOutToolStripMenuItem.Size = new System.Drawing.Size(275, 38);
@@ -141,7 +142,7 @@
             // pbMain
             // 
             this.pbMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbMain.Image = global::DVLDPresentationLayer.Properties.Resources.wallpaper;
+            this.pbMain.Image = ((System.Drawing.Image)(resources.GetObject("pbMain.Image")));
             this.pbMain.Location = new System.Drawing.Point(0, 72);
             this.pbMain.Name = "pbMain";
             this.pbMain.Size = new System.Drawing.Size(1406, 699);
@@ -165,6 +166,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.msMainMenu.ResumeLayout(false);
             this.msMainMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).EndInit();
