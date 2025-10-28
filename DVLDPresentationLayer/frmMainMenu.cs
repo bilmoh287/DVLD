@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLDPresentationLayer.Global_Classes;
 
 namespace DVLDPresentationLayer
 {
@@ -33,7 +34,21 @@ namespace DVLDPresentationLayer
 
         private void currentUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //frmShowUserInfo
+            frmShowUserInfo frm = new frmShowUserInfo(clsGlobal.CurrentUser.UserID);
+            frm.ShowDialog();
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmChangePassword frm = new frmChangePassword(clsGlobal.CurrentUser.UserID);
+            frm.ShowDialog();
+        }
+
+        private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clsGlobal.CurrentUser = null;
+            _frmLogin.Show();
+            this.Close();
         }
     }
 }
