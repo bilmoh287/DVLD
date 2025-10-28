@@ -13,11 +13,12 @@ namespace DVLDPresentationLayer
 {
     public partial class frmMain : Form
     {
+        private bool _isLoggingOut = false;
         frmLogin _frmLogin;
-        public frmMain(frmLogin frm)
+        public frmMain(frmLogin LoginForm)
         {
             InitializeComponent();
-            _frmLogin = frm;
+            _frmLogin = LoginForm;
         }
 
         private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -46,15 +47,20 @@ namespace DVLDPresentationLayer
 
         private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            clsGlobal.CurrentUser = null;
+            _isLoggingOut = true;
+            clsGlobal.Logout();
+
             _frmLogin.Show();
             this.Close();
         }
 
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            clsGlobal.Logout();
-            Application.Exit();
+            if(!_isLoggingOut)
+            {
+                clsGlobal.Logout();
+                Application.Exit();
+            }
         }
     }
 }
