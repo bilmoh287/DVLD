@@ -381,5 +381,8 @@
   <ItemGroup>
     <None Include="Resources\Save Back.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock_open.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
