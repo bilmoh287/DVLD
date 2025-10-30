@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLDBussinessLayer;
 
 namespace DVLDPresentationLayer
 {
@@ -15,6 +16,33 @@ namespace DVLDPresentationLayer
         public frmListApplicationTypes()
         {
             InitializeComponent();
+        }
+
+        private void frmListApplicationTypes_Load(object sender, EventArgs e)
+        {
+            dgvListApplications.DataSource = clsApplicationTypes.GetAllApplicationsTypeList();
+            lblRecordsCount.Text = dgvListApplications.Rows.Count.ToString();
+
+            // Customize header style (bold + sky blue)
+            dgvListApplications.EnableHeadersVisualStyles = false;
+            dgvListApplications.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            dgvListApplications.ColumnHeadersDefaultCellStyle.ForeColor = Color.DeepSkyBlue;
+            dgvListApplications.ColumnHeadersDefaultCellStyle.BackColor = Color.White; // optional, for contrast
+
+            // Set column headers and widths
+            dgvListApplications.Columns[0].HeaderText = "ID";
+            dgvListApplications.Columns[0].Width = 110;
+
+            dgvListApplications.Columns[1].HeaderText = "Application Type Title";
+            dgvListApplications.Columns[1].Width = 360;
+
+            dgvListApplications.Columns[2].HeaderText = "Fees";
+            dgvListApplications.Columns[2].Width = 140;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
