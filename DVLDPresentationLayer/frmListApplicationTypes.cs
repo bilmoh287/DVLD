@@ -44,5 +44,14 @@ namespace DVLDPresentationLayer
         {
             this.Close();
         }
+
+        private void editApplicationTypeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int ID = (int)dgvListApplications.CurrentRow.Cells[0].Value;
+            frmUpdateApplicationType frm = new frmUpdateApplicationType(ID);
+            frm.ShowDialog();
+
+            frmListApplicationTypes_Load(null, null);
+        }
     }
 }

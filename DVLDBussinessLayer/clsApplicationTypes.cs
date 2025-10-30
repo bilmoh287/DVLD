@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DVLDDataAccessLayer;
 
 namespace DVLDBussinessLayer
@@ -52,10 +49,43 @@ namespace DVLDBussinessLayer
                 return null;
             }
         }
-
-        public static bool UpdateApplicationTypeFees(int ApplicationTypeID, decimal ApplicationTypeFees)
+        private bool _AddNewApplicationType()
         {
-            return clsApplicationTypesData.UpdateApplicationFees(ApplicationTypeID, ApplicationTypeFees);
+            //call DataAccess Layer 
+
+            this.ApplicationTypeID = clsApplicationTypesData.AddNewApplicationType(this.ApplicationTypeTitle, this.ApplicationTypeFees);
+
+
+            return (this.ApplicationTypeID != -1);
+        }
+        public bool _UpdateApplicationTypeFees()
+        {
+            return clsApplicationTypesData.UpdateApplicationFees(this.ApplicationTypeID, this.ApplicationTypeTitle, this.ApplicationTypeFees);
+        }
+
+        public bool Save()
+        {
+            switch (_Mode)
+            {
+                case enMode.AddNewMode:
+                    if (_AddNewApplicationType())
+                    {
+
+                        _Mode = enMode.UpdateMode;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                case enMode.UpdateMode:
+
+                    return _UpdateApplicationTypeFees();
+
+            }
+
+            return false;
         }
     }
 }

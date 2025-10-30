@@ -68,8 +68,49 @@ namespace DVLDDataAccessLayer
             return IsFound;
         }
 
+        public static int AddNewApplicationType(string Title, decimal Fees)
+        {
+            int ApplicationTypeID = -1;
 
-        public static bool UpdateApplicationFees(int ApplicationTypeID, decimal ApplicationFees)
+;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string query = @"Insert Into ApplicationTypes (ApplicationTypeTitle,ApplicationFees)
+                            Values (@Title,@Fees)
+                            
+                            SELECT SCOPE_IDENTITY();";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+
+                    command.Parameters.AddWithValue("@ApplicationTypeTitle", Title);
+                    command.Parameters.AddWithValue("@ApplicationFees", Fees);
+
+                    try
+                    {
+                        connection.Open();
+
+                        object result = command.ExecuteScalar();
+
+                        if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                        {
+                            ApplicationTypeID = insertedID;
+                        }
+                    }
+
+                    catch (Exception ex)
+                    {
+                        //Console.WriteLine("Error: " + ex.Message);
+
+                    }
+                    return ApplicationTypeID;
+                }
+
+            }
+        }
+
+        public static bool UpdateApplicationFees(int ApplicationTypeID, string ApplicationTypeTitle, decimal ApplicationFees)
         {
             bool isUpdated = false;
 
@@ -77,12 +118,14 @@ namespace DVLDDataAccessLayer
             {
                 string Query = @"
                                 UPDATE [dbo].[ApplicationTypes]
-                                SET ApplicationFees = @ApplicationFees                              
+                                SET ApplicationFees = @ApplicationFees,                             
+                                    ApplicationTypeTitle = @ApplicationTypeTitle                              
                                 WHERE ApplicationTypeID = @ApplicationTypeID;";
 
                 using (SqlCommand command = new SqlCommand(Query, connection))
                 {
                     command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+                    command.Parameters.AddWithValue("@ApplicationTypeTitle", ApplicationTypeTitle);
                     command.Parameters.AddWithValue("@ApplicationFees", ApplicationFees);
 
                     try
