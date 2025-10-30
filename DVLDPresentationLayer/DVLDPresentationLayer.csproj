@@ -48,11 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmManageApplications.cs">
+    <Compile Include="frmListApplicationTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmManageApplications.Designer.cs">
-      <DependentUpon>frmManageApplications.cs</DependentUpon>
+    <Compile Include="frmListApplicationTypes.Designer.cs">
+      <DependentUpon>frmListApplicationTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="User\Controls\ctlUserCard.cs">
       <SubType>UserControl</SubType>
@@ -148,8 +148,8 @@
     <Compile Include="testForm.Designer.cs">
       <DependentUpon>testForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frmManageApplications.resx">
-      <DependentUpon>frmManageApplications.cs</DependentUpon>
+    <EmbeddedResource Include="frmListApplicationTypes.resx">
+      <DependentUpon>frmListApplicationTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\Controls\ctlUserCard.resx">
       <DependentUpon>ctlUserCard.cs</DependentUpon>
