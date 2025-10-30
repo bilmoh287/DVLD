@@ -48,41 +48,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ctlUserCard.cs">
+    <Compile Include="User\Controls\ctlUserCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ctlUserCard.Designer.cs">
+    <Compile Include="User\Controls\ctlUserCard.Designer.cs">
       <DependentUpon>ctlUserCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAddUpdateUser.cs">
+    <Compile Include="User\frmAddUpdateUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAddUpdateUser.Designer.cs">
+    <Compile Include="User\frmAddUpdateUser.Designer.cs">
       <DependentUpon>frmAddUpdateUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmChangePassword.cs">
+    <Compile Include="User\frmChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmChangePassword.Designer.cs">
+    <Compile Include="User\frmChangePassword.Designer.cs">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmListUsers.cs">
+    <Compile Include="User\frmListUsers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmListUsers.Designer.cs">
+    <Compile Include="User\frmListUsers.Designer.cs">
       <DependentUpon>frmListUsers.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmShowUserInfo.cs">
+    <Compile Include="User\frmShowUserInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmShowUserInfo.Designer.cs">
+    <Compile Include="User\frmShowUserInfo.Designer.cs">
       <DependentUpon>frmShowUserInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Global Classes\clsGlobal.cs" />
-    <Compile Include="People\ctlPersonCardWithFilter.cs">
+    <Compile Include="People\Controls\ctlPersonCardWithFilter.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="People\ctlPersonCardWithFilter.Designer.cs">
+    <Compile Include="People\Controls\ctlPersonCardWithFilter.Designer.cs">
       <DependentUpon>ctlPersonCardWithFilter.cs</DependentUpon>
     </Compile>
     <Compile Include="People\frmFindPerson.cs">
@@ -98,10 +98,10 @@
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Global Classes\clsValidation.cs" />
-    <Compile Include="People\ctlPersonCard.cs">
+    <Compile Include="People\Controls\ctlPersonCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="People\ctlPersonCard.Designer.cs">
+    <Compile Include="People\Controls\ctlPersonCard.Designer.cs">
       <DependentUpon>ctlPersonCard.cs</DependentUpon>
     </Compile>
     <Compile Include="People\frmAddUpdatePerson.cs">
@@ -142,25 +142,25 @@
     <Compile Include="testForm.Designer.cs">
       <DependentUpon>testForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ctlUserCard.resx">
+    <EmbeddedResource Include="User\Controls\ctlUserCard.resx">
       <DependentUpon>ctlUserCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAddUpdateUser.resx">
+    <EmbeddedResource Include="User\frmAddUpdateUser.resx">
       <DependentUpon>frmAddUpdateUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmChangePassword.resx">
+    <EmbeddedResource Include="User\frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmListUsers.resx">
+    <EmbeddedResource Include="User\frmListUsers.resx">
       <DependentUpon>frmListUsers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmShowUserInfo.resx">
+    <EmbeddedResource Include="User\frmShowUserInfo.resx">
       <DependentUpon>frmShowUserInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="People\ctlPersonCard.resx">
+    <EmbeddedResource Include="People\Controls\ctlPersonCard.resx">
       <DependentUpon>ctlPersonCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="People\ctlPersonCardWithFilter.resx">
+    <EmbeddedResource Include="People\Controls\ctlPersonCardWithFilter.resx">
       <DependentUpon>ctlPersonCardWithFilter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="People\frmAddUpdatePerson.resx">
