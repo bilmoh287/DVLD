@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvListApplications = new System.Windows.Forms.DataGridView();
+            this.cmsEditApplicationType = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.lblRecordsCount = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.cmsEditApplicationType = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnClose = new System.Windows.Forms.Button();
             this.editApplicationTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -70,6 +70,14 @@
             this.dgvListApplications.Size = new System.Drawing.Size(671, 340);
             this.dgvListApplications.TabIndex = 2;
             // 
+            // cmsEditApplicationType
+            // 
+            this.cmsEditApplicationType.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsEditApplicationType.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editApplicationTypeToolStripMenuItem});
+            this.cmsEditApplicationType.Name = "cmsEditApplicationType";
+            this.cmsEditApplicationType.Size = new System.Drawing.Size(237, 42);
+            // 
             // lblRecordsCount
             // 
             this.lblRecordsCount.AutoSize = true;
@@ -90,14 +98,6 @@
             this.label2.Size = new System.Drawing.Size(116, 25);
             this.label2.TabIndex = 116;
             this.label2.Text = "# Records:";
-            // 
-            // cmsEditApplicationType
-            // 
-            this.cmsEditApplicationType.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.cmsEditApplicationType.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editApplicationTypeToolStripMenuItem});
-            this.cmsEditApplicationType.Name = "cmsEditApplicationType";
-            this.cmsEditApplicationType.Size = new System.Drawing.Size(237, 42);
             // 
             // btnClose
             // 
