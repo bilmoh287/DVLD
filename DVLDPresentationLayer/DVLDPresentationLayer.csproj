@@ -48,16 +48,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmListApplicationTypes.cs">
+    <Compile Include="ApplicationTypes\frmListApplicationTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmListApplicationTypes.Designer.cs">
+    <Compile Include="ApplicationTypes\frmListApplicationTypes.Designer.cs">
       <DependentUpon>frmListApplicationTypes.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmUpdateApplicationType.cs">
+    <Compile Include="ApplicationTypes\frmUpdateApplicationType.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmUpdateApplicationType.Designer.cs">
+    <Compile Include="ApplicationTypes\frmUpdateApplicationType.Designer.cs">
       <DependentUpon>frmUpdateApplicationType.cs</DependentUpon>
     </Compile>
     <Compile Include="User\Controls\ctlUserCard.cs">
@@ -103,10 +103,10 @@
     <Compile Include="People\frmFindPerson.Designer.cs">
       <DependentUpon>frmFindPerson.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLogin.cs">
+    <Compile Include="Login\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLogin.Designer.cs">
+    <Compile Include="Login\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Global Classes\clsValidation.cs" />
@@ -154,10 +154,10 @@
     <Compile Include="testForm.Designer.cs">
       <DependentUpon>testForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frmListApplicationTypes.resx">
+    <EmbeddedResource Include="ApplicationTypes\frmListApplicationTypes.resx">
       <DependentUpon>frmListApplicationTypes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmUpdateApplicationType.resx">
+    <EmbeddedResource Include="ApplicationTypes\frmUpdateApplicationType.resx">
       <DependentUpon>frmUpdateApplicationType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\Controls\ctlUserCard.resx">
@@ -190,7 +190,7 @@
     <EmbeddedResource Include="People\frmListPeople.resx">
       <DependentUpon>frmListPeople.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLogin.resx">
+    <EmbeddedResource Include="Login\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMainMenu.resx">
