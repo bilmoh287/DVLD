@@ -37,7 +37,7 @@ namespace DVLDPresentationLayer
                 return;
             }
 
-            lblTestTypeID.Text = _TestTypeID.ToString();
+            lblTestTypeID.Text = ((int)_TestTypeID).ToString();
             txtTitle.Text = _TestType.TestTypeTitle;
             txtDescription.Text = _TestType.TestTypeDescription;
             txtFees.Text = _TestType.TestTypeFees.ToString();
