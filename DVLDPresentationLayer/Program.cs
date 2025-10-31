@@ -17,7 +17,7 @@ namespace DVLDPresentationLayer
             //Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmListApplicationTypes());
+            Application.Run(new frmListTestTypes());
             //Application.Run(new frmListPeople());
             //Application.Run(new frmListUsers());
         }

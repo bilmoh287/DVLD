@@ -11,40 +11,41 @@ using DVLDBussinessLayer;
 
 namespace DVLDPresentationLayer
 {
-    public partial class frmUpdateApplicationType : Form
+    public partial class frmUpdateTestTypes : Form
     {
-        int _ApplicationTypeID = -1;
-        clsApplicationTypes _ApplicationType;
-        public frmUpdateApplicationType(int ApplicationTypeID)
+        int _TestTypeID = 0;
+        clsTestTypes _TestType;
+        public frmUpdateTestTypes(int TestTypeID)
         {
             InitializeComponent();
-            _ApplicationTypeID = ApplicationTypeID;
+            _TestTypeID = TestTypeID;
         }
-
         private void _ResetDefaultValues()
         {
             txtTitle.Text = "";
+            txtDescription.Text = "";
             txtFees.Text = "";
         }
 
-        private void _LoadApplicationTypeInfo()
+        private void _LoadTestTypeInfo()
         {
-            _ApplicationType = clsApplicationTypes.FindApplicationType(_ApplicationTypeID);
-            if(_ApplicationType == null )
+            _TestType = clsTestTypes.Find(_TestTypeID);
+            if (_TestType == null)
             {
-                MessageBox.Show("No Application with ID = " + _ApplicationTypeID, "Application Type Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("No Application with ID = " + _TestTypeID, "Application Type Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
                 return;
             }
 
-            lblApplicationTypeID.Text = _ApplicationTypeID.ToString();
-            txtTitle.Text = _ApplicationType.ApplicationTypeTitle;
-            txtFees.Text = _ApplicationType.ApplicationTypeFees.ToString();
+            lblTestTypeID.Text = _TestTypeID.ToString();
+            txtTitle.Text = _TestType.TestTypeTitle;
+            txtDescription.Text = _TestType.TestTypeDescription;
+            txtFees.Text = _TestType.TestTypeFees.ToString();
         }
-        private void frmUpdateApplicationType_Load(object sender, EventArgs e)
+        private void frmUpdateTestTypes_Load(object sender, EventArgs e)
         {
             _ResetDefaultValues();
-            _LoadApplicationTypeInfo();          
+            _LoadTestTypeInfo();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -57,14 +58,16 @@ namespace DVLDPresentationLayer
 
             }
 
-            _ApplicationType.ApplicationTypeTitle = txtTitle.Text.Trim();
-            _ApplicationType.ApplicationTypeFees = Convert.ToDecimal(txtFees.Text.Trim());
+            _TestType.TestTypeTitle = txtTitle.Text.Trim();
+            _TestType.TestTypeDescription = txtDescription.Text.Trim();
+            _TestType.TestTypeFees =  Convert.ToDecimal(txtFees.Text.Trim());
 
-
-            if (_ApplicationType.Save())
+            if (_TestType.Save())
             {
-                MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                _ResetDefaultValues();
+                {
+                    MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _ResetDefaultValues();
+                }
             }
             else
                 MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -80,6 +83,19 @@ namespace DVLDPresentationLayer
             else
             {
                 errorProvider1.SetError(txtTitle, null);
+            };
+        }
+
+        private void txtDescription_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtDescription.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtDescription, "Title cannot be empty!");
+            }
+            else
+            {
+                errorProvider1.SetError(txtDescription, null);
             };
         }
 
@@ -107,6 +123,11 @@ namespace DVLDPresentationLayer
             {
                 errorProvider1.SetError(txtFees, null);
             };
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
