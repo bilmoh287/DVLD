@@ -134,6 +134,7 @@
             // 
             // txtDescription
             // 
+            this.txtDescription.AllowDrop = true;
             this.txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescription.Location = new System.Drawing.Point(176, 173);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
@@ -157,7 +158,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::DVLDPresentationLayer.Properties.Resources.notes__1_;
+            this.pictureBox1.Image = global::DVLDPresentationLayer.Properties.Resources.edit_32;
             this.pictureBox1.Location = new System.Drawing.Point(126, 171);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";

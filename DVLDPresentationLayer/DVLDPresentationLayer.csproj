@@ -60,16 +60,16 @@
     <Compile Include="ApplicationTypes\frmUpdateApplicationType.Designer.cs">
       <DependentUpon>frmUpdateApplicationType.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmListTestTypes.cs">
+    <Compile Include="Test Types\frmListTestTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmListTestTypes.Designer.cs">
+    <Compile Include="Test Types\frmListTestTypes.Designer.cs">
       <DependentUpon>frmListTestTypes.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmUpdateTestTypes.cs">
+    <Compile Include="Test Types\frmUpdateTestTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmUpdateTestTypes.Designer.cs">
+    <Compile Include="Test Types\frmUpdateTestTypes.Designer.cs">
       <DependentUpon>frmUpdateTestTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="User\Controls\ctlUserCard.cs">
@@ -172,10 +172,10 @@
     <EmbeddedResource Include="ApplicationTypes\frmUpdateApplicationType.resx">
       <DependentUpon>frmUpdateApplicationType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmListTestTypes.resx">
+    <EmbeddedResource Include="Test Types\frmListTestTypes.resx">
       <DependentUpon>frmListTestTypes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmUpdateTestTypes.resx">
+    <EmbeddedResource Include="Test Types\frmUpdateTestTypes.resx">
       <DependentUpon>frmUpdateTestTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\Controls\ctlUserCard.resx">

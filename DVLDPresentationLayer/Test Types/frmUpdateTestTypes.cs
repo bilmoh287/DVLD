@@ -13,12 +13,12 @@ namespace DVLDPresentationLayer
 {
     public partial class frmUpdateTestTypes : Form
     {
-        int _TestTypeID = 0;
+        clsTestTypes.enTestType _TestTypeID = 0;
         clsTestTypes _TestType;
         public frmUpdateTestTypes(int TestTypeID)
         {
             InitializeComponent();
-            _TestTypeID = TestTypeID;
+            _TestTypeID = (clsTestTypes.enTestType)TestTypeID;
         }
         private void _ResetDefaultValues()
         {
