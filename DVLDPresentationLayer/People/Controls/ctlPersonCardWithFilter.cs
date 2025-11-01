@@ -128,19 +128,6 @@ namespace DVLDPresentationLayer
             LoadPersonInfo(PersonID);
         }
 
-        private void txtFilterValue_Validating(object sender, CancelEventArgs e)
-        {
-            if(string.IsNullOrEmpty(txtFilterValue.Text.Trim()))
-            {
-                e.Cancel = true;
-                errorProvider1.SetError(txtFilterValue, "This field is required!");
-            }
-            else
-            {
-                errorProvider1.SetError(txtFilterValue, null); 
-            }
-        }
-
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Check if the pressed key is Enter (character code 13)
@@ -148,6 +135,8 @@ namespace DVLDPresentationLayer
             {
 
                 btnFind.PerformClick();
+                Console.WriteLine("KeyPress fired: " + e.KeyChar);
+
             }
 
             //this will allow only digits if person id is selected
@@ -160,11 +149,6 @@ namespace DVLDPresentationLayer
         {
             cbFilterBy.SelectedIndex = 0;
             txtFilterValue.Focus();
-        }
-
-        private void ctlPersonCard1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

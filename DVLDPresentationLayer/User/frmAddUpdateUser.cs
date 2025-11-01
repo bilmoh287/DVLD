@@ -137,6 +137,7 @@ namespace DVLDPresentationLayer
                     btnSave.Enabled = true;
                     tpLoginInfo.Enabled = true;
                     tcLogin.SelectedTab = tcLogin.TabPages["tpLoginInfo"];
+                    this.AcceptButton = btnSave;
                 }
             }
             else

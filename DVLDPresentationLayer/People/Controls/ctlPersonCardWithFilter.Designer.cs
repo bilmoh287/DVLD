@@ -84,7 +84,6 @@
             this.txtFilterValue.Size = new System.Drawing.Size(224, 30);
             this.txtFilterValue.TabIndex = 2;
             this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
-            this.txtFilterValue.Validating += new System.ComponentModel.CancelEventHandler(this.txtFilterValue_Validating);
             // 
             // label1
             // 
@@ -121,7 +120,6 @@
             this.ctlPersonCard1.Name = "ctlPersonCard1";
             this.ctlPersonCard1.Size = new System.Drawing.Size(841, 285);
             this.ctlPersonCard1.TabIndex = 0;
-            this.ctlPersonCard1.Load += new System.EventHandler(this.ctlPersonCard1_Load);
             // 
             // ctlPersonCardWithFilter
             // 
