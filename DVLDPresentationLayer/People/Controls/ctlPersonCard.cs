@@ -79,6 +79,7 @@ namespace DVLDPresentationLayer
 
         private void _LoadPersonImage()
         {
+            llEditPersonInfo.Enabled = true;
             string ImagePath = _Person.ImagePath;
             if (ImagePath != "")
                 pbPersonImage.ImageLocation = ImagePath;

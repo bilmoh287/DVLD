@@ -10,7 +10,6 @@ namespace DVLDDataAccessLayer
 {
     public class clsTestTypesData
     {
-        // 🟢 GET ALL TEST TYPES
         public static DataTable GetAllTestTypesList()
         {
             DataTable dtTestTypes = new DataTable();
@@ -37,7 +36,6 @@ namespace DVLDDataAccessLayer
             return dtTestTypes;
         }
 
-        // GET ONE TEST TYPE BY ID
         public static bool GetTestTypeByID(
             int TestTypeID,
             ref string TestTypeTitle,
@@ -79,7 +77,6 @@ namespace DVLDDataAccessLayer
             return isFound;
         }
 
-        // ADD NEW TEST TYPE
         public static int AddNewTestType(string TestTypeTitle, string TestTypeDescription, decimal TestTypeFees)
         {
             int newID = -1;
@@ -115,7 +112,6 @@ namespace DVLDDataAccessLayer
             return newID;
         }
 
-        // 🟠 UPDATE EXISTING TEST TYPE
         public static bool UpdateTestType(int TestTypeID, string TestTypeTitle, string TestTypeDescription, decimal TestTypeFees)
         {
             bool isUpdated = false;
@@ -151,7 +147,6 @@ namespace DVLDDataAccessLayer
             return isUpdated;
         }
 
-        // 🔴 DELETE TEST TYPE
         public static bool DeleteTestType(int TestTypeID)
         {
             bool isDeleted = false;
