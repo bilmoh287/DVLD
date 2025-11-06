@@ -19,7 +19,7 @@ namespace DVLDBussinessLayer
         };
         public enum enApplicationStatus { New = 1, Cancelled = 2, Completed = 3 };
 
-        public int ApplicationID { get; private set; }
+        public int ApplicationID { get; set; }
         public int ApplicantPersonID { get; set; }
         public string FullName
         {
@@ -55,7 +55,7 @@ namespace DVLDBussinessLayer
         public clsUser CreatedByUserInfo;
 
 
-        private clsApplication()
+        public clsApplication()
         {
             ApplicationID = -1;
             ApplicantPersonID = -1;
