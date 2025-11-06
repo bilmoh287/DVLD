@@ -17,8 +17,8 @@ namespace DVLDPresentationLayer
             string username = txtUserName.Text.Trim();
             string password = txtPassword.Text.Trim();
 
-            clsUser _Usuer = clsUser.FindByUserNameAndPassword(username, password);
-            if( _Usuer != null )
+            clsUser _User = clsUser.FindByUserNameAndPassword(username, password);
+            if( _User != null )
             {
                 if (chkRememberMe.Checked)
                 {
@@ -32,14 +32,14 @@ namespace DVLDPresentationLayer
                 }
 
                 // In case user is not active
-                if (!_Usuer.IsActive)
+                if (!_User.IsActive)
                 {
                     txtUserName.Focus();
                     MessageBox.Show("Your accound is not Active, Contact Admin.", "In Active Account", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                clsGlobal.CurrentUser = _Usuer;
+                clsGlobal.CurrentUser = _User;
                 this.Hide();
                 frmMain frm = new frmMain(this);
                 frm.ShowDialog();
