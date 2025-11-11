@@ -99,6 +99,7 @@ namespace DVLDDataAccessLayer
                 command.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);
                 command.Parameters.AddWithValue("@LastStatusDate", LastStatusDate);
                 command.Parameters.AddWithValue("@PaidFees", PaidFees);
+                //command.Parameters.Add("@PaidFees", SqlDbType.SmallMoney).Value = PaidFees;
                 command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
 
                 try

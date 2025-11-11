@@ -170,5 +170,34 @@ namespace DVLDDataAccessLayer
 
             return (rowsAffected > 0);
         }
+
+        public static bool IsApplicationExist(int LocalDrivingLicenseApplicationID)
+        {
+            bool IsExists = false;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string Query = @"SELECT 1 FROM LocalDrivingLicenseApplications WHERE 
+                                LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
+
+                using (SqlCommand command = new SqlCommand(Query, connection))
+                {
+                    command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+
+                    try
+                    {
+                        connection.Open();
+                        object res = command.ExecuteScalar();
+                        IsExists = res != null;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+
+            return IsExists;
+        }
     }
 }

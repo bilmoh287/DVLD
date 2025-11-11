@@ -14,9 +14,9 @@ namespace DVLDBussinessLayer
     public class clsLocalDrivingLicenseApplication : clsApplication
     {
         public enum enMode { AddNew = 0, Update = 1 };
-        public enMode Mode = enMode.AddNew;
+        public enMode _Mode = enMode.AddNew;
         public int LocalDrivingLicenseApplicationID { get; set; }
-        public clsLicenseClasses clsLicesnseClassInfo;
+        public clsLicenseClasses LicesnseClassInfo;
         public int LicenseClassID { get; set; }
         //public string PersonFullName
         //{
@@ -25,20 +25,20 @@ namespace DVLDBussinessLayer
         //        return clsPerson.Find(ApplicantPersonID).FullName;
         //    }
         //}
-        private clsLocalDrivingLicenseApplication()
+        public clsLocalDrivingLicenseApplication()
         {
             this.LocalDrivingLicenseApplicationID = -1;
             this.LicenseClassID = -1;
-            Mode = enMode.AddNew;
+            _Mode = enMode.AddNew;
         }
-        public clsLocalDrivingLicenseApplication(int LocalDrivingLicenseApplicationID, int LicenseClassID, int ApplicationID, int ApplicantPersonID,
+        private clsLocalDrivingLicenseApplication(int LocalDrivingLicenseApplicationID, int LicenseClassID, int ApplicationID, int ApplicantPersonID,
             DateTime ApplicationDate, int ApplicationTypeID,
              enApplicationStatus ApplicationStatus, DateTime LastStatusDate,
              decimal PaidFees, int CreatedByUserID)
         {
             this.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
             this.LicenseClassID = LicenseClassID;
-            this.clsLicesnseClassInfo = clsLicenseClasses.Find(LicenseClassID);
+            this.LicesnseClassInfo = clsLicenseClasses.Find(LicenseClassID);
             this.ApplicationID = ApplicationID;
             this.ApplicantPersonID = ApplicantPersonID;
             this.ApplicationTypeID = ApplicationTypeID;
@@ -48,7 +48,7 @@ namespace DVLDBussinessLayer
             this.PaidFees = PaidFees;
             this.CreatedByUserID = CreatedByUserID;
 
-            Mode = enMode.Update;
+            _Mode = enMode.Update;
         }
 
         public static DataTable GetAllLocalDrivingLiceseApplications()
@@ -95,7 +95,7 @@ namespace DVLDBussinessLayer
             return clsLocalDrivingLicenseApplicationData.DeleteLocalDrivingLicenseApplication(LocalDrivingLicenseApplicationID);
         }
 
-        public bool Save()
+        public bool SaveLDLA()
         {
             //Because of inheritance first we call the save method in the base class,
             //it will take care of adding all information to the application table.
@@ -104,12 +104,12 @@ namespace DVLDBussinessLayer
                 return false;
 
             //After we save the main application now we save the sub application.
-            switch (Mode)
+            switch (_Mode)
             {
                 case enMode.AddNew:
                     if (_AddNewLocalDrivingLicenseApplication())
                     {
-                        Mode = enMode.Update;
+                        _Mode = enMode.Update;
                         return true;
                     }
                     else
@@ -121,6 +121,10 @@ namespace DVLDBussinessLayer
                 default:
                     return false;
             }
+        }
+        public static bool IsApplicationExist(int LocalDrivingLicenseApplicationID)
+        {
+            return clsLocalDrivingLicenseApplicationData.IsApplicationExist(LocalDrivingLicenseApplicationID);
         }
     }
 }

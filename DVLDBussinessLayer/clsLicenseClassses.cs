@@ -71,6 +71,32 @@ namespace DVLDBussinessLayer
                 return null;
             }
         }
+
+        public static clsLicenseClasses Find(string LicenseClassName)
+        {
+            int LicenseClassID = -1;
+            string ClassDescription = "";
+            byte MinimumAllowedAge = 0;
+            byte DefaultValidityLength = 0;
+            decimal ClassFees = 0;
+
+            if (clsLicenseClassesData.GetLicenseClassInfoByName(
+                    LicenseClassName,
+                    ref LicenseClassID,
+                    ref ClassDescription,
+                    ref MinimumAllowedAge,
+                    ref DefaultValidityLength,
+                    ref ClassFees))
+            {
+                return new clsLicenseClasses(LicenseClassID, LicenseClassName, ClassDescription,
+                    MinimumAllowedAge, DefaultValidityLength, ClassFees);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         private bool _AddNewLicenseClass()
         {
             this.LicenseClassID = clsLicenseClassesData.AddNewLicenseClass(

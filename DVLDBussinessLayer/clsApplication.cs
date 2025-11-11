@@ -113,7 +113,7 @@ namespace DVLDBussinessLayer
                 return null;
         }
 
-                private bool _AddNewApplication()
+        private bool _AddNewApplication()
         {
             this.ApplicationID = clsApplicationData.AddNewApplication(ApplicantPersonID,
                 ApplicationDate, ApplicationTypeID, (byte)ApplicationStatus,

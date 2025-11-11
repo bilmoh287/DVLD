@@ -18,8 +18,8 @@ namespace DVLDPresentationLayer
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmLogin());
-            //Application.Run(new frmListPeople());
-            //Application.Run(new frmListUsers());
+            //Application.Run(new frmAddUpdateLocalDrivingLicenseApplication());
+            //Application.Run(new testForm());
         }
     }
 }
