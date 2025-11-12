@@ -62,7 +62,7 @@
             // lblRecordsCount
             // 
             this.lblRecordsCount.AutoSize = true;
-            this.lblRecordsCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblRecordsCount.ForeColor = System.Drawing.Color.Black;
             this.lblRecordsCount.Location = new System.Drawing.Point(114, 710);
             this.lblRecordsCount.Name = "lblRecordsCount";
             this.lblRecordsCount.Size = new System.Drawing.Size(34, 25);
@@ -73,7 +73,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(12, 710);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(116, 25);
@@ -94,6 +94,7 @@
             this.cbFilterBy.Name = "cbFilterBy";
             this.cbFilterBy.Size = new System.Drawing.Size(210, 33);
             this.cbFilterBy.TabIndex = 133;
+            this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.cbFilterBy_SelectedIndexChanged);
             // 
             // txtFilterValue
             // 
@@ -103,12 +104,14 @@
             this.txtFilterValue.Name = "txtFilterValue";
             this.txtFilterValue.Size = new System.Drawing.Size(256, 30);
             this.txtFilterValue.TabIndex = 132;
+            this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
+            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
             // 
             // lblTitle
             // 
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTitle.Location = new System.Drawing.Point(299, 196);
+            this.lblTitle.Location = new System.Drawing.Point(387, 208);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(568, 39);
             this.lblTitle.TabIndex = 131;
@@ -130,7 +133,7 @@
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Image = global::DVLDPresentationLayer.Properties.Resources.Local_32;
             this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(657, 69);
+            this.pictureBox1.Location = new System.Drawing.Point(745, 81);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(78, 58);
@@ -147,13 +150,14 @@
             this.btnAddNewApplication.Size = new System.Drawing.Size(88, 75);
             this.btnAddNewApplication.TabIndex = 135;
             this.btnAddNewApplication.UseVisualStyleBackColor = true;
+            this.btnAddNewApplication.Click += new System.EventHandler(this.btnAddNewApplication_Click);
             // 
             // pbPersonImage
             // 
             this.pbPersonImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbPersonImage.Image = global::DVLDPresentationLayer.Properties.Resources.Applications;
             this.pbPersonImage.InitialImage = null;
-            this.pbPersonImage.Location = new System.Drawing.Point(481, 2);
+            this.pbPersonImage.Location = new System.Drawing.Point(569, 14);
             this.pbPersonImage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pbPersonImage.Name = "pbPersonImage";
             this.pbPersonImage.Size = new System.Drawing.Size(220, 189);
@@ -165,22 +169,22 @@
             // 
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnClose.Image = global::DVLDPresentationLayer.Properties.Resources.close__1_;
+            this.btnClose.Image = global::DVLDPresentationLayer.Properties.Resources.closeBlack32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(1191, 699);
+            this.btnClose.Location = new System.Drawing.Point(1214, 696);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(148, 46);
+            this.btnClose.Size = new System.Drawing.Size(124, 39);
             this.btnClose.TabIndex = 118;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             // 
-            // frmListApplications
+            // frmListLocalDrivingLicenseApplications
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1351, 753);
+            this.ClientSize = new System.Drawing.Size(1353, 740);
             this.Controls.Add(this.cbFilterBy);
             this.Controls.Add(this.txtFilterValue);
             this.Controls.Add(this.label1);
@@ -194,8 +198,11 @@
             this.Controls.Add(this.dgvLocalDrivingLicenseApplications);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "frmListApplications";
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "frmListLocalDrivingLicenseApplications";
             this.Text = "frmListApplications";
+            this.Load += new System.EventHandler(this.frmListLocalDrivingLicenseApplications_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocalDrivingLicenseApplications)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
