@@ -183,5 +183,43 @@ namespace DVLDDataAccessLayer
 
             return (rowsAffected > 0);
         }
+
+        public static int GetActiveApplicationIDForLicenseClass(int PersonID, int ApplicationTypeID, int LicenseClassID)
+        {
+            int ActiveApplicationID = -1;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string Query = @"SELECT Applications.ApplicationID
+                                FROM     Applications INNER JOIN
+                                                  LocalDrivingLicenseApplications ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID INNER JOIN
+                                                  LicenseClasses ON LocalDrivingLicenseApplications.LicenseClassID = LicenseClasses.LicenseClassID
+                                WHERE LicenseClasses.LicenseClassID = @LicenseClassID AND ApplicantPersonID = @PersonID AND Applications.ApplicationTypeID = @ApplicationTypeID";
+
+                using (SqlCommand command = new SqlCommand(Query, connection))
+                {
+                    command.Parameters.AddWithValue("@PersonID", PersonID);
+                    command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+                    command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+
+                    try
+                    {
+                        connection.Open();
+
+                        object result = command.ExecuteScalar();
+
+                        if (result != null && int.TryParse(result.ToString(), out int AppID))
+                        {
+                            ActiveApplicationID = AppID;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+            return ActiveApplicationID;
+        }
     }
 }

@@ -134,6 +134,13 @@ namespace DVLDPresentationLayer
         {
             int LicenseClassID = clsLicenseClasses.Find(cbLicenseClass.Text).LicenseClassID;
 
+            int ActiveApplicationID = clsApplication.GetActiveApplicationIDForLicenseClass(ctlPersonCardWithFilter1.PersonID, clsApplication.enApplicationType.NewDrivingLicense, LicenseClassID);
+            if (ActiveApplicationID != -1)
+            {
+                MessageBox.Show("Choose another License Class, the selected Person Already have an active application for the selected class with id=" + ActiveApplicationID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cbLicenseClass.Focus();
+                return;
+            }
 
             _LDLApplication.ApplicantPersonID = ctlPersonCardWithFilter1.PersonID;
             _LDLApplication.ApplicationDate = Convert.ToDateTime(lblApplicationDate.Text);

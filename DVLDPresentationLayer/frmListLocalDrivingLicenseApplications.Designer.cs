@@ -1,6 +1,6 @@
 ﻿namespace DVLDPresentationLayer
 {
-    partial class frmListApplications
+    partial class frmListLocalDrivingLicenseApplications
     {
         /// <summary>
         /// Required designer variable.

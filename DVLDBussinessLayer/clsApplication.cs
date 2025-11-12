@@ -154,5 +154,10 @@ namespace DVLDBussinessLayer
                     return false;
             }
         }
+
+        public static int GetActiveApplicationIDForLicenseClass(int PersonID, clsApplication.enApplicationType ApplicationTypeID, int LicenseClassID)
+        {
+            return clsApplicationData.GetActiveApplicationIDForLicenseClass(PersonID, (int)ApplicationTypeID, LicenseClassID);
+        }
     }
 }

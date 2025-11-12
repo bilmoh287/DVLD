@@ -66,11 +66,11 @@
     <Compile Include="frmAddUpdateLocalDrivingLicenseApplication.Designer.cs">
       <DependentUpon>frmAddUpdateLocalDrivingLicenseApplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmListApplications.cs">
+    <Compile Include="frmListLocalDrivingLicenseApplications.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmListApplications.Designer.cs">
-      <DependentUpon>frmListApplications.cs</DependentUpon>
+    <Compile Include="frmListLocalDrivingLicenseApplications.Designer.cs">
+      <DependentUpon>frmListLocalDrivingLicenseApplications.cs</DependentUpon>
     </Compile>
     <Compile Include="Test Types\frmListTestTypes.cs">
       <SubType>Form</SubType>
@@ -187,8 +187,8 @@
     <EmbeddedResource Include="frmAddUpdateLocalDrivingLicenseApplication.resx">
       <DependentUpon>frmAddUpdateLocalDrivingLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmListApplications.resx">
-      <DependentUpon>frmListApplications.cs</DependentUpon>
+    <EmbeddedResource Include="frmListLocalDrivingLicenseApplications.resx">
+      <DependentUpon>frmListLocalDrivingLicenseApplications.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test Types\frmListTestTypes.resx">
       <DependentUpon>frmListTestTypes.cs</DependentUpon>

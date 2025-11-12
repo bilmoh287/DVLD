@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DVLDPresentationLayer
 {
-    public partial class frmListApplications : Form
+    public partial class frmListLocalDrivingLicenseApplications : Form
     {
-        public frmListApplications()
+        public frmListLocalDrivingLicenseApplications()
         {
             InitializeComponent();
         }
