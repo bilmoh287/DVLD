@@ -24,26 +24,27 @@ namespace DVLDPresentationLayer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            clsLocalDrivingLicenseApplication app = new clsLocalDrivingLicenseApplication();
-            app.ApplicantPersonID = 1;
-            app.ApplicationDate = DateTime.Now;
-            app.ApplicationTypeID = 1;
-            app.ApplicationStatus = clsApplication.enApplicationStatus.New;
-            app.LastStatusDate = DateTime.Now;
-            app.PaidFees = 100;
-            app.CreatedByUserID = 1;
-            //app.ApplicationID = 1;
-            app.LicenseClassID = 3;
+            //clsLocalDrivingLicenseApplication app = new clsLocalDrivingLicenseApplication();
+            //app.ApplicantPersonID = 1;
+            //app.ApplicationDate = DateTime.Now;
+            //app.ApplicationTypeID = 1;
+            //app.ApplicationStatus = clsApplication.enApplicationStatus.New;
+            //app.LastStatusDate = DateTime.Now;
+            //app.PaidFees = 100;
+            //app.CreatedByUserID = 1;
+            ////app.ApplicationID = 1;
+            //app.LicenseClassID = 3;
 
-            bool result = app.SaveLDLA();
-            MessageBox.Show(result ? $"Base Saved! ID={app.ApplicationID}" : "Base Failed!");
+            //bool result = app.SaveLDLA();
+            //MessageBox.Show(result ? $"Base Saved! ID={app.ApplicationID}" : "Base Failed!");
 
-            //clsLocalDrivingLicenseApplication app1 = new clsLocalDrivingLicenseApplication();
-            //app1.ApplicationID = 1;
-            //app1.LicenseClassID = 3;
+            ////clsLocalDrivingLicenseApplication app1 = new clsLocalDrivingLicenseApplication();
+            ////app1.ApplicationID = 1;
+            ////app1.LicenseClassID = 3;
 
-            //bool result1 = app1.SaveLDLA();
-            //MessageBox.Show(result1 ? "Saved!" : "Failed!");
+            ////bool result1 = app1.SaveLDLA();
+            ////MessageBox.Show(result1 ? "Saved!" : "Failed!");
+            ///
 
 
         }

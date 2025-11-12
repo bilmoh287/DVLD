@@ -31,7 +31,6 @@ namespace DVLDPresentationLayer
         {
             InitializeComponent();
         }
-
         private void _RefreshList(object sender, int PersonID)
         {
             _dtAllLocalDrivingLicenseApplications = clsLocalDrivingLicenseApplication.GetAllLocalDrivingLiceseApplications();
@@ -50,8 +49,6 @@ namespace DVLDPresentationLayer
             dgvLocalDrivingLicenseApplications.DataSource = _dtLocalDrivingLicenseApplications;
             lblRecordsCount.Text = dgvLocalDrivingLicenseApplications.Rows.Count.ToString();
         }
-
-
         private void frmListLocalDrivingLicenseApplications_Load(object sender, EventArgs e)
         {
             dgvLocalDrivingLicenseApplications.DataSource = _dtLocalDrivingLicenseApplications;
@@ -79,7 +76,6 @@ namespace DVLDPresentationLayer
                 dgvLocalDrivingLicenseApplications.Columns[5].Width = 130;
             }
         }
-
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtFilterValue.Visible = (cbFilterBy.Text != "None");
@@ -93,7 +89,6 @@ namespace DVLDPresentationLayer
             _dtLocalDrivingLicenseApplications.DefaultView.RowFilter = "";
             lblRecordsCount.Text = dgvLocalDrivingLicenseApplications.Rows.Count.ToString();
         }
-
         private void txtFilterValue_TextChanged(object sender, EventArgs e)
         {
             string FilterColumn = "";
@@ -148,7 +143,6 @@ namespace DVLDPresentationLayer
             }
             lblRecordsCount.Text = _dtLocalDrivingLicenseApplications.DefaultView.Count.ToString();
         }
-
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
             //we allow number incase person id is selected.
@@ -159,6 +153,14 @@ namespace DVLDPresentationLayer
         private void btnAddNewApplication_Click(object sender, EventArgs e)
         {
             frmAddUpdateLocalDrivingLicenseApplication frm = new frmAddUpdateLocalDrivingLicenseApplication();
+            frm.OnApplicationSaved += _RefreshList;
+            frm.ShowDialog();
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int LDLApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
+            frmAddUpdateLocalDrivingLicenseApplication frm = new frmAddUpdateLocalDrivingLicenseApplication(LDLApplicationID);
             frm.OnApplicationSaved += _RefreshList;
             frm.ShowDialog();
         }

@@ -24,15 +24,16 @@ namespace DVLDPresentationLayer
         enMode _Mode = enMode.AddNew;
         int _LDLApplicationID;
         clsLocalDrivingLicenseApplication _LDLApplication;
-        clsUser _CreatedByUser = clsUser.FindByUserID(clsGlobal.CurrentUser.UserID);
+        //clsUser _CreatedByUser = clsUser.FindByUserID(clsGlobal.CurrentUser.UserID);
         public frmAddUpdateLocalDrivingLicenseApplication()
         {
             InitializeComponent();
         }
-        public frmAddUpdateLocalDrivingLicenseApplication(int ApplicationID)
+        public frmAddUpdateLocalDrivingLicenseApplication(int LDLApplicationID)
         {
             InitializeComponent();
-            _LDLApplicationID = ApplicationID;
+            _LDLApplicationID = LDLApplicationID;
+            _Mode = enMode.Update;
         }
         public void _FillClassNameInComboBox()
         {
