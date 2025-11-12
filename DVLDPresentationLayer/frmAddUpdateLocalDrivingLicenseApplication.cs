@@ -74,17 +74,18 @@ namespace DVLDPresentationLayer
             _LDLApplication = clsLocalDrivingLicenseApplication.GetLocalDrivingLicenseApplicationInfoByID(_LDLApplicationID);
             if (_LDLApplication == null)
             {
-                MessageBox.Show("No Person with ID = " + _LDLApplication.ApplicantPersonID, "User Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("No LDLApplication with ID = " + _LDLApplication.ApplicantPersonID, "Applicaation Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
                 return;
             }
+
 
             //lblTitle.Text = "Update User";
             ctlPersonCardWithFilter1.FilterEnables = false;
             lblLocalDrivingLicebseApplicationID.Text = _LDLApplication.LocalDrivingLicenseApplicationID.ToString();
             lblApplicationDate.Text = _LDLApplication.ApplicationDate.ToString();
             lblFees.Text = _LDLApplication.PaidFees.ToString();
-            lblCreatedByUser.Text = _LDLApplication.CreatedByUserID.ToString();
+            lblCreatedByUser.Text = clsUser.FindByUserID(_LDLApplication.CreatedByUserID).UserName;
             cbLicenseClass.SelectedIndex = cbLicenseClass.FindString(_LDLApplication.LicesnseClassInfo.ClassName);
             ctlPersonCardWithFilter1.LoadPersonInfo(_LDLApplication.ApplicantPersonID);
         }
@@ -135,11 +136,23 @@ namespace DVLDPresentationLayer
         {
             int LicenseClassID = clsLicenseClasses.Find(cbLicenseClass.Text).LicenseClassID;
 
+            //Check if the user have active application with the same License Calss
             int ActiveApplicationID = clsApplication.GetActiveApplicationIDForLicenseClass(ctlPersonCardWithFilter1.PersonID, clsApplication.enApplicationType.NewDrivingLicense, LicenseClassID);
             if (ActiveApplicationID != -1)
             {
                 MessageBox.Show("Choose another License Class, the selected Person Already have an active application for the selected class with id=" + ActiveApplicationID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cbLicenseClass.Focus();
+                return;
+            }
+
+            //Chec if the Applicant Person Age is Allowed for the specified License Class
+            int MinimumAllowedAge = clsLicenseClasses.Find(cbLicenseClass.Text).MinimumAllowedAge;
+            DateTime ApplicantDateOfBirth = clsPerson.Find(ctlPersonCardWithFilter1.PersonID).DateOfBirth;
+            int ApplicantAge = clsUtil.GetDifferenceInYears(ApplicantDateOfBirth, DateTime.Now);
+            MessageBox.Show($"ApplicantAge = {ApplicantAge}, MinAge = {MinimumAllowedAge}");
+            if (MinimumAllowedAge > ApplicantAge)
+            {
+                MessageBox.Show($"Person is not allowed for this Driving License Class, it requires a {MinimumAllowedAge} years old and above", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

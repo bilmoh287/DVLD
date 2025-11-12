@@ -161,7 +161,6 @@ namespace DVLDPresentationLayer
             int UserID = (int)dgvListUsers.CurrentRow.Cells[0].Value;
             //MessageBox.Show (UserID.ToString());
             frmShowUserInfo frm = new frmShowUserInfo(UserID);
-            frm.
             frm.ShowDialog();
         }
 

@@ -71,5 +71,15 @@ namespace DVLDPresentationLayer
             SourceFile = destinationFile;
             return true;
         }
+
+        public static int GetDifferenceInYears(DateTime startDate, DateTime endDate)
+        {
+            int years = endDate.Year - startDate.Year;
+
+            if ((endDate.Month == startDate.Month && endDate.Day < startDate.Day) || endDate.Month < startDate.Month)
+                years--;
+
+            return years;
+        }
     }
 }

@@ -19,7 +19,6 @@ namespace DVLDPresentationLayer
             InitializeComponent();
             //ctlUserCard1.LoadUserInfo(UserID);
             ctlUserCard2.LoadUserInfo(UserID);
-            ctlUserCard2.
         }
 
         private void btnClose_Click(object sender, EventArgs e)
