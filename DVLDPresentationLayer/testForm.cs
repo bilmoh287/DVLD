@@ -9,12 +9,13 @@ namespace DVLDPresentationLayer
         public testForm(int PersonID)
         {
             InitializeComponent();
-            ctlPersonCard1.LoadPersonInfo(PersonID);
+            //ctlPersonCard1.LoadPersonInfo(PersonID);
         }
         public testForm()
         {
             InitializeComponent();
             //ctlPersonCard1.LoadPersonInfo(PersonID);
+            ctlApplicationBasicInfo1.LoadBasicApplicationInfo(1);
         }
 
         private void testForm_Load(object sender, EventArgs e)

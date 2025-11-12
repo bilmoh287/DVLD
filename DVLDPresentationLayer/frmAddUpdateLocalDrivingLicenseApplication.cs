@@ -179,5 +179,10 @@ namespace DVLDPresentationLayer
                 MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void frmAddUpdateLocalDrivingLicenseApplication_Activated(object sender, EventArgs e)
+        {
+            ctlPersonCardWithFilter1.Focus();
+        }
     }
 }

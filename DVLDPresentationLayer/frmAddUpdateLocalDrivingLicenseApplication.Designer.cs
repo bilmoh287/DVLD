@@ -351,6 +351,7 @@
             this.Name = "frmAddUpdateLocalDrivingLicenseApplication";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmAddUpdateLocalDrivingLicenseApplication";
+            this.Activated += new System.EventHandler(this.frmAddUpdateLocalDrivingLicenseApplication_Activated);
             this.Load += new System.EventHandler(this.frmAddUpdateLocalDrivingLicenseApplication_Load);
             this.tcLogin.ResumeLayout(false);
             this.tpDriverInfo.ResumeLayout(false);

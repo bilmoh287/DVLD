@@ -43,7 +43,7 @@ namespace DVLDPresentationLayer
             _Person = clsPerson.Find(PersonID);
             if (_Person == null)
             {
-                ResetPersonInfo();
+                _ResetPersonInfo();
                 MessageBox.Show("No Person with PersonID = " + PersonID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -56,7 +56,7 @@ namespace DVLDPresentationLayer
             _Person = clsPerson.Find(NationalNo);
             if(_Person == null)
             {
-                ResetPersonInfo();
+                _ResetPersonInfo();
                 MessageBox.Show("No Person with National No. = " + NationalNo.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -91,7 +91,7 @@ namespace DVLDPresentationLayer
                 pbPersonImage.Image = (_Person.Gender == 0) ? Resources.Male_512 : Resources.Female_512;
         }
 
-        public void ResetPersonInfo()
+        private void _ResetPersonInfo()
         {
             _PersonID = -1;
             lblPersonID.Text = "[????]";

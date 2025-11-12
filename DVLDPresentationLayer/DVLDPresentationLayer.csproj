@@ -60,6 +60,12 @@
     <Compile Include="ApplicationTypes\frmUpdateApplicationType.Designer.cs">
       <DependentUpon>frmUpdateApplicationType.cs</DependentUpon>
     </Compile>
+    <Compile Include="ctlApplicationBasicInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctlApplicationBasicInfo.Designer.cs">
+      <DependentUpon>ctlApplicationBasicInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddUpdateLocalDrivingLicenseApplication.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,7 @@
     <Compile Include="frmListLocalDrivingLicenseApplications.Designer.cs">
       <DependentUpon>frmListLocalDrivingLicenseApplications.cs</DependentUpon>
     </Compile>
+    <Compile Include="Global Classes\clsFormat.cs" />
     <Compile Include="Test Types\frmListTestTypes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ApplicationTypes\frmUpdateApplicationType.resx">
       <DependentUpon>frmUpdateApplicationType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctlApplicationBasicInfo.resx">
+      <DependentUpon>ctlApplicationBasicInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddUpdateLocalDrivingLicenseApplication.resx">
       <DependentUpon>frmAddUpdateLocalDrivingLicenseApplication.cs</DependentUpon>
@@ -501,6 +511,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\International 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\status.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ApplicationType.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

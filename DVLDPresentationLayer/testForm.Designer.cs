@@ -28,19 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctlPersonCard1 = new DVLDPresentationLayer.ctlPersonCard();
             this.button1 = new System.Windows.Forms.Button();
+            this.ctlApplicationBasicInfo1 = new DVLDPresentationLayer.ctlApplicationBasicInfo();
             this.SuspendLayout();
-            // 
-            // ctlPersonCard1
-            // 
-            this.ctlPersonCard1.BackColor = System.Drawing.Color.White;
-            this.ctlPersonCard1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctlPersonCard1.Location = new System.Drawing.Point(13, 14);
-            this.ctlPersonCard1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ctlPersonCard1.Name = "ctlPersonCard1";
-            this.ctlPersonCard1.Size = new System.Drawing.Size(813, 285);
-            this.ctlPersonCard1.TabIndex = 0;
             // 
             // button1
             // 
@@ -52,13 +42,23 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // ctlApplicationBasicInfo1
+            // 
+            this.ctlApplicationBasicInfo1.BackColor = System.Drawing.Color.White;
+            this.ctlApplicationBasicInfo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctlApplicationBasicInfo1.Location = new System.Drawing.Point(2, 33);
+            this.ctlApplicationBasicInfo1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctlApplicationBasicInfo1.Name = "ctlApplicationBasicInfo1";
+            this.ctlApplicationBasicInfo1.Size = new System.Drawing.Size(877, 224);
+            this.ctlApplicationBasicInfo1.TabIndex = 2;
+            // 
             // testForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(827, 391);
+            this.ClientSize = new System.Drawing.Size(917, 391);
+            this.Controls.Add(this.ctlApplicationBasicInfo1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.ctlPersonCard1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "testForm";
@@ -69,8 +69,7 @@
         }
 
         #endregion
-
-        private ctlPersonCard ctlPersonCard1;
         private System.Windows.Forms.Button button1;
+        private ctlApplicationBasicInfo ctlApplicationBasicInfo1;
     }
 }
