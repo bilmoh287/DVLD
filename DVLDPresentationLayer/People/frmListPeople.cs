@@ -177,7 +177,7 @@ namespace DVLDPresentationLayer
         {
             int PersonID = (int)dgvListPeople.CurrentRow.Cells[0].Value;
             frmShowPersonInfo frm = new frmShowPersonInfo(PersonID);
-            //f
+            frm.OnPersonUpdated += _RefreshPeople;
             frm.ShowDialog();
         }
 

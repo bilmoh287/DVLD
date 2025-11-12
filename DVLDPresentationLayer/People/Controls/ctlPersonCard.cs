@@ -14,7 +14,11 @@ namespace DVLDPresentationLayer
 {
     public partial class ctlPersonCard : UserControl
     {
-        
+        // Declare a delegate
+        public delegate void PersonUpdatedHandler(object sender, int PersonID);
+        // Declare an event using the delegate
+        public event PersonUpdatedHandler OnPersonUpdated;
+
         private clsPerson _Person;
 
         private int _PersonID = -1;
@@ -115,6 +119,7 @@ namespace DVLDPresentationLayer
 
             //refresh
             LoadPersonInfo(_Person.PersonID);
+            OnPersonUpdated?.Invoke(this, PersonID);
         }
 
     }
