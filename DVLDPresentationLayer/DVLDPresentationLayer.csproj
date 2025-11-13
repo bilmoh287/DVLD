@@ -48,46 +48,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationTypes\frmListApplicationTypes.cs">
+    <Compile Include="Applications\Application Types\frmListApplicationTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ApplicationTypes\frmListApplicationTypes.Designer.cs">
+    <Compile Include="Applications\Application Types\frmListApplicationTypes.Designer.cs">
       <DependentUpon>frmListApplicationTypes.cs</DependentUpon>
     </Compile>
-    <Compile Include="ApplicationTypes\frmUpdateApplicationType.cs">
+    <Compile Include="Applications\Application Types\frmUpdateApplicationType.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ApplicationTypes\frmUpdateApplicationType.Designer.cs">
+    <Compile Include="Applications\Application Types\frmUpdateApplicationType.Designer.cs">
       <DependentUpon>frmUpdateApplicationType.cs</DependentUpon>
     </Compile>
-    <Compile Include="ctlApplicationBasicInfo.cs">
+    <Compile Include="Applications\Controls\ctlApplicationBasicInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ctlApplicationBasicInfo.Designer.cs">
+    <Compile Include="Applications\Controls\ctlApplicationBasicInfo.Designer.cs">
       <DependentUpon>ctlApplicationBasicInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="ctlDrivingLicenseApplicationInfo.cs">
+    <Compile Include="Applications\Local Driving License\ctlDrivingLicenseApplicationInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ctlDrivingLicenseApplicationInfo.Designer.cs">
+    <Compile Include="Applications\Local Driving License\ctlDrivingLicenseApplicationInfo.Designer.cs">
       <DependentUpon>ctlDrivingLicenseApplicationInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAddUpdateLocalDrivingLicenseApplication.cs">
+    <Compile Include="Applications\Local Driving License\frmAddUpdateLocalDrivingLicenseApplication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAddUpdateLocalDrivingLicenseApplication.Designer.cs">
+    <Compile Include="Applications\Local Driving License\frmAddUpdateLocalDrivingLicenseApplication.Designer.cs">
       <DependentUpon>frmAddUpdateLocalDrivingLicenseApplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmListLocalDrivingLicenseApplications.cs">
+    <Compile Include="Applications\Local Driving License\frmListLocalDrivingLicenseApplications.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmListLocalDrivingLicenseApplications.Designer.cs">
+    <Compile Include="Applications\Local Driving License\frmListLocalDrivingLicenseApplications.Designer.cs">
       <DependentUpon>frmListLocalDrivingLicenseApplications.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLocalDrivingLicenseApplicationInfo.cs">
+    <Compile Include="Applications\Local Driving License\frmLocalDrivingLicenseApplicationInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLocalDrivingLicenseApplicationInfo.Designer.cs">
+    <Compile Include="Applications\Local Driving License\frmLocalDrivingLicenseApplicationInfo.Designer.cs">
       <DependentUpon>frmLocalDrivingLicenseApplicationInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Global Classes\clsFormat.cs" />
@@ -197,25 +197,25 @@
     <Compile Include="testForm.Designer.cs">
       <DependentUpon>testForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ApplicationTypes\frmListApplicationTypes.resx">
+    <EmbeddedResource Include="Applications\Application Types\frmListApplicationTypes.resx">
       <DependentUpon>frmListApplicationTypes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ApplicationTypes\frmUpdateApplicationType.resx">
+    <EmbeddedResource Include="Applications\Application Types\frmUpdateApplicationType.resx">
       <DependentUpon>frmUpdateApplicationType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ctlApplicationBasicInfo.resx">
+    <EmbeddedResource Include="Applications\Controls\ctlApplicationBasicInfo.resx">
       <DependentUpon>ctlApplicationBasicInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ctlDrivingLicenseApplicationInfo.resx">
+    <EmbeddedResource Include="Applications\Local Driving License\ctlDrivingLicenseApplicationInfo.resx">
       <DependentUpon>ctlDrivingLicenseApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAddUpdateLocalDrivingLicenseApplication.resx">
+    <EmbeddedResource Include="Applications\Local Driving License\frmAddUpdateLocalDrivingLicenseApplication.resx">
       <DependentUpon>frmAddUpdateLocalDrivingLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmListLocalDrivingLicenseApplications.resx">
+    <EmbeddedResource Include="Applications\Local Driving License\frmListLocalDrivingLicenseApplications.resx">
       <DependentUpon>frmListLocalDrivingLicenseApplications.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLocalDrivingLicenseApplicationInfo.resx">
+    <EmbeddedResource Include="Applications\Local Driving License\frmLocalDrivingLicenseApplicationInfo.resx">
       <DependentUpon>frmLocalDrivingLicenseApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test Types\frmListTestTypes.resx">
@@ -542,5 +542,6 @@
   <ItemGroup>
     <None Include="Resources\License Type 321.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
