@@ -84,6 +84,12 @@
     <Compile Include="frmListLocalDrivingLicenseApplications.Designer.cs">
       <DependentUpon>frmListLocalDrivingLicenseApplications.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLocalDrivingLicenseApplicationInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLocalDrivingLicenseApplicationInfo.Designer.cs">
+      <DependentUpon>frmLocalDrivingLicenseApplicationInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global Classes\clsFormat.cs" />
     <Compile Include="Test Types\frmListTestTypes.cs">
       <SubType>Form</SubType>
@@ -208,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmListLocalDrivingLicenseApplications.resx">
       <DependentUpon>frmListLocalDrivingLicenseApplications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLocalDrivingLicenseApplicationInfo.resx">
+      <DependentUpon>frmLocalDrivingLicenseApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test Types\frmListTestTypes.resx">
       <DependentUpon>frmListTestTypes.cs</DependentUpon>

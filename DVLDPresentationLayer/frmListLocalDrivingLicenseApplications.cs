@@ -164,5 +164,13 @@ namespace DVLDPresentationLayer
             frm.OnApplicationSaved += _RefreshList;
             frm.ShowDialog();
         }
+
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int LDLApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
+            frmLocalDrivingLicenseApplicationInfo frm = new frmLocalDrivingLicenseApplicationInfo(LDLApplicationID);
+            //frm.OnApplicationSaved += _RefreshList;
+            frm.ShowDialog();
+        }
     }
 }

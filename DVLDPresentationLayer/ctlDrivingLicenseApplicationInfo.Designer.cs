@@ -71,7 +71,7 @@
             // llShowLicenceInfo
             // 
             this.llShowLicenceInfo.AutoSize = true;
-            this.llShowLicenceInfo.Location = new System.Drawing.Point(209, 79);
+            this.llShowLicenceInfo.Location = new System.Drawing.Point(150, 82);
             this.llShowLicenceInfo.Name = "llShowLicenceInfo";
             this.llShowLicenceInfo.Size = new System.Drawing.Size(172, 25);
             this.llShowLicenceInfo.TabIndex = 191;
@@ -83,7 +83,7 @@
             // 
             this.lblPassedTests.AutoSize = true;
             this.lblPassedTests.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassedTests.Location = new System.Drawing.Point(566, 73);
+            this.lblPassedTests.Location = new System.Drawing.Point(507, 76);
             this.lblPassedTests.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPassedTests.Name = "lblPassedTests";
             this.lblPassedTests.Size = new System.Drawing.Size(24, 25);
@@ -94,7 +94,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(398, 73);
+            this.label2.Location = new System.Drawing.Point(339, 76);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(151, 25);
@@ -105,7 +105,7 @@
             // 
             this.lblAppliedFor.AutoSize = true;
             this.lblAppliedFor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAppliedFor.Location = new System.Drawing.Point(566, 36);
+            this.lblAppliedFor.Location = new System.Drawing.Point(507, 39);
             this.lblAppliedFor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAppliedFor.Name = "lblAppliedFor";
             this.lblAppliedFor.Size = new System.Drawing.Size(62, 25);
@@ -116,7 +116,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(349, 36);
+            this.label10.Location = new System.Drawing.Point(290, 39);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(211, 25);
@@ -127,7 +127,7 @@
             // 
             this.lblLocalDrivingLicenseApplicationID.AutoSize = true;
             this.lblLocalDrivingLicenseApplicationID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLocalDrivingLicenseApplicationID.Location = new System.Drawing.Point(209, 36);
+            this.lblLocalDrivingLicenseApplicationID.Location = new System.Drawing.Point(150, 39);
             this.lblLocalDrivingLicenseApplicationID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLocalDrivingLicenseApplicationID.Name = "lblLocalDrivingLicenseApplicationID";
             this.lblLocalDrivingLicenseApplicationID.Size = new System.Drawing.Size(62, 25);
@@ -138,7 +138,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(66, 36);
+            this.label4.Location = new System.Drawing.Point(7, 39);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(124, 25);
@@ -148,7 +148,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::DVLDPresentationLayer.Properties.Resources.License_View_32;
-            this.pictureBox3.Location = new System.Drawing.Point(172, 73);
+            this.pictureBox3.Location = new System.Drawing.Point(113, 76);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(31, 26);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -158,7 +158,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DVLDPresentationLayer.Properties.Resources.PassedTests_32;
-            this.pictureBox1.Location = new System.Drawing.Point(527, 73);
+            this.pictureBox1.Location = new System.Drawing.Point(468, 76);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(31, 26);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -168,7 +168,7 @@
             // pictureBox7
             // 
             this.pictureBox7.Image = global::DVLDPresentationLayer.Properties.Resources.License_Type_32;
-            this.pictureBox7.Location = new System.Drawing.Point(527, 36);
+            this.pictureBox7.Location = new System.Drawing.Point(468, 39);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(31, 26);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -178,7 +178,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::DVLDPresentationLayer.Properties.Resources.bank_check;
-            this.pictureBox2.Location = new System.Drawing.Point(171, 36);
+            this.pictureBox2.Location = new System.Drawing.Point(112, 39);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(31, 26);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

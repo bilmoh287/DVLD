@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDBussinessLayer;
@@ -23,7 +24,12 @@ namespace DVLDPresentationLayer
             InitializeComponent();
         }
 
-        private void _ResetPersonInfo()
+        public int ApplicationID
+        {
+            get { return _ApplicationID; }
+        }
+
+        public void ResetBasicApplicationInfo()
         {
             _ApplicationID = -1;
             lblApplicationID.Text = "[????]";
@@ -55,7 +61,7 @@ namespace DVLDPresentationLayer
             _Application = clsApplication.Find(ApplicationID);
             if (_Application == null)
             {
-                _ResetPersonInfo();
+                ResetBasicApplicationInfo();
                 MessageBox.Show("No Application with ApplicationID = " + _ApplicationID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

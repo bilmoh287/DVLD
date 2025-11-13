@@ -26,6 +26,7 @@ namespace DVLDPresentationLayer
             lblLocalDrivingLicenseApplicationID.Text = "[????]";
             lblAppliedFor.Text = "[????]";
             lblPassedTests.Text = "[????]";
+            ctlApplicationBasicInfo1.ResetBasicApplicationInfo();
             llShowLicenceInfo.Enabled = false;
         }
 
