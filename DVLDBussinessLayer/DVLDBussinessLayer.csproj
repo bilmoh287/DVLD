@@ -47,6 +47,7 @@
     <Compile Include="clsCountries.cs" />
     <Compile Include="clsLicenseClassses.cs" />
     <Compile Include="clsPerson.cs" />
+    <Compile Include="clsTestAppointments.cs" />
     <Compile Include="clsTestTypes.cs" />
     <Compile Include="clsUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
