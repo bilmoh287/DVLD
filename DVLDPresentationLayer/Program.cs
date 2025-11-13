@@ -17,9 +17,9 @@ namespace DVLDPresentationLayer
             //Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new frmLogin());
+            Application.Run(new frmLogin());
             //Application.Run(new frmAddUpdateLocalDrivingLicenseApplication());
-            Application.Run(new testForm());
+            //Application.Run(new testForm());
         }
     }
 }

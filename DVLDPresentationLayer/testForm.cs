@@ -15,7 +15,8 @@ namespace DVLDPresentationLayer
         {
             InitializeComponent();
             //ctlPersonCard1.LoadPersonInfo(PersonID);
-            ctlApplicationBasicInfo1.LoadBasicApplicationInfo(1);
+            //ctlApplicationBasicInfo1.LoadBasicApplicationInfo(1);
+            //ctlDrivingLicenseApplicationInfo1.LoadLDLApplicationInfo(1);
         }
 
         private void testForm_Load(object sender, EventArgs e)
