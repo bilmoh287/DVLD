@@ -218,7 +218,7 @@
             this.toolStripSeparator6,
             this.showPersonLicenseHistoryToolStripMenuItem});
             this.cmsApplications.Name = "contextMenuStrip1";
-            this.cmsApplications.Size = new System.Drawing.Size(309, 372);
+            this.cmsApplications.Size = new System.Drawing.Size(309, 344);
             // 
             // showDetailsToolStripMenuItem
             // 
@@ -250,6 +250,7 @@
             this.DeleteApplicationToolStripMenuItem.Name = "DeleteApplicationToolStripMenuItem";
             this.DeleteApplicationToolStripMenuItem.Size = new System.Drawing.Size(308, 38);
             this.DeleteApplicationToolStripMenuItem.Text = "&Delete Application";
+            this.DeleteApplicationToolStripMenuItem.Click += new System.EventHandler(this.DeleteApplicationToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
@@ -263,6 +264,7 @@
             this.CancelApplicaitonToolStripMenuItem.Name = "CancelApplicaitonToolStripMenuItem";
             this.CancelApplicaitonToolStripMenuItem.Size = new System.Drawing.Size(308, 38);
             this.CancelApplicaitonToolStripMenuItem.Text = "&Cancel Application";
+            this.CancelApplicaitonToolStripMenuItem.Click += new System.EventHandler(this.CancelApplicaitonToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 

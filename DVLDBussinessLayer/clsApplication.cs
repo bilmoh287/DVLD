@@ -159,5 +159,9 @@ namespace DVLDBussinessLayer
         {
             return clsApplicationData.GetActiveApplicationIDForLicenseClass(PersonID, (int)ApplicationTypeID, LicenseClassID);
         }
+        public bool Cancel()
+        {
+            return clsApplicationData.UpdateStatus(ApplicationID, (byte)enApplicationStatus.Cancelled);
+        }
     }
 }

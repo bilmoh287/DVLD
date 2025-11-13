@@ -221,5 +221,36 @@ namespace DVLDDataAccessLayer
             }
             return ActiveApplicationID;
         }
+
+        public static bool UpdateStatus(int ApplicationID, byte NewApplicationStatus)
+        {
+            int rowsAffected = 0;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string query = @"Update  Applications  
+                            set 
+                                ApplicationStatus = @NewApplicationStatus, 
+                                LastStatusDate = @LastStatusDate
+                            where ApplicationID=@ApplicationID;";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+                command.Parameters.AddWithValue("@NewApplicationStatus", NewApplicationStatus);
+                command.Parameters.AddWithValue("@LastStatusDate", DateTime.Now);
+
+                try
+                {
+                    connection.Open();
+                    rowsAffected = command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error loading TestTypes: " + ex.Message);
+                }
+            }
+
+            return (rowsAffected > 0);
+        }
     }
 }
