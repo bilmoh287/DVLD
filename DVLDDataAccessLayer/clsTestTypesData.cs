@@ -17,23 +17,26 @@ namespace DVLDDataAccessLayer
             string query = "SELECT * FROM TestTypes;";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
-            using (SqlCommand command = new SqlCommand(query, connection))
             {
-                try
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    try
                     {
-                        dtTestTypes.Load(reader);
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            dtTestTypes.Load(reader);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error loading TestTypes: " + ex.Message);
                     }
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error loading TestTypes: " + ex.Message);
-                }
+
+                return dtTestTypes;
             }
 
-            return dtTestTypes;
         }
 
         public static bool GetTestTypeByID(
