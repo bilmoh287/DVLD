@@ -21,11 +21,12 @@ namespace DVLDPresentationLayer
 
         private void testForm_Load(object sender, EventArgs e)
         {
-
+            ctlPersonCard1.LoadPersonInfo(1);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
             //clsLocalDrivingLicenseApplication app = new clsLocalDrivingLicenseApplication();
             //app.ApplicantPersonID = 1;
             //app.ApplicationDate = DateTime.Now;
@@ -48,7 +49,8 @@ namespace DVLDPresentationLayer
             ////MessageBox.Show(result1 ? "Saved!" : "Failed!");
             ///
 
-
+            frmListTestApppointments frm = new frmListTestApppointments(3);
+            frm.ShowDialog();
         }
     }
 }

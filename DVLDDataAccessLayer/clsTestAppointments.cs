@@ -14,7 +14,7 @@ namespace DVLDDataAccessLayer
         {
             DataTable dt = new DataTable();
 
-            string query = "SELECT * FROM TestAppointments;";
+            string query = "SELECT TestAppointmentID, AppointmentDate, PaidFees, IsLocked FROM TestAppointments;";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {

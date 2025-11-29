@@ -45,7 +45,7 @@ namespace DVLDPresentationLayer
             if (_LDLApplication == null)
             {
                 _ResetPersonInfo();
-                MessageBox.Show("No Application with ApplicationID = " + _LDLApplication.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No Application with ApplicationID = " + LDLApplicationID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

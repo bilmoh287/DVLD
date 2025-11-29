@@ -21,7 +21,7 @@ namespace DVLDPresentationLayer
         public frmShowPersonInfo(int PersonID)
         {
             InitializeComponent();
-            //ctlPersonCard1.LoadPersonInfo(PersonID);
+            ctlPersonCard1.LoadPersonInfo(PersonID);
             //SetHeaderColor(Color.AliceBlue);
             //SetHeaderTitle("Person Info");
             //subscribe to the ctlPersonCard1 event handler.

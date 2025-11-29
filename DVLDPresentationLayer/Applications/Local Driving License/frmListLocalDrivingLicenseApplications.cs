@@ -217,5 +217,12 @@ namespace DVLDPresentationLayer
                 }
             }
         }
+
+        private void scheduleVisionTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int LDLApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
+            frmListTestApppointments frm = new frmListTestApppointments(LDLApplicationID);
+            frm.ShowDialog();
+        }
     }
 }
