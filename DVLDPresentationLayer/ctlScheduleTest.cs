@@ -112,7 +112,7 @@ namespace DVLDPresentationLayer
 
             // Step 2: Assign values from UI to business object
             _TestAppointment.LocalDrivingLicenseApplicationID = _LDLApplication.LocalDrivingLicenseApplicationID;
-            _TestAppointment.TestTypeID = TestTypeID;
+            _TestAppointment.TestTypeID = _TestAppointment.TestTypeID;
             _TestAppointment.AppointmentDate = dtpTestDate.Value;
             _TestAppointment.PaidFees = Convert.ToDecimal(lblTotalFees.Text);
             _TestAppointment.IsLocked = true;

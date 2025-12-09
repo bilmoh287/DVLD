@@ -30,6 +30,7 @@ namespace DVLDPresentationLayer
         {
             frmScheduleTest frm = new frmScheduleTest(_LDLApplicationID);
             frm.ShowDialog();
+            frmListTestApppointments_Load(null, null);
         }
 
         private void frmListTestApppointments_Load(object sender, EventArgs e)
@@ -46,6 +47,13 @@ namespace DVLDPresentationLayer
 
             dgvLicenseTestAppointments.Columns[3].HeaderText = "Is Locked";
             dgvLicenseTestAppointments.Columns[3].Width = 150;
+        }
+
+        private void takeTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int TestAppointmentID = (int)dgvLicenseTestAppointments.CurrentRow.Cells[0].Value;
+            frmTakeTest frm = new frmTakeTest(TestAppointmentID);
+            frm.ShowDialog();
         }
     }
 }
