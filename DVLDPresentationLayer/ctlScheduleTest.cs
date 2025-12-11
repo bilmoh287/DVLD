@@ -139,8 +139,26 @@ namespace DVLDPresentationLayer
                 return;
             }
 
+            if (!_HandleActiveTestAppointmentConstraint())
+                return;
+
+            if (_Mode == enMode.AddNew)
+            {
+                lblFees.Text = clsTestTypes.Find(_TestTypeID).TestTypeFees.ToString();
+                dtpTestDate.MinDate = DateTime.Now;
+                lblRetakeTestAppID.Text = "N/A";
+
+                _TestAppointment = new clsTestAppointments();
+            }
+
+            else
+            {
+                if (!_FillAppointmentInfo())
+                    return;
+            }
+
             //checksif the Appointment it for Retake Test or Not
-            if (clsTestAppointments.DoesAttendTestType(_LDLApplicationID, (int)_TestTypeID))
+            if (_LDLApplication.DoesAttendTestType((int)_TestTypeID))
                 _CreationMode = enCreationMode.RetakeTestSchedule;
             else
                 _CreationMode = enCreationMode.FirstTimeSchedule;
@@ -169,38 +187,25 @@ namespace DVLDPresentationLayer
             lblFullName.Text = _LDLApplication.FullName;
             lblTrial.Text = "0"; // not yet implemented
 
-            if (_Mode == enMode.AddNew)
-            {
-                lblFees.Text = clsTestTypes.Find(_TestTypeID).TestTypeFees.ToString();
-                dtpTestDate.MinDate = DateTime.Now;
-                lblRetakeTestAppID.Text = "N/A";
 
-                _TestAppointment = new clsTestAppointments();
-            }
 
-            else
-            {
-                if (!_FillAppointmentInfo())
-                    return;
-            }
 
-            //ResetTestAppointmentInfo();
+
         }
 
-        public void LoadScheduleTestInfo()
+
+        private bool _HandleActiveTestAppointmentConstraint()
         {
-            //_TestAppointment = clsTestAppointments.Find(TestAppointmentsID);
-            if (_TestAppointment == null)
+            if(_Mode == enMode.AddNew && _LDLApplication.IsThereAnActiveScheduledTest((int)_TestTypeID))
+
             {
-                ResetTestAppointmentInfo();
-                MessageBox.Show("No Appointmnent with AppointmnentID = " + _TestAppointmentID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                lblUserMessage.Text = "Person Already have an active appointment for this test";
+                btnSave.Enabled = false;
+                dtpTestDate.Enabled = false;
+                return false;
             }
-            ResetTestAppointmentInfo();
-
-            //_FillAppointmentInfo();
+            return true;
         }
-
         private bool HanleRetakeTestApplication()
         {
             //this will decide to create a seperate application for retake test or not.

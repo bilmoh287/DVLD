@@ -236,39 +236,6 @@ namespace DVLDDataAccessLayer
             return exists;
         }
 
-        public static bool DoesAtendTestType(int LocalDrivingLicenseApplicationID, int TestTypeID)
-        {
-            bool DoesAttend = false;
-
-            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
-            {
-                string query = @"SELECT TOP 1 Found = 1
-                                FROM     TestAppointments INNER JOIN
-                                                  LocalDrivingLicenseApplications ON TestAppointments.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID
-                                WHERE LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID  
-                                        AND TestAppointments.TestTypeID = @TestTypeID
-                                ORDER BY TestAppointments.AppointmentDate DESC;";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
-                    command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
-
-                    try
-                    {
-                        connection.Open();
-                        object result = command.ExecuteScalar();
-                        DoesAttend = result != null;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Error checking if Applicant Attend Test: " + ex.Message);
-                    }
-                }
-            }
-
-            return DoesAttend;
-        }
 
         public static DataTable GetApplicantestAppointmentsPerTestType(int LDLApplicationID, int TestTypeID)
         {
@@ -303,5 +270,6 @@ namespace DVLDDataAccessLayer
 
             return dt;
         }
+
     }
 }

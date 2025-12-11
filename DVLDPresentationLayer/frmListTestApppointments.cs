@@ -30,6 +30,12 @@ namespace DVLDPresentationLayer
 
         private void btnAddNewAppointment_Click(object sender, EventArgs e)
         {
+            clsLocalDrivingLicenseApplication localDrivingLicenseApplication = clsLocalDrivingLicenseApplication.GetLocalDrivingLicenseApplicationInfoByID(_LDLApplicationID);
+            if (localDrivingLicenseApplication.IsThereAnActiveScheduledTest((int)_TestType))
+            {
+                MessageBox.Show("Person Already have an active appointment for this test, You cannot add new appointment", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             frmScheduleTest frm = new frmScheduleTest(_LDLApplicationID, _TestType);
             frm.ShowDialog();
             frmListTestApppointments_Load(null, null);

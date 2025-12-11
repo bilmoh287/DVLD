@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using DVLDDataAccessLayer;
@@ -125,6 +126,16 @@ namespace DVLDBussinessLayer
         public static bool IsApplicationExist(int LocalDrivingLicenseApplicationID)
         {
             return clsLocalDrivingLicenseApplicationData.IsApplicationExist(LocalDrivingLicenseApplicationID);
+        }
+
+        public bool DoesAttendTestType(int TestTypeID)
+        {
+            return clsLocalDrivingLicenseApplicationData.DoesAtendTestType(this.LocalDrivingLicenseApplicationID, TestTypeID);
+        }
+
+        public bool IsThereAnActiveScheduledTest(int TestTypeID)
+        {
+            return clsLocalDrivingLicenseApplicationData.IsThereAnActiveScheduledTest(this.LocalDrivingLicenseApplicationID, TestTypeID);
         }
     }
 }
