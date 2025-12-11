@@ -164,5 +164,10 @@ namespace DVLDBussinessLayer
             this.IsLocked = true;
             return _UpdateTestAppointment();
         }
+
+        public static bool DoesAttendTestType(int LDLApplicationID, int TestTypeID)
+        {
+            return clsTestAppointmentsData.DoesAtendTestType(LDLApplicationID, TestTypeID);
+        }
     }
 }
