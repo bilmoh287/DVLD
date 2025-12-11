@@ -37,18 +37,21 @@ namespace DVLDPresentationLayer
 
         private void frmListTestApppointments_Load(object sender, EventArgs e)
         {
-            dgvLicenseTestAppointments.DataSource = clsTestAppointments.GetAllTestAppointments();
+            dgvLicenseTestAppointments.DataSource = clsTestAppointments.GetApplicantTestAppointmentsPerTestType(_LDLApplicationID, (int)_TestType);
             dgvLicenseTestAppointments.Columns[0].HeaderText = "Appointmnet ID";
             dgvLicenseTestAppointments.Columns[0].Width = 150;
 
-            dgvLicenseTestAppointments.Columns[1].HeaderText = "Appointmnet Date";
-            dgvLicenseTestAppointments.Columns[1].Width = 250;
+            dgvLicenseTestAppointments.Columns[1].HeaderText = "L.D.L Application ID";
+            dgvLicenseTestAppointments.Columns[1].Width = 150;
 
-            dgvLicenseTestAppointments.Columns[2].HeaderText = "Paid Fees";
-            dgvLicenseTestAppointments.Columns[2].Width = 150;
+            dgvLicenseTestAppointments.Columns[2].HeaderText = "Appointmnet Date";
+            dgvLicenseTestAppointments.Columns[2].Width = 250;
 
-            dgvLicenseTestAppointments.Columns[3].HeaderText = "Is Locked";
+            dgvLicenseTestAppointments.Columns[3].HeaderText = "Paid Fees";
             dgvLicenseTestAppointments.Columns[3].Width = 150;
+
+            dgvLicenseTestAppointments.Columns[4].HeaderText = "Is Locked";
+            dgvLicenseTestAppointments.Columns[4].Width = 150;
         }
 
         private void takeTestToolStripMenuItem_Click(object sender, EventArgs e)

@@ -169,5 +169,10 @@ namespace DVLDBussinessLayer
         {
             return clsTestAppointmentsData.DoesAtendTestType(LDLApplicationID, TestTypeID);
         }
+
+        public static DataTable GetApplicantTestAppointmentsPerTestType(int LDLApplicationID, int TestTypeID)
+        {
+            return clsTestAppointmentsData.GetApplicantestAppointmentsPerTestType(LDLApplicationID, TestTypeID);
+        }
     }
 }

@@ -269,5 +269,39 @@ namespace DVLDDataAccessLayer
 
             return DoesAttend;
         }
+
+        public static DataTable GetApplicantestAppointmentsPerTestType(int LDLApplicationID, int TestTypeID)
+        {
+            DataTable dt = new DataTable();
+            string query = @"SELECT TestAppointmentID, LocalDrivingLicenseApplicationID, AppointmentDate, PaidFees, IsLocked
+                            FROM     TestAppointments
+                            WHERE TestAppointments.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID 
+                                    AND TestAppointments.TestTypeID = @TestTypeID
+                            ORDER BY TestAppointments.AppointmentDate DESC;";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LDLApplicationID);
+                    command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error loading TestAppointments: " + ex.Message);
+                    }
+                }
+            }
+
+            return dt;
+        }
     }
 }
