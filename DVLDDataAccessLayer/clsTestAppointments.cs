@@ -14,7 +14,8 @@ namespace DVLDDataAccessLayer
         {
             DataTable dt = new DataTable();
 
-            string query = "SELECT TestAppointmentID, AppointmentDate, PaidFees, IsLocked FROM TestAppointments;";
+            string query = @"SELECT * FROM TestAppointments_View
+                             ORDER BY AppointmentDate DESC;";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
@@ -45,7 +46,8 @@ namespace DVLDDataAccessLayer
             ref DateTime AppointmentDate,
             ref decimal PaidFees,
             ref int CreatedByUserID,
-            ref bool IsLocked)
+            ref bool IsLocked,
+            ref int RetakeTestApplicationID)
         {
             bool isFound = false;
 
@@ -73,6 +75,7 @@ namespace DVLDDataAccessLayer
                             PaidFees = Convert.ToDecimal(reader["PaidFees"]);
                             CreatedByUserID = Convert.ToInt32(reader["CreatedByUserID"]);
                             IsLocked = Convert.ToBoolean(reader["IsLocked"]);
+                            RetakeTestApplicationID = (reader["RetakeTestApplicationID"] == DBNull.Value) ? -1 : (int)reader["RetakeTestApplicationID"];
                         }
 
                         reader.Close();

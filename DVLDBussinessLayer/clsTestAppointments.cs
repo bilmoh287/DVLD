@@ -20,6 +20,8 @@ namespace DVLDBussinessLayer
         public decimal PaidFees { get; set; }
         public int CreatedByUserID { get; set; }
         public bool IsLocked { get; set; }
+        public int RetakeTestApplicationID { get; set; }
+
 
         // Optional relationships
         public clsUser CreatedByUserInfo;
@@ -34,11 +36,12 @@ namespace DVLDBussinessLayer
             this.PaidFees = 0;
             this.CreatedByUserID = -1;
             this.IsLocked = false;
+            this.RetakeTestApplicationID = -1;
             Mode = enMode.AddNew;
         }
 
         private clsTestAppointments(int TestAppointmentID, int TestTypeID, int LocalDrivingLicenseApplicationID,
-            DateTime AppointmentDate, decimal PaidFees, int CreatedByUserID, bool IsLocked)
+            DateTime AppointmentDate, decimal PaidFees, int CreatedByUserID, bool IsLocked, int RetakeTestApplicationID)
         {
             this.TestAppointmentID = TestAppointmentID;
             this.TestTypeID = TestTypeID;
@@ -47,6 +50,7 @@ namespace DVLDBussinessLayer
             this.PaidFees = PaidFees;
             this.CreatedByUserID = CreatedByUserID;
             this.IsLocked = IsLocked;
+            this.RetakeTestApplicationID = RetakeTestApplicationID;
 
             this.CreatedByUserInfo = clsUser.FindByUserID(CreatedByUserID);
             this.LDLApplicationInfo = clsLocalDrivingLicenseApplication.GetLocalDrivingLicenseApplicationInfoByID(LocalDrivingLicenseApplicationID);
@@ -67,6 +71,7 @@ namespace DVLDBussinessLayer
             decimal PaidFees = 0;
             int CreatedByUserID = -1;
             bool IsLocked = false;
+            int RetakeTestApplicationID = -1;
 
             bool isFound = clsTestAppointmentsData.GetTestAppointmentInfoByID(
                 TestAppointmentID,
@@ -75,7 +80,8 @@ namespace DVLDBussinessLayer
                 ref AppointmentDate,
                 ref PaidFees,
                 ref CreatedByUserID,
-                ref IsLocked
+                ref IsLocked,
+                ref RetakeTestApplicationID
             );
 
             if (isFound)
@@ -87,7 +93,8 @@ namespace DVLDBussinessLayer
                     AppointmentDate,
                     PaidFees,
                     CreatedByUserID,
-                    IsLocked
+                    IsLocked,
+                    RetakeTestApplicationID
                 );
             }
             else

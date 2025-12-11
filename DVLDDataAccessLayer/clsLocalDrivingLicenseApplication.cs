@@ -14,7 +14,8 @@ namespace DVLDDataAccessLayer
         {
             DataTable dtTestTypes = new DataTable();
 
-            string query = "select * from LocalDrivingLicenseApplications_View;";
+            string query = @"select * from LocalDrivingLicenseApplications_View
+                             ORDER BY ApplicationDate DESC;";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {

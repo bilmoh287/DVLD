@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDBussinessLayer;
 using DVLDPresentationLayer.Global_Classes;
+using DVLDPresentationLayer.Properties;
 
 namespace DVLDPresentationLayer
 {
@@ -25,20 +26,47 @@ namespace DVLDPresentationLayer
                 handler(PersonID);
             }
         }
-        int _TestAppointmentID;
-        //clsLocalDrivingLicenseApplication _LocalDrivingLicenseApplication;
-        clsLocalDrivingLicenseApplication _LDLApplication;
-        clsTestAppointments _TestAppointment;
-        clsApplication _Application;
+
+        public enum enMode { AddNew = 0, Update = 1 };
+        private enMode _Mode = enMode.AddNew;
+        public enum enCreationMode { FirstTimeSchedule = 0, RetakeTestSchedule = 1 };
+        private enCreationMode _CreationMode = enCreationMode.FirstTimeSchedule;
+
+        private clsTestTypes.enTestType _TestTypeID = clsTestTypes.enTestType.VisionTest;
+        private clsLocalDrivingLicenseApplication _LDLApplication;
+        private int _LDLApplicationID = -1;
+        private clsTestAppointments _TestAppointment;
+        private int _TestAppointmentID = -1;
         public ctlScheduleTest()
         {
             InitializeComponent();
         }
 
-        public int TestTypeID { set; get; }
-        public int AppointmnetID
-        {
-            get { return _TestAppointmentID; }
+        public clsTestTypes.enTestType TestTypeID 
+        {   get
+            {
+                return _TestTypeID;
+            }
+            set
+            {
+                _TestTypeID = value;
+                switch(_TestTypeID)
+                { 
+                    case clsTestTypes.enTestType.VisionTest:
+                        gbTestType.Text = "Vision Test";
+                        pbTestTypeImage.Image = Resources.Vision_512;
+                        break;
+                    case clsTestTypes.enTestType.WrittenTest:
+                        gbTestType.Text = "Written Test";
+                        pbTestTypeImage.Image = Resources.Written_Test_512;
+                        break;
+                    case clsTestTypes.enTestType.StreetTest:
+                        gbTestType.Text = "Street Test";
+                        pbTestTypeImage.Image = Resources.driving_test_512;
+                        break;
+                }
+                    
+            }
         }
 
         public void ResetTestAppointmentInfo()
@@ -72,15 +100,28 @@ namespace DVLDPresentationLayer
             lblTotalFees.Text = _LDLApplication.PaidFees.ToString();
         }
 
-        public void LoadScheduleTestInfo(int LDLApplicationID)
+        public void LoadScheduleTestInfo(int LDLApplicationID, int AppointmnetID = -1)
         {
+            //if no appointment id this means AddNew mode otherwise it's update mode.
+            if (AppointmnetID == -1)
+                _Mode = enMode.AddNew;
+            else
+                _Mode = enMode.Update;
+
+            _TestAppointmentID = AppointmnetID;
+            _LDLApplicationID = LDLApplicationID;
             _LDLApplication = clsLocalDrivingLicenseApplication.GetLocalDrivingLicenseApplicationInfoByID(LDLApplicationID);
+
             if (_LDLApplication == null)
             {
+                MessageBox.Show("Error: No Local Driving License Application with ID = " + _LDLApplicationID.ToString(),
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ResetTestAppointmentInfo();
-                MessageBox.Show("No Appointmnent with AppointmnentID = " + _TestAppointmentID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnSave.Enabled = false;
                 return;
             }
+
+            if()
             ResetTestAppointmentInfo();
             _FillAppointmentInfo();
         }
