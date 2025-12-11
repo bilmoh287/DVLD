@@ -189,6 +189,7 @@
             this.Name = "frmTakeTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmTakeTest";
+            this.Load += new System.EventHandler(this.frmTakeTest_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);

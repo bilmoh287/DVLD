@@ -218,11 +218,26 @@ namespace DVLDPresentationLayer
             }
         }
 
-        private void scheduleVisionTestToolStripMenuItem_Click(object sender, EventArgs e)
+        private void _Schedule(clsTestTypes.enTestType TestType)
         {
             int LDLApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
-            frmListTestApppointments frm = new frmListTestApppointments(LDLApplicationID);
+            frmListTestApppointments frm = new frmListTestApppointments(LDLApplicationID, TestType);
             frm.ShowDialog();
+            _RefreshList(null, LDLApplicationID);
+        }
+        private void scheduleVisionTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _Schedule(clsTestTypes.enTestType.VisionTest);
+        }
+
+        private void scheduleWrittenTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _Schedule(clsTestTypes.enTestType.WrittenTest);
+        }
+
+        private void scheduleStreetTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _Schedule(clsTestTypes.enTestType.StreetTest);
         }
     }
 }

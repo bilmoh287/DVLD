@@ -14,10 +14,12 @@ namespace DVLDPresentationLayer
     public partial class frmListTestApppointments : Form
     {
         int _LDLApplicationID = 1;
-        public frmListTestApppointments(int LDLApplicationID)
+        clsTestTypes.enTestType _TestType = clsTestTypes.enTestType.VisionTest;
+        public frmListTestApppointments(int LDLApplicationID, clsTestTypes.enTestType TestType)
         {
             InitializeComponent();
             _LDLApplicationID = LDLApplicationID;
+            _TestType = TestType;
             ctlDrivingLicenseApplicationInfo1.LoadLDLApplicationInfo(LDLApplicationID);
         }
         
@@ -28,7 +30,7 @@ namespace DVLDPresentationLayer
 
         private void btnAddNewAppointment_Click(object sender, EventArgs e)
         {
-            frmScheduleTest frm = new frmScheduleTest(_LDLApplicationID);
+            frmScheduleTest frm = new frmScheduleTest(_LDLApplicationID, _TestType);
             frm.ShowDialog();
             frmListTestApppointments_Load(null, null);
         }
@@ -52,8 +54,8 @@ namespace DVLDPresentationLayer
         private void takeTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int TestAppointmentID = (int)dgvLicenseTestAppointments.CurrentRow.Cells[0].Value;
-            frmTakeTest frm = new frmTakeTest(TestAppointmentID);
-            frm.ShowDialog();
+            //frmTakeTest frm = new frmTakeTest(TestAppointmentID);
+            //frm.ShowDialog();
         }
     }
 }

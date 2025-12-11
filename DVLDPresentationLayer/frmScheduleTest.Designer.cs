@@ -54,7 +54,7 @@
             this.ctlScheduleTest1.Name = "ctlScheduleTest1";
             this.ctlScheduleTest1.Size = new System.Drawing.Size(535, 716);
             this.ctlScheduleTest1.TabIndex = 1;
-            //this.ctlScheduleTest1.TestTypeID = 1;
+            this.ctlScheduleTest1.TestTypeID = DVLDBussinessLayer.clsTestTypes.enTestType.VisionTest;
             // 
             // frmScheduleTest
             // 
@@ -71,6 +71,7 @@
             this.Name = "frmScheduleTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmScheduleTest";
+            this.Load += new System.EventHandler(this.frmScheduleTest_Load);
             this.ResumeLayout(false);
 
         }
