@@ -187,10 +187,8 @@ namespace DVLDPresentationLayer
             lblFullName.Text = _LDLApplication.FullName;
             lblTrial.Text = "0"; // not yet implemented
 
-
-
-
-
+            if (!_HandleAppointmentLockedConstraint())
+                return;
         }
 
 
@@ -204,6 +202,21 @@ namespace DVLDPresentationLayer
                 dtpTestDate.Enabled = false;
                 return false;
             }
+            return true;
+        }
+
+        private bool _HandleAppointmentLockedConstraint()
+        {
+            if (_TestAppointment.IsLocked)
+            {
+                lblUserMessage.Visible = true;
+                lblUserMessage.Text = "Person already sat for the test, appointment loacked.";
+                dtpTestDate.Enabled = false;
+                btnSave.Enabled = false;
+                return false;
+            }
+            else
+                lblUserMessage.Visible = true;
             return true;
         }
         private bool HanleRetakeTestApplication()

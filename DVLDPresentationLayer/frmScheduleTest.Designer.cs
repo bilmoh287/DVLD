@@ -54,7 +54,7 @@
             this.ctlScheduleTest1.Name = "ctlScheduleTest1";
             this.ctlScheduleTest1.Size = new System.Drawing.Size(535, 716);
             this.ctlScheduleTest1.TabIndex = 1;
-            this.ctlScheduleTest1.TestTypeID = DVLDBussinessLayer.clsTestTypes.enTestType.VisionTest;
+            this.ctlScheduleTest1.TestTypeID = DVLDBussinessLayer.clsTestTypes.enTestType.WrittenTest;
             // 
             // frmScheduleTest
             // 

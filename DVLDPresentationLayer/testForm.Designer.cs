@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.ctlDrivingLicenseApplicationInfo1 = new DVLDPresentationLayer.ctlDrivingLicenseApplicationInfo();
-            this.ctlPersonCard1 = new DVLDPresentationLayer.ctlPersonCard();
+            this.ctlScheduledTest1 = new DVLDPresentationLayer.ctlScheduledTest();
+            this.ctlScheduleTest1 = new DVLDPresentationLayer.ctlScheduleTest();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(330, 377);
+            this.button1.Location = new System.Drawing.Point(335, 599);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(124, 63);
             this.button1.TabIndex = 1;
@@ -43,33 +43,34 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // ctlDrivingLicenseApplicationInfo1
+            // ctlScheduledTest1
             // 
-            this.ctlDrivingLicenseApplicationInfo1.BackColor = System.Drawing.Color.White;
-            this.ctlDrivingLicenseApplicationInfo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctlDrivingLicenseApplicationInfo1.Location = new System.Drawing.Point(3, 9);
-            this.ctlDrivingLicenseApplicationInfo1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ctlDrivingLicenseApplicationInfo1.Name = "ctlDrivingLicenseApplicationInfo1";
-            this.ctlDrivingLicenseApplicationInfo1.Size = new System.Drawing.Size(888, 369);
-            this.ctlDrivingLicenseApplicationInfo1.TabIndex = 2;
+            this.ctlScheduledTest1.BackColor = System.Drawing.Color.White;
+            this.ctlScheduledTest1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctlScheduledTest1.Location = new System.Drawing.Point(13, 14);
+            this.ctlScheduledTest1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctlScheduledTest1.Name = "ctlScheduledTest1";
+            this.ctlScheduledTest1.Size = new System.Drawing.Size(568, 577);
+            this.ctlScheduledTest1.TabIndex = 2;
+            this.ctlScheduledTest1.TestTypeID = DVLDBussinessLayer.clsTestTypes.enTestType.VisionTest;
             // 
-            // ctlPersonCard1
+            // ctlScheduleTest1
             // 
-            this.ctlPersonCard1.BackColor = System.Drawing.Color.White;
-            this.ctlPersonCard1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctlPersonCard1.Location = new System.Drawing.Point(-18, 437);
-            this.ctlPersonCard1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ctlPersonCard1.Name = "ctlPersonCard1";
-            this.ctlPersonCard1.Size = new System.Drawing.Size(841, 285);
-            this.ctlPersonCard1.TabIndex = 3;
+            this.ctlScheduleTest1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctlScheduleTest1.Location = new System.Drawing.Point(618, 14);
+            this.ctlScheduleTest1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctlScheduleTest1.Name = "ctlScheduleTest1";
+            this.ctlScheduleTest1.Size = new System.Drawing.Size(535, 716);
+            this.ctlScheduleTest1.TabIndex = 3;
+            this.ctlScheduleTest1.TestTypeID = DVLDBussinessLayer.clsTestTypes.enTestType.VisionTest;
             // 
             // testForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(917, 736);
-            this.Controls.Add(this.ctlPersonCard1);
-            this.Controls.Add(this.ctlDrivingLicenseApplicationInfo1);
+            this.ClientSize = new System.Drawing.Size(1267, 800);
+            this.Controls.Add(this.ctlScheduleTest1);
+            this.Controls.Add(this.ctlScheduledTest1);
             this.Controls.Add(this.button1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -82,7 +83,7 @@
 
         #endregion
         private System.Windows.Forms.Button button1;
-        private ctlDrivingLicenseApplicationInfo ctlDrivingLicenseApplicationInfo1;
-        private ctlPersonCard ctlPersonCard1;
+        private ctlScheduledTest ctlScheduledTest1;
+        private ctlScheduleTest ctlScheduleTest1;
     }
 }
