@@ -267,5 +267,39 @@ namespace DVLDDataAccessLayer
 
             return DoesAttend;
         }
+
+        public static bool DoesPassTestType(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            bool DoesAttend = false;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string query = @"SELECT TOP 1 Tests.TestResult
+                                FROM     TestAppointments INNER JOIN
+                                                  Tests ON TestAppointments.TestAppointmentID = Tests.TestAppointmentID
+                                WHERE TestAppointments.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID
+		                                AND TestAppointments.TestTypeID = @TestTypeID
+                                ORDER BY AppointmentDate DESC;";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+                    command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+
+                    try
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+                        DoesAttend = result != null;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error checking if Applicant Pass Test: " + ex.Message);
+                    }
+                }
+            }
+
+            return DoesAttend;
+        }
     }
 }

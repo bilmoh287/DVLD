@@ -139,8 +139,6 @@ namespace DVLDPresentationLayer
                 return;
             }
 
-            if (!_HandleActiveTestAppointmentConstraint())
-                return;
 
             if (_Mode == enMode.AddNew)
             {
@@ -187,7 +185,11 @@ namespace DVLDPresentationLayer
             lblFullName.Text = _LDLApplication.FullName;
             lblTrial.Text = "0"; // not yet implemented
 
+            if (!_HandleActiveTestAppointmentConstraint())
+                return;
             if (!_HandleAppointmentLockedConstraint())
+                return;
+            if (!_HandlePrviousTestConstraint())
                 return;
         }
 
@@ -218,6 +220,68 @@ namespace DVLDPresentationLayer
             else
                 lblUserMessage.Visible = true;
             return true;
+        }
+
+        private bool _HandlePrviousTestConstraint()
+        {
+            //we need to make sure that this person passed the prvious required test before apply to the new test.
+            //person cannno apply for written test unless s/he passes the vision test.
+            //person cannot apply for street test unless s/he passes the written test.
+
+            switch (TestTypeID)
+            {
+                case clsTestTypes.enTestType.VisionTest:
+                    //in this case no required prvious test to pass.
+                    lblUserMessage.Visible = false;
+
+                    return true;
+
+                case clsTestTypes.enTestType.WrittenTest:
+                    //Written Test, you cannot sechdule it before person passes the vision test.
+                    //we check if pass visiontest 1.
+                    if (!_LDLApplication.DoesPassTestType(clsTestTypes.enTestType.VisionTest))
+                    {
+                        lblUserMessage.Text = "Cannot Sechule, Vision Test should be passed first";
+                        lblUserMessage.Visible = true;
+                        btnSave.Enabled = false;
+                        dtpTestDate.Enabled = false;
+                        return false;
+                    }
+                    else
+                    {
+                        lblUserMessage.Visible = false;
+                        btnSave.Enabled = true;
+                        dtpTestDate.Enabled = true;
+                    }
+
+
+                    return true;
+
+                case clsTestTypes.enTestType.StreetTest:
+
+                    //Street Test, you cannot sechdule it before person passes the written test.
+                    //we check if pass Written 2.
+                    if (!_LDLApplication.DoesPassTestType(clsTestTypes.enTestType.WrittenTest))
+                    {
+                        lblUserMessage.Text = "Cannot Sechule, Written Test should be passed first";
+                        lblUserMessage.Visible = true;
+                        btnSave.Enabled = false;
+                        dtpTestDate.Enabled = false;
+                        return false;
+                    }
+                    else
+                    {
+                        lblUserMessage.Visible = false;
+                        btnSave.Enabled = true;
+                        dtpTestDate.Enabled = true;
+                    }
+
+
+                    return true;
+
+            }
+            return true;
+
         }
         private bool HanleRetakeTestApplication()
         {
@@ -259,7 +323,7 @@ namespace DVLDPresentationLayer
             _TestAppointment.TestTypeID = (int)_TestTypeID;
             _TestAppointment.AppointmentDate = dtpTestDate.Value;
             _TestAppointment.IsLocked = false;
-            _TestAppointment.CreatedByUserID = clsGlobal.CurrentUser.PersonID;
+            _TestAppointment.CreatedByUserID = clsGlobal.CurrentUser.UserID;
 
             if (_CreationMode == enCreationMode.RetakeTestSchedule)
             {

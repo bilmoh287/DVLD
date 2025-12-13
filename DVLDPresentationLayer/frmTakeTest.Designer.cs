@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctlScheduledTest1 = new DVLDPresentationLayer.ctlScheduledTest();
             this.lblUserMessage = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -39,20 +38,10 @@
             this.label10 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.ctlScheduledTest1 = new DVLDPresentationLayer.ctlScheduledTest();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ctlScheduledTest1
-            // 
-            this.ctlScheduledTest1.BackColor = System.Drawing.Color.White;
-            this.ctlScheduledTest1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctlScheduledTest1.Location = new System.Drawing.Point(5, -3);
-            this.ctlScheduledTest1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ctlScheduledTest1.Name = "ctlScheduledTest1";
-            this.ctlScheduledTest1.Size = new System.Drawing.Size(568, 577);
-            this.ctlScheduledTest1.TabIndex = 0;
-            this.ctlScheduledTest1.TestTypeID = DVLDBussinessLayer.clsTestTypes.enTestType.VisionTest;
             // 
             // lblUserMessage
             // 
@@ -80,6 +69,7 @@
             this.btnClose.TabIndex = 208;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnSave
             // 
@@ -93,6 +83,7 @@
             this.btnSave.TabIndex = 207;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtNotes
             // 
@@ -126,6 +117,7 @@
             // 
             // pictureBox7
             // 
+            this.pictureBox7.Image = global::DVLDPresentationLayer.Properties.Resources.notes;
             this.pictureBox7.Location = new System.Drawing.Point(89, 615);
             this.pictureBox7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox7.Name = "pictureBox7";
@@ -147,6 +139,7 @@
             // 
             // pictureBox4
             // 
+            this.pictureBox4.Image = global::DVLDPresentationLayer.Properties.Resources.Question_32;
             this.pictureBox4.Location = new System.Drawing.Point(89, 579);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox4.Name = "pictureBox4";
@@ -165,6 +158,17 @@
             this.label8.Size = new System.Drawing.Size(79, 25);
             this.label8.TabIndex = 200;
             this.label8.Text = "Result:";
+            // 
+            // ctlScheduledTest1
+            // 
+            this.ctlScheduledTest1.BackColor = System.Drawing.Color.White;
+            this.ctlScheduledTest1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctlScheduledTest1.Location = new System.Drawing.Point(5, -3);
+            this.ctlScheduledTest1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctlScheduledTest1.Name = "ctlScheduledTest1";
+            this.ctlScheduledTest1.Size = new System.Drawing.Size(568, 577);
+            this.ctlScheduledTest1.TabIndex = 0;
+            this.ctlScheduledTest1.TestTypeID = DVLDBussinessLayer.clsTestTypes.enTestType.VisionTest;
             // 
             // frmTakeTest
             // 

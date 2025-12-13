@@ -271,5 +271,32 @@ namespace DVLDDataAccessLayer
             return dt;
         }
 
+        public static bool UpdateAppointmentLock(int TestAppointmnentID)
+        {
+            int rowsAffected = 0;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string query = @"UPDATE TestAppointments
+                                SET 
+	                                IsLocked = 1
+                                WHERE TestAppointmentID = @TestAppointmentID";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmnentID);
+
+                try
+                {
+                    connection.Open();
+                    rowsAffected = command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error Updating TestAppointments: " + ex.Message);
+                }
+            }
+
+            return (rowsAffected > 0);
+        }
     }
 }

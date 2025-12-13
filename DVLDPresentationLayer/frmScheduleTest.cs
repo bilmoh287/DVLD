@@ -29,5 +29,10 @@ namespace DVLDPresentationLayer
             ctlScheduleTest1.TestTypeID = _TesType;
             ctlScheduleTest1.LoadScheduleTestInfo(_LDLApplicationID, _TestAppointmentID);
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
