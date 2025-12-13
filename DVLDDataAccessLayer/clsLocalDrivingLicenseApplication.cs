@@ -270,7 +270,7 @@ namespace DVLDDataAccessLayer
 
         public static bool DoesPassTestType(int LocalDrivingLicenseApplicationID, int TestTypeID)
         {
-            bool DoesAttend = false;
+            bool DoesPass = false;
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
@@ -290,7 +290,11 @@ namespace DVLDDataAccessLayer
                     {
                         connection.Open();
                         object result = command.ExecuteScalar();
-                        DoesAttend = result != null;
+
+                        if (result != null && bool.TryParse(result.ToString(), out bool returnedResult))
+                        {
+                            DoesPass = returnedResult;
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -299,7 +303,7 @@ namespace DVLDDataAccessLayer
                 }
             }
 
-            return DoesAttend;
+            return DoesPass;
         }
 
         public static int TotalTrialPerTest(int LocalDrivingLicenseApplicationID, int TestTypeID)

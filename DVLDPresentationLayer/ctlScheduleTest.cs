@@ -164,12 +164,12 @@ namespace DVLDPresentationLayer
             // FIll the Retake Test info Based on the Creation Mode
             if(_CreationMode == enCreationMode.RetakeTestSchedule)
             {
-                decimal RetakeTestFee = clsApplication.Find((int)clsApplication.enApplicationType.RetakeTest).PaidFees;
+                decimal RetakeTestFee = clsApplicationTypes.FindApplicationType((int)clsApplication.enApplicationType.RetakeTest).ApplicationTypeFees;
                 lblRetakeAppFees.Text = RetakeTestFee.ToString();
                 gbRetakeTestInfo.Enabled = true;
                 lblTitle.Text = "Schedule Retake Test";
                 lblRetakeTestAppID.Text = "-1";
-                lblTotalFees.Text = (_TestAppointment.PaidFees + RetakeTestFee).ToString();
+                lblTotalFees.Text = (Convert.ToDecimal(lblFees.Text) + RetakeTestFee).ToString();
             }
             else
             {
