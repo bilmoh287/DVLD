@@ -183,7 +183,9 @@ namespace DVLDPresentationLayer
             lblLocalDrivingLicenseAppID.Text = _LDLApplication.LocalDrivingLicenseApplicationID.ToString();
             lblDrivingClass.Text = _LDLApplication.LicesnseClassInfo.ClassName;
             lblFullName.Text = _LDLApplication.FullName;
-            lblTrial.Text = "0"; // not yet implemented
+
+            //return total trial for the specific test type
+            lblTrial.Text = _LDLApplication.TotalTrialsPerTest(_TestTypeID).ToString();
 
             if (!_HandleActiveTestAppointmentConstraint())
                 return;

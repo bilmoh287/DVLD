@@ -35,7 +35,7 @@ namespace DVLDPresentationLayer
             _LDLApplicationID = _LDLApplication.LocalDrivingLicenseApplicationID;
             lblLocalDrivingLicenseApplicationID.Text = _LDLApplication.LocalDrivingLicenseApplicationID.ToString();
             lblAppliedFor.Text = _LDLApplication.LicesnseClassInfo.ClassName;
-            lblPassedTests.Text = "0/3"; //Not yet implemented
+            lblPassedTests.Text = "0/3"; 
             ctlApplicationBasicInfo1.LoadBasicApplicationInfo(_LDLApplication.ApplicationID);
         }
 

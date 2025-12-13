@@ -301,5 +301,38 @@ namespace DVLDDataAccessLayer
 
             return DoesAttend;
         }
+
+        public static int TotalTrialPerTest(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            int TotalTrialsPerTest = -1;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string query = @"SELECT TotalTrialPerTest = COUNT(TestID)
+                                FROM     TestAppointments INNER JOIN
+                                                  Tests ON TestAppointments.TestAppointmentID = Tests.TestAppointmentID
+                                WHERE TestAppointments.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID 
+                                      AND TestAppointments.TestTypeID = @TestTypeID;";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+                    command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+
+                    try
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+                        TotalTrialsPerTest = (result == null) ? 0 : Convert.ToInt32(result);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error counting trials per test: " + ex.Message);
+                    }
+                }
+            }
+
+            return TotalTrialsPerTest;
+        }
     }
 }

@@ -78,7 +78,7 @@ namespace DVLDPresentationLayer
             lblLocalDrivingLicenseAppID.Text = _TestAppointment.LocalDrivingLicenseApplicationID.ToString();
             lblDrivingClass.Text = _TestAppointment.LDLApplicationInfo.LicesnseClassInfo.ClassName;
             lblFullName.Text = _TestAppointment.LDLApplicationInfo.FullName;
-            lblTrial.Text ="0"; // will be applied
+            lblTrial.Text = _TestAppointment.LDLApplicationInfo.TotalTrialsPerTest(_TestTypeID).ToString();
             lblDate.Text = _TestAppointment.AppointmentDate.ToString();
             lblFees.Text = _TestAppointment.PaidFees.ToString();
         }
