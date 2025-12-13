@@ -149,7 +149,7 @@ namespace DVLDPresentationLayer
             int MinimumAllowedAge = clsLicenseClasses.Find(cbLicenseClass.Text).MinimumAllowedAge;
             DateTime ApplicantDateOfBirth = clsPerson.Find(ctlPersonCardWithFilter1.PersonID).DateOfBirth;
             int ApplicantAge = clsUtil.GetDifferenceInYears(ApplicantDateOfBirth, DateTime.Now);
-            MessageBox.Show($"ApplicantAge = {ApplicantAge}, MinAge = {MinimumAllowedAge}");
+            //MessageBox.Show($"ApplicantAge = {ApplicantAge}, MinAge = {MinimumAllowedAge}");
             if (MinimumAllowedAge > ApplicantAge)
             {
                 MessageBox.Show($"Person is not allowed for this Driving License Class, it requires a {MinimumAllowedAge} years old and above", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

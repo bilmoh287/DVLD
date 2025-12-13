@@ -194,7 +194,9 @@ namespace DVLDDataAccessLayer
                                 FROM     Applications INNER JOIN
                                                   LocalDrivingLicenseApplications ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID INNER JOIN
                                                   LicenseClasses ON LocalDrivingLicenseApplications.LicenseClassID = LicenseClasses.LicenseClassID
-                                WHERE LicenseClasses.LicenseClassID = @LicenseClassID AND ApplicantPersonID = @PersonID AND Applications.ApplicationTypeID = @ApplicationTypeID";
+                                WHERE LicenseClasses.LicenseClassID = @LicenseClassID AND ApplicantPersonID = @PersonID AND Applications.ApplicationTypeID = @ApplicationTypeID
+                                      AND ApplicationStuatus = 1;";
+
 
                 using (SqlCommand command = new SqlCommand(Query, connection))
                 {
