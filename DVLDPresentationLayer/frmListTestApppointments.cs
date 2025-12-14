@@ -36,14 +36,30 @@ namespace DVLDPresentationLayer
                 MessageBox.Show("Person Already have an active appointment for this test, You cannot add new appointment", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (localDrivingLicenseApplication.DoesPassTestType(_TestType))
+
+            clsTests LastTest = localDrivingLicenseApplication.GetLastTestPerTestType(_TestType);
+            if(LastTest == null)
+            {
+                frmScheduleTest frm = new frmScheduleTest(_LDLApplicationID, _TestType);
+                frm.ShowDialog();
+                frmListTestApppointments_Load(null, null);
+                return;
+            }
+            if (LastTest.TestResult)
             {
                 MessageBox.Show("This person already passed this test before, you can only retake faild test", "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            frmScheduleTest frm = new frmScheduleTest(_LDLApplicationID, _TestType);
-            frm.ShowDialog();
+
+            frmScheduleTest frm2 = new frmScheduleTest(_LDLApplicationID, _TestType);
+            frm2.ShowDialog();
             frmListTestApppointments_Load(null, null);
+            //if (localDrivingLicenseApplication.DoesPassTestType(_TestType))
+            //{
+            //    MessageBox.Show("This person already passed this test before, you can only retake faild test", "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+
         }
 
         private void frmListTestApppointments_Load(object sender, EventArgs e)

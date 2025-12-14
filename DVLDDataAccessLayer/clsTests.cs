@@ -156,5 +156,57 @@ namespace DVLDDataAccessLayer
             }
             return (rowsAffected > 0);
         }
+
+        public static bool GetLastTestByPersonAndTestTypeAndLicenseClass
+            (int PersonID, int LicenseClassID, int TestTypeID, int LocalDrivingLicenseApplicationID, ref int TestID,
+              ref int TestAppointmentID, ref bool TestResult,
+              ref string Notes, ref int CreatedByUserID)
+        {
+            bool isFound = false;
+            string query = @"SELECT TOP 1 Tests.TestID, 
+                            Tests.TestAppointmentID, Tests.TestResult, 
+			                Tests.Notes, Tests.CreatedByUserID, Applications.ApplicantPersonID
+                            FROM            LocalDrivingLicenseApplications INNER JOIN
+                                                     Tests INNER JOIN
+                                                     TestAppointments ON Tests.TestAppointmentID = TestAppointments.TestAppointmentID ON LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = TestAppointments.LocalDrivingLicenseApplicationID INNER JOIN
+                                                     Applications ON LocalDrivingLicenseApplications.ApplicationID = Applications.ApplicationID
+                            WHERE        (Applications.ApplicantPersonID = @ApplicantPersonID) 
+                                    AND (LocalDrivingLicenseApplications.LicenseClassID = @LicenseClassID)
+                                    AND ( TestAppointments.TestTypeID= @TestTypeID)
+                                    AND ( TestAppointments.LocalDrivingLicenseApplicationID= @LocalDrivingLicenseApplicationID)
+                            ORDER BY Tests.TestAppointmentID DESC;";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@ApplicantPersonID", PersonID);
+                command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+                command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+                command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", TestTypeID);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        TestID = (int)reader["TestID"];
+                        TestAppointmentID = (int)reader["TestAppointmentID"];
+                        TestResult = (bool)reader["TestResult"];
+                        Notes = reader["Notes"] != DBNull.Value ? (string)reader["Notes"] : "";
+                        CreatedByUserID = (int)reader["CreatedByUserID"];
+                        isFound = true;
+                    }
+
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error reading Test: " + ex.Message);
+                }
+            }
+            return isFound;
+        }
     }
 }

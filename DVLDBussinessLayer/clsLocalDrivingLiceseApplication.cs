@@ -147,5 +147,10 @@ namespace DVLDBussinessLayer
         {
             return clsLocalDrivingLicenseApplicationData.TotalTrialPerTest(this.LocalDrivingLicenseApplicationID, (int)TestTypeID);
         }
+
+        public clsTests GetLastTestPerTestType(clsTestTypes.enTestType TestTypeID)
+        {
+            return clsTests.FindLastTestPerPersonAndLicenseClass(this.ApplicantPersonID, this.LicenseClassID, TestTypeID, this.LocalDrivingLicenseApplicationID);
+        }
     }
 }

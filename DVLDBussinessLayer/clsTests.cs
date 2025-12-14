@@ -101,5 +101,25 @@ namespace DVLDBussinessLayer
         {
             return clsTestsData.DeleteTest(testID);
         }
+
+        public static clsTests FindLastTestPerPersonAndLicenseClass(int PersonID, int LicenseClassID, clsTestTypes.enTestType TestTypeID, int LocalDrivingLicenseApplicationID)
+        {
+            int TestID = -1;
+            int testAppointmentID = -1;
+            bool testResult = false;
+            string notes = "";
+            int createdByUserID = -1;
+
+            bool isFound = clsTestsData.GetLastTestByPersonAndTestTypeAndLicenseClass(PersonID, LicenseClassID, LocalDrivingLicenseApplicationID, (int)TestTypeID, ref TestID, ref testAppointmentID, ref testResult, ref notes, ref createdByUserID);
+
+            if (isFound)
+            {
+                return new clsTests(TestID, testAppointmentID, testResult, notes, createdByUserID);
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }
