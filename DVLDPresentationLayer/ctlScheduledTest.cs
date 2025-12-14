@@ -75,6 +75,7 @@ namespace DVLDPresentationLayer
         private void _FillTestAppointmentInfo()
         {
             //gbTestType.Text = clsTestTypes.Find((clsTestTypes.enTestType)_TestAppointment.TestTypeID).TestTypeTitle;
+            TestTypeID = _TestTypeID;
             lblLocalDrivingLicenseAppID.Text = _TestAppointment.LocalDrivingLicenseApplicationID.ToString();
             lblDrivingClass.Text = _TestAppointment.LDLApplicationInfo.LicesnseClassInfo.ClassName;
             lblFullName.Text = _TestAppointment.LDLApplicationInfo.FullName;
