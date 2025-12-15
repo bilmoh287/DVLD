@@ -71,7 +71,7 @@
             this.dgvLocalDrivingLicenseApplications.AllowUserToOrderColumns = true;
             this.dgvLocalDrivingLicenseApplications.BackgroundColor = System.Drawing.Color.White;
             this.dgvLocalDrivingLicenseApplications.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLocalDrivingLicenseApplications.Location = new System.Drawing.Point(12, 315);
+            this.dgvLocalDrivingLicenseApplications.Location = new System.Drawing.Point(12, 314);
             this.dgvLocalDrivingLicenseApplications.Name = "dgvLocalDrivingLicenseApplications";
             this.dgvLocalDrivingLicenseApplications.ReadOnly = true;
             this.dgvLocalDrivingLicenseApplications.RowHeadersWidth = 51;
@@ -168,6 +168,7 @@
             this.showPersonLicenseHistoryToolStripMenuItem});
             this.cmsApplications.Name = "contextMenuStrip1";
             this.cmsApplications.Size = new System.Drawing.Size(309, 344);
+            this.cmsApplications.Opening += new System.ComponentModel.CancelEventHandler(this.cmsApplications_Opening);
             // 
             // showDetailsToolStripMenuItem
             // 

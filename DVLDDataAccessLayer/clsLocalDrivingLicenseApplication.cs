@@ -279,7 +279,7 @@ namespace DVLDDataAccessLayer
                                                   Tests ON TestAppointments.TestAppointmentID = Tests.TestAppointmentID
                                 WHERE TestAppointments.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID
 		                                AND TestAppointments.TestTypeID = @TestTypeID
-                                ORDER BY AppointmentDate DESC;";
+                                ORDER BY TestAppointments.TestAppointmentID DESC;";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
