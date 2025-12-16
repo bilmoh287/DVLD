@@ -96,34 +96,34 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ctlScheduledTest.cs">
+    <Compile Include="Tests\Controls\ctlScheduledTest.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ctlScheduledTest.Designer.cs">
+    <Compile Include="Tests\Controls\ctlScheduledTest.Designer.cs">
       <DependentUpon>ctlScheduledTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="ctlScheduleTest.cs">
+    <Compile Include="Tests\Controls\ctlScheduleTest.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ctlScheduleTest.Designer.cs">
+    <Compile Include="Tests\Controls\ctlScheduleTest.Designer.cs">
       <DependentUpon>ctlScheduleTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmListTestApppointments.cs">
+    <Compile Include="Tests\frmListTestApppointments.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmListTestApppointments.Designer.cs">
+    <Compile Include="Tests\frmListTestApppointments.Designer.cs">
       <DependentUpon>frmListTestApppointments.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmScheduleTest.cs">
+    <Compile Include="Tests\frmScheduleTest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmScheduleTest.Designer.cs">
+    <Compile Include="Tests\frmScheduleTest.Designer.cs">
       <DependentUpon>frmScheduleTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTakeTest.cs">
+    <Compile Include="Tests\frmTakeTest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTakeTest.Designer.cs">
+    <Compile Include="Tests\frmTakeTest.Designer.cs">
       <DependentUpon>frmTakeTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Global Classes\clsFormat.cs" />
@@ -257,19 +257,19 @@
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ctlScheduledTest.resx">
+    <EmbeddedResource Include="Tests\Controls\ctlScheduledTest.resx">
       <DependentUpon>ctlScheduledTest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ctlScheduleTest.resx">
+    <EmbeddedResource Include="Tests\Controls\ctlScheduleTest.resx">
       <DependentUpon>ctlScheduleTest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmListTestApppointments.resx">
+    <EmbeddedResource Include="Tests\frmListTestApppointments.resx">
       <DependentUpon>frmListTestApppointments.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmScheduleTest.resx">
+    <EmbeddedResource Include="Tests\frmScheduleTest.resx">
       <DependentUpon>frmScheduleTest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTakeTest.resx">
+    <EmbeddedResource Include="Tests\frmTakeTest.resx">
       <DependentUpon>frmTakeTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test Types\frmListTestTypes.resx">
