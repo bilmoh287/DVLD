@@ -284,5 +284,13 @@ namespace DVLDPresentationLayer
                 scheduleStreetTestToolStripMenuItem.Enabled = PassedVisionTest && PassedWrittenTest && !PassedStreetTest;
             }
         }
+
+        private void issueDrivingLicenseFirstTimeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int LDLApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
+            frmIssueDriverLicenseFirstTime frm = new frmIssueDriverLicenseFirstTime(LDLApplicationID);
+            frm.ShowDialog();
+            _RefreshList(null, LDLApplicationID);
+        }
     }
 }

@@ -121,5 +121,10 @@ namespace DVLDBussinessLayer
                 return null;
             }
         }
+
+        public static int CountPassedTests(int LDLApplicationID)
+        {
+            return clsTestsData.CountPassedTest(LDLApplicationID);
+        }
     }
 }

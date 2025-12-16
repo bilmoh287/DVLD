@@ -152,5 +152,58 @@ namespace DVLDBussinessLayer
         {
             return clsTests.FindLastTestPerPersonAndLicenseClass(this.ApplicantPersonID, this.LicenseClassID, TestTypeID, this.LocalDrivingLicenseApplicationID);
         }
+
+        public bool PassedAllTest(int LDLApplicationID)
+        {
+            return clsTests.CountPassedTests(LDLApplicationID) == 3;
+        }
+
+        public int IssueLicenseForTheFirtTime(string Notes, int CreatedByUserID)
+        {
+            int DriverID = -1;
+            clsDrivers Driver = clsDrivers.FindByPersonID(this.ApplicantPersonID);
+
+            if( Driver == null )
+            {
+                Driver = new clsDrivers();
+                Driver.PersonID = this.ApplicantPersonID;
+                Driver.CreatedDate = DateTime.Now; 
+                Driver.CreatedByUserID = CreatedByUserID;
+
+                if (Driver.Save())
+                    DriverID = Driver.DriverID;
+                else
+                    return -1;
+            }
+            else
+            {
+                DriverID = Driver.DriverID;
+            }
+
+            //now we diver is there, so we add new licesnse
+            clsLicenses License = new clsLicenses();
+            License.ApplicationID = this.ApplicationID;
+            License.DriverID = DriverID;
+            License.LicenseClass = this.LicenseClassID;
+            License.IssueDate = DateTime.Now;
+            License.ExpirationDate = DateTime.Now.AddYears(this.LicesnseClassInfo.DefaultValidityLength);
+            License.Notes = Notes;
+            License.PaidFees = this.LicesnseClassInfo.ClassFees;
+            License.IsActive = true;
+            License.IssueReason = clsLicenses.enIssueReason.FirstTime;
+            License.CreatedByUserID = CreatedByUserID;
+
+            if (License.Save())
+            {
+                //now we should set the application status to complete.
+                this.SetComplete();
+
+                return License.LicenseID;
+            }
+
+            else
+                return -1;
+
+        }
     }
 }

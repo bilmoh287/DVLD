@@ -163,5 +163,10 @@ namespace DVLDBussinessLayer
         {
             return clsApplicationData.UpdateStatus(ApplicationID, (byte)enApplicationStatus.Cancelled);
         }
+
+        public bool SetComplete()
+        {
+            return clsApplicationData.UpdateStatus(ApplicationID, (byte)enApplicationStatus.Completed);
+        }
     }
 }

@@ -208,5 +208,40 @@ namespace DVLDDataAccessLayer
             }
             return isFound;
         }
+
+        public static int CountPassedTest(int LocalDrivingLicenseApplicationID)
+        {
+            int CountPassedTest = -1;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string query = @"SELECT PassedTestCount = COUNT(Tests.TestID)
+                                FROM     Tests INNER JOIN
+                                                  TestAppointments ON Tests.TestAppointmentID = TestAppointments.TestAppointmentID
+                                WHERE TestAppointments.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID AND Tests.TestResult = 1;";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+
+                    try
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+
+                        if (result != null && byte.TryParse(result.ToString(), out byte returnedResult))
+                        {
+                            CountPassedTest = returnedResult;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error checking if Applicant Pass Test: " + ex.Message);
+                    }
+                }
+            }
+
+            return CountPassedTest;
+        }
     }
 }

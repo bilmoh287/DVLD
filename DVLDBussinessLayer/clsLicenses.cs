@@ -13,7 +13,16 @@ namespace DVLDBussinessLayer
         public enum enMode { AddNew = 0, Update = 1 };
         public enMode Mode = enMode.AddNew;
 
-        // Corresponds to the database fields
+        // Issueing Reason
+        public enum enIssueReason : byte
+        {
+            FirstTime = 1,
+            Renew = 2,
+            ReplacementForDamaged = 3,
+            ReplacementForLost = 4
+        }
+
+        // Database fields
         public int LicenseID { get; set; }
         public int ApplicationID { get; set; }
         public int DriverID { get; set; }
@@ -23,63 +32,58 @@ namespace DVLDBussinessLayer
         public string Notes { get; set; }
         public decimal PaidFees { get; set; }
         public bool IsActive { get; set; }
-        public byte IssueReason { get; set; } // Matches tinyint
+        public enIssueReason IssueReason { get; set; }
         public int CreatedByUserID { get; set; }
 
-        // Enum for IssueReason (Based on License table image/details)
-        public enum enIssueReason : byte
+        // public clsDriver DriverInfo;
+        // public clsApplication ApplicationInfo;
+
+        // Read-only helper (mentor-style)
+        public string IssueReasonText
         {
-            FirstTime = 1,
-            Renew = 2,
-            ReplacementForDamaged = 3,
-            ReplacementForLost = 4
+            get
+            {
+                return GetIssueReasonText(this.IssueReason);
+            }
         }
 
-        // Optional relationships (similar to clsTestAppointments)
-        // public clsApplication ApplicationInfo;
-        // public clsDriver DriverInfo;
-        // public clsUser CreatedByUserInfo;
-
-        // Default Constructor (For creating a new license object)
         public clsLicenses()
         {
-            this.LicenseID = -1;
-            this.ApplicationID = -1;
-            this.DriverID = -1;
-            this.LicenseClass = -1;
-            this.IssueDate = DateTime.Now;
-            this.ExpirationDate = DateTime.Now;
-            this.Notes = "";
-            this.PaidFees = 0;
-            this.IsActive = true;
-            this.IssueReason = (byte)enIssueReason.FirstTime;
-            this.CreatedByUserID = -1;
+            LicenseID = -1;
+            ApplicationID = -1;
+            DriverID = -1;
+            LicenseClass = -1;
+            IssueDate = DateTime.Now;
+            ExpirationDate = DateTime.Now;
+            Notes = "";
+            PaidFees = 0;
+            IsActive = true;
+            IssueReason = enIssueReason.FirstTime;
+            CreatedByUserID = -1;
+
             Mode = enMode.AddNew;
         }
 
-        // Private Constructor (For loading an existing license object)
-        private clsLicenses(int LicenseID, int ApplicationID, int DriverID, int LicenseClass,
-                           DateTime IssueDate, DateTime ExpirationDate, string Notes,
-                           decimal PaidFees, bool IsActive, byte IssueReason, int CreatedByUserID)
+        private clsLicenses(int licenseID, int applicationID, int driverID, int licenseClass,
+                            DateTime issueDate, DateTime expirationDate, string notes,
+                            decimal paidFees, bool isActive,
+                            enIssueReason issueReason, int createdByUserID)
         {
-            this.LicenseID = LicenseID;
-            this.ApplicationID = ApplicationID;
-            this.DriverID = DriverID;
-            this.LicenseClass = LicenseClass;
-            this.IssueDate = IssueDate;
-            this.ExpirationDate = ExpirationDate;
-            this.Notes = Notes;
-            this.PaidFees = PaidFees;
-            this.IsActive = IsActive;
-            this.IssueReason = IssueReason;
-            this.CreatedByUserID = CreatedByUserID;
-
-            // Initialize relationship objects here if needed
+            LicenseID = licenseID;
+            ApplicationID = applicationID;
+            DriverID = driverID;
+            LicenseClass = licenseClass;
+            IssueDate = issueDate;
+            ExpirationDate = expirationDate;
+            Notes = notes;
+            PaidFees = paidFees;
+            IsActive = isActive;
+            IssueReason = issueReason;
+            CreatedByUserID = createdByUserID;
 
             Mode = enMode.Update;
         }
 
-        // Method 1: Static Find method to retrieve an existing license
         public static clsLicenses Find(int LicenseID)
         {
             int ApplicationID = -1, DriverID = -1, LicenseClass = -1, CreatedByUserID = -1;
@@ -87,49 +91,73 @@ namespace DVLDBussinessLayer
             string Notes = "";
             decimal PaidFees = 0;
             bool IsActive = false;
-            byte IssueReason = 0;
+            byte IssueReasonDB = 0;
 
             bool isFound = clsLicensesData.GetLicenseInfoByID(
-                LicenseID, ref ApplicationID, ref DriverID, ref LicenseClass,
-                ref IssueDate, ref ExpirationDate, ref Notes, ref PaidFees,
-                ref IsActive, ref IssueReason, ref CreatedByUserID);
+                LicenseID,
+                ref ApplicationID,
+                ref DriverID,
+                ref LicenseClass,
+                ref IssueDate,
+                ref ExpirationDate,
+                ref Notes,
+                ref PaidFees,
+                ref IsActive,
+                ref IssueReasonDB,
+                ref CreatedByUserID);
 
             if (isFound)
             {
                 return new clsLicenses(
-                    LicenseID, ApplicationID, DriverID, LicenseClass,
-                    IssueDate, ExpirationDate, Notes, PaidFees,
-                    IsActive, IssueReason, CreatedByUserID);
+                    LicenseID,
+                    ApplicationID,
+                    DriverID,
+                    LicenseClass,
+                    IssueDate,
+                    ExpirationDate,
+                    Notes,
+                    PaidFees,
+                    IsActive,
+                    (enIssueReason)IssueReasonDB,
+                    CreatedByUserID);
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
         }
 
-        // Method 2: Private AddNew
         private bool _AddNewLicense()
         {
-            this.LicenseID = clsLicensesData.AddNewLicense(
-                this.ApplicationID, this.DriverID, this.LicenseClass,
-                this.IssueDate, this.ExpirationDate, this.Notes,
-                this.PaidFees, this.IsActive, this.IssueReason,
-                this.CreatedByUserID);
+            LicenseID = clsLicensesData.AddNewLicense(
+                ApplicationID,
+                DriverID,
+                LicenseClass,
+                IssueDate,
+                ExpirationDate,
+                Notes,
+                PaidFees,
+                IsActive,
+                (byte)IssueReason,
+                CreatedByUserID);
 
-            return (this.LicenseID != -1);
+            return (LicenseID != -1);
         }
 
-        // Method 3: Private Update
         private bool _UpdateLicense()
         {
             return clsLicensesData.UpdateLicense(
-                this.LicenseID, this.ApplicationID, this.DriverID, this.LicenseClass,
-                this.IssueDate, this.ExpirationDate, this.Notes,
-                this.PaidFees, this.IsActive, this.IssueReason,
-                this.CreatedByUserID);
+                LicenseID,
+                ApplicationID,
+                DriverID,
+                LicenseClass,
+                IssueDate,
+                ExpirationDate,
+                Notes,
+                PaidFees,
+                IsActive,
+                (byte)IssueReason,
+                CreatedByUserID);
         }
 
-        // Method 4: Public Save method
         public bool Save()
         {
             switch (Mode)
@@ -140,28 +168,41 @@ namespace DVLDBussinessLayer
                         Mode = enMode.Update;
                         return true;
                     }
-                    else
-                        return false;
+                    return false;
 
                 case enMode.Update:
                     return _UpdateLicense();
-
-                default:
-                    return false;
             }
+
+            return false;
         }
 
-        // Method 5: Static method to get all licenses
         public static DataTable GetAllLicenses()
         {
             return clsLicensesData.GetAllLicenses();
         }
 
-        // Method 6: Business rule to Deactivate a license (Update IsActive field)
         public bool DeactivateLicense()
         {
-            this.IsActive = false;
+            IsActive = false;
             return _UpdateLicense();
+        }
+
+        public static string GetIssueReasonText(enIssueReason IssueReason)
+        {
+            switch (IssueReason)
+            {
+                case enIssueReason.FirstTime:
+                    return "First Time";
+                case enIssueReason.Renew:
+                    return "Renew";
+                case enIssueReason.ReplacementForDamaged:
+                    return "Replacement for Damaged";
+                case enIssueReason.ReplacementForLost:
+                    return "Replacement for Lost";
+                default:
+                    return "First Time";
+            }
         }
     }
 }

@@ -54,6 +54,24 @@ namespace DVLDBussinessLayer
             return null;
         }
 
+        public static clsDrivers FindByPersonID(int PersonID)
+        {
+            int DriverID = -1;
+            int createdByUserID = -1;
+            DateTime createdDate = DateTime.Now;
+
+            if (clsDriversData.GetDriverInfoByPersonID(
+                PersonID,
+                ref DriverID,
+                ref createdByUserID,
+                ref createdDate))
+            {
+                return new clsDrivers(DriverID, PersonID, createdByUserID, createdDate);
+            }
+
+            return null;
+        }
+
         private bool _AddNewDriver()
         {
             DriverID = clsDriversData.AddNewDriver(
