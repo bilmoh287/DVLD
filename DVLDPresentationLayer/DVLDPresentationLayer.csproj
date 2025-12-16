@@ -96,11 +96,11 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmDriversList.cs">
+    <Compile Include="frmListDrivers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDriversList.Designer.cs">
-      <DependentUpon>frmDriversList.cs</DependentUpon>
+    <Compile Include="frmListDrivers.Designer.cs">
+      <DependentUpon>frmListDrivers.cs</DependentUpon>
     </Compile>
     <Compile Include="frmIssueDriverLicenseFirstTime.cs">
       <SubType>Form</SubType>
@@ -269,8 +269,8 @@
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDriversList.resx">
-      <DependentUpon>frmDriversList.cs</DependentUpon>
+    <EmbeddedResource Include="frmListDrivers.resx">
+      <DependentUpon>frmListDrivers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmIssueDriverLicenseFirstTime.resx">
       <DependentUpon>frmIssueDriverLicenseFirstTime.cs</DependentUpon>

@@ -14,7 +14,7 @@ namespace DVLDDataAccessLayer
         {
             DataTable dt = new DataTable();
 
-            string query = @"SELECT * FROM Drivers ORDER BY CreatedDate DESC";
+            string query = @"SELECT * FROM Drivers_View;";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
