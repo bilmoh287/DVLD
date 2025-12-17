@@ -49,6 +49,7 @@
             // 
             // ctlScheduleTest1
             // 
+            this.ctlScheduleTest1.BackColor = System.Drawing.Color.White;
             this.ctlScheduleTest1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ctlScheduleTest1.Location = new System.Drawing.Point(2, 5);
             this.ctlScheduleTest1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);

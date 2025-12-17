@@ -44,7 +44,7 @@
             this.gbFilters.Controls.Add(this.btnFind);
             this.gbFilters.Controls.Add(this.txtLicenseID);
             this.gbFilters.Controls.Add(this.label1);
-            this.gbFilters.Location = new System.Drawing.Point(13, 4);
+            this.gbFilters.Location = new System.Drawing.Point(15, 4);
             this.gbFilters.Margin = new System.Windows.Forms.Padding(4);
             this.gbFilters.Name = "gbFilters";
             this.gbFilters.Padding = new System.Windows.Forms.Padding(4);
@@ -91,7 +91,7 @@
             // 
             this.ctlDriverLicenseInfo1.BackColor = System.Drawing.Color.White;
             this.ctlDriverLicenseInfo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctlDriverLicenseInfo1.Location = new System.Drawing.Point(4, 91);
+            this.ctlDriverLicenseInfo1.Location = new System.Drawing.Point(0, 91);
             this.ctlDriverLicenseInfo1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ctlDriverLicenseInfo1.Name = "ctlDriverLicenseInfo1";
             this.ctlDriverLicenseInfo1.Size = new System.Drawing.Size(871, 346);

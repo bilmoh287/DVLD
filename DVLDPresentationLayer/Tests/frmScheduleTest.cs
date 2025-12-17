@@ -34,5 +34,6 @@ namespace DVLDPresentationLayer
         {
             this.Close();
         }
+
     }
 }
