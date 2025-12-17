@@ -96,34 +96,34 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ctlDriverLicenseInfo.cs">
+    <Compile Include="Licenses\Local Licenses\Controls\ctlDriverLicenseInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ctlDriverLicenseInfo.Designer.cs">
+    <Compile Include="Licenses\Local Licenses\Controls\ctlDriverLicenseInfo.Designer.cs">
       <DependentUpon>ctlDriverLicenseInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="DriverLicenseInfoWithFilter.cs">
+    <Compile Include="Licenses\Local Licenses\Controls\DriverLicenseInfoWithFilter.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DriverLicenseInfoWithFilter.Designer.cs">
+    <Compile Include="Licenses\Local Licenses\Controls\DriverLicenseInfoWithFilter.Designer.cs">
       <DependentUpon>DriverLicenseInfoWithFilter.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmListDrivers.cs">
+    <Compile Include="Drivers\frmListDrivers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmListDrivers.Designer.cs">
+    <Compile Include="Drivers\frmListDrivers.Designer.cs">
       <DependentUpon>frmListDrivers.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmIssueDriverLicenseFirstTime.cs">
+    <Compile Include="Licenses\frmIssueDriverLicenseFirstTime.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmIssueDriverLicenseFirstTime.Designer.cs">
+    <Compile Include="Licenses\frmIssueDriverLicenseFirstTime.Designer.cs">
       <DependentUpon>frmIssueDriverLicenseFirstTime.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmShowLicenseInfo.cs">
+    <Compile Include="Licenses\frmShowLicenseInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmShowLicenseInfo.Designer.cs">
+    <Compile Include="Licenses\frmShowLicenseInfo.Designer.cs">
       <DependentUpon>frmShowLicenseInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Tests\Controls\ctlScheduledTest.cs">
@@ -287,19 +287,19 @@
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ctlDriverLicenseInfo.resx">
+    <EmbeddedResource Include="Licenses\Local Licenses\Controls\ctlDriverLicenseInfo.resx">
       <DependentUpon>ctlDriverLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DriverLicenseInfoWithFilter.resx">
+    <EmbeddedResource Include="Licenses\Local Licenses\Controls\DriverLicenseInfoWithFilter.resx">
       <DependentUpon>DriverLicenseInfoWithFilter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmListDrivers.resx">
+    <EmbeddedResource Include="Drivers\frmListDrivers.resx">
       <DependentUpon>frmListDrivers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmIssueDriverLicenseFirstTime.resx">
+    <EmbeddedResource Include="Licenses\frmIssueDriverLicenseFirstTime.resx">
       <DependentUpon>frmIssueDriverLicenseFirstTime.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmShowLicenseInfo.resx">
+    <EmbeddedResource Include="Licenses\frmShowLicenseInfo.resx">
       <DependentUpon>frmShowLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tests\Controls\ctlScheduledTest.resx">
