@@ -96,6 +96,12 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ctlRenewedLicenseInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctlRenewedLicenseInfo.Designer.cs">
+      <DependentUpon>ctlRenewedLicenseInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Licenses\Local Licenses\Controls\ctlDriverLicenseInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -286,6 +292,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctlRenewedLicenseInfo.resx">
+      <DependentUpon>ctlRenewedLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\Local Licenses\Controls\ctlDriverLicenseInfo.resx">
       <DependentUpon>ctlDriverLicenseInfo.cs</DependentUpon>
