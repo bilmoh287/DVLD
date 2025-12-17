@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDBussinessLayer;
+using DVLDPresentationLayer.Global_Classes;
 using DVLDPresentationLayer.Properties;
 
 namespace DVLDPresentationLayer
@@ -46,13 +47,13 @@ namespace DVLDPresentationLayer
             lblLicenseID.Text = _License.LicenseID.ToString();
             lblNationalNo.Text = _License.DriverInfo.PersonInfo.NationalNo;
             lblGendor.Text = (_License.DriverInfo.PersonInfo.Gender == 0) ? "Male" : "Female";
-            lblIssueDate.Text = _License.IssueDate.ToShortDateString();
+            lblIssueDate.Text = clsFormat.DateToShort(_License.IssueDate);
             lblIssueReason.Text = _License.IssueReasonText;
             lblNotes.Text = _License.Notes;
             lblIsActive.Text = (_License.IsActive == true) ? "Yes" : "No";
-            lblDateOfBirth.Text = _License.DriverInfo.PersonInfo.DateOfBirth.ToShortDateString();
+            lblDateOfBirth.Text = clsFormat.DateToShort(_License.DriverInfo.PersonInfo.DateOfBirth);
             lblDriverID.Text = _License.DriverID.ToString();
-            lblExpirationDate.Text = _License.ExpirationDate.ToShortDateString();
+            lblExpirationDate.Text = clsFormat.DateToShort(_License.ExpirationDate);
             lblIsDetained.Text = "NO"; //Not Implemented Yet
             pbPersonImage.Image = Resources.Male_512;
 

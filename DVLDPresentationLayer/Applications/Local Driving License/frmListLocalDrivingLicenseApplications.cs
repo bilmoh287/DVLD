@@ -254,7 +254,7 @@ namespace DVLDPresentationLayer
             //Enabled only if person does not passed all tests and the application status is New.
             ScheduleTestsMenue.Enabled = (TotalPassedTests != 3 && LocalDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.New);
             //Enabled only if person passed all tests and Does not have license. 
-            issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = (TotalPassedTests == 3);
+            issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = (TotalPassedTests == 3 && !LocalDrivingLicenseApplication.IsLicenseIssued());
 
             //Enable/Disable Cancel Menue Item
             //We only canel the applications with status=new.
