@@ -17,7 +17,7 @@ namespace DVLDBussinessLayer
         public int PersonID { get; set; }
         public int CreatedByUserID { get; set; }
         public DateTime CreatedDate { get; set; }
-
+        public clsPerson PersonInfo;
         public clsDrivers()
         {
             DriverID = -1;
@@ -33,6 +33,7 @@ namespace DVLDBussinessLayer
             PersonID = personID;
             CreatedByUserID = createdByUserID;
             CreatedDate = createdDate;
+            PersonInfo = clsPerson.Find(personID);
             Mode = enMode.Update;
         }
 

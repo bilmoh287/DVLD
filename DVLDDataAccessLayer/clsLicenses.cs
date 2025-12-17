@@ -206,5 +206,42 @@ namespace DVLDDataAccessLayer
             // ... (omitted for brevity)
             return false;
         }
+
+        public static int GetActiveLicenseByPerosnIDAndClassName(int PerosnID, int LicenseClassID)
+        {
+            int LicenseID = -1;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string query = @"SELECT TOP 1 Licenses.LicenseID
+                                FROM     Licenses INNER JOIN
+                                                  Drivers ON Licenses.DriverID = Drivers.DriverID INNER JOIN
+                                                  People ON Drivers.PersonID = People.PersonID
+                                WHERE (People.PersonID = @PersonID) AND (LicenseClass = @LicenseClass) AND (Licenses.IsActive = 1);";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@PersonID", PerosnID);
+                    command.Parameters.AddWithValue("@LicenseClass", LicenseClassID);
+
+                    try
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+
+                        if (result != null && byte.TryParse(result.ToString(), out byte returnedResult))
+                        {
+                            LicenseID = returnedResult;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error checking if Applicant have active licenseID: " + ex.Message);
+                    }
+                }
+            }
+
+            return LicenseID;
+        }
     }
 }

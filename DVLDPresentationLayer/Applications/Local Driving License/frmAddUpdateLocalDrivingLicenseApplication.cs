@@ -145,6 +145,14 @@ namespace DVLDPresentationLayer
                 return;
             }
 
+            //check if user already have issued license of the same driving  class.
+            if (clsLicenses.IsLicenseExistByPersonIDAndClassID(ctlPersonCardWithFilter1.PersonID, LicenseClassID))
+            {
+
+                MessageBox.Show("Person already have a license with the same applied driving class, Choose diffrent driving class", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             //Chec if the Applicant Person Age is Allowed for the specified License Class
             int MinimumAllowedAge = clsLicenseClasses.Find(cbLicenseClass.Text).MinimumAllowedAge;
             DateTime ApplicantDateOfBirth = clsPerson.Find(ctlPersonCardWithFilter1.PersonID).DateOfBirth;
