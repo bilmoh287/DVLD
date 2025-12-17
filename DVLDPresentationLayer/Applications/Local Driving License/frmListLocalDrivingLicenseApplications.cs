@@ -249,7 +249,7 @@ namespace DVLDPresentationLayer
 
             int TotalPassedTests = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[5].Value;
 
-            showLicenseToolStripMenuItem.Enabled = false;
+            showLicenseToolStripMenuItem.Enabled = LocalDrivingLicenseApplication.IsLicenseIssued();
 
             //Enabled only if person does not passed all tests and the application status is New.
             ScheduleTestsMenue.Enabled = (TotalPassedTests != 3 && LocalDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.New);
@@ -291,6 +291,21 @@ namespace DVLDPresentationLayer
             frmIssueDriverLicenseFirstTime frm = new frmIssueDriverLicenseFirstTime(LDLApplicationID);
             frm.ShowDialog();
             _RefreshList(null, LDLApplicationID);
+        }
+
+        private void showLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int LDLApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
+            clsLocalDrivingLicenseApplication LocalDrivingLicenseApplication =
+            clsLocalDrivingLicenseApplication.GetLocalDrivingLicenseApplicationInfoByID(LDLApplicationID);
+            int LicenseID = LocalDrivingLicenseApplication.GetActiveLicenseID();
+            if (clsLocalDrivingLicenseApplication.DeleteLocalDrivingLicenseApplication(LDLApplicationID))
+            {
+                MessageBox.Show("The Applicant has Not Issued a License Yet.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            frmShowLicenseInfo frm = new frmShowLicenseInfo(LicenseID);
+            frm.ShowDialog();
         }
     }
 }

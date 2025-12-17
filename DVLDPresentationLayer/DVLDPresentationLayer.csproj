@@ -96,6 +96,12 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ctlDriverLicenseInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctlDriverLicenseInfo.Designer.cs">
+      <DependentUpon>ctlDriverLicenseInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmListDrivers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,12 @@
     </Compile>
     <Compile Include="frmIssueDriverLicenseFirstTime.Designer.cs">
       <DependentUpon>frmIssueDriverLicenseFirstTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmShowLicenseInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShowLicenseInfo.Designer.cs">
+      <DependentUpon>frmShowLicenseInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Tests\Controls\ctlScheduledTest.cs">
       <SubType>UserControl</SubType>
@@ -269,11 +281,17 @@
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ctlDriverLicenseInfo.resx">
+      <DependentUpon>ctlDriverLicenseInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmListDrivers.resx">
       <DependentUpon>frmListDrivers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmIssueDriverLicenseFirstTime.resx">
       <DependentUpon>frmIssueDriverLicenseFirstTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShowLicenseInfo.resx">
+      <DependentUpon>frmShowLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tests\Controls\ctlScheduledTest.resx">
       <DependentUpon>ctlScheduledTest.cs</DependentUpon>
@@ -649,6 +667,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Driver Main.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LicenseView 400.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

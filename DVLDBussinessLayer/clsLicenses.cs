@@ -35,7 +35,8 @@ namespace DVLDBussinessLayer
         public enIssueReason IssueReason { get; set; }
         public int CreatedByUserID { get; set; }
 
-        // public clsDriver DriverInfo;
+         public clsDrivers DriverInfo;
+         public clsLicenseClasses LicenseClassInfo;
         // public clsApplication ApplicationInfo;
 
         // Read-only helper (mentor-style)
@@ -80,6 +81,9 @@ namespace DVLDBussinessLayer
             IsActive = isActive;
             IssueReason = issueReason;
             CreatedByUserID = createdByUserID;
+
+            DriverInfo = clsDrivers.Find(driverID);
+            LicenseClassInfo = clsLicenseClasses.Find(licenseClass);
 
             Mode = enMode.Update;
         }
