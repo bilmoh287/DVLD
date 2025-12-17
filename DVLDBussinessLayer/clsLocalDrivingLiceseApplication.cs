@@ -205,5 +205,14 @@ namespace DVLDBussinessLayer
                 return -1;
 
         }
+
+        public bool IsLicenseIssued()
+        {
+            return (GetActiveLicenseID() != -1);
+        }
+        public int GetActiveLicenseID()
+        {//this will get the license id that belongs to this application
+            return clsLicenses.GetActiveLicenseIDByPersonID(this.ApplicantPersonID, this.LicenseClassID);
+        }
     }
 }

@@ -33,13 +33,22 @@ namespace DVLDPresentationLayer
                 return;
             }
 
-
             if (!_LDLApplication.PassedAllTest(_LDLApplicationID))
             {
 
                 MessageBox.Show("Person Should Pass All Tests First.", "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
+            }
+
+            int LicenseID = _LDLApplication.GetActiveLicenseID();
+            if (LicenseID != -1)
+            {
+
+                MessageBox.Show("Person already has License before with License ID=" + LicenseID.ToString(), "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+
             }
             ctlDrivingLicenseApplicationInfo1.LoadLDLApplicationInfo(_LDLApplicationID);
         }
