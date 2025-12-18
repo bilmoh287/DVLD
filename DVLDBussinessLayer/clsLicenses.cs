@@ -269,5 +269,47 @@ namespace DVLDBussinessLayer
                 return null;
             return NewLicense;
         }
+
+        public clsLicenses Replace(enIssueReason IssueReason, int CreatedByUserID)
+        {
+            //First Create Applicaiton 
+            clsApplication _Application = new clsApplication();
+            _Application.ApplicationTypeID = (IssueReason == enIssueReason.ReplacementForLost)?
+                (int)clsApplication.enApplicationType.ReplaceLostDrivingLicense :
+                (int)clsApplication.enApplicationType.ReplaceDamagedDrivingLicense;
+            _Application.ApplicantPersonID = this.DriverInfo.PersonInfo.PersonID;
+            _Application.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
+            _Application.ApplicationDate = DateTime.Now;
+            _Application.LastStatusDate = DateTime.Now;
+            _Application.PaidFees = clsApplicationTypes.FindApplicationType(_Application.ApplicationTypeID).ApplicationTypeFees;
+            _Application.CreatedByUserID = CreatedByUserID;
+
+            if (!_Application.Save())
+            {
+                return null;
+            }
+
+            clsLicenses NewLicense = new clsLicenses();
+
+            NewLicense.ApplicationID = _Application.ApplicationID;
+            NewLicense.DriverID = this.DriverID;
+            NewLicense.LicenseClass = this.LicenseClass;
+            NewLicense.IssueDate = DateTime.Now;
+            NewLicense.ExpirationDate = DateTime.Now.AddYears(this.LicenseClassInfo.DefaultValidityLength);
+            NewLicense.Notes = Notes;
+            NewLicense.PaidFees = 0;// no fees for the license because it's a replacement.;
+            NewLicense.IsActive = true;
+            NewLicense.IssueReason = IssueReason;
+            NewLicense.CreatedByUserID = CreatedByUserID;
+
+            if (!NewLicense.Save())
+            {
+                return null;
+            }
+            //we need to deactivate the old License.
+            if (!DeactivateCurrentLicense())
+                return null;
+            return NewLicense;
+        }
     }
 }

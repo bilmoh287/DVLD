@@ -87,6 +87,7 @@
             this.ctlDriverLicenseInfoWithFilter1.Name = "ctlDriverLicenseInfoWithFilter1";
             this.ctlDriverLicenseInfoWithFilter1.Size = new System.Drawing.Size(875, 437);
             this.ctlDriverLicenseInfoWithFilter1.TabIndex = 185;
+            this.ctlDriverLicenseInfoWithFilter1.OnLicenseSelected += new System.Action<int>(this.ctlDriverLicenseInfoWithFilter1_OnLicenseSelected);
             // 
             // gbReplacementFor
             // 
@@ -152,6 +153,7 @@
             // 
             // pictureBox8
             // 
+            this.pictureBox8.Image = global::DVLDPresentationLayer.Properties.Resources.id;
             this.pictureBox8.Location = new System.Drawing.Point(584, 70);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(31, 26);
@@ -183,6 +185,7 @@
             // 
             // pictureBox7
             // 
+            this.pictureBox7.Image = global::DVLDPresentationLayer.Properties.Resources.id;
             this.pictureBox7.Location = new System.Drawing.Point(584, 38);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(31, 26);
@@ -214,6 +217,7 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Image = global::DVLDPresentationLayer.Properties.Resources.bank_check;
             this.pictureBox2.Location = new System.Drawing.Point(176, 38);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(31, 26);
@@ -223,6 +227,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Image = global::DVLDPresentationLayer.Properties.Resources.User_32__2;
             this.pictureBox1.Location = new System.Drawing.Point(584, 102);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(31, 26);
@@ -276,6 +281,7 @@
             // 
             // pictureBox3
             // 
+            this.pictureBox3.Image = global::DVLDPresentationLayer.Properties.Resources.money_32;
             this.pictureBox3.Location = new System.Drawing.Point(176, 102);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(31, 26);
@@ -296,6 +302,7 @@
             // 
             // pictureBox4
             // 
+            this.pictureBox4.Image = global::DVLDPresentationLayer.Properties.Resources.calendar_week;
             this.pictureBox4.Location = new System.Drawing.Point(176, 70);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(31, 26);
@@ -346,6 +353,7 @@
             this.llShowLicenseInfo.TabIndex = 197;
             this.llShowLicenseInfo.TabStop = true;
             this.llShowLicenseInfo.Text = "Show New Licenses Info";
+            this.llShowLicenseInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowLicenseInfo_LinkClicked);
             // 
             // llShowLicenseHistory
             // 
@@ -357,6 +365,7 @@
             this.llShowLicenseHistory.TabIndex = 196;
             this.llShowLicenseHistory.TabStop = true;
             this.llShowLicenseHistory.Text = "Show Licenses History";
+            this.llShowLicenseHistory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowLicenseHistory_LinkClicked);
             // 
             // btnIssueReplacement
             // 
@@ -371,6 +380,7 @@
             this.btnIssueReplacement.Text = "Issue Replacement";
             this.btnIssueReplacement.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnIssueReplacement.UseVisualStyleBackColor = true;
+            this.btnIssueReplacement.Click += new System.EventHandler(this.btnIssueReplacement_Click);
             // 
             // btnClose
             // 
