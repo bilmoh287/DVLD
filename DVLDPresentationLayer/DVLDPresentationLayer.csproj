@@ -102,12 +102,6 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ctlRenewedLicenseInfo.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ctlRenewedLicenseInfo.Designer.cs">
-      <DependentUpon>ctlRenewedLicenseInfo.cs</DependentUpon>
-    </Compile>
     <Compile Include="Licenses\Local Licenses\Controls\ctlDriverLicenseInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -301,9 +295,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ctlRenewedLicenseInfo.resx">
-      <DependentUpon>ctlRenewedLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\Local Licenses\Controls\ctlDriverLicenseInfo.resx">
       <DependentUpon>ctlDriverLicenseInfo.cs</DependentUpon>
@@ -697,6 +688,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\LicenseView 400.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\New Driving License 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Damaged Driving License 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Detained Driving License 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Retake Test 32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
