@@ -43,7 +43,7 @@ namespace DVLDPresentationLayer.Licenses
 
         private void frmShowPersonLicenseHistory_Load(object sender, EventArgs e)
         {
-            if(_PersonID != 1)
+            if(_PersonID != -1)
             {
                 ctlPersonCardWithFilter1.LoadPersonInfo(_PersonID);
                 ctlPersonCardWithFilter1.FilterEnables = false;
@@ -56,7 +56,7 @@ namespace DVLDPresentationLayer.Licenses
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }

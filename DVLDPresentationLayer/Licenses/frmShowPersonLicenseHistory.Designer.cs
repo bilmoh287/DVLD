@@ -30,10 +30,10 @@
         {
             this.lblTitle = new System.Windows.Forms.Label();
             this.pbPersonImage = new System.Windows.Forms.PictureBox();
-            this.btnClose = new System.Windows.Forms.Button();
             this.ctlDriverLicenses1 = new DVLDPresentationLayer.Licenses.Controls.ctlDriverLicenses();
             this.ctlDriverLicenseInfoWithFilter1 = new DVLDPresentationLayer.ctlDriverLicenseInfoWithFilter();
             this.ctlPersonCardWithFilter1 = new DVLDPresentationLayer.ctlPersonCardWithFilter();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,21 +60,6 @@
             this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbPersonImage.TabIndex = 135;
             this.pbPersonImage.TabStop = false;
-            // 
-            // btnClose
-            // 
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnClose.Image = global::DVLDPresentationLayer.Properties.Resources.closeBlack32;
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(927, 747);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(126, 37);
-            this.btnClose.TabIndex = 182;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // ctlDriverLicenses1
             // 
@@ -110,14 +95,29 @@
             this.ctlPersonCardWithFilter1.TabIndex = 133;
             this.ctlPersonCardWithFilter1.OnPersonSelected += new System.Action<int>(this.ctlPersonCardWithFilter1_OnPersonSelected);
             // 
+            // button1
+            // 
+            this.button1.AutoEllipsis = true;
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Image = global::DVLDPresentationLayer.Properties.Resources.closeBlack32;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(914, 743);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(135, 36);
+            this.button1.TabIndex = 183;
+            this.button1.Text = "Close";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmShowPersonLicenseHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1070, 829);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.pbPersonImage);
             this.Controls.Add(this.ctlDriverLicenses1);
             this.Controls.Add(this.ctlDriverLicenseInfoWithFilter1);
@@ -142,6 +142,6 @@
         private ctlPersonCardWithFilter ctlPersonCardWithFilter1;
         private Controls.ctlDriverLicenses ctlDriverLicenses1;
         private System.Windows.Forms.PictureBox pbPersonImage;
-        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button button1;
     }
 }
