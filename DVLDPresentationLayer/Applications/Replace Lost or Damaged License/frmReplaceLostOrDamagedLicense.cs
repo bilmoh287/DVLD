@@ -114,12 +114,13 @@ namespace DVLDPresentationLayer.Applications.Replace_Lost_or_Damaged_License
 
         private void llShowLicenseHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show("Faild to Issue a replacemnet for this  License", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Not Implemented yet", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void llShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show("Faild to Issue a replacemnet for this  License", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            frmShowLicenseInfo frm = new frmShowLicenseInfo(_NewLicenseID);
+            frm.ShowDialog();
         }
     }
 }

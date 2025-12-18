@@ -166,5 +166,23 @@ namespace DVLDPresentationLayer
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
             }
         }
+
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int PersonID = (int)dgvDrivers.CurrentRow.Cells[1].Value;
+            frmShowPersonInfo frm = new frmShowPersonInfo(PersonID);
+            frm.ShowDialog();
+        }
+
+        private void issueInternationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not Implemented yet", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not Implemented yet", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
     }
 }
