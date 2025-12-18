@@ -114,11 +114,11 @@
     <Compile Include="Licenses\Local Licenses\Controls\ctlDriverLicenseInfo.Designer.cs">
       <DependentUpon>ctlDriverLicenseInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Licenses\Local Licenses\Controls\DriverLicenseInfoWithFilter.cs">
+    <Compile Include="Licenses\Local Licenses\Controls\ctlDriverLicenseInfoWithFilter.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Licenses\Local Licenses\Controls\DriverLicenseInfoWithFilter.Designer.cs">
-      <DependentUpon>DriverLicenseInfoWithFilter.cs</DependentUpon>
+    <Compile Include="Licenses\Local Licenses\Controls\ctlDriverLicenseInfoWithFilter.Designer.cs">
+      <DependentUpon>ctlDriverLicenseInfoWithFilter.cs</DependentUpon>
     </Compile>
     <Compile Include="Drivers\frmListDrivers.cs">
       <SubType>Form</SubType>
@@ -308,8 +308,8 @@
     <EmbeddedResource Include="Licenses\Local Licenses\Controls\ctlDriverLicenseInfo.resx">
       <DependentUpon>ctlDriverLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Licenses\Local Licenses\Controls\DriverLicenseInfoWithFilter.resx">
-      <DependentUpon>DriverLicenseInfoWithFilter.cs</DependentUpon>
+    <EmbeddedResource Include="Licenses\Local Licenses\Controls\ctlDriverLicenseInfoWithFilter.resx">
+      <DependentUpon>ctlDriverLicenseInfoWithFilter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Drivers\frmListDrivers.resx">
       <DependentUpon>frmListDrivers.cs</DependentUpon>

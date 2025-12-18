@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLDPresentationLayer.Applications.Renew_Local_License;
 using DVLDPresentationLayer.Global_Classes;
 
 namespace DVLDPresentationLayer
@@ -90,6 +91,12 @@ namespace DVLDPresentationLayer
         private void driversToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmListDrivers frm = new frmListDrivers();
+            frm.ShowDialog();
+        }
+
+        private void renewDrivingLicenseApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRenewlLocalDrivingLicenseApplication frm = new frmRenewlLocalDrivingLicenseApplication();
             frm.ShowDialog();
         }
     }

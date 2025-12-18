@@ -15,7 +15,7 @@ namespace DVLDPresentationLayer
 {
     public partial class ctlDriverLicenseInfo : UserControl
     {
-        int _LicenseID;
+        int _LicenseID = -1;
         clsLicenses _License;
         public ctlDriverLicenseInfo()
         {
@@ -30,6 +30,12 @@ namespace DVLDPresentationLayer
         public clsLicenses SelectedLicenseInfo
         {
             get { return _License; }
+        }
+
+        public string ChangeIsActivelbl
+        {
+            set { lblIsActive.Text = value; }
+            get { return lblIsActive.Text; }
         }
 
         private void _LoadPersonImage()
@@ -62,6 +68,7 @@ namespace DVLDPresentationLayer
 
         public void LoadLicenseInfo(int LicenseID)
         {
+            _LicenseID = LicenseID;
             _License = clsLicenses.Find(LicenseID);
             if (_License == null)
             {

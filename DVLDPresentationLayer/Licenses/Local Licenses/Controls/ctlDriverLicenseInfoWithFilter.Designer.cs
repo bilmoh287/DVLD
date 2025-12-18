@@ -1,6 +1,6 @@
 ﻿namespace DVLDPresentationLayer
 {
-    partial class DriverLicenseInfoWithFilter
+    partial class ctlDriverLicenseInfoWithFilter
     {
         /// <summary> 
         /// Required designer variable.

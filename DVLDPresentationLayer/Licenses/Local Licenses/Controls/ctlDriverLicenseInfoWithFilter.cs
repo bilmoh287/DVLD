@@ -11,7 +11,7 @@ using DVLDBussinessLayer;
 
 namespace DVLDPresentationLayer
 {
-    public partial class DriverLicenseInfoWithFilter : UserControl
+    public partial class ctlDriverLicenseInfoWithFilter : UserControl
     {
         // Define a custom event handler delegate with parameters
         public event Action<int> OnLicenseSelected;
@@ -44,7 +44,12 @@ namespace DVLDPresentationLayer
         {
             get { return ctlDriverLicenseInfo1.SelectedLicenseInfo; }
         }
-        public DriverLicenseInfoWithFilter()
+        public string ChangeIsActivelbl
+        {
+            set { ctlDriverLicenseInfo1.ChangeIsActivelbl = value; }
+        }
+
+        public ctlDriverLicenseInfoWithFilter()
         {
             InitializeComponent();
         }
@@ -53,9 +58,10 @@ namespace DVLDPresentationLayer
         {
             txtLicenseID.Text = LicenseID.ToString();
             ctlDriverLicenseInfo1.LoadLicenseInfo(LicenseID);
+            _LicenseID = ctlDriverLicenseInfo1.LicenseID;
             if(OnLicenseSelected != null && FilterEnabled == true)
                 // Raise the event with a parameter
-                OnLicenseSelected(LicenseID);
+                OnLicenseSelected(_LicenseID);
         }
 
         private void ctlDriverLicenseInfo1_Load(object sender, EventArgs e)
@@ -92,7 +98,6 @@ namespace DVLDPresentationLayer
         {
             txtLicenseID.Focus();
         }
-
         private void txtLicenseID_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtLicenseID.Text.Trim()))

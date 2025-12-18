@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.driverLicenseInfoWithFilter1 = new DVLDPresentationLayer.DriverLicenseInfoWithFilter();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnRenew = new System.Windows.Forms.Button();
+            this.btnRenewLicense = new System.Windows.Forms.Button();
             this.gpApplicationInfo = new System.Windows.Forms.GroupBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -65,6 +64,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lblApplicationID = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.ctlDriverLicenseInfoWithFilter1 = new DVLDPresentationLayer.ctlDriverLicenseInfoWithFilter();
+            this.llShowLicenseInfo = new System.Windows.Forms.LinkLabel();
+            this.llShowLicenseHistory = new System.Windows.Forms.LinkLabel();
             this.gpApplicationInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
@@ -78,17 +80,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
-            // 
-            // driverLicenseInfoWithFilter1
-            // 
-            this.driverLicenseInfoWithFilter1.BackColor = System.Drawing.Color.White;
-            this.driverLicenseInfoWithFilter1.FilterEnabled = true;
-            this.driverLicenseInfoWithFilter1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.driverLicenseInfoWithFilter1.Location = new System.Drawing.Point(1, 2);
-            this.driverLicenseInfoWithFilter1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.driverLicenseInfoWithFilter1.Name = "driverLicenseInfoWithFilter1";
-            this.driverLicenseInfoWithFilter1.Size = new System.Drawing.Size(875, 437);
-            this.driverLicenseInfoWithFilter1.TabIndex = 0;
             // 
             // btnClose
             // 
@@ -104,19 +95,21 @@
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             // 
-            // btnRenew
+            // btnRenewLicense
             // 
-            this.btnRenew.AutoEllipsis = true;
-            this.btnRenew.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnRenew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRenew.Image = global::DVLDPresentationLayer.Properties.Resources.closeBlack32;
-            this.btnRenew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRenew.Location = new System.Drawing.Point(736, 725);
-            this.btnRenew.Name = "btnRenew";
-            this.btnRenew.Size = new System.Drawing.Size(135, 36);
-            this.btnRenew.TabIndex = 129;
-            this.btnRenew.Text = "Renew";
-            this.btnRenew.UseVisualStyleBackColor = true;
+            this.btnRenewLicense.AutoEllipsis = true;
+            this.btnRenewLicense.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnRenewLicense.Enabled = false;
+            this.btnRenewLicense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRenewLicense.Image = global::DVLDPresentationLayer.Properties.Resources.Renew_Driving_License_32;
+            this.btnRenewLicense.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRenewLicense.Location = new System.Drawing.Point(736, 725);
+            this.btnRenewLicense.Name = "btnRenewLicense";
+            this.btnRenewLicense.Size = new System.Drawing.Size(135, 36);
+            this.btnRenewLicense.TabIndex = 129;
+            this.btnRenewLicense.Text = "Renew";
+            this.btnRenewLicense.UseVisualStyleBackColor = true;
+            this.btnRenewLicense.Click += new System.EventHandler(this.btnRenewLicense_Click);
             // 
             // gpApplicationInfo
             // 
@@ -153,7 +146,7 @@
             this.gpApplicationInfo.Controls.Add(this.label5);
             this.gpApplicationInfo.Controls.Add(this.lblApplicationID);
             this.gpApplicationInfo.Controls.Add(this.label4);
-            this.gpApplicationInfo.Location = new System.Drawing.Point(16, 435);
+            this.gpApplicationInfo.Location = new System.Drawing.Point(12, 435);
             this.gpApplicationInfo.Name = "gpApplicationInfo";
             this.gpApplicationInfo.Size = new System.Drawing.Size(855, 284);
             this.gpApplicationInfo.TabIndex = 180;
@@ -510,16 +503,54 @@
             this.label4.TabIndex = 172;
             this.label4.Text = "R.L.Application ID:";
             // 
+            // ctlDriverLicenseInfoWithFilter1
+            // 
+            this.ctlDriverLicenseInfoWithFilter1.BackColor = System.Drawing.Color.White;
+            this.ctlDriverLicenseInfoWithFilter1.FilterEnabled = true;
+            this.ctlDriverLicenseInfoWithFilter1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctlDriverLicenseInfoWithFilter1.Location = new System.Drawing.Point(-4, 0);
+            this.ctlDriverLicenseInfoWithFilter1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctlDriverLicenseInfoWithFilter1.Name = "ctlDriverLicenseInfoWithFilter1";
+            this.ctlDriverLicenseInfoWithFilter1.Size = new System.Drawing.Size(875, 437);
+            this.ctlDriverLicenseInfoWithFilter1.TabIndex = 181;
+            this.ctlDriverLicenseInfoWithFilter1.OnLicenseSelected += new System.Action<int>(this.ctlDriverLicenseInfoWithFilter1_OnLicenseSelected);
+            // 
+            // llShowLicenseInfo
+            // 
+            this.llShowLicenseInfo.AutoSize = true;
+            this.llShowLicenseInfo.Enabled = false;
+            this.llShowLicenseInfo.Location = new System.Drawing.Point(207, 722);
+            this.llShowLicenseInfo.Name = "llShowLicenseInfo";
+            this.llShowLicenseInfo.Size = new System.Drawing.Size(226, 25);
+            this.llShowLicenseInfo.TabIndex = 185;
+            this.llShowLicenseInfo.TabStop = true;
+            this.llShowLicenseInfo.Text = "Show New Licenses Info";
+            this.llShowLicenseInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowLicenseInfo_LinkClicked);
+            // 
+            // llShowLicenseHistory
+            // 
+            this.llShowLicenseHistory.AutoSize = true;
+            this.llShowLicenseHistory.Enabled = false;
+            this.llShowLicenseHistory.Location = new System.Drawing.Point(24, 722);
+            this.llShowLicenseHistory.Name = "llShowLicenseHistory";
+            this.llShowLicenseHistory.Size = new System.Drawing.Size(210, 25);
+            this.llShowLicenseHistory.TabIndex = 184;
+            this.llShowLicenseHistory.TabStop = true;
+            this.llShowLicenseHistory.Text = "Show Licenses History";
+            this.llShowLicenseHistory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowLicenseHistory_LinkClicked);
+            // 
             // frmRenewlLocalDrivingLicenseApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(883, 762);
+            this.ClientSize = new System.Drawing.Size(877, 765);
+            this.Controls.Add(this.llShowLicenseInfo);
+            this.Controls.Add(this.llShowLicenseHistory);
+            this.Controls.Add(this.ctlDriverLicenseInfoWithFilter1);
             this.Controls.Add(this.gpApplicationInfo);
-            this.Controls.Add(this.btnRenew);
+            this.Controls.Add(this.btnRenewLicense);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.driverLicenseInfoWithFilter1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
@@ -527,6 +558,7 @@
             this.Name = "frmRenewlLocalDrivingLicenseApplication";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Renewl Driving License";
+            this.Load += new System.EventHandler(this.frmRenewlLocalDrivingLicenseApplication_Load);
             this.gpApplicationInfo.ResumeLayout(false);
             this.gpApplicationInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
@@ -541,14 +573,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private DriverLicenseInfoWithFilter driverLicenseInfoWithFilter1;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnRenew;
+        private System.Windows.Forms.Button btnRenewLicense;
         private System.Windows.Forms.GroupBox gpApplicationInfo;
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.Label label3;
@@ -583,5 +614,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblApplicationID;
         private System.Windows.Forms.Label label4;
+        private ctlDriverLicenseInfoWithFilter ctlDriverLicenseInfoWithFilter1;
+        private System.Windows.Forms.LinkLabel llShowLicenseInfo;
+        private System.Windows.Forms.LinkLabel llShowLicenseHistory;
     }
 }

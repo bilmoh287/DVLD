@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.driverLicenseInfoWithFilter1 = new DVLDPresentationLayer.DriverLicenseInfoWithFilter();
+            this.driverLicenseInfoWithFilter1 = new DVLDPresentationLayer.ctlDriverLicenseInfoWithFilter();
             this.SuspendLayout();
             // 
             // driverLicenseInfoWithFilter1
@@ -59,6 +59,6 @@
 
         #endregion
 
-        private DriverLicenseInfoWithFilter driverLicenseInfoWithFilter1;
+        private ctlDriverLicenseInfoWithFilter driverLicenseInfoWithFilter1;
     }
 }
