@@ -108,16 +108,20 @@
             this.rbLostLicense.TabIndex = 1;
             this.rbLostLicense.Text = "Lost License";
             this.rbLostLicense.UseVisualStyleBackColor = true;
+            this.rbLostLicense.CheckedChanged += new System.EventHandler(this.rbLostLicense_CheckedChanged);
             // 
             // rbDamagedLicense
             // 
             this.rbDamagedLicense.AutoSize = true;
+            this.rbDamagedLicense.Checked = true;
             this.rbDamagedLicense.Location = new System.Drawing.Point(8, 27);
             this.rbDamagedLicense.Name = "rbDamagedLicense";
             this.rbDamagedLicense.Size = new System.Drawing.Size(191, 29);
             this.rbDamagedLicense.TabIndex = 0;
+            this.rbDamagedLicense.TabStop = true;
             this.rbDamagedLicense.Text = "Damaged License";
             this.rbDamagedLicense.UseVisualStyleBackColor = true;
+            this.rbDamagedLicense.CheckedChanged += new System.EventHandler(this.rbDamagedLicense_CheckedChanged);
             // 
             // gpApplicationInfo
             // 
@@ -358,6 +362,7 @@
             // 
             this.btnIssueReplacement.Enabled = false;
             this.btnIssueReplacement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIssueReplacement.Image = global::DVLDPresentationLayer.Properties.Resources.Damaged_Driving_License_32;
             this.btnIssueReplacement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnIssueReplacement.Location = new System.Drawing.Point(670, 636);
             this.btnIssueReplacement.Name = "btnIssueReplacement";
@@ -371,6 +376,7 @@
             // 
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnClose.Image = global::DVLDPresentationLayer.Properties.Resources.closeBlack32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClose.Location = new System.Drawing.Point(537, 636);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -401,6 +407,7 @@
             this.Name = "frmReplaceLostOrDamagedLicense";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmReplaceLostOrDamagedLicense";
+            this.Load += new System.EventHandler(this.frmReplaceLostOrDamagedLicense_Load);
             this.gbReplacementFor.ResumeLayout(false);
             this.gbReplacementFor.PerformLayout();
             this.gpApplicationInfo.ResumeLayout(false);

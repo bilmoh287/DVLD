@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDPresentationLayer.Applications.Renew_Local_License;
+using DVLDPresentationLayer.Applications.Replace_Lost_or_Damaged_License;
 using DVLDPresentationLayer.Global_Classes;
 
 namespace DVLDPresentationLayer
@@ -97,6 +98,12 @@ namespace DVLDPresentationLayer
         private void renewDrivingLicenseApplicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmRenewlLocalDrivingLicenseApplication frm = new frmRenewlLocalDrivingLicenseApplication();
+            frm.ShowDialog();
+        }
+
+        private void replacementForLostOrDamagedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReplaceLostOrDamagedLicense frm = new frmReplaceLostOrDamagedLicense();
             frm.ShowDialog();
         }
     }
