@@ -76,13 +76,19 @@ namespace DVLDPresentationLayer.Licenses.Controls
 
         private void showLicenseInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmShowLicenseInfo frm = new frmShowLicenseInfo(_DriverID);
+            int LicenseID = (int)dgvLocalLicensesHistory.CurrentRow.Cells[0].Value;
+            frmShowLicenseInfo frm = new frmShowLicenseInfo(LicenseID);
             frm.ShowDialog();
         }
         public void Clear()
         {
             _dtDriverLocalLicensesHistory.Clear();
             _dtDriverInternationalLicensesHistory.Clear();
+        }
+
+        private void InternationalLicenseHistorytoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

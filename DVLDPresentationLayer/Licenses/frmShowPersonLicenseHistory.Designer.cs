@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.lblTitle = new System.Windows.Forms.Label();
-            this.ctlDriverLicenseInfoWithFilter1 = new DVLDPresentationLayer.ctlDriverLicenseInfoWithFilter();
-            this.ctlPersonCardWithFilter1 = new DVLDPresentationLayer.ctlPersonCardWithFilter();
-            this.ctlDriverLicenses1 = new DVLDPresentationLayer.Licenses.Controls.ctlDriverLicenses();
             this.pbPersonImage = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
+            this.ctlDriverLicenses1 = new DVLDPresentationLayer.Licenses.Controls.ctlDriverLicenses();
+            this.ctlDriverLicenseInfoWithFilter1 = new DVLDPresentationLayer.ctlDriverLicenseInfoWithFilter();
+            this.ctlPersonCardWithFilter1 = new DVLDPresentationLayer.ctlPersonCardWithFilter();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,40 +47,6 @@
             this.lblTitle.TabIndex = 130;
             this.lblTitle.Text = "License History";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ctlDriverLicenseInfoWithFilter1
-            // 
-            this.ctlDriverLicenseInfoWithFilter1.BackColor = System.Drawing.Color.White;
-            this.ctlDriverLicenseInfoWithFilter1.FilterEnabled = true;
-            this.ctlDriverLicenseInfoWithFilter1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctlDriverLicenseInfoWithFilter1.Location = new System.Drawing.Point(540, 604);
-            this.ctlDriverLicenseInfoWithFilter1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ctlDriverLicenseInfoWithFilter1.Name = "ctlDriverLicenseInfoWithFilter1";
-            this.ctlDriverLicenseInfoWithFilter1.Size = new System.Drawing.Size(8, 8);
-            this.ctlDriverLicenseInfoWithFilter1.TabIndex = 132;
-            // 
-            // ctlPersonCardWithFilter1
-            // 
-            this.ctlPersonCardWithFilter1.BackColor = System.Drawing.Color.White;
-            this.ctlPersonCardWithFilter1.FilterEnables = true;
-            this.ctlPersonCardWithFilter1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctlPersonCardWithFilter1.Location = new System.Drawing.Point(232, 42);
-            this.ctlPersonCardWithFilter1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ctlPersonCardWithFilter1.Name = "ctlPersonCardWithFilter1";
-            this.ctlPersonCardWithFilter1.ShowAddPerson = true;
-            this.ctlPersonCardWithFilter1.Size = new System.Drawing.Size(842, 394);
-            this.ctlPersonCardWithFilter1.TabIndex = 133;
-            this.ctlPersonCardWithFilter1.OnPersonSelected += new System.Action<int>(this.ctlPersonCardWithFilter1_OnPersonSelected);
-            // 
-            // ctlDriverLicenses1
-            // 
-            this.ctlDriverLicenses1.BackColor = System.Drawing.Color.White;
-            this.ctlDriverLicenses1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctlDriverLicenses1.Location = new System.Drawing.Point(4, 423);
-            this.ctlDriverLicenses1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ctlDriverLicenses1.Name = "ctlDriverLicenses1";
-            this.ctlDriverLicenses1.Size = new System.Drawing.Size(1058, 328);
-            this.ctlDriverLicenses1.TabIndex = 134;
             // 
             // pbPersonImage
             // 
@@ -108,6 +74,41 @@
             this.btnClose.TabIndex = 182;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // ctlDriverLicenses1
+            // 
+            this.ctlDriverLicenses1.BackColor = System.Drawing.Color.White;
+            this.ctlDriverLicenses1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctlDriverLicenses1.Location = new System.Drawing.Point(4, 423);
+            this.ctlDriverLicenses1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctlDriverLicenses1.Name = "ctlDriverLicenses1";
+            this.ctlDriverLicenses1.Size = new System.Drawing.Size(1058, 328);
+            this.ctlDriverLicenses1.TabIndex = 134;
+            // 
+            // ctlDriverLicenseInfoWithFilter1
+            // 
+            this.ctlDriverLicenseInfoWithFilter1.BackColor = System.Drawing.Color.White;
+            this.ctlDriverLicenseInfoWithFilter1.FilterEnabled = true;
+            this.ctlDriverLicenseInfoWithFilter1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctlDriverLicenseInfoWithFilter1.Location = new System.Drawing.Point(540, 604);
+            this.ctlDriverLicenseInfoWithFilter1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctlDriverLicenseInfoWithFilter1.Name = "ctlDriverLicenseInfoWithFilter1";
+            this.ctlDriverLicenseInfoWithFilter1.Size = new System.Drawing.Size(8, 8);
+            this.ctlDriverLicenseInfoWithFilter1.TabIndex = 132;
+            // 
+            // ctlPersonCardWithFilter1
+            // 
+            this.ctlPersonCardWithFilter1.BackColor = System.Drawing.Color.White;
+            this.ctlPersonCardWithFilter1.FilterEnables = true;
+            this.ctlPersonCardWithFilter1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctlPersonCardWithFilter1.Location = new System.Drawing.Point(232, 42);
+            this.ctlPersonCardWithFilter1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctlPersonCardWithFilter1.Name = "ctlPersonCardWithFilter1";
+            this.ctlPersonCardWithFilter1.ShowAddPerson = true;
+            this.ctlPersonCardWithFilter1.Size = new System.Drawing.Size(842, 394);
+            this.ctlPersonCardWithFilter1.TabIndex = 133;
+            this.ctlPersonCardWithFilter1.OnPersonSelected += new System.Action<int>(this.ctlPersonCardWithFilter1_OnPersonSelected);
             // 
             // frmShowPersonLicenseHistory
             // 
