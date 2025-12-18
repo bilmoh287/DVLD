@@ -70,7 +70,7 @@ namespace DVLDPresentationLayer.Licenses.Controls
                 MessageBox.Show("Could Not Found Driver history with PersonID = " + PersonID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            _DriverID = _Driver.PersonID;
+            _DriverID = _Driver.DriverID;
             _LoadLocalLicenseInfo();
         }
 
@@ -78,6 +78,11 @@ namespace DVLDPresentationLayer.Licenses.Controls
         {
             frmShowLicenseInfo frm = new frmShowLicenseInfo(_DriverID);
             frm.ShowDialog();
+        }
+        public void Clear()
+        {
+            _dtDriverLocalLicensesHistory.Clear();
+            _dtDriverInternationalLicensesHistory.Clear();
         }
     }
 }

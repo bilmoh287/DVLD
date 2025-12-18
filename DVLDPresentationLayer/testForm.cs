@@ -24,6 +24,7 @@ namespace DVLDPresentationLayer
             //ctlPersonCard1.LoadPersonInfo(1);
             //ctlScheduledTest1.LoadTestAppointmentInfo(1, clsTestTypes.enTestType.VisionTest);
             //ctlScheduleTest1.LoadScheduleTestInfo(1);
+            //ctlDriverLicenses1.LoadInfoByDriverID(2);
         }
 
         private void button1_Click(object sender, EventArgs e)

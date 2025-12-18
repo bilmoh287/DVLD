@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDBussinessLayer;
+using DVLDPresentationLayer.Licenses;
 
 namespace DVLDPresentationLayer
 {
@@ -305,6 +306,17 @@ namespace DVLDPresentationLayer
                 return;
             }
             frmShowLicenseInfo frm = new frmShowLicenseInfo(LicenseID);
+            frm.ShowDialog();
+        }
+
+        private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int LDLApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
+            clsLocalDrivingLicenseApplication LocalDrivingLicenseApplication =
+            clsLocalDrivingLicenseApplication.GetLocalDrivingLicenseApplicationInfoByID(LDLApplicationID);
+            int PersonID = LocalDrivingLicenseApplication.ApplicantPersonID;
+
+            frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(PersonID);
             frm.ShowDialog();
         }
     }

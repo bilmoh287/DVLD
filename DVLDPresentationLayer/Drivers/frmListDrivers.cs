@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDBussinessLayer;
+using DVLDPresentationLayer.Licenses;
 
 namespace DVLDPresentationLayer
 {
@@ -181,8 +182,9 @@ namespace DVLDPresentationLayer
 
         private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not Implemented yet", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+            int PersonID = (int)dgvDrivers.CurrentRow.Cells[1].Value;
+            frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(PersonID);
+            frm.ShowDialog();
         }
     }
 }
