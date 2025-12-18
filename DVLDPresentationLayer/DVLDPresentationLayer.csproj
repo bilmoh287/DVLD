@@ -108,6 +108,12 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Licenses\Controls\ctlDriverLicenses.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Licenses\Controls\ctlDriverLicenses.Designer.cs">
+      <DependentUpon>ctlDriverLicenses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Licenses\Local Licenses\Controls\ctlDriverLicenseInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -126,16 +132,16 @@
     <Compile Include="Drivers\frmListDrivers.Designer.cs">
       <DependentUpon>frmListDrivers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Licenses\frmIssueDriverLicenseFirstTime.cs">
+    <Compile Include="Licenses\Local Licenses\frmIssueDriverLicenseFirstTime.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Licenses\frmIssueDriverLicenseFirstTime.Designer.cs">
+    <Compile Include="Licenses\Local Licenses\frmIssueDriverLicenseFirstTime.Designer.cs">
       <DependentUpon>frmIssueDriverLicenseFirstTime.cs</DependentUpon>
     </Compile>
-    <Compile Include="Licenses\frmShowLicenseInfo.cs">
+    <Compile Include="Licenses\Local Licenses\frmShowLicenseInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Licenses\frmShowLicenseInfo.Designer.cs">
+    <Compile Include="Licenses\Local Licenses\frmShowLicenseInfo.Designer.cs">
       <DependentUpon>frmShowLicenseInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Tests\Controls\ctlScheduledTest.cs">
@@ -305,6 +311,9 @@
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\Controls\ctlDriverLicenses.resx">
+      <DependentUpon>ctlDriverLicenses.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Licenses\Local Licenses\Controls\ctlDriverLicenseInfo.resx">
       <DependentUpon>ctlDriverLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -314,10 +323,10 @@
     <EmbeddedResource Include="Drivers\frmListDrivers.resx">
       <DependentUpon>frmListDrivers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Licenses\frmIssueDriverLicenseFirstTime.resx">
+    <EmbeddedResource Include="Licenses\Local Licenses\frmIssueDriverLicenseFirstTime.resx">
       <DependentUpon>frmIssueDriverLicenseFirstTime.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Licenses\frmShowLicenseInfo.resx">
+    <EmbeddedResource Include="Licenses\Local Licenses\frmShowLicenseInfo.resx">
       <DependentUpon>frmShowLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tests\Controls\ctlScheduledTest.resx">

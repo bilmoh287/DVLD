@@ -230,6 +230,10 @@ namespace DVLDBussinessLayer
         {
             return this.ExpirationDate < DateTime.Now;
         }
+        public static DataTable GetDriverLicenses(int DriverID)
+        {
+            return clsLicensesData.GetDriverLicenses(DriverID);
+        }
         public clsLicenses RenewDrivingLicense(string Notes, int CreatedByUserID)
         {
             //First Create Applicaiton 

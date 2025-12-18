@@ -199,6 +199,37 @@ namespace DVLDDataAccessLayer
             return dt;
         }
 
+        public static DataTable GetDriverLicenses(int DriverID)
+        {
+            DataTable dt = new DataTable();
+            string query = @"SELECT Licenses.LicenseID, Licenses.ApplicationID, LicenseClasses.ClassName, Licenses.IssueDate, Licenses.ExpirationDate, Licenses.IsActive
+                            FROM     Licenses INNER JOIN
+                                              LicenseClasses ON Licenses.LicenseClass = LicenseClasses.LicenseClassID
+                            WHERE DriverID  = @DriverID
+                            ORDER BY Licenses.ExpirationDate DESC, Licenses.IsActive DESC;";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@DriverID", DriverID);
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error loading Licenses: " + ex.Message);
+                    }
+                }
+            }
+            return dt;
+        }
+
         // Method 5: Check if License Exists
         public static bool IsLicenseExist(int LicenseID)
         {
