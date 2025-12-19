@@ -336,5 +336,32 @@ namespace DVLDBussinessLayer
         {
             return clsDetainedLicenses.IsLicenseDetained(this.LicenseID);
         }
+
+        public int Release(int ReleasedByUserID)
+        {
+            //First Create Applicaiton 
+            clsApplication _Application = new clsApplication();
+            _Application.ApplicationTypeID = (int)clsApplication.enApplicationType.ReleaseDetainedDrivingLicsense;
+            _Application.ApplicantPersonID = this.DriverInfo.PersonInfo.PersonID;
+            _Application.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
+            _Application.ApplicationDate = DateTime.Now;
+            _Application.LastStatusDate = DateTime.Now;
+            _Application.PaidFees = clsApplicationTypes.FindApplicationType(_Application.ApplicationTypeID).ApplicationTypeFees;
+            _Application.CreatedByUserID = ReleasedByUserID;
+
+            if (!_Application.Save())
+            {
+                return -1;
+            }
+
+            clsDetainedLicenses DetainedLicesne = clsDetainedLicenses.FindByLicenseID(this.LicenseID);
+
+            //Release based from clsDetainedLicenses BL
+            if (DetainedLicesne.Release(ReleasedByUserID, _Application.ApplicationID))
+            {
+                return _Application.ApplicationID;
+            }
+            else { return -1; }
+        }
     }
 }

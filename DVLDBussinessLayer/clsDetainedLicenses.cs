@@ -79,7 +79,7 @@ namespace DVLDBussinessLayer
 
         // ================= Find =================
 
-        public static clsDetainedLicenses Find(int DetainID)
+        public static clsDetainedLicenses FindByDetainedID(int DetainID)
         {
             int LicenseID = -1, CreatedByUserID = -1;
             int? ReleasedByUserID = null, ReleaseApplicationID = null;
@@ -120,6 +120,48 @@ namespace DVLDBussinessLayer
 
             return null;
         }
+        public static clsDetainedLicenses FindByLicenseID(int LicenseID)
+        {
+            int DetainID = -1, CreatedByUserID = -1;
+            int? ReleasedByUserID = null, ReleaseApplicationID = null;
+            DateTime DetainDate = DateTime.Now;
+            DateTime? ReleaseDate = null;
+            string DetainReason = "", DetainPlace = "";
+            decimal FineFees = 0;
+            bool IsReleased = false;
+
+            bool isFound = clsDetainedLicensesData.GetDetainInfoByLicenseID(
+                LicenseID,
+                ref DetainID,
+                ref DetainDate,
+                ref DetainReason,
+                ref DetainPlace,
+                ref FineFees,
+                ref CreatedByUserID,
+                ref IsReleased,
+                ref ReleaseDate,
+                ref ReleasedByUserID,
+                ref ReleaseApplicationID);
+
+            if (isFound)
+            {
+                return new clsDetainedLicenses(
+                    DetainID,
+                    LicenseID,
+                    DetainDate,
+                    DetainReason,
+                    DetainPlace,
+                    FineFees,
+                    CreatedByUserID,
+                    IsReleased,
+                    ReleaseDate,
+                    ReleasedByUserID,
+                    ReleaseApplicationID);
+            }
+
+            return null;
+        }
+
 
         // ================= Add / Update =================
 

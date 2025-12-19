@@ -49,6 +49,7 @@ namespace DVLDPresentationLayer.Licenses.Detain_License
                 int LicenseID = obj;
                 if(LicenseID != -1)
                 {
+                    _LicenseID = LicenseID;
                     //ToDo: make sure the license is not detained already.
                     if (ctlDriverLicenseInfoWithFilter1.SelectedLicenseInfo.IsLicenseDetained())
                     {
@@ -72,7 +73,7 @@ namespace DVLDPresentationLayer.Licenses.Detain_License
         {
             lblLicenseID.Text = LicenseID.ToString();
             lblDetainDate.Text = DateTime.Now.ToString();
-            lblCreatedByUser.Text = clsGlobal.CurrentUser.UserID.ToString();
+            lblCreatedByUser.Text = clsGlobal.CurrentUser.UserName;
             txtFineFees.Focus();
             llShowLicenseHistory.Enabled = true;
         }

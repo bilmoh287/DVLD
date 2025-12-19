@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLDPresentationLayer.Applications.Relesease_Detained_Licenses;
 using DVLDPresentationLayer.Applications.Renew_Local_License;
 using DVLDPresentationLayer.Applications.Replace_Lost_or_Damaged_License;
 using DVLDPresentationLayer.Global_Classes;
@@ -112,6 +113,13 @@ namespace DVLDPresentationLayer
         {
             frmDetainLicenseApplication frm = new frmDetainLicenseApplication();
             frm.ShowDialog();
+        }
+
+        private void releaseLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReleaseDetainedLicenseApplication frm = new frmReleaseDetainedLicenseApplication();
+            frm.ShowDialog();
+
         }
     }
 }

@@ -75,6 +75,75 @@ namespace DVLDDataAccessLayer
 
             return isFound;
         }
+        public static bool GetDetainInfoByLicenseID(
+    int LicenseID,
+    ref int DetainID,
+    ref DateTime DetainDate,
+    ref string DetainReason,
+    ref string DetainPlace,
+    ref decimal FineFees,
+    ref int CreatedByUserID,
+    ref bool IsReleased,
+    ref DateTime? ReleaseDate,
+    ref int? ReleasedByUserID,
+    ref int? ReleaseApplicationID)
+        {
+            bool isFound = false;
+
+            using (SqlConnection connection =
+                   new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string query = @"SELECT TOP 1 *
+                         FROM DetainedLicenses
+                         WHERE LicenseID = @LicenseID
+                         ORDER BY DetainDate DESC";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@LicenseID", LicenseID);
+
+                    try
+                    {
+                        connection.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            isFound = true;
+
+                            DetainID = (int)reader["DetainID"];
+                            DetainDate = (DateTime)reader["DetainDate"];
+                            DetainReason = reader["DetainReason"] != DBNull.Value
+                                ? (string)reader["DetainReason"] : "";
+
+                            DetainPlace = reader["DetainPlace"] != DBNull.Value
+                                ? (string)reader["DetainPlace"] : "";
+
+                            FineFees = (decimal)reader["FineFees"];
+                            CreatedByUserID = (int)reader["CreatedByUserID"];
+                            IsReleased = (bool)reader["IsReleased"];
+
+                            ReleaseDate = reader["ReleaseDate"] != DBNull.Value
+                                ? (DateTime?)reader["ReleaseDate"] : null;
+
+                            ReleasedByUserID = reader["ReleasedByUserID"] != DBNull.Value
+                                ? (int?)reader["ReleasedByUserID"] : null;
+
+                            ReleaseApplicationID = reader["ReleaseApplicationID"] != DBNull.Value
+                                ? (int?)reader["ReleaseApplicationID"] : null;
+                        }
+
+                        reader.Close();
+                    }
+                    catch
+                    {
+                        isFound = false;
+                    }
+                }
+            }
+
+            return isFound;
+        }
 
         public static int AddNewDetain(
             int LicenseID,
