@@ -332,5 +332,9 @@ namespace DVLDBussinessLayer
             }
             return detainedLicense.DetainID;
         }
+        public bool IsLicenseDetained()
+        {
+            return clsDetainedLicenses.IsLicenseDetained(this.LicenseID);
+        }
     }
 }

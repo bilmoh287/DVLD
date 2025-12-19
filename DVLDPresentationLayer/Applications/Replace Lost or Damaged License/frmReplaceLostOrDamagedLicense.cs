@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDBussinessLayer;
 using DVLDPresentationLayer.Global_Classes;
+using DVLDPresentationLayer.Licenses;
 
 namespace DVLDPresentationLayer.Applications.Replace_Lost_or_Damaged_License
 {
@@ -95,7 +96,6 @@ namespace DVLDPresentationLayer.Applications.Replace_Lost_or_Damaged_License
             if (NewLicense == null)
             {
                 MessageBox.Show("Faild to Issue a replacemnet for this  License", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 return;
             }
 
@@ -114,7 +114,9 @@ namespace DVLDPresentationLayer.Applications.Replace_Lost_or_Damaged_License
 
         private void llShowLicenseHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show("Not Implemented yet", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            int PersonID = ctlDriverLicenseInfoWithFilter1.SelectedLicenseInfo.DriverInfo.PersonID;
+            frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(PersonID);
+            frm.ShowDialog();
         }
 
         private void llShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
