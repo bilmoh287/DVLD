@@ -28,7 +28,7 @@ namespace DVLDPresentationLayer.Licenses
             if(_PersonID == -1)
             {
                 int PersonID = obj;
-                if (PersonID != 1)
+                if (PersonID != -1)
                 {
                     ctlPersonCardWithFilter1.LoadPersonInfo(_PersonID);
                     ctlPersonCardWithFilter1.FilterEnables = false;

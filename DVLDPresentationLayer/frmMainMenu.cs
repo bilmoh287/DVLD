@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DVLDPresentationLayer.Applications.Renew_Local_License;
 using DVLDPresentationLayer.Applications.Replace_Lost_or_Damaged_License;
 using DVLDPresentationLayer.Global_Classes;
+using DVLDPresentationLayer.Licenses.Detain_License;
 
 namespace DVLDPresentationLayer
 {
@@ -104,6 +105,12 @@ namespace DVLDPresentationLayer
         private void replacementForLostOrDamagedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmReplaceLostOrDamagedLicense frm = new frmReplaceLostOrDamagedLicense();
+            frm.ShowDialog();
+        }
+
+        private void detainLicenseToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmDetainLicenseApplication frm = new frmDetainLicenseApplication();
             frm.ShowDialog();
         }
     }

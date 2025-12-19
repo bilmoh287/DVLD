@@ -315,5 +315,22 @@ namespace DVLDBussinessLayer
                 return null;
             return NewLicense;
         }
+
+        public int Detain(string DetainReason, string DetainPlace, decimal FineFee, int CreatedByUserID)
+        {
+            clsDetainedLicenses detainedLicense = new clsDetainedLicenses();
+            detainedLicense.LicenseID = this.LicenseID;
+            detainedLicense.DetainDate = DateTime.Now;
+            detainedLicense.FineFees = Convert.ToDecimal(FineFee);
+            detainedLicense.DetainReason = DetainReason;
+            detainedLicense.DetainPlace = DetainPlace;
+            detainedLicense.CreatedByUserID = CreatedByUserID;
+
+            if (!detainedLicense.Save())
+            {
+                return -1;
+            }
+            return detainedLicense.DetainID;
+        }
     }
 }
