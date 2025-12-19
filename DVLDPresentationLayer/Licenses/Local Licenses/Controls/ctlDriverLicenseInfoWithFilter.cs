@@ -48,6 +48,10 @@ namespace DVLDPresentationLayer
         {
             set { ctlDriverLicenseInfo1.ChangeIsActivelbl = value; }
         }
+        public string ChangeIsDetainedlbl
+        {
+            set { ctlDriverLicenseInfo1.ChangeIsDetainedlbl = value; }
+        }
 
         public ctlDriverLicenseInfoWithFilter()
         {

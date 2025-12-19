@@ -88,7 +88,7 @@ namespace DVLDPresentationLayer.Licenses.Detain_License
                 return;
             }
 
-            if (MessageBox.Show("Are you sure you want to Issue a Replacement for the license?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            if (MessageBox.Show("Are you sure you want to Detain this License?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 return;
             }
@@ -112,6 +112,7 @@ namespace DVLDPresentationLayer.Licenses.Detain_License
                 txtDetainReason.Enabled = false;
                 txtDetainPlace.Enabled = false;
                 llShowLicenseInfo.Enabled = true;
+                ctlDriverLicenseInfoWithFilter1.ChangeIsDetainedlbl = "Yes";
             }
             else
             {

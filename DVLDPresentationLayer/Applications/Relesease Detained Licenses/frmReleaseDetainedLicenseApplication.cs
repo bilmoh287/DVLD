@@ -90,7 +90,7 @@ namespace DVLDPresentationLayer.Applications.Relesease_Detained_Licenses
 
         private void btnRelease_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to Issue a Replacement for the license?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            if (MessageBox.Show("Are you sure you want to Release thi License?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 return;
             }
@@ -99,15 +99,16 @@ namespace DVLDPresentationLayer.Applications.Relesease_Detained_Licenses
             if (ApplicationID != -1)
             {
                 lblApplicationID.Text = ApplicationID.ToString();
-                MessageBox.Show("Licensed Release Successfully.", "License Released", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Licensed Released Successfully.", "License Released", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 btnRelease.Enabled = false;
                 ctlDriverLicenseInfoWithFilter1.FilterEnabled = false;
                 llShowLicenseInfo.Enabled = true;
+                ctlDriverLicenseInfoWithFilter1.ChangeIsDetainedlbl = "No";
             }
             else
             {
-                MessageBox.Show("Licensed Detainment Unsuccessfull.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to Release License.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

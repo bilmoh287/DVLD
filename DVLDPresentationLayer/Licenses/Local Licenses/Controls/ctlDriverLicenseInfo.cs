@@ -37,6 +37,11 @@ namespace DVLDPresentationLayer
             set { lblIsActive.Text = value; }
             get { return lblIsActive.Text; }
         }
+        public string ChangeIsDetainedlbl
+        {
+            set { lblIsActive.Text = value; }
+            get { return lblIsActive.Text; }
+        }
 
         private void _LoadPersonImage()
         {
@@ -60,7 +65,7 @@ namespace DVLDPresentationLayer
             lblDateOfBirth.Text = clsFormat.DateToShort(_License.DriverInfo.PersonInfo.DateOfBirth);
             lblDriverID.Text = _License.DriverID.ToString();
             lblExpirationDate.Text = clsFormat.DateToShort(_License.ExpirationDate);
-            lblIsDetained.Text = "NO"; //Not Implemented Yet
+            lblIsDetained.Text = _License.IsLicenseDetained() ? "Yes" : "No";
             pbPersonImage.Image = Resources.Male_512;
 
             _LoadPersonImage();
