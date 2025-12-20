@@ -47,8 +47,8 @@ namespace DVLDPresentationLayer.Applications.Relesease_Detained_Licenses
                 ctlDriverLicenseInfoWithFilter1.FilterEnabled = false;
 
                 //filling Detain License Form
-                FillingDetainLicenseInfo(_LicenseID);
                 _DetainedLicense = clsDetainedLicenses.FindByLicenseID(_LicenseID);
+                FillingDetainLicenseInfo(_LicenseID);
                 btnRelease.Enabled = true;
             }
             else

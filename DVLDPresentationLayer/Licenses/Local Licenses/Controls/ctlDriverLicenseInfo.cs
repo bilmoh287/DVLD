@@ -39,8 +39,8 @@ namespace DVLDPresentationLayer
         }
         public string ChangeIsDetainedlbl
         {
-            set { lblIsActive.Text = value; }
-            get { return lblIsActive.Text; }
+            set { lblIsDetained.Text = value; }
+            get { return lblIsDetained.Text; }
         }
 
         private void _LoadPersonImage()

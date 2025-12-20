@@ -284,7 +284,8 @@ namespace DVLDDataAccessLayer
             using (SqlConnection connection =
                    new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
-                string query = "SELECT * FROM DetainedLicenses";
+                string query = @"SELECT * FROM DetainedLicensesDetails_View
+                                 ORDER BY IsReleased, DetainID;";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
