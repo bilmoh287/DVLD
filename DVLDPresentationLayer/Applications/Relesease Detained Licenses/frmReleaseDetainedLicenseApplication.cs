@@ -90,7 +90,7 @@ namespace DVLDPresentationLayer.Applications.Relesease_Detained_Licenses
 
         private void btnRelease_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to Release thi License?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            if (MessageBox.Show("Are you sure you want to Release this License?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 return;
             }
