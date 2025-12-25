@@ -49,7 +49,6 @@ namespace DVLDPresentationLayer.Licenses.Detain_License
                 int LicenseID = obj;
                 if(LicenseID != -1)
                 {
-                    _LicenseID = LicenseID;
                     //ToDo: make sure the license is not detained already.
                     if (ctlDriverLicenseInfoWithFilter1.SelectedLicenseInfo.IsLicenseDetained())
                     {
@@ -63,6 +62,7 @@ namespace DVLDPresentationLayer.Licenses.Detain_License
                         return;
                     }
                     //filling Detain License Form
+                    _LicenseID = LicenseID;
                     FillingDetainLicenseInfo(LicenseID);
                     btnDetain.Enabled = true;
                 }

@@ -69,7 +69,7 @@ namespace DVLDBussinessLayer
             //call DataAccess Layer 
 
             this.InternationalLicenseID =
-                clsInternationalLicenseData.AddNewInternationalLicense(this.ApplicationID, this.DriverID, this.IssuedUsingLocalLicenseID,
+                clsInternationalLicensesData.AddNewInternationalLicense(this.ApplicationID, this.DriverID, this.IssuedUsingLocalLicenseID,
                this.IssueDate, this.ExpirationDate,
                this.IsActive, this.CreatedByUserID);
 
@@ -80,7 +80,7 @@ namespace DVLDBussinessLayer
         {
             //call DataAccess Layer 
 
-            return clsInternationalLicenseData.UpdateInternationalLicense(
+            return clsInternationalLicensesData.UpdateInternationalLicense(
                 this.InternationalLicenseID, this.ApplicationID, this.DriverID, this.IssuedUsingLocalLicenseID,
                this.IssueDate, this.ExpirationDate,
                this.IsActive, this.CreatedByUserID);
@@ -92,7 +92,7 @@ namespace DVLDBussinessLayer
             DateTime IssueDate = DateTime.Now; DateTime ExpirationDate = DateTime.Now;
             bool IsActive = true; int CreatedByUserID = 1;
 
-            if (clsInternationalLicenseData.GetInternationalLicenseInfoByID(InternationalLicenseID, ref ApplicationID, ref DriverID,
+            if (clsInternationalLicensesData.GetInternationalLicenseInfoByID(InternationalLicenseID, ref ApplicationID, ref DriverID,
                 ref IssuedUsingLocalLicenseID,
             ref IssueDate, ref ExpirationDate, ref IsActive, ref CreatedByUserID))
             {
@@ -115,7 +115,7 @@ namespace DVLDBussinessLayer
         }
         public static DataTable GetAllInternationalLicenses()
         {
-            return clsInternationalLicenseData.GetAllInternationalLicenses();
+            return clsInternationalLicensesData.GetAllInternationalLicenses();
 
         }
 
@@ -152,7 +152,7 @@ namespace DVLDBussinessLayer
         }
         public static int GetActiveInternationalLicenseIDByDriverID(int DriverID)
         {
-            return clsInternationalLicenseData.GetActiveInternationalLicenseIDByDriverID(DriverID);
+            return clsInternationalLicensesData.GetActiveInternationalLicenseIDByDriverID(DriverID);
         }
     }
 }

@@ -65,7 +65,6 @@ namespace DVLDPresentationLayer.Applications.Relesease_Detained_Licenses
                 int LicenseID = obj;
                 if (LicenseID != -1)
                 {
-                    _LicenseID = LicenseID;
                     //ToDo: make sure the license is Active before Detainmnet.
                     if (!ctlDriverLicenseInfoWithFilter1.SelectedLicenseInfo.IsActive)
                     {
@@ -81,6 +80,7 @@ namespace DVLDPresentationLayer.Applications.Relesease_Detained_Licenses
                     }
 
                     //filling Detain License Form
+                    _LicenseID = LicenseID;
                     _DetainedLicense = clsDetainedLicenses.FindByLicenseID(LicenseID);
                     FillingDetainLicenseInfo(LicenseID);
                     btnRelease.Enabled = true;

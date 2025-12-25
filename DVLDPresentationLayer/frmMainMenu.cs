@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLDPresentationLayer.Applications.International_Driving_License;
 using DVLDPresentationLayer.Applications.Relesease_Detained_Licenses;
 using DVLDPresentationLayer.Applications.Renew_Local_License;
 using DVLDPresentationLayer.Applications.Replace_Lost_or_Damaged_License;
@@ -125,6 +126,12 @@ namespace DVLDPresentationLayer
         private void manageDetainedLicensesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmListDetainedLicenses frm = new frmListDetainedLicenses();
+            frm.ShowDialog();
+        }
+
+        private void internationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmInternationalDrivingLicenseApplication frm = new frmInternationalDrivingLicenseApplication();
             frm.ShowDialog();
         }
     }

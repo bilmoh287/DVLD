@@ -93,6 +93,7 @@
             this.lblTitle.TabIndex = 124;
             this.lblTitle.Text = "International License Application";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // btnClose
             // 
@@ -107,11 +108,12 @@
             this.btnClose.TabIndex = 128;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnIssueInternationalLicense
             // 
             this.btnIssueInternationalLicense.AutoEllipsis = true;
-            this.btnIssueInternationalLicense.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnIssueInternationalLicense.Enabled = false;
             this.btnIssueInternationalLicense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIssueInternationalLicense.Image = global::DVLDPresentationLayer.Properties.Resources.International_32;
             this.btnIssueInternationalLicense.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -121,6 +123,7 @@
             this.btnIssueInternationalLicense.TabIndex = 129;
             this.btnIssueInternationalLicense.Text = "Issue";
             this.btnIssueInternationalLicense.UseVisualStyleBackColor = true;
+            this.btnIssueInternationalLicense.Click += new System.EventHandler(this.btnIssueInternationalLicense_Click);
             // 
             // gpApplicationInfo
             // 
@@ -413,6 +416,7 @@
             this.llShowLicenseInfo.TabIndex = 179;
             this.llShowLicenseInfo.TabStop = true;
             this.llShowLicenseInfo.Text = "Show Licenses Info";
+            this.llShowLicenseInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowLicenseInfo_LinkClicked);
             // 
             // llShowLicenseHistory
             // 
@@ -424,6 +428,7 @@
             this.llShowLicenseHistory.TabIndex = 178;
             this.llShowLicenseHistory.TabStop = true;
             this.llShowLicenseHistory.Text = "Show Licenses History";
+            this.llShowLicenseHistory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowLicenseHistory_LinkClicked);
             // 
             // frmInternationalDrivingLicenseApplication
             // 
@@ -445,6 +450,7 @@
             this.Name = "frmInternationalDrivingLicenseApplication";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "International Driving License";
+            this.Load += new System.EventHandler(this.frmInternationalDrivingLicenseApplication_Load);
             this.gpApplicationInfo.ResumeLayout(false);
             this.gpApplicationInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
