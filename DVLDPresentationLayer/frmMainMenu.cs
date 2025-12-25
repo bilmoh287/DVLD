@@ -134,5 +134,11 @@ namespace DVLDPresentationLayer
             frmInternationalDrivingLicenseApplication frm = new frmInternationalDrivingLicenseApplication();
             frm.ShowDialog();
         }
+
+        private void internationalLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListInternationalLicenses frm = new frmListInternationalLicenses();
+            frm.ShowDialog();
+        }
     }
 }
