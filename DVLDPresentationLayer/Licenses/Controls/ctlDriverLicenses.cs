@@ -50,6 +50,34 @@ namespace DVLDPresentationLayer.Licenses.Controls
                 dgvLocalLicensesHistory.Columns[5].Width = 110;
             }
         }
+        private void _LoadInternationalLicenseInfo()
+        {
+            _dtDriverInternationalLicensesHistory = clsDrivers.GetInternationalLicenses(_DriverID);
+
+            dgvInternationalLicensesHistory.DataSource = _dtDriverInternationalLicensesHistory;
+            lblInternationalLicensesRecords.Text = dgvInternationalLicensesHistory.Rows.Count.ToString();
+
+            if (dgvInternationalLicensesHistory.Rows.Count > 0)
+            {
+                dgvInternationalLicensesHistory.Columns[0].HeaderText = "Int.License ID";
+                dgvInternationalLicensesHistory.Columns[0].Width = 160;
+
+                dgvInternationalLicensesHistory.Columns[1].HeaderText = "Application ID";
+                dgvInternationalLicensesHistory.Columns[1].Width = 130;
+
+                dgvInternationalLicensesHistory.Columns[2].HeaderText = "L.License ID";
+                dgvInternationalLicensesHistory.Columns[2].Width = 130;
+
+                dgvInternationalLicensesHistory.Columns[3].HeaderText = "Issue Date";
+                dgvInternationalLicensesHistory.Columns[3].Width = 180;
+
+                dgvInternationalLicensesHistory.Columns[4].HeaderText = "Expiration Date";
+                dgvInternationalLicensesHistory.Columns[4].Width = 180;
+
+                dgvInternationalLicensesHistory.Columns[5].HeaderText = "Is Active";
+                dgvInternationalLicensesHistory.Columns[5].Width = 120;
+            }
+        }
 
         public void LoadInfoByDriverID(int DriverID)
         {
@@ -61,6 +89,7 @@ namespace DVLDPresentationLayer.Licenses.Controls
             }
             _DriverID = DriverID;
             _LoadLocalLicenseInfo();
+            _LoadInternationalLicenseInfo();
         }
         public void LoadInfoByPersonID(int PersonID)
         {

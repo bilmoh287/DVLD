@@ -131,5 +131,9 @@ namespace DVLDBussinessLayer
         {
             return clsLicenses.GetDriverLicenses(DriverID);
         }
+        public static DataTable GetInternationalLicenses(int DriverID)
+        {
+            return clsInternationalLicenses.GetDriverInternationalLicenses(DriverID);
+        }
     }
 }
