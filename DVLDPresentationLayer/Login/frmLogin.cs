@@ -15,6 +15,7 @@ namespace DVLDPresentationLayer
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string username = txtUserName.Text.Trim();
+            //string password = clsUser.ComputeHash(txtPassword.Text.Trim());
             string password = txtPassword.Text.Trim();
 
             clsUser _User = clsUser.FindByUserNameAndPassword(username, password);

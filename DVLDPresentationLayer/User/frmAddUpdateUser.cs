@@ -69,6 +69,9 @@ namespace DVLDPresentationLayer
             txtPassword.Text = _User.Password;
             txtConfirmPassword.Text = _User.Password;
             chkIsActive.Checked = _User.IsActive;
+            txtPassword.Enabled = false;
+            txtUserName.Enabled = false;
+            txtConfirmPassword.Enabled = false;
             ctlPersonCardWithFilter1.LoadPersonInfo(_User.PersonID);
         }
         private void frmAddUpdateUser_Load(object sender, EventArgs e)
@@ -97,6 +100,11 @@ namespace DVLDPresentationLayer
             _User.UserName = txtUserName.Text.Trim();
             _User.Password = txtPassword.Text.Trim();
             _User.IsActive = chkIsActive.Checked;
+            if (_Mode == enMode.AddNew)
+            {
+                _User.SetPassword(_User.Password); // hashing the input password before saving
+            }
+
 
             // Step 3: Save
             if (_User.Save())
@@ -106,6 +114,12 @@ namespace DVLDPresentationLayer
                 this.Text = lblTitle.Text;
                 OnUserSaved?.Invoke(this, _User.UserID);
                 MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                tcLogin.SelectedTab = tcLogin.TabPages["tpUserInfo"];
+                txtPassword.Enabled = false;
+                txtUserName.Enabled = false;
+                txtConfirmPassword.Enabled = false;
+
             }
             else
             {

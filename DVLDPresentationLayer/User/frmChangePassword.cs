@@ -142,7 +142,8 @@ namespace DVLDPresentationLayer
             }
 
             // Step 2: Assign values from UI to business object
-            _User.Password = txtNewPassword.Text.Trim();
+            //_User.Password = txtNewPassword.Text.Trim();
+            _User.SetPassword(txtNewPassword.Text.Trim());
 
             // Step 3: Save
             if (_User.Save())

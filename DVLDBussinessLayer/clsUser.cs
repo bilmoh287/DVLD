@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
@@ -88,6 +89,7 @@ namespace DVLDBussinessLayer
             int UserID = -1;
             int PersonID = -1;
             bool IsActive = true;
+            Password = ComputeHash(Password);
 
             if (clsUserData.GetUserInfoByUsernameAndPassword(UserName,  Password, ref UserID, ref PersonID, ref IsActive))
             {
@@ -150,6 +152,24 @@ namespace DVLDBussinessLayer
                     return _UpdateUser();
             }
             return false;
+        }
+        public void SetPassword(string newPassword)
+        {
+            this.Password = ComputeHash(newPassword);
+        }
+        public static string ComputeHash(string input)
+        {
+            //SHA is Secutred Hash Algorithm.
+            // Create an instance of the SHA-256 algorithm
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                // Compute the hash value from the UTF-8 encoded input string
+                byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+
+                // Convert the byte array to a lowercase hexadecimal string
+                return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+            }
         }
     }
 }
