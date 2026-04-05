@@ -57,6 +57,7 @@
     <Compile Include="clsUserData.cs" />
     <Compile Include="DataAccessSetting.cs" />
     <Compile Include="clsPersonData.cs" />
+    <Compile Include="clsInstituteCourseData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
