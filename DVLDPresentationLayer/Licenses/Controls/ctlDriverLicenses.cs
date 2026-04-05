@@ -52,7 +52,7 @@ namespace DVLDPresentationLayer.Licenses.Controls
         }
         private void _LoadInternationalLicenseInfo()
         {
-            _dtDriverInternationalLicensesHistory = clsDrivers.GetInternationalLicenses(_DriverID);
+            _dtDriverInternationalLicensesHistory = clsDrivers.GetInternationalLicenses(_DriverID); 
 
             dgvInternationalLicensesHistory.DataSource = _dtDriverInternationalLicensesHistory;
             lblInternationalLicensesRecords.Text = dgvInternationalLicensesHistory.Rows.Count.ToString();

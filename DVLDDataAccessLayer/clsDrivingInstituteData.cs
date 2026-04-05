@@ -13,7 +13,7 @@ namespace DVLDDataAccessLayer
         public static DataTable GetAllInstitutes()
         {
             DataTable dt = new DataTable();
-            string query = @"SELECT * FROM DrivingInstitutes;";
+            string query = @"SELECT InstituteID, InstituteName, Address, Phone, Email, IsActive from DrivingInstitutes;";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             using (SqlCommand command = new SqlCommand(query, connection))

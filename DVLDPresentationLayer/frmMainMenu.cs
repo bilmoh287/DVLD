@@ -140,5 +140,11 @@ namespace DVLDPresentationLayer
             frmListInternationalLicenses frm = new frmListInternationalLicenses();
             frm.ShowDialog();
         }
+
+        private void manageDrivingInstitutesToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            frmListDrivingInstitutes frm = new frmListDrivingInstitutes();
+            frm.ShowDialog();
+        }
     }
 }

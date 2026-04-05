@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.msMainMenu = new System.Windows.Forms.MenuStrip();
+            this.pbMain = new System.Windows.Forms.PictureBox();
             this.applicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.drivingLicenseServicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newDrivingLicenseApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +55,7 @@
             this.releaseLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageTestTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageDrivingInstitutesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peopleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.driversToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,7 +64,6 @@
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.signOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pbMain = new System.Windows.Forms.PictureBox();
             this.msMainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).BeginInit();
             this.SuspendLayout();
@@ -83,6 +84,17 @@
             this.msMainMenu.TabIndex = 1;
             this.msMainMenu.Text = "msMainMenu";
             // 
+            // pbMain
+            // 
+            this.pbMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbMain.Image = ((System.Drawing.Image)(resources.GetObject("pbMain.Image")));
+            this.pbMain.Location = new System.Drawing.Point(0, 72);
+            this.pbMain.Name = "pbMain";
+            this.pbMain.Size = new System.Drawing.Size(1406, 699);
+            this.pbMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbMain.TabIndex = 2;
+            this.pbMain.TabStop = false;
+            // 
             // applicationToolStripMenuItem
             // 
             this.applicationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -92,7 +104,8 @@
             this.toolStripMenuItem3,
             this.detainLicenseToolStripMenuItem,
             this.manToolStripMenuItem,
-            this.manageTestTypesToolStripMenuItem});
+            this.manageTestTypesToolStripMenuItem,
+            this.manageDrivingInstitutesToolStripMenuItem});
             this.applicationToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("applicationToolStripMenuItem.Image")));
             this.applicationToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.applicationToolStripMenuItem.Name = "applicationToolStripMenuItem";
@@ -295,6 +308,13 @@
             this.manageTestTypesToolStripMenuItem.Text = "Manage Test Types";
             this.manageTestTypesToolStripMenuItem.Click += new System.EventHandler(this.manageTestTypesToolStripMenuItem_Click);
             // 
+            // manageDrivingInstitutesToolStripMenuItem
+            // 
+            this.manageDrivingInstitutesToolStripMenuItem.Name = "manageDrivingInstitutesToolStripMenuItem";
+            this.manageDrivingInstitutesToolStripMenuItem.Size = new System.Drawing.Size(394, 70);
+            this.manageDrivingInstitutesToolStripMenuItem.Text = "Manage Driving Institutes";
+            this.manageDrivingInstitutesToolStripMenuItem.Click += new System.EventHandler(this.manageDrivingInstitutesToolStripMenuItem_Click_1);
+            // 
             // peopleToolStripMenuItem
             // 
             this.peopleToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("peopleToolStripMenuItem.Image")));
@@ -367,17 +387,6 @@
             this.signOutToolStripMenuItem.Text = "Sign &Out";
             this.signOutToolStripMenuItem.Click += new System.EventHandler(this.signOutToolStripMenuItem_Click);
             // 
-            // pbMain
-            // 
-            this.pbMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbMain.Image = ((System.Drawing.Image)(resources.GetObject("pbMain.Image")));
-            this.pbMain.Location = new System.Drawing.Point(0, 72);
-            this.pbMain.Name = "pbMain";
-            this.pbMain.Size = new System.Drawing.Size(1406, 699);
-            this.pbMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbMain.TabIndex = 2;
-            this.pbMain.TabStop = false;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -439,6 +448,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem detainLicenseToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem releaseLicenseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem manageDrivingInstitutesToolStripMenuItem;
     }
 }
 
