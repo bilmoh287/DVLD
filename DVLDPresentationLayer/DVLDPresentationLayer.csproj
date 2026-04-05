@@ -132,10 +132,10 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmListDrivingInstitutes.cs">
+    <Compile Include="Manage Driving Institutes\frmListDrivingInstitutes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmListDrivingInstitutes.Designer.cs">
+    <Compile Include="Manage Driving Institutes\frmListDrivingInstitutes.Designer.cs">
       <DependentUpon>frmListDrivingInstitutes.cs</DependentUpon>
     </Compile>
     <Compile Include="Licenses\Controls\ctlDriverLicenses.cs">
@@ -186,10 +186,10 @@
     <Compile Include="Licenses\Local Licenses\frmShowLicenseInfo.Designer.cs">
       <DependentUpon>frmShowLicenseInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAddUpdateDrivingInstitutes.cs">
+    <Compile Include="Manage Driving Institutes\frmAddUpdateDrivingInstitutes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAddUpdateDrivingInstitutes.Designer.cs">
+    <Compile Include="Manage Driving Institutes\frmAddUpdateDrivingInstitutes.Designer.cs">
       <DependentUpon>frmAddUpdateDrivingInstitutes.cs</DependentUpon>
     </Compile>
     <Compile Include="Tests\Controls\ctlScheduledTest.cs">
@@ -371,7 +371,7 @@
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmListDrivingInstitutes.resx">
+    <EmbeddedResource Include="Manage Driving Institutes\frmListDrivingInstitutes.resx">
       <DependentUpon>frmListDrivingInstitutes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\Controls\ctlDriverLicenses.resx">
@@ -398,7 +398,7 @@
     <EmbeddedResource Include="Licenses\Local Licenses\frmShowLicenseInfo.resx">
       <DependentUpon>frmShowLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAddUpdateDrivingInstitutes.resx">
+    <EmbeddedResource Include="Manage Driving Institutes\frmAddUpdateDrivingInstitutes.resx">
       <DependentUpon>frmAddUpdateDrivingInstitutes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tests\Controls\ctlScheduledTest.resx">
@@ -808,6 +808,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Release Detained License 64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Manage Driving Institutes\Institute Course\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
