@@ -265,6 +265,7 @@
             this.Name = "frmAddUpdateDrivingInstitutes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ManageDrivingInstitute";
+            this.Load += new System.EventHandler(this.frmAddUpdateDrivingInstitutes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

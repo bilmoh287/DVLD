@@ -52,11 +52,56 @@ namespace DVLDPresentationLayer
 
             }
         }
+        private void Frm_OnInstituteSaved(object sender, int instituteID)
+        {
+            // Reload the grid after saving
+            dataGridView1.DataSource = clsDrivingInstitute.GetAllInstitutes();
+            lblRecordsCount.Text = dataGridView1.Rows.Count.ToString();
+        }
 
         private void btnAddInstitute_Click(object sender, EventArgs e)
         {
             frmAddUpdateDrivingInstitutes frm = new frmAddUpdateDrivingInstitutes();
+            frm.OnInstituteSaved += Frm_OnInstituteSaved;
             frm.ShowDialog();
+        }
+
+        private void showCoursesListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int InstituteId = (int)dataGridView1.CurrentRow.Cells[0].Value;
+            frmListInstituteCourse frm = new frmListInstituteCourse(InstituteId);
+            frm.ShowDialog();
+        }
+
+        private void addNewCourseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddUpdateDrivingInstitutes frm = new frmAddUpdateDrivingInstitutes();
+            frm.ShowDialog();
+        }
+
+        private void editInstitueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int InstituteId = (int)dataGridView1.CurrentRow.Cells[0].Value;
+            frmAddUpdateDrivingInstitutes frm = new frmAddUpdateDrivingInstitutes(InstituteId);
+            frm.OnInstituteSaved += Frm_OnInstituteSaved;
+            frm.ShowDialog();
+        }
+
+        private void deleteInstiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int InstituteId = (int)dataGridView1.CurrentRow.Cells[0].Value;
+            if (MessageBox.Show("Are you sure you want to delete [" + dataGridView1.CurrentRow.Cells[1].Value + "Institute]", "Confirm Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                if (clsDrivingInstitute.DeleteInstitute(InstituteId))
+                {
+                    MessageBox.Show("User Deleted Successfully.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    frmListDrivingInstitutes2_Load(null, null);
+                }
+                else
+                {
+                    MessageBox.Show("User was not deleted because it has data linked to it.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

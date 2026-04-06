@@ -21,7 +21,6 @@ namespace DVLDPresentationLayer
         public event IntituteSavedHandler OnInstituteSaved;
 
         enum enMode { AddNew = 0, Update = 1 };
-        public enum enGendor { Male = 0, Female = 1 };
         private int _InstituteID = -1;
         private clsDrivingInstitute _Institute  = new clsDrivingInstitute();
         enMode _Mode = enMode.AddNew;
@@ -195,6 +194,16 @@ namespace DVLDPresentationLayer
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frmAddUpdateDrivingInstitutes_Load(object sender, EventArgs e)
+        {
+            _ResetDefaultValues();
+
+            if (_Mode == enMode.Update)
+            {
+                _LoadData();
+            }
         }
     }
 }

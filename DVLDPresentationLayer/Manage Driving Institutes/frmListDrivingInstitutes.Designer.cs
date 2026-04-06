@@ -28,12 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblRecordsCount = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAddInstitute = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnClose = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showCoursesListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewCourseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editInstitueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteInstiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblRecordsCount
@@ -76,6 +84,7 @@
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.Location = new System.Drawing.Point(10, 142);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -99,6 +108,59 @@
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showCoursesListToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.addNewCourseToolStripMenuItem,
+            this.editInstitueToolStripMenuItem,
+            this.deleteInstiToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(214, 162);
+            // 
+            // showCoursesListToolStripMenuItem
+            // 
+            this.showCoursesListToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.notes__1_;
+            this.showCoursesListToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.showCoursesListToolStripMenuItem.Name = "showCoursesListToolStripMenuItem";
+            this.showCoursesListToolStripMenuItem.Size = new System.Drawing.Size(226, 38);
+            this.showCoursesListToolStripMenuItem.Text = "Show Courses List";
+            this.showCoursesListToolStripMenuItem.Click += new System.EventHandler(this.showCoursesListToolStripMenuItem_Click);
+            // 
+            // addNewCourseToolStripMenuItem
+            // 
+            this.addNewCourseToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.AddPerson_32;
+            this.addNewCourseToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.addNewCourseToolStripMenuItem.Name = "addNewCourseToolStripMenuItem";
+            this.addNewCourseToolStripMenuItem.Size = new System.Drawing.Size(226, 38);
+            this.addNewCourseToolStripMenuItem.Text = "Add New Institute";
+            this.addNewCourseToolStripMenuItem.Click += new System.EventHandler(this.addNewCourseToolStripMenuItem_Click);
+            // 
+            // editInstitueToolStripMenuItem
+            // 
+            this.editInstitueToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.edit_32;
+            this.editInstitueToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.editInstitueToolStripMenuItem.Name = "editInstitueToolStripMenuItem";
+            this.editInstitueToolStripMenuItem.Size = new System.Drawing.Size(226, 38);
+            this.editInstitueToolStripMenuItem.Text = "Edit Institue";
+            this.editInstitueToolStripMenuItem.Click += new System.EventHandler(this.editInstitueToolStripMenuItem_Click);
+            // 
+            // deleteInstiToolStripMenuItem
+            // 
+            this.deleteInstiToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.Delete_32_2;
+            this.deleteInstiToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.deleteInstiToolStripMenuItem.Name = "deleteInstiToolStripMenuItem";
+            this.deleteInstiToolStripMenuItem.Size = new System.Drawing.Size(226, 38);
+            this.deleteInstiToolStripMenuItem.Text = "Delete Institute";
+            this.deleteInstiToolStripMenuItem.Click += new System.EventHandler(this.deleteInstiToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(223, 6);
+            // 
             // frmListDrivingInstitutes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -118,6 +180,7 @@
             this.Text = "frmListDrivingInstitutes2";
             this.Load += new System.EventHandler(this.frmListDrivingInstitutes2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,5 +193,11 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnAddInstitute;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem showCoursesListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addNewCourseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editInstitueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteInstiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
     }
 }

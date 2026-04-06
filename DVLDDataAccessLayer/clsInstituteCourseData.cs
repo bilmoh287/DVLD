@@ -103,16 +103,25 @@ namespace DVLDDataAccessLayer
             {
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
                 {
-                    string query = "SELECT * FROM InstituteCourses WHERE InstituteID = @InstituteID";
-                    SqlCommand command = new SqlCommand(query, connection);
+                    // Calling the Stored Procedure
+                    SqlCommand command = new SqlCommand("SP_GetInstituteCoursesByInstituteID", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+
                     command.Parameters.AddWithValue("@InstituteID", InstituteID);
+
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows) dt.Load(reader);
+
+                    if (reader.HasRows)
+                        dt.Load(reader);
+
                     reader.Close();
                 }
             }
-            catch (Exception) { }
+            catch (Exception ex)
+            {
+                // Log error if needed
+            }
             return dt;
         }
     }

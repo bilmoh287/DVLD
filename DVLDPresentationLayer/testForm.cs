@@ -58,5 +58,11 @@ namespace DVLDPresentationLayer
             string m = clsTestTypes.Find((clsTestTypes.enTestType)1).TestTypeTitle;
             MessageBox.Show(m);
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            frmListInstituteCourse frm  = new frmListInstituteCourse(1);
+            frm.ShowDialog();
+        }
     }
 }

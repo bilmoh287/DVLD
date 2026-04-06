@@ -132,6 +132,24 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAddUpdateInstitueCourse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddUpdateInstitueCourse.Designer.cs">
+      <DependentUpon>frmAddUpdateInstitueCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmListInstituteCourse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListInstituteCourse.Designer.cs">
+      <DependentUpon>frmListInstituteCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTrial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTrial.Designer.cs">
+      <DependentUpon>frmTrial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Manage Driving Institutes\frmListDrivingInstitutes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -266,16 +284,16 @@
       <DependentUpon>frmShowUserInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Global Classes\clsGlobal.cs" />
-    <Compile Include="People\Controls\ctlPersonCardWithFilter.cs">
+    <Compile Include="Manage Driving Institutes\People\Controls\ctlPersonCardWithFilter.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="People\Controls\ctlPersonCardWithFilter.Designer.cs">
+    <Compile Include="Manage Driving Institutes\People\Controls\ctlPersonCardWithFilter.Designer.cs">
       <DependentUpon>ctlPersonCardWithFilter.cs</DependentUpon>
     </Compile>
-    <Compile Include="People\frmFindPerson.cs">
+    <Compile Include="Manage Driving Institutes\People\frmFindPerson.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="People\frmFindPerson.Designer.cs">
+    <Compile Include="Manage Driving Institutes\People\frmFindPerson.Designer.cs">
       <DependentUpon>frmFindPerson.cs</DependentUpon>
     </Compile>
     <Compile Include="Login\frmLogin.cs">
@@ -285,16 +303,16 @@
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Global Classes\clsValidation.cs" />
-    <Compile Include="People\Controls\ctlPersonCard.cs">
+    <Compile Include="Manage Driving Institutes\People\Controls\ctlPersonCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="People\Controls\ctlPersonCard.Designer.cs">
+    <Compile Include="Manage Driving Institutes\People\Controls\ctlPersonCard.Designer.cs">
       <DependentUpon>ctlPersonCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="People\frmAddUpdatePerson.cs">
+    <Compile Include="Manage Driving Institutes\People\frmAddUpdatePerson.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="People\frmAddUpdatePerson.Designer.cs">
+    <Compile Include="Manage Driving Institutes\People\frmAddUpdatePerson.Designer.cs">
       <DependentUpon>frmAddUpdatePerson.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMainMenu.cs">
@@ -303,16 +321,16 @@
     <Compile Include="frmMainMenu.Designer.cs">
       <DependentUpon>frmMainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="People\frmListPeople.cs">
+    <Compile Include="Manage Driving Institutes\People\frmListPeople.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="People\frmListPeople.Designer.cs">
+    <Compile Include="Manage Driving Institutes\People\frmListPeople.Designer.cs">
       <DependentUpon>frmListPeople.cs</DependentUpon>
     </Compile>
-    <Compile Include="People\frmShowPersonInfo.cs">
+    <Compile Include="Manage Driving Institutes\People\frmShowPersonInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="People\frmShowPersonInfo.Designer.cs">
+    <Compile Include="Manage Driving Institutes\People\frmShowPersonInfo.Designer.cs">
       <DependentUpon>frmShowPersonInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -370,6 +388,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddUpdateInstitueCourse.resx">
+      <DependentUpon>frmAddUpdateInstitueCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListInstituteCourse.resx">
+      <DependentUpon>frmListInstituteCourse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Manage Driving Institutes\frmListDrivingInstitutes.resx">
       <DependentUpon>frmListDrivingInstitutes.cs</DependentUpon>
@@ -437,19 +461,19 @@
     <EmbeddedResource Include="User\frmShowUserInfo.resx">
       <DependentUpon>frmShowUserInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="People\Controls\ctlPersonCard.resx">
+    <EmbeddedResource Include="Manage Driving Institutes\People\Controls\ctlPersonCard.resx">
       <DependentUpon>ctlPersonCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="People\Controls\ctlPersonCardWithFilter.resx">
+    <EmbeddedResource Include="Manage Driving Institutes\People\Controls\ctlPersonCardWithFilter.resx">
       <DependentUpon>ctlPersonCardWithFilter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="People\frmAddUpdatePerson.resx">
+    <EmbeddedResource Include="Manage Driving Institutes\People\frmAddUpdatePerson.resx">
       <DependentUpon>frmAddUpdatePerson.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="People\frmFindPerson.resx">
+    <EmbeddedResource Include="Manage Driving Institutes\People\frmFindPerson.resx">
       <DependentUpon>frmFindPerson.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="People\frmListPeople.resx">
+    <EmbeddedResource Include="Manage Driving Institutes\People\frmListPeople.resx">
       <DependentUpon>frmListPeople.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\frmLogin.resx">
@@ -458,7 +482,7 @@
     <EmbeddedResource Include="frmMainMenu.resx">
       <DependentUpon>frmMainMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="People\frmShowPersonInfo.resx">
+    <EmbeddedResource Include="Manage Driving Institutes\People\frmShowPersonInfo.resx">
       <DependentUpon>frmShowPersonInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -811,6 +835,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Manage Driving Institutes\Institute Course\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddButton.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
