@@ -124,5 +124,65 @@ namespace DVLDDataAccessLayer
             }
             return dt;
         }
+
+        public static bool GetCourseInfoByCourseAndInstituteID(int CourseID, int InstituteID,
+            ref string CourseName, ref int DurationInDays, ref decimal CourseFee)
+        {
+            bool isFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+                {
+                    // We check both IDs to ensure the course belongs to this specific institute
+                    string query = "SELECT * FROM InstituteCourses WHERE CourseID = @CourseID AND InstituteID = @InstituteID";
+
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@CourseID", CourseID);
+                    command.Parameters.AddWithValue("@InstituteID", InstituteID);
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        isFound = true;
+                        CourseName = (string)reader["CourseName"];
+                        DurationInDays = (int)reader["DurationInDays"];
+                        CourseFee = (decimal)reader["CourseFee"];
+                    }
+                    reader.Close();
+                }
+            }
+            catch (Exception) { isFound = false; }
+
+            return isFound;
+        }
+
+        public static bool DeleteCourse(int CourseID, int InstituteID)
+        {
+            int rowsAffected = 0;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+                {
+                    // Using both IDs ensures we only delete the course if it belongs to this specific institute
+                    string query = "DELETE FROM InstituteCourses WHERE CourseID = @CourseID AND InstituteID = @InstituteID";
+
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@CourseID", CourseID);
+                    command.Parameters.AddWithValue("@InstituteID", InstituteID);
+
+                    connection.Open();
+                    rowsAffected = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                // Logic check: This will catch foreign key violations if the course is already linked to Attendance
+                return false;
+            }
+            return (rowsAffected > 0);
+        }
     }
 }

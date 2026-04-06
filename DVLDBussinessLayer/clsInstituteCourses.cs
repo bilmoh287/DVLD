@@ -52,6 +52,23 @@ namespace DVLDBussinessLayer
             return null;
         }
 
+        public static clsInstituteCourses Find(int CourseID, int InstituteID)
+        {
+            string CourseName = "";
+            int DurationInDays = 0;
+            decimal CourseFee = 0;
+
+            if (clsInstituteCourseData.GetCourseInfoByCourseAndInstituteID(CourseID, InstituteID,
+                ref CourseName, ref DurationInDays, ref CourseFee))
+            {
+                return new clsInstituteCourses(CourseID, InstituteID, CourseName, DurationInDays, CourseFee);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         private bool _AddNew()
         {
             this.CourseID = clsInstituteCourseData.AddNewCourse(this.InstituteID, this.CourseName, this.DurationInDays, this.CourseFee);
@@ -83,6 +100,11 @@ namespace DVLDBussinessLayer
         public static DataTable GetCoursesList(int InstituteID)
         {
             return clsInstituteCourseData.GetAllCoursesByInstituteID(InstituteID);
+        }
+
+        public static bool DeleteCourse(int CourseID, int InstituteID)
+        {
+            return clsInstituteCourseData.DeleteCourse(CourseID, InstituteID);
         }
     }
 }

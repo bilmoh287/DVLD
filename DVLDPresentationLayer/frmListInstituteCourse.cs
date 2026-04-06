@@ -27,7 +27,9 @@ namespace DVLDPresentationLayer
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            frmAddUpdateInstitueCourse frm = new frmAddUpdateInstitueCourse(_InstituteID);
+            frm.ShowDialog();
+            frmListInstituteCourse_Load(null, null);
         }
 
         private void frmListInstituteCourse_Load(object sender, EventArgs e)
@@ -43,13 +45,13 @@ namespace DVLDPresentationLayer
                 dataGridView1.Columns[0].Width = 110;
 
                 dataGridView1.Columns[1].HeaderText = "Institute Name";
-                dataGridView1.Columns[1].Width = 267;
+                dataGridView1.Columns[1].Width = 200;
 
                 dataGridView1.Columns[2].HeaderText = "Course Name";
                 dataGridView1.Columns[2].Width = 150;
 
                 dataGridView1.Columns[3].HeaderText = "Duration In Days";
-                dataGridView1.Columns[3].Width = 130;
+                dataGridView1.Columns[3].Width = 150;
 
                 dataGridView1.Columns[4].HeaderText = "Course Fee";
                 dataGridView1.Columns[4].Width = 200;
@@ -60,6 +62,38 @@ namespace DVLDPresentationLayer
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void addNewCourseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddUpdateInstitueCourse frm = new frmAddUpdateInstitueCourse(_InstituteID);
+            frm.ShowDialog();
+            frmListInstituteCourse_Load(null, null);
+        }
+
+        private void editInstitueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int CourseId = (int)dataGridView1.CurrentRow.Cells[0].Value;
+            frmAddUpdateInstitueCourse frm = new frmAddUpdateInstitueCourse(_InstituteID, CourseId);
+            frm.ShowDialog();
+            frmListInstituteCourse_Load(null, null);
+        }
+
+        private void deleteInstiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int CourseId = (int)dataGridView1.CurrentRow.Cells[0].Value;
+            if (MessageBox.Show("Are you sure you want to delete course[" + dataGridView1.CurrentRow.Cells[2].Value + "]", "Confirm Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                if (clsInstituteCourses.DeleteCourse(_InstituteID, CourseId))
+                {
+                    MessageBox.Show("Course Deleted Successfully.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    frmListInstituteCourse_Load(null, null);
+                }
+                else
+                {
+                    MessageBox.Show("Course  was not deleted because it has data linked to it.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
