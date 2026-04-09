@@ -268,6 +268,8 @@ namespace DVLDPresentationLayer
             //We only allow edit incase the application status is new not complete or Cancelled.
             editToolStripMenuItem.Enabled = (LocalDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.New);
 
+            showPersonLicenseHistoryToolStripMenuItem.Enabled = LocalDrivingLicenseApplication.IsLicenseIssued();
+
             //Enable Disable Schedule menue and it's sub menue
             bool PassedVisionTest = LocalDrivingLicenseApplication.DoesPassTestType(clsTestTypes.enTestType.VisionTest); ;
             bool PassedWrittenTest = LocalDrivingLicenseApplication.DoesPassTestType(clsTestTypes.enTestType.WrittenTest);
