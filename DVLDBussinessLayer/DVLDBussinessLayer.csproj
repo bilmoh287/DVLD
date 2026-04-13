@@ -58,6 +58,8 @@
     <Compile Include="clsTests.cs" />
     <Compile Include="clsTestTypes.cs" />
     <Compile Include="clsUser.cs" />
+    <Compile Include="clsUserPermission.cs" />
+    <Compile Include="clsUserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
