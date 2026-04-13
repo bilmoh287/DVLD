@@ -53,6 +53,7 @@
     <Compile Include="clsCountries.cs" />
     <Compile Include="clsLicenseClassses.cs" />
     <Compile Include="clsPerson.cs" />
+    <Compile Include="clsRole.cs" />
     <Compile Include="clsTestAppointments.cs" />
     <Compile Include="clsTests.cs" />
     <Compile Include="clsTestTypes.cs" />
