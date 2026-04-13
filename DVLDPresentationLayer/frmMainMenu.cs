@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLDBussinessLayer;
 using DVLDPresentationLayer.Applications.International_Driving_License;
 using DVLDPresentationLayer.Applications.Relesease_Detained_Licenses;
 using DVLDPresentationLayer.Applications.Renew_Local_License;
@@ -25,7 +26,54 @@ namespace DVLDPresentationLayer
             InitializeComponent();
             _frmLogin = LoginForm;
         }
+        private void _ApplyPermissions()
+        {
+            int permissions = clsGlobal.CurrentUserPermissions;
 
+            // Admin / Manage Users
+            usersToolStripMenuItem.Visible =
+                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.ManageUsers);
+
+            // People (View)
+            peopleToolStripMenuItem.Visible =
+                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.View);
+
+            // Issue / Renew / Replace License
+            localLicenseToolStripMenuItem.Visible =
+                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.IssueLicense);
+
+            renewDrivingLicenseApplicationToolStripMenuItem.Visible =
+                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.IssueLicense);
+
+            replacementForLostOrDamagedLicenseToolStripMenuItem.Visible =
+                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.IssueLicense);
+
+            // Detain / Release License
+            detainLicenseToolStripMenuItem1.Visible =
+                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.IssueLicense);
+
+            releaseLicenseToolStripMenuItem.Visible =
+                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.IssueLicense);
+
+            // Test Types & Applications (Registration Officer)
+            manToolStripMenuItem.Visible =
+                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.Add);
+
+            manageTestTypesToolStripMenuItem.Visible =
+                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.Add);
+
+            // Drivers
+            driversToolStripMenuItem.Visible =
+                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.View);
+
+            // International License
+            internationalLicenseToolStripMenuItem.Visible =
+                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.IssueLicense);
+
+            // Institutes
+            manageDrivingInstitutesToolStripMenuItem.Visible =
+                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.ManageUsers);
+        }
         private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmListPeople frm = new frmListPeople();
@@ -145,6 +193,11 @@ namespace DVLDPresentationLayer
         {
             frmListDrivingInstitutes frm = new frmListDrivingInstitutes();
             frm.ShowDialog();
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            _ApplyPermissions();
         }
     }
 }

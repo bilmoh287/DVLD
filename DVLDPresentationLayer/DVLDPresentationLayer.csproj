@@ -150,6 +150,18 @@
     <Compile Include="frmListInstituteCourse.Designer.cs">
       <DependentUpon>frmListInstituteCourse.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRegisterApplicant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegisterApplicant.Designer.cs">
+      <DependentUpon>frmRegisterApplicant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegistration.Designer.cs">
+      <DependentUpon>frmRegistration.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTrial.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -41,6 +41,10 @@ namespace DVLDPresentationLayer
                 }
 
                 clsGlobal.CurrentUser = _User;
+
+                // collect the user's permissions
+                clsGlobal.CurrentUserPermissions = clsUserPermission.GetUserPermissions(_User.UserID);
+
                 this.Hide();
                 frmMain frm = new frmMain(this);
                 frm.ShowDialog();
@@ -69,6 +73,11 @@ namespace DVLDPresentationLayer
         private void btnClose_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cbRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

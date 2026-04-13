@@ -222,6 +222,7 @@ namespace DVLDPresentationLayer
             this.cbRole.Name = "cbRole";
             this.cbRole.Size = new System.Drawing.Size(330, 36);
             this.cbRole.TabIndex = 9;
+            this.cbRole.SelectedIndexChanged += new System.EventHandler(this.cbRole_SelectedIndexChanged);
             // 
             // chkRememberMe
             // 

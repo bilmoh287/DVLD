@@ -11,6 +11,9 @@ namespace DVLDPresentationLayer.Global_Classes
     {
         public static clsUser CurrentUser;
 
+        // global variable to hold for the current user permissions
+        public static int CurrentUserPermissions = 0;
+
         // File path for saved credentials (inside AppData)
         private static readonly string FilePath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
