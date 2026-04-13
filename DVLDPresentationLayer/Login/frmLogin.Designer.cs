@@ -47,11 +47,9 @@ namespace DVLDPresentationLayer
             this.btnLogin = new Guna.UI2.WinForms.Guna2Button();
             this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
             this.lblFooter = new System.Windows.Forms.Label();
-            
             this.pnlTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
-            
             // 
             // guna2BorderlessForm1
             // 
@@ -78,7 +76,7 @@ namespace DVLDPresentationLayer
             this.lblAppTitle.ForeColor = System.Drawing.Color.White;
             this.lblAppTitle.Location = new System.Drawing.Point(12, 11);
             this.lblAppTitle.Name = "lblAppTitle";
-            this.lblAppTitle.Size = new System.Drawing.Size(130, 17);
+            this.lblAppTitle.Size = new System.Drawing.Size(168, 23);
             this.lblAppTitle.TabIndex = 1;
             this.lblAppTitle.Text = "DVLD - Secure Login";
             // 
@@ -94,7 +92,7 @@ namespace DVLDPresentationLayer
             // 
             // pbLogo
             // 
-            this.pbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLogin.Image")));
+            this.pbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLogo.Image")));
             this.pbLogo.Location = new System.Drawing.Point(175, 70);
             this.pbLogo.Name = "pbLogo";
             this.pbLogo.Size = new System.Drawing.Size(80, 80);
@@ -131,13 +129,12 @@ namespace DVLDPresentationLayer
             this.lblUserName.ForeColor = System.Drawing.Color.Gray;
             this.lblUserName.Location = new System.Drawing.Point(50, 240);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(60, 15);
+            this.lblUserName.Size = new System.Drawing.Size(75, 20);
             this.lblUserName.TabIndex = 4;
             this.lblUserName.Text = "Username";
             // 
             // txtUserName
             // 
-            this.txtUserName.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
             this.txtUserName.BorderRadius = 4;
             this.txtUserName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtUserName.DefaultText = "";
@@ -150,6 +147,7 @@ namespace DVLDPresentationLayer
             this.txtUserName.ForeColor = System.Drawing.Color.Black;
             this.txtUserName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtUserName.Location = new System.Drawing.Point(50, 260);
+            this.txtUserName.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.PlaceholderText = "Enter your username";
             this.txtUserName.SelectedText = "";
@@ -163,13 +161,12 @@ namespace DVLDPresentationLayer
             this.lblPassword.ForeColor = System.Drawing.Color.Gray;
             this.lblPassword.Location = new System.Drawing.Point(50, 315);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(57, 15);
+            this.lblPassword.Size = new System.Drawing.Size(70, 20);
             this.lblPassword.TabIndex = 6;
             this.lblPassword.Text = "Password";
             // 
             // txtPassword
             // 
-            this.txtPassword.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
             this.txtPassword.BorderRadius = 4;
             this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtPassword.DefaultText = "";
@@ -182,6 +179,7 @@ namespace DVLDPresentationLayer
             this.txtPassword.ForeColor = System.Drawing.Color.Black;
             this.txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPassword.Location = new System.Drawing.Point(50, 335);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
             this.txtPassword.PlaceholderText = "Enter your password";
@@ -197,7 +195,7 @@ namespace DVLDPresentationLayer
             this.lblRole.ForeColor = System.Drawing.Color.Gray;
             this.lblRole.Location = new System.Drawing.Point(50, 390);
             this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(51, 15);
+            this.lblRole.Size = new System.Drawing.Size(66, 20);
             this.lblRole.TabIndex = 8;
             this.lblRole.Text = "Login As";
             // 
@@ -236,7 +234,7 @@ namespace DVLDPresentationLayer
             this.chkRememberMe.ForeColor = System.Drawing.Color.Gray;
             this.chkRememberMe.Location = new System.Drawing.Point(50, 465);
             this.chkRememberMe.Name = "chkRememberMe";
-            this.chkRememberMe.Size = new System.Drawing.Size(211, 21);
+            this.chkRememberMe.Size = new System.Drawing.Size(280, 27);
             this.chkRememberMe.TabIndex = 10;
             this.chkRememberMe.Text = "Remember me on this computer";
             this.chkRememberMe.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
@@ -266,6 +264,7 @@ namespace DVLDPresentationLayer
             this.btnCancel.BorderColor = System.Drawing.Color.Silver;
             this.btnCancel.BorderRadius = 4;
             this.btnCancel.BorderThickness = 1;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCancel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnCancel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -295,7 +294,7 @@ namespace DVLDPresentationLayer
             // frmLogin
             // 
             this.AcceptButton = this.btnLogin;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnCancel;
@@ -320,7 +319,6 @@ namespace DVLDPresentationLayer
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.frmLogin_Load);
-            
             this.pnlTitleBar.ResumeLayout(false);
             this.pnlTitleBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();

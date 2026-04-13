@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVLDPresentationLayer", "DVLDPresentationLayer\DVLDPresentationLayer.csproj", "{EEE64FD7-533E-4567-A0AC-89B3EFB6192C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVLDBussinessLayer", "DVLDBussinessLayer\DVLDBussinessLayer.csproj", "{CC16ED7D-7945-4D3C-A2D4-F1FA7152FD04}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVLDDataAccessLayer", "DVLDDataAccessLayer\DVLDDataAccessLayer.csproj", "{11AF93E0-71B2-4630-89AE-065D3EFFC152}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DVLD_Desktop_System", "DVLD_Desktop_System", "{3F143D32-FC5B-4C83-8310-E8625272F0F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +32,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EEE64FD7-533E-4567-A0AC-89B3EFB6192C} = {3F143D32-FC5B-4C83-8310-E8625272F0F4}
+		{CC16ED7D-7945-4D3C-A2D4-F1FA7152FD04} = {3F143D32-FC5B-4C83-8310-E8625272F0F4}
+		{11AF93E0-71B2-4630-89AE-065D3EFFC152} = {3F143D32-FC5B-4C83-8310-E8625272F0F4}
 	EndGlobalSection
 EndGlobal
