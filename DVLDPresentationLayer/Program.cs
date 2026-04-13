@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,9 +17,9 @@ namespace DVLDPresentationLayer
             //Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
-            //Application.Run(new frmAddUpdateLocalDrivingLicenseApplication());
-            //Application.Run(new testForm());
+            
+            // Temporarily changed from frmLogin() to frmRegistration() for testing
+            Application.Run(new frmRegistration());
         }
     }
 }
