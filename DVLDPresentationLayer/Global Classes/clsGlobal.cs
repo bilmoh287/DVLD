@@ -13,6 +13,10 @@ namespace DVLDPresentationLayer.Global_Classes
 
         // global variable to hold for the current user permissions
         public static int CurrentUserPermissions = 0;
+        public static bool HasPermission(clsUserPermission.enPermissions permission)
+        {
+            return clsUserPermission.HasPermission(CurrentUserPermissions, permission);
+        }
 
         // File path for saved credentials (inside AppData)
         private static readonly string FilePath = Path.Combine(

@@ -32,7 +32,6 @@
             this.tcLogin = new System.Windows.Forms.TabControl();
             this.tpUserInfo = new System.Windows.Forms.TabPage();
             this.btnNext = new System.Windows.Forms.Button();
-            this.ctlPersonCardWithFilter1 = new DVLDPresentationLayer.ctlPersonCardWithFilter();
             this.tpLoginInfo = new System.Windows.Forms.TabPage();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -51,6 +50,9 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnClose = new System.Windows.Forms.Button();
+            this.cbRoles = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.ctlPersonCardWithFilter1 = new DVLDPresentationLayer.ctlPersonCardWithFilter();
             this.tcLogin.SuspendLayout();
             this.tpUserInfo.SuspendLayout();
             this.tpLoginInfo.SuspendLayout();
@@ -97,20 +99,10 @@
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
-            // ctlPersonCardWithFilter1
-            // 
-            this.ctlPersonCardWithFilter1.BackColor = System.Drawing.Color.White;
-            this.ctlPersonCardWithFilter1.FilterEnables = true;
-            this.ctlPersonCardWithFilter1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctlPersonCardWithFilter1.Location = new System.Drawing.Point(7, 8);
-            this.ctlPersonCardWithFilter1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ctlPersonCardWithFilter1.Name = "ctlPersonCardWithFilter1";
-            this.ctlPersonCardWithFilter1.ShowAddPerson = true;
-            this.ctlPersonCardWithFilter1.Size = new System.Drawing.Size(836, 392);
-            this.ctlPersonCardWithFilter1.TabIndex = 1;
-            // 
             // tpLoginInfo
             // 
+            this.tpLoginInfo.Controls.Add(this.label5);
+            this.tpLoginInfo.Controls.Add(this.cbRoles);
             this.tpLoginInfo.Controls.Add(this.pictureBox4);
             this.tpLoginInfo.Controls.Add(this.pictureBox3);
             this.tpLoginInfo.Controls.Add(this.pictureBox1);
@@ -135,7 +127,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::DVLDPresentationLayer.Properties.Resources.password1;
-            this.pictureBox4.Location = new System.Drawing.Point(219, 234);
+            this.pictureBox4.Location = new System.Drawing.Point(219, 232);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(31, 26);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -145,7 +137,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::DVLDPresentationLayer.Properties.Resources.password2;
-            this.pictureBox3.Location = new System.Drawing.Point(219, 174);
+            this.pictureBox3.Location = new System.Drawing.Point(219, 172);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(31, 26);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -155,7 +147,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DVLDPresentationLayer.Properties.Resources.user;
-            this.pictureBox1.Location = new System.Drawing.Point(219, 120);
+            this.pictureBox1.Location = new System.Drawing.Point(219, 118);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(31, 26);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -194,7 +186,7 @@
             // 
             // txtConfirmPassword
             // 
-            this.txtConfirmPassword.Location = new System.Drawing.Point(256, 234);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(256, 232);
             this.txtConfirmPassword.Name = "txtConfirmPassword";
             this.txtConfirmPassword.PasswordChar = '*';
             this.txtConfirmPassword.Size = new System.Drawing.Size(244, 30);
@@ -203,7 +195,7 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(256, 174);
+            this.txtPassword.Location = new System.Drawing.Point(256, 172);
             this.txtPassword.MaxLength = 10;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
@@ -213,7 +205,7 @@
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(256, 117);
+            this.txtUserName.Location = new System.Drawing.Point(256, 115);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(244, 30);
             this.txtUserName.TabIndex = 4;
@@ -223,7 +215,7 @@
             // 
             this.chkIsActive.AutoSize = true;
             this.chkIsActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkIsActive.Location = new System.Drawing.Point(256, 301);
+            this.chkIsActive.Location = new System.Drawing.Point(256, 353);
             this.chkIsActive.Name = "chkIsActive";
             this.chkIsActive.Size = new System.Drawing.Size(117, 29);
             this.chkIsActive.TabIndex = 3;
@@ -234,7 +226,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(41, 237);
+            this.label3.Location = new System.Drawing.Point(41, 235);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(187, 25);
             this.label3.TabIndex = 2;
@@ -244,7 +236,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(122, 174);
+            this.label2.Location = new System.Drawing.Point(122, 172);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(106, 25);
             this.label2.TabIndex = 1;
@@ -254,7 +246,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(115, 120);
+            this.label1.Location = new System.Drawing.Point(115, 118);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(113, 25);
             this.label1.TabIndex = 0;
@@ -303,6 +295,44 @@
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // cbRoles
+            // 
+            this.cbRoles.BackColor = System.Drawing.Color.Transparent;
+            this.cbRoles.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbRoles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbRoles.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbRoles.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbRoles.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbRoles.ForeColor = System.Drawing.Color.Black;
+            this.cbRoles.ItemHeight = 30;
+            this.cbRoles.Location = new System.Drawing.Point(256, 284);
+            this.cbRoles.Name = "cbRoles";
+            this.cbRoles.Size = new System.Drawing.Size(244, 36);
+            this.cbRoles.TabIndex = 135;
+            this.cbRoles.Validating += new System.ComponentModel.CancelEventHandler(this.cbRoles_Validating);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(41, 295);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(178, 25);
+            this.label5.TabIndex = 136;
+            this.label5.Text = "Assign User Role";
+            // 
+            // ctlPersonCardWithFilter1
+            // 
+            this.ctlPersonCardWithFilter1.BackColor = System.Drawing.Color.White;
+            this.ctlPersonCardWithFilter1.FilterEnables = true;
+            this.ctlPersonCardWithFilter1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctlPersonCardWithFilter1.Location = new System.Drawing.Point(7, 8);
+            this.ctlPersonCardWithFilter1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctlPersonCardWithFilter1.Name = "ctlPersonCardWithFilter1";
+            this.ctlPersonCardWithFilter1.ShowAddPerson = true;
+            this.ctlPersonCardWithFilter1.Size = new System.Drawing.Size(836, 392);
+            this.ctlPersonCardWithFilter1.TabIndex = 1;
             // 
             // frmAddUpdateUser
             // 
@@ -360,5 +390,7 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private Guna.UI2.WinForms.Guna2ComboBox cbRoles;
+        private System.Windows.Forms.Label label5;
     }
 }

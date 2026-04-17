@@ -26,54 +26,61 @@ namespace DVLDPresentationLayer
             InitializeComponent();
             _frmLogin = LoginForm;
         }
+
+
         private void _ApplyPermissions()
         {
-            int permissions = clsGlobal.CurrentUserPermissions;
-
-            // Admin / Manage Users
+            // Users Management (Admin)
             usersToolStripMenuItem.Visible =
-                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.ManageUsers);
+                clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageUsers);
 
-            // People (View)
+            // People
             peopleToolStripMenuItem.Visible =
-                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.View);
+                clsGlobal.HasPermission(clsUserPermission.enPermissions.ViewPeople);
 
-            // Issue / Renew / Replace License
+            // Applications
             localLicenseToolStripMenuItem.Visible =
-                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.IssueLicense);
+                clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageApplications);
 
+            localDrivingLicenseApplicationsToolStripMenuItem.Visible =
+                clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageApplications);
+
+            // Tests
+            manageTestTypesToolStripMenuItem.Visible =
+                clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageTests);
+
+            manToolStripMenuItem.Visible =
+                clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageTests);
+
+            // License Operations
             renewDrivingLicenseApplicationToolStripMenuItem.Visible =
-                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.IssueLicense);
+                clsGlobal.HasPermission(clsUserPermission.enPermissions.IssueLicense);
 
             replacementForLostOrDamagedLicenseToolStripMenuItem.Visible =
-                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.IssueLicense);
+                clsGlobal.HasPermission(clsUserPermission.enPermissions.IssueLicense);
 
-            // Detain / Release License
             detainLicenseToolStripMenuItem1.Visible =
-                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.IssueLicense);
+                clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageDetainedLicenses);
 
             releaseLicenseToolStripMenuItem.Visible =
-                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.IssueLicense);
-
-            // Test Types & Applications (Registration Officer)
-            manToolStripMenuItem.Visible =
-                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.Add);
-
-            manageTestTypesToolStripMenuItem.Visible =
-                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.Add);
+                clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageDetainedLicenses);
 
             // Drivers
             driversToolStripMenuItem.Visible =
-                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.View);
+                clsGlobal.HasPermission(clsUserPermission.enPermissions.ViewPeople);
 
             // International License
             internationalLicenseToolStripMenuItem.Visible =
-                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.IssueLicense);
+                clsGlobal.HasPermission(clsUserPermission.enPermissions.IssueLicense);
 
             // Institutes
             manageDrivingInstitutesToolStripMenuItem.Visible =
-                clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.ManageUsers);
+                clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageInstitutes);
+
+            manageTestTypesToolStripMenuItem.Visible =
+                clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageApplications);
         }
+        
         private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmListPeople frm = new frmListPeople();

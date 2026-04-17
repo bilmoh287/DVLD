@@ -14,13 +14,26 @@ namespace DVLDBussinessLayer
         public enum enPermissions
         {
             None = 0,
-            View = 1,
-            Add = 2,
-            Edit = 4,
-            Delete = 8,
+
+            // Core Modules
+            ViewPeople = 1,
+            ManageUsers = 2,
+            ManageApplications = 4,
+            ManageTests = 8,
             IssueLicense = 16,
-            ManageUsers = 32,
+            ManageDetainedLicenses = 32,
+            ManageInstitutes = 64,
+
             FullAccess = 127
+        }
+
+        public static List<string> GetAllRoles()
+        {
+            // If using enum
+            return Enum.GetNames(typeof(enPermissions)).ToList();
+
+            // If using DB table, fetch from DAL instead
+            // return clsRolesDAL.GetAllRoles();
         }
 
         public static int GetUserPermissions(int UserID)

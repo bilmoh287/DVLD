@@ -51,6 +51,15 @@ namespace DVLDPresentationLayer
             txtConfirmPassword.Text = "";
             chkIsActive.Checked = true;
         }
+        private void _LoadRoles()
+        {
+            cbRoles.DataSource = null;
+            var dtRoles = clsRole.GetAllRoles();
+            cbRoles.DataSource = dtRoles;
+            cbRoles.DisplayMember = "RoleName";
+            cbRoles.ValueMember = "RoleID";
+            cbRoles.SelectedIndex = -1; // No selection by default
+        }
 
         private void _LoadUserInfo()
         {
@@ -76,11 +85,18 @@ namespace DVLDPresentationLayer
         }
         private void frmAddUpdateUser_Load(object sender, EventArgs e)
         {
+            _LoadRoles();
             _ResetDefaultValues();
 
             if (_Mode == enMode.Update)
             {
                 _LoadUserInfo();
+                // Optionally, select the user's current role if updating
+                var userRoles = clsUserRole.GetRolesByUserID(_UserID);
+                if (userRoles.Rows.Count > 0)
+                {
+                    cbRoles.SelectedValue = Convert.ToInt32(userRoles.Rows[0]["RoleID"]);
+                }
             }
         }
 
@@ -109,6 +125,11 @@ namespace DVLDPresentationLayer
             // Step 3: Save
             if (_User.Save())
             {
+                // Assign role to user
+                int selectedRoleID = Convert.ToInt32(cbRoles.SelectedValue);
+                clsUserRole.ResetUserRoles(_User.UserID); // Remove old roles if any
+                clsUserRole.AssignRole(_User.UserID, selectedRoleID);
+
                 lblTitle.Text = _User.UserID.ToString();
                 lblTitle.Text = "Update User";
                 this.Text = lblTitle.Text;
@@ -255,5 +276,17 @@ namespace DVLDPresentationLayer
             this.Close();
         }
 
+        private void cbRoles_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (cbRoles.SelectedIndex == -1)
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(cbRoles, "Please select a role.");
+            }
+            else
+            {
+                errorProvider1.SetError(cbRoles, null);
+            }
+        }
     }
 }
