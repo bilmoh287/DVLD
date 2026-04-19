@@ -39,15 +39,16 @@ namespace DVLDDataAccessLayer
             }
         }
 
+        // Add InstituteID to method signature and ref parameter
         public static bool GetLocalDrivingLicenseApplicationInfoByID(int LocalDrivingLicenseApplicationID,
-           ref int ApplicationID, ref int LicenseClassID)
+           ref int ApplicationID, ref int LicenseClassID, ref int InstituteID)
         {
             bool isFound = false;
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
                 string query = @"SELECT * FROM LocalDrivingLicenseApplications
-                                 WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
+                         WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -61,9 +62,9 @@ namespace DVLDDataAccessLayer
                         if (reader.Read())
                         {
                             isFound = true;
-
                             ApplicationID = Convert.ToInt32(reader["ApplicationID"]);
                             LicenseClassID = Convert.ToInt32(reader["LicenseClassID"]);
+                            InstituteID = reader["InstituteID"] == DBNull.Value ? -1 : Convert.ToInt32(reader["InstituteID"]);
                         }
 
                         reader.Close();
@@ -78,20 +79,22 @@ namespace DVLDDataAccessLayer
             return isFound;
         }
 
-        public static int AddNewLocalDrivingLicenseApplication(int ApplicationID, int LicenseClassID)
+
+        public static int AddNewLocalDrivingLicenseApplication(int ApplicationID, int LicenseClassID, int InstituteID)
         {
             int newID = -1;
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
-                string query = @"INSERT INTO LocalDrivingLicenseApplications (ApplicationID, LicenseClassID)
-                                 VALUES (@ApplicationID, @LicenseClassID);
-                                 SELECT SCOPE_IDENTITY();";
+                string query = @"INSERT INTO LocalDrivingLicenseApplications (ApplicationID, LicenseClassID, InstituteID)
+                         VALUES (@ApplicationID, @LicenseClassID, @InstituteID);
+                         SELECT SCOPE_IDENTITY();";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
                     command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+                    command.Parameters.AddWithValue("@InstituteID", InstituteID);
 
                     try
                     {
@@ -111,23 +114,26 @@ namespace DVLDDataAccessLayer
             return newID;
         }
 
+
         public static bool UpdateLocalDrivingLicenseApplication(int LocalDrivingLicenseApplicationID,
-            int ApplicationID, int LicenseClassID)
+            int ApplicationID, int LicenseClassID, int InstituteID)
         {
             int rowsAffected = 0;
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
                 string query = @"UPDATE LocalDrivingLicenseApplications
-                                 SET ApplicationID = @ApplicationID,
-                                     LicenseClassID = @LicenseClassID
-                                 WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
+                         SET ApplicationID = @ApplicationID,
+                             LicenseClassID = @LicenseClassID,
+                             InstituteID = @InstituteID
+                         WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
                     command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
                     command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+                    command.Parameters.AddWithValue("@InstituteID", InstituteID);
 
                     try
                     {
@@ -143,6 +149,7 @@ namespace DVLDDataAccessLayer
 
             return (rowsAffected > 0);
         }
+
 
         public static bool DeleteLocalDrivingLicenseApplication(int LocalDrivingLicenseApplicationID)
         {

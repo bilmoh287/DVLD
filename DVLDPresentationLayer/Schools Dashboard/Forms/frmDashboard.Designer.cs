@@ -29,13 +29,17 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
         private void InitializeComponent()
         {
             this.panelTotalStudents = new System.Windows.Forms.Panel();
-            this.panelActiveCourse = new System.Windows.Forms.Panel();
-            this.paneInstructors = new System.Windows.Forms.Panel();
-            this.panelTestsTodays = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.panelActiveCourse = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.paneInstructors = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.panelTestsTodays = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.lblTotalStudents = new System.Windows.Forms.Label();
+            this.lblTotalCourses = new System.Windows.Forms.Label();
+            this.lblTotalInstructors = new System.Windows.Forms.Label();
+            this.lblTestsToday = new System.Windows.Forms.Label();
             this.panelTotalStudents.SuspendLayout();
             this.panelActiveCourse.SuspendLayout();
             this.paneInstructors.SuspendLayout();
@@ -44,80 +48,129 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
             // 
             // panelTotalStudents
             // 
+            this.panelTotalStudents.BackColor = System.Drawing.Color.Gainsboro;
+            this.panelTotalStudents.Controls.Add(this.lblTotalStudents);
             this.panelTotalStudents.Controls.Add(this.label1);
-            this.panelTotalStudents.Location = new System.Drawing.Point(25, 88);
+            this.panelTotalStudents.Location = new System.Drawing.Point(16, 80);
             this.panelTotalStudents.Name = "panelTotalStudents";
-            this.panelTotalStudents.Size = new System.Drawing.Size(200, 100);
+            this.panelTotalStudents.Size = new System.Drawing.Size(207, 110);
             this.panelTotalStudents.TabIndex = 0;
-            // 
-            // panelActiveCourse
-            // 
-            this.panelActiveCourse.Controls.Add(this.label2);
-            this.panelActiveCourse.Location = new System.Drawing.Point(280, 88);
-            this.panelActiveCourse.Name = "panelActiveCourse";
-            this.panelActiveCourse.Size = new System.Drawing.Size(200, 100);
-            this.panelActiveCourse.TabIndex = 1;
-            // 
-            // paneInstructors
-            // 
-            this.paneInstructors.Controls.Add(this.label3);
-            this.paneInstructors.Location = new System.Drawing.Point(530, 88);
-            this.paneInstructors.Name = "paneInstructors";
-            this.paneInstructors.Size = new System.Drawing.Size(200, 100);
-            this.paneInstructors.TabIndex = 1;
-            // 
-            // panelTestsTodays
-            // 
-            this.panelTestsTodays.Controls.Add(this.label4);
-            this.panelTestsTodays.Location = new System.Drawing.Point(778, 88);
-            this.panelTestsTodays.Name = "panelTestsTodays";
-            this.panelTestsTodays.Size = new System.Drawing.Size(200, 100);
-            this.panelTestsTodays.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(14, 16);
+            this.label1.Font = new System.Drawing.Font("Leelawadee UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(15, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(139, 25);
+            this.label1.Size = new System.Drawing.Size(120, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "Total Students";
+            // 
+            // panelActiveCourse
+            // 
+            this.panelActiveCourse.BackColor = System.Drawing.Color.Gainsboro;
+            this.panelActiveCourse.Controls.Add(this.lblTotalCourses);
+            this.panelActiveCourse.Controls.Add(this.label2);
+            this.panelActiveCourse.Location = new System.Drawing.Point(267, 80);
+            this.panelActiveCourse.Name = "panelActiveCourse";
+            this.panelActiveCourse.Size = new System.Drawing.Size(207, 110);
+            this.panelActiveCourse.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(18, 16);
+            this.label2.Font = new System.Drawing.Font("Leelawadee UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(16, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(140, 25);
+            this.label2.Size = new System.Drawing.Size(116, 23);
             this.label2.TabIndex = 1;
             this.label2.Text = "ActiveCourses";
+            // 
+            // paneInstructors
+            // 
+            this.paneInstructors.BackColor = System.Drawing.Color.Gainsboro;
+            this.paneInstructors.Controls.Add(this.lblTotalInstructors);
+            this.paneInstructors.Controls.Add(this.label3);
+            this.paneInstructors.Location = new System.Drawing.Point(518, 80);
+            this.paneInstructors.Name = "paneInstructors";
+            this.paneInstructors.Size = new System.Drawing.Size(207, 110);
+            this.paneInstructors.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(22, 16);
+            this.label3.Font = new System.Drawing.Font("Leelawadee UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(21, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 25);
+            this.label3.Size = new System.Drawing.Size(91, 23);
             this.label3.TabIndex = 2;
             this.label3.Text = "Instructors";
+            // 
+            // panelTestsTodays
+            // 
+            this.panelTestsTodays.BackColor = System.Drawing.Color.Gainsboro;
+            this.panelTestsTodays.Controls.Add(this.lblTestsToday);
+            this.panelTestsTodays.Controls.Add(this.label4);
+            this.panelTestsTodays.Location = new System.Drawing.Point(769, 80);
+            this.panelTestsTodays.Name = "panelTestsTodays";
+            this.panelTestsTodays.Size = new System.Drawing.Size(207, 110);
+            this.panelTestsTodays.TabIndex = 2;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(27, 16);
+            this.label4.Font = new System.Drawing.Font("Leelawadee UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(20, 16);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 25);
+            this.label4.Size = new System.Drawing.Size(99, 23);
             this.label4.TabIndex = 3;
             this.label4.Text = "Tests Today";
+            // 
+            // lblTotalStudents
+            // 
+            this.lblTotalStudents.AutoSize = true;
+            this.lblTotalStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalStudents.Location = new System.Drawing.Point(30, 49);
+            this.lblTotalStudents.Name = "lblTotalStudents";
+            this.lblTotalStudents.Size = new System.Drawing.Size(59, 31);
+            this.lblTotalStudents.TabIndex = 1;
+            this.lblTotalStudents.Text = "228";
+            // 
+            // lblTotalCourses
+            // 
+            this.lblTotalCourses.AutoSize = true;
+            this.lblTotalCourses.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalCourses.Location = new System.Drawing.Point(33, 49);
+            this.lblTotalCourses.Name = "lblTotalCourses";
+            this.lblTotalCourses.Size = new System.Drawing.Size(29, 31);
+            this.lblTotalCourses.TabIndex = 2;
+            this.lblTotalCourses.Text = "8";
+            // 
+            // lblTotalInstructors
+            // 
+            this.lblTotalInstructors.AutoSize = true;
+            this.lblTotalInstructors.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalInstructors.Location = new System.Drawing.Point(35, 49);
+            this.lblTotalInstructors.Name = "lblTotalInstructors";
+            this.lblTotalInstructors.Size = new System.Drawing.Size(44, 31);
+            this.lblTotalInstructors.TabIndex = 3;
+            this.lblTotalInstructors.Text = "14";
+            // 
+            // lblTestsToday
+            // 
+            this.lblTestsToday.AutoSize = true;
+            this.lblTestsToday.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTestsToday.Location = new System.Drawing.Point(35, 49);
+            this.lblTestsToday.Name = "lblTestsToday";
+            this.lblTestsToday.Size = new System.Drawing.Size(44, 31);
+            this.lblTestsToday.TabIndex = 4;
+            this.lblTestsToday.Text = "10";
             // 
             // frmDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(990, 664);
             this.Controls.Add(this.panelTestsTodays);
             this.Controls.Add(this.paneInstructors);
@@ -148,5 +201,9 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblTotalStudents;
+        private System.Windows.Forms.Label lblTotalCourses;
+        private System.Windows.Forms.Label lblTotalInstructors;
+        private System.Windows.Forms.Label lblTestsToday;
     }
 }

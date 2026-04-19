@@ -44,6 +44,7 @@
     <Compile Include="clsDetainedLicenses.cs" />
     <Compile Include="clsDrivers.cs" />
     <Compile Include="clsDrivingInstitute.cs" />
+    <Compile Include="clsEnrollment.cs" />
     <Compile Include="clsInstituteCourses.cs" />
     <Compile Include="clsInternationalLicenses.cs" />
     <Compile Include="clsLicenses.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="clsLicenseClassses.cs" />
     <Compile Include="clsPerson.cs" />
     <Compile Include="clsRole.cs" />
+    <Compile Include="clsSchoolDashboardStats.cs" />
     <Compile Include="clsTestAppointments.cs" />
     <Compile Include="clsTests.cs" />
     <Compile Include="clsTestTypes.cs" />

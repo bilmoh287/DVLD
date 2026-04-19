@@ -19,6 +19,8 @@ namespace DVLDBussinessLayer
         public int LocalDrivingLicenseApplicationID { get; set; }
         public clsLicenseClasses LicesnseClassInfo;
         public int LicenseClassID { get; set; }
+        public int InstituteID { get; set; }
+
         //public string PersonFullName
         //{
         //    get
@@ -32,13 +34,14 @@ namespace DVLDBussinessLayer
             this.LicenseClassID = -1;
             _Mode = enMode.AddNew;
         }
-        private clsLocalDrivingLicenseApplication(int LocalDrivingLicenseApplicationID, int LicenseClassID, int ApplicationID, int ApplicantPersonID,
+        private clsLocalDrivingLicenseApplication(int LocalDrivingLicenseApplicationID, int LicenseClassID, int ApplicationID, int InstituteID, int ApplicantPersonID,
             DateTime ApplicationDate, int ApplicationTypeID,
              enApplicationStatus ApplicationStatus, DateTime LastStatusDate,
              decimal PaidFees, int CreatedByUserID)
         {
             this.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
             this.LicenseClassID = LicenseClassID;
+            this.InstituteID = InstituteID;
             this.LicesnseClassInfo = clsLicenseClasses.Find(LicenseClassID);
             this.ApplicationID = ApplicationID;
             this.ApplicantPersonID = ApplicantPersonID;
@@ -61,9 +64,10 @@ namespace DVLDBussinessLayer
         {
             int ApplicationID = -1;
             int LicenseClassID = -1;
+            int InstituteID = -1;
 
             bool isFound = clsLocalDrivingLicenseApplicationData.GetLocalDrivingLicenseApplicationInfoByID(LocalDrivingLicenseApplicationID,
-                ref ApplicationID, ref LicenseClassID);
+                ref ApplicationID, ref LicenseClassID, ref InstituteID);
 
             if (isFound)
             {
@@ -71,7 +75,7 @@ namespace DVLDBussinessLayer
                 clsApplication Application = clsApplication.Find(ApplicationID);
 
                 //we return new object of that person with the right data
-                return new clsLocalDrivingLicenseApplication(LocalDrivingLicenseApplicationID, LicenseClassID, ApplicationID, Application.ApplicantPersonID, Application.ApplicationDate,
+                return new clsLocalDrivingLicenseApplication(LocalDrivingLicenseApplicationID, LicenseClassID, ApplicationID, InstituteID, Application.ApplicantPersonID, Application.ApplicationDate,
                         Application.ApplicationTypeID, Application.ApplicationStatus, Application.LastStatusDate, Application.PaidFees, Application.CreatedByUserID);
             }
             else
@@ -80,7 +84,7 @@ namespace DVLDBussinessLayer
 
         private bool _AddNewLocalDrivingLicenseApplication()
         {
-            this.LocalDrivingLicenseApplicationID = clsLocalDrivingLicenseApplicationData.AddNewLocalDrivingLicenseApplication(this.ApplicationID, this.LicenseClassID);
+            this.LocalDrivingLicenseApplicationID = clsLocalDrivingLicenseApplicationData.AddNewLocalDrivingLicenseApplication(this.ApplicationID, this.LicenseClassID, this.InstituteID);
 
             return (this.LocalDrivingLicenseApplicationID != -1);
         }
@@ -88,7 +92,7 @@ namespace DVLDBussinessLayer
         private bool _UpdateLocalDrivingLicenseApplication()
         {
             return clsLocalDrivingLicenseApplicationData.UpdateLocalDrivingLicenseApplication(this.LocalDrivingLicenseApplicationID,
-                this.ApplicationID, this.LicenseClassID);
+                this.ApplicationID, this.LicenseClassID, this.InstituteID);
         }
 
         public static bool DeleteLocalDrivingLicenseApplication(int LocalDrivingLicenseApplicationID)

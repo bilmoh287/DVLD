@@ -52,6 +52,9 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.cbInstitutesList = new System.Windows.Forms.ComboBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tcLogin.SuspendLayout();
             this.tpDriverInfo.SuspendLayout();
             this.tpApplicationInfo.SuspendLayout();
@@ -60,6 +63,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // tcLogin
@@ -112,6 +116,9 @@
             // 
             // tpApplicationInfo
             // 
+            this.tpApplicationInfo.Controls.Add(this.cbInstitutesList);
+            this.tpApplicationInfo.Controls.Add(this.pictureBox5);
+            this.tpApplicationInfo.Controls.Add(this.label3);
             this.tpApplicationInfo.Controls.Add(this.pictureBox2);
             this.tpApplicationInfo.Controls.Add(this.pictureBox1);
             this.tpApplicationInfo.Controls.Add(this.label1);
@@ -148,7 +155,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DVLDPresentationLayer.Properties.Resources.User_32__2;
-            this.pictureBox1.Location = new System.Drawing.Point(299, 196);
+            this.pictureBox1.Location = new System.Drawing.Point(296, 234);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(31, 26);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -159,7 +166,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(129, 196);
+            this.label1.Location = new System.Drawing.Point(126, 237);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(127, 25);
@@ -170,7 +177,7 @@
             // 
             this.lblCreatedByUser.AutoSize = true;
             this.lblCreatedByUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreatedByUser.Location = new System.Drawing.Point(338, 196);
+            this.lblCreatedByUser.Location = new System.Drawing.Point(338, 234);
             this.lblCreatedByUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCreatedByUser.Name = "lblCreatedByUser";
             this.lblCreatedByUser.Size = new System.Drawing.Size(74, 25);
@@ -181,7 +188,7 @@
             // 
             this.lblFees.AutoSize = true;
             this.lblFees.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFees.Location = new System.Drawing.Point(338, 160);
+            this.lblFees.Location = new System.Drawing.Point(338, 199);
             this.lblFees.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFees.Name = "lblFees";
             this.lblFees.Size = new System.Drawing.Size(62, 25);
@@ -192,7 +199,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(129, 158);
+            this.label2.Location = new System.Drawing.Point(126, 199);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(180, 25);
@@ -202,7 +209,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::DVLDPresentationLayer.Properties.Resources.money_32;
-            this.pictureBox3.Location = new System.Drawing.Point(299, 159);
+            this.pictureBox3.Location = new System.Drawing.Point(296, 196);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(31, 26);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -213,7 +220,7 @@
             // 
             this.cbLicenseClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLicenseClass.FormattingEnabled = true;
-            this.cbLicenseClass.Location = new System.Drawing.Point(338, 121);
+            this.cbLicenseClass.Location = new System.Drawing.Point(336, 117);
             this.cbLicenseClass.Name = "cbLicenseClass";
             this.cbLicenseClass.Size = new System.Drawing.Size(270, 33);
             this.cbLicenseClass.TabIndex = 150;
@@ -221,7 +228,7 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = global::DVLDPresentationLayer.Properties.Resources.Renew_Driving_License_32;
-            this.pictureBox6.Location = new System.Drawing.Point(299, 121);
+            this.pictureBox6.Location = new System.Drawing.Point(299, 120);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(31, 26);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -253,7 +260,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::DVLDPresentationLayer.Properties.Resources.calendar_year;
-            this.pictureBox4.Location = new System.Drawing.Point(300, 80);
+            this.pictureBox4.Location = new System.Drawing.Point(300, 82);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(31, 26);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -334,6 +341,36 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // cbInstitutesList
+            // 
+            this.cbInstitutesList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbInstitutesList.FormattingEnabled = true;
+            this.cbInstitutesList.Location = new System.Drawing.Point(336, 160);
+            this.cbInstitutesList.Name = "cbInstitutesList";
+            this.cbInstitutesList.Size = new System.Drawing.Size(270, 33);
+            this.cbInstitutesList.TabIndex = 161;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::DVLDPresentationLayer.Properties.Resources.Renew_Driving_License_32;
+            this.pictureBox5.Location = new System.Drawing.Point(299, 158);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 163;
+            this.pictureBox5.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(129, 163);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(162, 25);
+            this.label3.TabIndex = 162;
+            this.label3.Text = "Select Institute:";
+            // 
             // frmAddUpdateLocalDrivingLicenseApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -362,6 +399,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -391,5 +429,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblLocalDrivingLicebseApplicationID;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbInstitutesList;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Label label3;
     }
 }

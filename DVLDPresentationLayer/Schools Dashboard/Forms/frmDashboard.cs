@@ -25,16 +25,16 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
             clsSchoolDashboardStats stats = clsSchoolDashboardStats.Load(clsGlobal.CurrentInstituteID.Value);
 
             // KPI: Total Students panel
-            label1.Text = stats.TotalStudents.ToString();
+            lblTotalStudents.Text = stats.TotalStudents.ToString();
 
             // KPI: Active Courses panel
-            label2.Text = stats.ActiveCourses.ToString();
+            lblTotalCourses.Text = stats.ActiveCourses.ToString();
 
             // KPI: Instructors (deferred — show dash as placeholder)
-            label3.Text = "—";
+            lblTotalInstructors.Text = "—";
 
             // KPI: Tests Today (deferred — show dash as placeholder)
-            label4.Text = "—";
+            lblTestsToday.Text = "—";
         }
     }
 }

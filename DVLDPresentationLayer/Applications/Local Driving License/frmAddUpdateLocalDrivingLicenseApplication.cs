@@ -43,10 +43,19 @@ namespace DVLDPresentationLayer
             cbLicenseClass.ValueMember = "LicenseClassID";
         }
 
+        public void _FillInstituteNamesInComboBox()
+        {
+            DataTable dtLInstiutesNames = clsDrivingInstitute.GetAllInstitutes();
+            cbInstitutesList.DataSource = dtLInstiutesNames;
+            cbInstitutesList.DisplayMember = "InstituteName"; 
+            cbInstitutesList.ValueMember = "InstituteID";
+        }
+
         private void _ResetDefaultValues()
         {
             _FillClassNameInComboBox();
-            if(_Mode == enMode.AddNew)
+            _FillInstituteNamesInComboBox();
+            if (_Mode == enMode.AddNew)
             {
                 lblTitle.Text = "New Driving License Application";
                 this.Name = lblTitle.Text;
@@ -134,6 +143,13 @@ namespace DVLDPresentationLayer
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (cbInstitutesList.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select an institute.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cbInstitutesList.Focus();
+                return;
+            }
+            int selectedInstituteID = Convert.ToInt32(cbInstitutesList.SelectedValue);
             int LicenseClassID = clsLicenseClasses.Find(cbLicenseClass.Text).LicenseClassID;
 
             //Check if the user have active application with the same License Calss
@@ -172,6 +188,7 @@ namespace DVLDPresentationLayer
             _LDLApplication.PaidFees = Convert.ToDecimal(lblFees.Text);
             _LDLApplication.CreatedByUserID = clsGlobal.CurrentUser.UserID;
             _LDLApplication.LicenseClassID = LicenseClassID;
+            _LDLApplication.InstituteID = selectedInstituteID;
 
             if (_LDLApplication.SaveLDLA())
             {

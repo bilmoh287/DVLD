@@ -48,5 +48,30 @@ namespace DVLDDataAccessLayer
             }
             return count;
         }
+        public static int GetTotalInstructorCount(int InstituteID)
+        {
+            int count = 0;
+            string query = @"
+                            SELECT COUNT(*) FROM Instructors
+                            WHERE InstituteID = @InstituteID";
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@InstituteID", InstituteID);
+                try
+                {
+                    connection.Open();
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                        count = Convert.ToInt32(result);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error counting instructors: " + ex.Message);
+                }
+            }
+            return count;
+        }
+
     }
 }
