@@ -162,12 +162,31 @@
     <Compile Include="frmRegistration.Designer.cs">
       <DependentUpon>frmRegistration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Schools Dashboard\Forms\frmDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Schools Dashboard\Forms\frmDashboard.Designer.cs">
+      <DependentUpon>frmDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Schools Dashboard\Forms\frmStudents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Schools Dashboard\Forms\frmStudents.Designer.cs">
+      <DependentUpon>frmStudents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Schools Dashboard\frmSchoolDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Schools Dashboard\frmSchoolDashboard.Designer.cs">
+      <DependentUpon>frmSchoolDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTrial.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmTrial.Designer.cs">
       <DependentUpon>frmTrial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Global Classes\ThemColors.cs" />
     <Compile Include="Manage Driving Institutes\frmListDrivingInstitutes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -412,6 +431,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmListInstituteCourse.resx">
       <DependentUpon>frmListInstituteCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schools Dashboard\Forms\frmDashboard.resx">
+      <DependentUpon>frmDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schools Dashboard\Forms\frmStudents.resx">
+      <DependentUpon>frmStudents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schools Dashboard\frmSchoolDashboard.resx">
+      <DependentUpon>frmSchoolDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Manage Driving Institutes\frmListDrivingInstitutes.resx">
       <DependentUpon>frmListDrivingInstitutes.cs</DependentUpon>
@@ -857,6 +885,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AddButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-dashboard-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-dashboard-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-dashboard-32 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-students-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\graduation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-person-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
