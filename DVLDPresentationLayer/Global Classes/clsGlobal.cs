@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Text;
 using System.Security.Cryptography;
@@ -10,6 +10,11 @@ namespace DVLDPresentationLayer.Global_Classes
     internal class clsGlobal
     {
         public static clsUser CurrentUser;
+
+        // Holds the institute the logged-in user belongs to.
+        // NULL means the user is a Department user (full access).
+        // Non-null means the user is a School Manager (scoped access).
+        public static int? CurrentInstituteID = null;
 
         // global variable to hold for the current user permissions
         public static int CurrentUserPermissions = 0;
@@ -114,7 +119,8 @@ namespace DVLDPresentationLayer.Global_Classes
         // Clear user session when exiting
         public static void Logout()
         {
-            CurrentUser = null;
+            CurrentUser        = null;
+            CurrentInstituteID = null;
         }
     }
 }

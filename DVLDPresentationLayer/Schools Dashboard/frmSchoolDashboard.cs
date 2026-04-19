@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,10 +20,14 @@ namespace DVLDPresentationLayer
         private int tempIndex;
         private Form activeForm;
 
-        public frmSchoolDashboard()
+        public frmSchoolDashboard(int InstituteID)
         {
             InitializeComponent();
             random = new Random();
+
+            // Store the institute context globally so all child forms
+            // automatically scope their data queries to this school.
+            clsGlobal.CurrentInstituteID = InstituteID;
         }
 
         //Methods

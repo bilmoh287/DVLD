@@ -1,4 +1,4 @@
-﻿namespace DVLDPresentationLayer.Schools_Dashboard.Forms
+namespace DVLDPresentationLayer.Schools_Dashboard.Forms
 {
     partial class frmStudents
     {
@@ -206,6 +206,8 @@
             this.Controls.Add(this.guna2DataGridView1);
             this.Name = "frmStudents";
             this.Text = "frmStudents";
+            this.Load += new System.EventHandler(this.frmStudents_Load);
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

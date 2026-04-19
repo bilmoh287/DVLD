@@ -1,4 +1,4 @@
-﻿namespace DVLDPresentationLayer.Schools_Dashboard.Forms
+namespace DVLDPresentationLayer.Schools_Dashboard.Forms
 {
     partial class frmDashboard
     {
@@ -125,6 +125,7 @@
             this.Controls.Add(this.panelTotalStudents);
             this.Name = "frmDashboard";
             this.Text = "frmDashboard";
+            this.Load += new System.EventHandler(this.frmDashboard_Load);
             this.panelTotalStudents.ResumeLayout(false);
             this.panelTotalStudents.PerformLayout();
             this.panelActiveCourse.ResumeLayout(false);
