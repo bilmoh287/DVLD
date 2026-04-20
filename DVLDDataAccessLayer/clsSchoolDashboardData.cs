@@ -190,5 +190,82 @@ namespace DVLDDataAccessLayer
             }
             return -1;
         }
+        /// <summary>
+        /// Returns the total revenue for the institute based on PaidFees from Applications.
+        /// Linked through Enrollments -> LocalDrivingLicenseApplications -> Applications.
+        /// </summary>
+        public static decimal GetTotalEarnings(int InstituteID)
+        {
+            decimal total = 0;
+            string query = @"
+                SELECT SUM(A.PaidFees)
+                FROM   Applications A
+                INNER JOIN LocalDrivingLicenseApplications LDLA ON A.ApplicationID = LDLA.ApplicationID
+                WHERE  LDLA.InstituteID = @InstituteID";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@InstituteID", InstituteID);
+                try
+                {
+                    connection.Open();
+                    object result = command.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                        total = Convert.ToDecimal(result);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error calculating earnings: " + ex.Message);
+                }
+            }
+            return total;
+        }
+
+        /// <summary>
+        /// Returns enrollment counts for the last 3 calendar months.
+        /// Key = Month Name (e.g. "Jan"), Value = Count.
+        /// </summary>
+        public static DataTable GetMonthlyEnrollmentStats(int InstituteID)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("MonthName", typeof(string));
+            dt.Columns.Add("Count",     typeof(int));
+
+            // Query for the last 3 months (including current)
+            string query = @"
+                SELECT
+                    MonthName = FORMAT(EnrollmentDate, 'MMM'),
+                    MonthNum  = MONTH(EnrollmentDate),
+                    YearNum   = YEAR(EnrollmentDate),
+                    Cnt       = COUNT(*)
+                FROM Enrollments
+                WHERE InstituteID = @InstituteID
+                  AND EnrollmentDate >= DATEADD(MONTH, -2, DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1))
+                GROUP BY FORMAT(EnrollmentDate, 'MMM'), MONTH(EnrollmentDate), YEAR(EnrollmentDate)
+                ORDER BY YearNum, MonthNum";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@InstituteID", InstituteID);
+                try
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            dt.Rows.Add(reader["MonthName"], reader["Cnt"]);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error loading enrollment stats: " + ex.Message);
+                }
+            }
+            return dt;
+        }
     }
 }

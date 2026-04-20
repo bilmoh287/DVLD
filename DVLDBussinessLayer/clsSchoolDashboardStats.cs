@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 using DVLDDataAccessLayer;
 
 namespace DVLDBussinessLayer
@@ -11,31 +12,39 @@ namespace DVLDBussinessLayer
     public class clsSchoolDashboardStats
     {
         // ── KPI Cards ────────────────────────────────────────────────────────
-        public int TotalStudents         { get; private set; }
-        public int NewStudentsThisMonth  { get; private set; }
-        public int ActiveCourses         { get; private set; }
-        public int TotalInstructors      { get; private set; }
-        public int TestsToday            { get; private set; }
+        public int     TotalStudents         { get; private set; }
+        public int     NewStudentsThisMonth  { get; private set; }
+        public int     ActiveCourses         { get; private set; }
+        public int     TotalInstructors      { get; private set; }
+        public int     TestsToday            { get; private set; }
+        public decimal TotalEarnings         { get; private set; }
 
         // ── Pass Rates (0-100, or -1 if no data this month) ─────────────────
         public int PassRateVision  { get; private set; }
         public int PassRateTheory  { get; private set; }
         public int PassRateRoad    { get; private set; }
 
+        // ── Analytics Data ───────────────────────────────────────────────────
+        public DataTable MonthlyEnrollmentStats { get; private set; }
+
         // Private constructor — always use Load()
         private clsSchoolDashboardStats(
             int totalStudents, int newStudentsThisMonth,
             int activeCourses, int totalInstructors, int testsToday,
-            int passRateVision, int passRateTheory, int passRateRoad)
+            decimal totalEarnings,
+            int passRateVision, int passRateTheory, int passRateRoad,
+            DataTable monthlyEnrollmentStats)
         {
-            TotalStudents        = totalStudents;
-            NewStudentsThisMonth = newStudentsThisMonth;
-            ActiveCourses        = activeCourses;
-            TotalInstructors     = totalInstructors;
-            TestsToday           = testsToday;
-            PassRateVision       = passRateVision;
-            PassRateTheory       = passRateTheory;
-            PassRateRoad         = passRateRoad;
+            TotalStudents         = totalStudents;
+            NewStudentsThisMonth  = newStudentsThisMonth;
+            ActiveCourses         = activeCourses;
+            TotalInstructors      = totalInstructors;
+            TestsToday            = testsToday;
+            TotalEarnings         = totalEarnings;
+            PassRateVision        = passRateVision;
+            PassRateTheory        = passRateTheory;
+            PassRateRoad          = passRateRoad;
+            MonthlyEnrollmentStats = monthlyEnrollmentStats;
         }
 
         /// <summary>
@@ -45,14 +54,16 @@ namespace DVLDBussinessLayer
         public static clsSchoolDashboardStats Load(int InstituteID)
         {
             return new clsSchoolDashboardStats(
-                totalStudents:        clsSchoolDashboardData.GetTotalStudentCount(InstituteID),
-                newStudentsThisMonth: clsSchoolDashboardData.GetNewStudentsThisMonth(InstituteID),
-                activeCourses:        clsSchoolDashboardData.GetActiveCourseCount(InstituteID),
-                totalInstructors:     clsSchoolDashboardData.GetTotalInstructorCount(InstituteID),
-                testsToday:           clsSchoolDashboardData.GetTestsTodayCount(InstituteID),
-                passRateVision:       clsSchoolDashboardData.GetPassRateByTestType(InstituteID, 1),
-                passRateTheory:       clsSchoolDashboardData.GetPassRateByTestType(InstituteID, 2),
-                passRateRoad:         clsSchoolDashboardData.GetPassRateByTestType(InstituteID, 3)
+                totalStudents:          clsSchoolDashboardData.GetTotalStudentCount(InstituteID),
+                newStudentsThisMonth:   clsSchoolDashboardData.GetNewStudentsThisMonth(InstituteID),
+                activeCourses:          clsSchoolDashboardData.GetActiveCourseCount(InstituteID),
+                totalInstructors:       clsSchoolDashboardData.GetTotalInstructorCount(InstituteID),
+                testsToday:             clsSchoolDashboardData.GetTestsTodayCount(InstituteID),
+                totalEarnings:          clsSchoolDashboardData.GetTotalEarnings(InstituteID),
+                passRateVision:         clsSchoolDashboardData.GetPassRateByTestType(InstituteID, 1),
+                passRateTheory:         clsSchoolDashboardData.GetPassRateByTestType(InstituteID, 2),
+                passRateRoad:           clsSchoolDashboardData.GetPassRateByTestType(InstituteID, 3),
+                monthlyEnrollmentStats: clsSchoolDashboardData.GetMonthlyEnrollmentStats(InstituteID)
             );
         }
     }
