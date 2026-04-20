@@ -95,7 +95,7 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
                 top8.ImportRow(dt.Rows[i]);
 
             dgvRecentStudents.DataSource = top8;
-
+          
             // Hide internal ID columns
             _HideColumn("EnrollmentID");
             _HideColumn("PersonID");

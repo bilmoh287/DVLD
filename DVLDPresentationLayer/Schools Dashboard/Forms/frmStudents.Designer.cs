@@ -73,7 +73,26 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
             this.txtSearch.ForeColor      = System.Drawing.Color.FromArgb(50, 50, 70);
             this.txtSearch.Location       = new System.Drawing.Point(34, 7);
             this.txtSearch.Name           = "txtSearch";
-            this.txtSearch.PlaceholderText = "Search by name, course, or phone…";
+            //this.txtSearch.PlaceholderText = "Search by name, course, or phone…";
+            // Simulate placeholder text for .NET Framework 4.7.2 TextBox
+            this.txtSearch.ForeColor = System.Drawing.Color.Gray;
+            this.txtSearch.Text = "Search by name, course, or phone…";
+            this.txtSearch.GotFocus += (sender, e) =>
+            {
+                if (this.txtSearch.Text == "Search by name, course, or phone…")
+                {
+                    this.txtSearch.Text = "";
+                    this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(50, 50, 70);
+                }
+            };
+            this.txtSearch.LostFocus += (sender, e) =>
+            {
+                if (string.IsNullOrWhiteSpace(this.txtSearch.Text))
+                {
+                    this.txtSearch.Text = "Search by name, course, or phone…";
+                    this.txtSearch.ForeColor = System.Drawing.Color.Gray;
+                }
+            };
             this.txtSearch.Size           = new System.Drawing.Size(310, 22);
             this.txtSearch.TabIndex       = 0;
             this.txtSearch.TextChanged   += new System.EventHandler(this.txtSearch_TextChanged);
@@ -101,7 +120,7 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
             this.guna2DataGridView1.AlternatingRowsDefaultCellStyle  = altRowStyle;
             this.guna2DataGridView1.BackgroundColor                  = System.Drawing.Color.FromArgb(245, 246, 250);
             this.guna2DataGridView1.ColumnHeadersDefaultCellStyle    = headerStyle;
-            this.guna2DataGridView1.ColumnHeadersHeightSizeMode      = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisabledResizing;
+            this.guna2DataGridView1.ColumnHeadersHeightSizeMode      = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.guna2DataGridView1.ColumnHeadersHeight              = 36;
             this.guna2DataGridView1.ColumnHeadersBorderStyle         = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.guna2DataGridView1.DefaultCellStyle                 = rowStyle;
@@ -123,7 +142,7 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
             this.guna2DataGridView1.ThemeStyle.HeaderStyle.BorderStyle          = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.guna2DataGridView1.ThemeStyle.HeaderStyle.Font                 = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.guna2DataGridView1.ThemeStyle.HeaderStyle.ForeColor            = System.Drawing.Color.White;
-            this.guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode      = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisabledResizing;
+            this.guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode      = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.guna2DataGridView1.ThemeStyle.HeaderStyle.Height               = 36;
             this.guna2DataGridView1.ThemeStyle.ReadOnly                         = true;
             this.guna2DataGridView1.ThemeStyle.RowsStyle.BackColor              = System.Drawing.Color.White;
