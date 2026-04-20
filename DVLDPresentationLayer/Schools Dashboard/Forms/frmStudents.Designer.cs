@@ -30,15 +30,15 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
 
             // ─── PAGE HEADER ────────────────────────────────────────────────
             this.lblPageTitle.AutoSize = true;
-            this.lblPageTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.lblPageTitle.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
             this.lblPageTitle.ForeColor = System.Drawing.Color.FromArgb(30, 30, 50);
             this.lblPageTitle.Location = new System.Drawing.Point(18, 18);
             this.lblPageTitle.Text = "Students";
 
             this.lblStudentCount.AutoSize = true;
-            this.lblStudentCount.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblStudentCount.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.lblStudentCount.ForeColor = System.Drawing.Color.FromArgb(100, 100, 120);
-            this.lblStudentCount.Location = new System.Drawing.Point(22, 58);
+            this.lblStudentCount.Location = new System.Drawing.Point(22, 65);
             this.lblStudentCount.Text = "0 student(s) found";
 
             // ─── SEARCH BOX (GUNA2) ─────────────────────────────────────────
@@ -52,15 +52,15 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
             this.txtSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(138, 138, 138);
             this.txtSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(138, 138, 138);
             this.txtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(94, 148, 255);
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(50, 50, 70);
             this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(94, 148, 255);
-            this.txtSearch.Location = new System.Drawing.Point(630, 24);
+            this.txtSearch.Location = new System.Drawing.Point(590, 24);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PasswordChar = '\0';
             this.txtSearch.PlaceholderText = "Search by name, course, phone...";
             this.txtSearch.SelectedText = "";
-            this.txtSearch.Size = new System.Drawing.Size(330, 40);
+            this.txtSearch.Size = new System.Drawing.Size(370, 45);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
 
@@ -74,27 +74,27 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
 
             headerStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             headerStyle.BackColor = System.Drawing.Color.FromArgb(100, 88, 255);
-            headerStyle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            headerStyle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             headerStyle.ForeColor = System.Drawing.Color.White;
             this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = headerStyle;
-            this.guna2DataGridView1.ColumnHeadersHeight = 40;
+            this.guna2DataGridView1.ColumnHeadersHeight = 45;
 
             rowStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             rowStyle.BackColor = System.Drawing.Color.White;
-            rowStyle.Font = new System.Drawing.Font("Segoe UI", 10F);
+            rowStyle.Font = new System.Drawing.Font("Segoe UI", 11F);
             rowStyle.ForeColor = System.Drawing.Color.FromArgb(71, 69, 94);
             rowStyle.SelectionBackColor = System.Drawing.Color.FromArgb(231, 229, 255);
             rowStyle.SelectionForeColor = System.Drawing.Color.FromArgb(71, 69, 94);
             this.guna2DataGridView1.DefaultCellStyle = rowStyle;
 
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(231, 229, 255);
-            this.guna2DataGridView1.Location = new System.Drawing.Point(20, 85);
+            this.guna2DataGridView1.Location = new System.Drawing.Point(20, 100);
             this.guna2DataGridView1.Name = "guna2DataGridView1";
             this.guna2DataGridView1.ReadOnly = true;
             this.guna2DataGridView1.RowHeadersVisible = false;
-            this.guna2DataGridView1.Size = new System.Drawing.Size(940, 540);
+            this.guna2DataGridView1.Size = new System.Drawing.Size(940, 525);
             this.guna2DataGridView1.TabIndex = 1;
-            this.guna2DataGridView1.ThemeStyle.RowsStyle.Height = 35;
+            this.guna2DataGridView1.ThemeStyle.RowsStyle.Height = 40;
 
             // ─── CLOSE BUTTON ───────────────────────────────────────────────
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));

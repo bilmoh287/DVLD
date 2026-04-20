@@ -64,7 +64,7 @@ namespace DVLDPresentationLayer
             this.btnSetting.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSetting.FlatAppearance.BorderSize = 0;
             this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetting.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSetting.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSetting.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnSetting.Image = global::DVLDPresentationLayer.Properties.Resources.settings;
             this.btnSetting.Location = new System.Drawing.Point(0, 320);
@@ -82,7 +82,7 @@ namespace DVLDPresentationLayer
             this.btnInstructor.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnInstructor.FlatAppearance.BorderSize = 0;
             this.btnInstructor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInstructor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInstructor.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInstructor.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnInstructor.Image = global::DVLDPresentationLayer.Properties.Resources.icons8_person_32;
             this.btnInstructor.Location = new System.Drawing.Point(0, 260);
@@ -100,7 +100,7 @@ namespace DVLDPresentationLayer
             this.btnCourses.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCourses.FlatAppearance.BorderSize = 0;
             this.btnCourses.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCourses.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCourses.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCourses.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnCourses.Image = global::DVLDPresentationLayer.Properties.Resources.graduation;
             this.btnCourses.Location = new System.Drawing.Point(0, 200);
@@ -118,7 +118,7 @@ namespace DVLDPresentationLayer
             this.btnStudents.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnStudents.FlatAppearance.BorderSize = 0;
             this.btnStudents.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStudents.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStudents.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnStudents.Image = global::DVLDPresentationLayer.Properties.Resources.icons8_students_32;
             this.btnStudents.Location = new System.Drawing.Point(0, 140);
@@ -136,7 +136,7 @@ namespace DVLDPresentationLayer
             this.btnDashboard.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnDashboard.FlatAppearance.BorderSize = 0;
             this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDashboard.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDashboard.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnDashboard.Image = global::DVLDPresentationLayer.Properties.Resources.icons8_dashboard_32__1_;
             this.btnDashboard.Location = new System.Drawing.Point(0, 80);
