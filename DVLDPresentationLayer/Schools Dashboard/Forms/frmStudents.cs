@@ -1,5 +1,6 @@
 using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using DVLDBussinessLayer;
 using DVLDPresentationLayer.Global_Classes;
@@ -8,6 +9,9 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
 {
     public partial class frmStudents : Form
     {
+        // ── State ────────────────────────────────────────────────────────────
+        private DataTable _allStudents;
+
         public frmStudents()
         {
             InitializeComponent();
@@ -18,36 +22,78 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
             _LoadStudents();
         }
 
+        // ── Load all students for this institute ─────────────────────────────
         private void _LoadStudents()
         {
             if (clsGlobal.CurrentInstituteID == null)
                 return;
 
-            DataTable dt = clsEnrollment.GetAllByInstitute(clsGlobal.CurrentInstituteID.Value);
+            _allStudents = clsEnrollment.GetAllByInstitute(clsGlobal.CurrentInstituteID.Value);
 
+            _ApplyToGrid(_allStudents);
+        }
+
+        // ── Bind a DataTable to the grid and set column display ──────────────
+        private void _ApplyToGrid(DataTable dt)
+        {
             guna2DataGridView1.DataSource = dt;
 
-            // Make the grid columns human-readable
-            if (guna2DataGridView1.Columns["EnrollmentID"] != null)
-                guna2DataGridView1.Columns["EnrollmentID"].Visible = false;
+            _Hide("EnrollmentID");
+            _Hide("PersonID");
 
-            if (guna2DataGridView1.Columns["PersonID"] != null)
-                guna2DataGridView1.Columns["PersonID"].Visible = false;
+            _Rename("FullName",       "Student Name");
+            _Rename("Phone",          "Phone");
+            _Rename("CourseName",     "Course");
+            _Rename("EnrollmentDate", "Enrolled On");
+            _Rename("IsActive",       "Active");
 
-            if (guna2DataGridView1.Columns["FullName"] != null)
-                guna2DataGridView1.Columns["FullName"].HeaderText = "Student Name";
+            lblStudentCount.Text = $"{dt.Rows.Count} student(s) found";
+        }
 
-            if (guna2DataGridView1.Columns["Phone"] != null)
-                guna2DataGridView1.Columns["Phone"].HeaderText = "Phone";
+        // ── Search / filter ──────────────────────────────────────────────────
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (_allStudents == null)
+                return;
 
-            if (guna2DataGridView1.Columns["CourseName"] != null)
-                guna2DataGridView1.Columns["CourseName"].HeaderText = "Course";
+            string filter = txtSearch.Text.Trim();
 
-            if (guna2DataGridView1.Columns["EnrollmentDate"] != null)
-                guna2DataGridView1.Columns["EnrollmentDate"].HeaderText = "Enrolled On";
+            if (string.IsNullOrEmpty(filter))
+            {
+                _ApplyToGrid(_allStudents);
+                return;
+            }
 
-            if (guna2DataGridView1.Columns["IsActive"] != null)
-                guna2DataGridView1.Columns["IsActive"].HeaderText = "Active";
+            // Filter in-memory — no extra DB call
+            DataTable filtered = _allStudents.Clone();
+            foreach (DataRow row in _allStudents.Rows)
+            {
+                string name   = row["FullName"].ToString();
+                string course = row["CourseName"].ToString();
+                string phone  = row["Phone"].ToString();
+
+                if (name.IndexOf(filter,   StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    course.IndexOf(filter, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    phone.IndexOf(filter,  StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    filtered.ImportRow(row);
+                }
+            }
+
+            _ApplyToGrid(filtered);
+        }
+
+        // ── Helpers ──────────────────────────────────────────────────────────
+        private void _Hide(string col)
+        {
+            if (guna2DataGridView1.Columns[col] != null)
+                guna2DataGridView1.Columns[col].Visible = false;
+        }
+
+        private void _Rename(string col, string header)
+        {
+            if (guna2DataGridView1.Columns[col] != null)
+                guna2DataGridView1.Columns[col].HeaderText = header;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -56,4 +102,3 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
         }
     }
 }
-
