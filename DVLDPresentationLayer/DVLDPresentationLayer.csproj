@@ -162,6 +162,12 @@
     <Compile Include="frmRegistration.Designer.cs">
       <DependentUpon>frmRegistration.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmUnderReview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUnderReview.Designer.cs">
+      <DependentUpon>frmUnderReview.cs</DependentUpon>
+    </Compile>
     <Compile Include="Schools Dashboard\Forms\frmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -431,6 +437,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmListInstituteCourse.resx">
       <DependentUpon>frmListInstituteCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistration.resx">
+      <DependentUpon>frmRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUnderReview.resx">
+      <DependentUpon>frmUnderReview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Schools Dashboard\Forms\frmDashboard.resx">
       <DependentUpon>frmDashboard.cs</DependentUpon>

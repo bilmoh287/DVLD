@@ -17,7 +17,16 @@ namespace DVLDBussinessLayer
             NewDrivingLicense = 1, RenewDrivingLicense = 2, ReplaceLostDrivingLicense = 3,
             ReplaceDamagedDrivingLicense = 4, ReleaseDetainedDrivingLicsense = 5, NewInternationalLicense = 6, RetakeTest = 7
         };
-        public enum enApplicationStatus { New = 1, Cancelled = 2, Completed = 3 };
+
+        // added approved and rejected status to handle the case of application approval by admin and rejection by admin
+        public enum enApplicationStatus
+        {
+            New = 1,
+            Cancelled = 2,
+            Completed = 3,
+            Approved = 4,
+            Rejected = 5
+        }
 
         public int ApplicationID { get; set; }
         public int ApplicantPersonID { get; set; }
@@ -44,6 +53,10 @@ namespace DVLDBussinessLayer
                         return "Cancelled";
                     case enApplicationStatus.Completed:
                         return "Completed";
+                    case enApplicationStatus.Approved:
+                        return "Approved";
+                    case enApplicationStatus.Rejected:
+                        return "Rejected";
                     default:
                         return "Unknown";
                 }
@@ -167,6 +180,15 @@ namespace DVLDBussinessLayer
         public bool SetComplete()
         {
             return clsApplicationData.UpdateStatus(ApplicationID, (byte)enApplicationStatus.Completed);
+        }
+
+        public bool Reject()
+        {
+            return clsApplicationData.UpdateStatus(ApplicationID, (byte)enApplicationStatus.Rejected);
+        }
+        public bool Approve()
+        {
+            return clsApplicationData.UpdateStatus(ApplicationID, (byte)enApplicationStatus.Approved);
         }
     }
 }

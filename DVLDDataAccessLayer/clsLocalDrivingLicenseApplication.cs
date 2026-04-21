@@ -345,5 +345,34 @@ namespace DVLDDataAccessLayer
 
             return TotalTrialsPerTest;
         }
+
+        public static DataTable GetNewApplicationsList()
+        {
+            DataTable dt = new DataTable();
+            string query = @"
+                            SELECT * FROM LocalDrivingLicenseApplications_View
+                                                 WHERE status = 'New'
+                                                 ORDER BY ApplicationDate DESC;";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error loading new applications: " + ex.Message);
+                    }
+                }
+            }
+            return dt;
+        }
     }
 }

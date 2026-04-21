@@ -218,5 +218,10 @@ namespace DVLDBussinessLayer
         {//this will get the license id that belongs to this application
             return clsLicenses.GetActiveLicenseIDByPersonID(this.ApplicantPersonID, this.LicenseClassID);
         }
+        public static DataTable GetAllNewLocalDrivingLicenseApplications()
+        {
+            return clsLocalDrivingLicenseApplicationData.GetNewApplicationsList();
+        }
+
     }
 }
