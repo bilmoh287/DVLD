@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
@@ -248,7 +248,97 @@ namespace DVLDDataAccessLayer
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Error loading TestTypes: " + ex.Message);
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+
+            return (rowsAffected > 0);
+        }
+
+        public static DataTable GetUnderReviewApplications()
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                // Status 1 is 'New' (Under Review)
+                string query = @"SELECT A.ApplicationID, P.FirstName, P.LastName, 
+                                        P.NationalNo, A.ApplicationDate
+                                 FROM Applications A
+                                 INNER JOIN People P ON A.ApplicantPersonID = P.PersonID
+                                 WHERE A.ApplicationStatus = 1";
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    dt.Load(reader);
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+
+            return dt;
+        }
+
+        public static DataRow GetApplicationDetails(int applicationID)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string query = @"SELECT A.*, P.*, D.DriverID
+                                 FROM Applications A
+                                 INNER JOIN People P ON A.ApplicantPersonID = P.PersonID
+                                 LEFT JOIN Drivers D ON P.PersonID = D.PersonID
+                                 WHERE A.ApplicationID = @ApplicationID";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ApplicationID", applicationID);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    dt.Load(reader);
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+
+            return (dt.Rows.Count > 0) ? dt.Rows[0] : null;
+        }
+
+        public static bool UpdateDocumentPath(int applicationID, string path)
+        {
+            int rowsAffected = 0;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string query = @"UPDATE Applications 
+                                 SET DocumentPath = @Path 
+                                 WHERE ApplicationID = @ApplicationID";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ApplicationID", applicationID);
+                command.Parameters.AddWithValue("@Path", (object)path ?? DBNull.Value);
+
+                try
+                {
+                    connection.Open();
+                    rowsAffected = command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
                 }
             }
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -66,6 +66,7 @@ namespace DVLDBussinessLayer
         public decimal PaidFees { get; set; }
         public int CreatedByUserID { get; set; }
         public clsUser CreatedByUserInfo;
+        public string DocumentPath { get; set; }
 
 
         public clsApplication()
@@ -78,6 +79,7 @@ namespace DVLDBussinessLayer
             LastStatusDate = DateTime.Now;
             PaidFees = 0;
             CreatedByUserID = -1;
+            DocumentPath = "";
             Mode = enMode.AddNew;
         }
         public clsApplication(int ApplicationID, int ApplicantPersonID,
@@ -101,6 +103,33 @@ namespace DVLDBussinessLayer
         public static DataTable GetAllApplications()
         {
             return clsApplicationData.GetAllApplicationsList();
+        }
+
+        public static DataTable GetUnderReviewApplications()
+        {
+            return clsApplicationData.GetUnderReviewApplications();
+        }
+
+        public bool LoadApplicationDetails(int applicationID)
+        {
+            DataRow row = clsApplicationData.GetApplicationDetails(applicationID);
+
+            if (row != null)
+            {
+                this.ApplicationID = applicationID;
+                this.ApplicantPersonID = (int)row["ApplicantPersonID"];
+                this.ApplicationDate = (DateTime)row["ApplicationDate"];
+                this.ApplicationTypeID = (int)row["ApplicationTypeID"];
+                this.ApplicationStatus = (enApplicationStatus)Convert.ToByte(row["ApplicationStatus"]);
+                this.LastStatusDate = (DateTime)row["LastStatusDate"];
+                this.PaidFees = Convert.ToDecimal(row["PaidFees"]);
+                this.CreatedByUserID = (int)row["CreatedByUserID"];
+                this.DocumentPath = row["DocumentPath"] != DBNull.Value ? row["DocumentPath"].ToString() : "";
+                
+                this.Mode = enMode.Update;
+                return true;
+            }
+            return false;
         }
 
         public static clsApplication Find(int ApplicationID)
@@ -147,6 +176,11 @@ namespace DVLDBussinessLayer
             return clsApplicationData.DeleteApplication(ApplicationID);
         }
 
+        public bool SubmitApplication()
+        {
+            return this.Save();
+        }
+
         public bool Save()
         {
             switch (Mode)
@@ -168,10 +202,21 @@ namespace DVLDBussinessLayer
             }
         }
 
+        public bool SaveDocument(string path)
+        {
+            if (clsApplicationData.UpdateDocumentPath(this.ApplicationID, path))
+            {
+                this.DocumentPath = path;
+                return true;
+            }
+            return false;
+        }
+
         public static int GetActiveApplicationIDForLicenseClass(int PersonID, clsApplication.enApplicationType ApplicationTypeID, int LicenseClassID)
         {
             return clsApplicationData.GetActiveApplicationIDForLicenseClass(PersonID, (int)ApplicationTypeID, LicenseClassID);
         }
+
         public bool Cancel()
         {
             return clsApplicationData.UpdateStatus(ApplicationID, (byte)enApplicationStatus.Cancelled);
@@ -186,6 +231,7 @@ namespace DVLDBussinessLayer
         {
             return clsApplicationData.UpdateStatus(ApplicationID, (byte)enApplicationStatus.Rejected);
         }
+
         public bool Approve()
         {
             return clsApplicationData.UpdateStatus(ApplicationID, (byte)enApplicationStatus.Approved);
