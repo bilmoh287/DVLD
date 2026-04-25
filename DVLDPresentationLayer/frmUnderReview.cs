@@ -74,6 +74,9 @@ namespace DVLDPresentationLayer
                 dgvUnderReviewList.Columns["FullName"].HeaderText = "Full Name";
                 dgvUnderReviewList.Columns["FullName"].Width = 180;
 
+                dgvUnderReviewList.Columns["ClassName"].HeaderText = "Class Name";
+                dgvUnderReviewList.Columns["ClassName"].Width = 200;
+
                 dgvUnderReviewList.Columns["NationalNo"].HeaderText = "National No.";
                 dgvUnderReviewList.Columns["NationalNo"].Width = 120;
 

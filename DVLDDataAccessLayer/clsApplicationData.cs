@@ -261,13 +261,15 @@ namespace DVLDDataAccessLayer
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
-                // Status 1 is 'New' (Under Review)
+                // Status 1 is 'New' (Under Review), Type 1 is 'New Local Driving License'
                 string query = @"SELECT A.ApplicationID, 
                                         (P.FirstName + ' ' + ISNULL(P.SecondName + ' ', '') + ISNULL(P.ThirdName + ' ', '') + P.LastName) as FullName,  
-                                        P.NationalNo, A.ApplicationDate, 'New' as ApplicationStatus
+                                        L.ClassName, P.NationalNo, A.ApplicationDate, 'New' as ApplicationStatus
                                  FROM Applications A
                                  INNER JOIN People P ON A.ApplicantPersonID = P.PersonID
-                                 WHERE A.ApplicationStatus = 1;";
+                                 INNER JOIN LocalDrivingLicenseApplications LDA ON A.ApplicationID = LDA.ApplicationID
+                                 INNER JOIN LicenseClasses L ON LDA.LicenseClassID = L.LicenseClassID
+                                 WHERE A.ApplicationStatus = 1 AND A.ApplicationTypeID = 1;";
 
                 SqlCommand command = new SqlCommand(query, connection);
 
