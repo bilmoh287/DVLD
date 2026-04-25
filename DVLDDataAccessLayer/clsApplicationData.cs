@@ -262,11 +262,11 @@ namespace DVLDDataAccessLayer
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
                 // Status 1 is 'New' (Under Review)
-                string query = @"SELECT A.ApplicationID, P.FirstName, P.LastName, 
-                                        P.NationalNo, A.ApplicationDate
+                string query = @"SELECT A.ApplicationID, P.FirstName, P.SecondName, p.LastName,  
+                                        P.NationalNo, A.ApplicationDate, a.ApplicationStatus
                                  FROM Applications A
                                  INNER JOIN People P ON A.ApplicantPersonID = P.PersonID
-                                 WHERE A.ApplicationStatus = 1";
+                                 WHERE A.ApplicationStatus = 1;";
 
                 SqlCommand command = new SqlCommand(query, connection);
 

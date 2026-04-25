@@ -30,7 +30,7 @@ namespace DVLDPresentationLayer
         {
             if (e.RowIndex < 0) return;
             int applicationID = Convert.ToInt32(dgvUnderReviewList.Rows[e.RowIndex].Cells["ApplicationID"].Value);
-            var app = DVLDBussinessLayer.clsApplication.Find(applicationID);
+            var app = clsLocalDrivingLicenseApplication.GetUnderReviewApplicationDetails(applicationID);
             if (app != null)
             {
                 panelDetail.Visible = true;
@@ -43,7 +43,7 @@ namespace DVLDPresentationLayer
 
         private void frmUnderReview_Load(object sender, EventArgs e)
         {
-            dgvUnderReviewList.DataSource = clsLocalDrivingLicenseApplication.GetAllNewLocalDrivingLicenseApplications();
+            dgvUnderReviewList.DataSource = clsLocalDrivingLicenseApplication.GetUnderReviewApplications();
             if (dgvUnderReviewList.Rows.Count > 0)
             {
                 dgvUnderReviewList.Columns["ApplicationID"].HeaderText = "Application ID";
