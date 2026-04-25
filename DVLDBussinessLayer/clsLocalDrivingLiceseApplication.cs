@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -222,33 +222,14 @@ namespace DVLDBussinessLayer
         {
             return clsLocalDrivingLicenseApplicationData.GetNewApplicationsList();
         }
-        public static DataTable GetAllUnderReviewApplications()
+        public static DataTable GetUnderReviewApplications()
         {
             return clsApplicationData.GetUnderReviewApplications();
         }
-        public static clsLocalDrivingLicenseApplication GetUnderReviewApplicationDetails(int applicationID)
+
+        public static clsApplication GetUnderReviewApplicationDetails(int applicationID)
         {
-            DataRow row = clsApplicationData.GetApplicationDetails(applicationID);
-
-            if (row == null)
-                return null;
-
-            clsApplication app = new clsApplication();
-
-            app.ApplicationID = applicationID;
-            app.ApplicantPersonID = Convert.ToInt32(row["ApplicantPersonID"]);
-            app.ApplicationDate = Convert.ToDateTime(row["ApplicationDate"]);
-            app.ApplicationTypeID = Convert.ToInt32(row["ApplicationTypeID"]);
-            app.ApplicationStatus = (enApplicationStatus)Convert.ToByte(row["ApplicationStatus"]);
-            app.LastStatusDate = Convert.ToDateTime(row["LastStatusDate"]);
-            app.PaidFees = Convert.ToDecimal(row["PaidFees"]);
-            app.CreatedByUserID = Convert.ToInt32(row["CreatedByUserID"]);
-            app.DocumentPath = row["DocumentPath"] != DBNull.Value ? row["DocumentPath"].ToString() : "";
-
-            app.Mode = clsApplication.enMode.Update;
-
-            return (clsLocalDrivingLicenseApplication)app;
+            return clsApplication.Find(applicationID);
         }
-
     }
 }

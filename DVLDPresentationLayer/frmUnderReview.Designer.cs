@@ -1,4 +1,4 @@
-﻿namespace DVLDPresentationLayer
+namespace DVLDPresentationLayer
 {
     partial class frmUnderReview
     {
@@ -102,6 +102,8 @@
             this.btnApprove.Size = new System.Drawing.Size(111, 37);
             this.btnApprove.TabIndex = 3;
             this.btnApprove.Text = "Approve";
+            this.btnApprove.Click += new System.EventHandler(this.btnApprove_Click);
+
             // 
             // btnReject
             // 
@@ -117,6 +119,8 @@
             this.btnReject.Size = new System.Drawing.Size(111, 37);
             this.btnReject.TabIndex = 4;
             this.btnReject.Text = "Reject";
+            this.btnReject.Click += new System.EventHandler(this.btnReject_Click);
+
             // 
             // lblTitle
             // 

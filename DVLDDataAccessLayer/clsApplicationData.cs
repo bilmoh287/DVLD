@@ -262,8 +262,9 @@ namespace DVLDDataAccessLayer
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
                 // Status 1 is 'New' (Under Review)
-                string query = @"SELECT A.ApplicationID, P.FirstName, P.SecondName, p.LastName,  
-                                        P.NationalNo, A.ApplicationDate, a.ApplicationStatus
+                string query = @"SELECT A.ApplicationID, 
+                                        (P.FirstName + ' ' + ISNULL(P.SecondName + ' ', '') + ISNULL(P.ThirdName + ' ', '') + P.LastName) as FullName,  
+                                        P.NationalNo, A.ApplicationDate, 'New' as ApplicationStatus
                                  FROM Applications A
                                  INNER JOIN People P ON A.ApplicantPersonID = P.PersonID
                                  WHERE A.ApplicationStatus = 1;";

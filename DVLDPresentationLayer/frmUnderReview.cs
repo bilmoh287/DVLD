@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,12 +13,15 @@ namespace DVLDPresentationLayer
 {
     public partial class frmUnderReview : Form
     {
-        int _PersonID = 1;
+        int _PersonID = -1;
+        private int _ApplicationID = -1;
+        private clsApplication _Application;
+
         public frmUnderReview()
         {
             InitializeComponent();
-            ctlPersonCard1.LoadPersonInfo(_PersonID);
         }
+
 
 
         private void panelDetail_Paint(object sender, PaintEventArgs e)
@@ -29,19 +32,38 @@ namespace DVLDPresentationLayer
         private void dgvUnderReviewList_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            int applicationID = Convert.ToInt32(dgvUnderReviewList.Rows[e.RowIndex].Cells["ApplicationID"].Value);
-            var app = clsLocalDrivingLicenseApplication.GetUnderReviewApplicationDetails(applicationID);
-            if (app != null)
+            
+            _ApplicationID = Convert.ToInt32(dgvUnderReviewList.Rows[e.RowIndex].Cells["ApplicationID"].Value);
+            _Application = clsLocalDrivingLicenseApplication.GetUnderReviewApplicationDetails(_ApplicationID);
+            
+            if (_Application != null)
             {
                 panelDetail.Visible = true;
-                _PersonID = app.ApplicantPersonID;
+                _PersonID = _Application.ApplicantPersonID;
                 ctlPersonCard1.LoadPersonInfo(_PersonID);
-                ; // Your user control's method
-                
+
+                if (!string.IsNullOrEmpty(_Application.DocumentPath))
+                {
+                    try
+                    {
+                        pbIdpictrue.ImageLocation = _Application.DocumentPath;
+                    }
+                    catch { }
+                }
+                else
+                {
+                    pbIdpictrue.Image = null;
+                }
             }
+
         }
 
         private void frmUnderReview_Load(object sender, EventArgs e)
+        {
+            _RefreshApplicationsList();
+        }
+
+        private void _RefreshApplicationsList()
         {
             dgvUnderReviewList.DataSource = clsLocalDrivingLicenseApplication.GetUnderReviewApplications();
             if (dgvUnderReviewList.Rows.Count > 0)
@@ -62,5 +84,44 @@ namespace DVLDPresentationLayer
                 dgvUnderReviewList.Columns["ApplicationStatus"].Width = 100;
             }
         }
+
+        private void btnApprove_Click(object sender, EventArgs e)
+        {
+            if (_Application == null) return;
+
+            if (MessageBox.Show("Are you sure you want to approve this application?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+
+            if (_Application.Approve())
+            {
+                MessageBox.Show("Application Approved successfully.");
+                panelDetail.Visible = false;
+                _RefreshApplicationsList();
+            }
+            else
+            {
+                MessageBox.Show("Error: Could not approve application.");
+            }
+        }
+
+        private void btnReject_Click(object sender, EventArgs e)
+        {
+            if (_Application == null) return;
+
+            if (MessageBox.Show("Are you sure you want to reject this application?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+
+            if (_Application.Reject())
+            {
+                MessageBox.Show("Application Rejected successfully.");
+                panelDetail.Visible = false;
+                _RefreshApplicationsList();
+            }
+            else
+            {
+                MessageBox.Show("Error: Could not reject application.");
+            }
+        }
+
     }
 }
