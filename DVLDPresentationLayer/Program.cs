@@ -19,7 +19,7 @@ namespace DVLDPresentationLayer
             Application.SetCompatibleTextRenderingDefault(false);
             
             // Temporarily changed from frmLogin() to frmRegistration() for testing
-            Application.Run(new frmUnderReview());
+            Application.Run(new frmLogin());
         }
     }
 }

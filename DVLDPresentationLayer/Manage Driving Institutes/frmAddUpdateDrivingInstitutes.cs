@@ -78,6 +78,7 @@ namespace DVLDPresentationLayer
                 return;
             }
 
+            lblTitle.Text = "Update Driving Institue";
             lblInstituteID.Text = _Institute.InstituteID.ToString();
             txtInstituteName.Text = _Institute.InstituteName;
             txtAddress.Text = _Institute.Address;
@@ -205,7 +206,7 @@ namespace DVLDPresentationLayer
 
 
             // Assuming current user ID is handled globally or passed to the form
-            // _Institute.CreatedByUserID = clsGlobal.CurrentUser.UserID;
+            _Institute.CreatedByUserID = clsGlobal.CurrentUser.UserID;
 
             if (_Institute.Save())
             {
@@ -222,6 +223,25 @@ namespace DVLDPresentationLayer
             {
                 MessageBox.Show("Error: Data was not saved successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            // Inside btnSave_Click_1
+            //try
+            //{
+            //    if (_Institute.Save())
+            //    {
+            //        lblInstituteID.Text = _Institute.InstituteID.ToString();
+            //        _Mode = enMode.Update; // Change mode to update after first save
+            //                               //lblTitle.Text = "Update Driving Institute";
+
+            //        // Trigger the event
+            //        OnInstituteSaved?.Invoke(this, _Institute.InstituteID);
+
+            //        MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void btnClose_Click(object sender, EventArgs e)
