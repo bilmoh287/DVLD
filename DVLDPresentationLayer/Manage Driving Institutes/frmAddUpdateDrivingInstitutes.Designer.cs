@@ -1,4 +1,4 @@
-﻿namespace DVLDPresentationLayer
+namespace DVLDPresentationLayer
 {
     partial class frmAddUpdateDrivingInstitutes
     {
@@ -47,6 +47,22 @@
             this.lblInstituteID = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnClose = new System.Windows.Forms.Button();
+            this.lblCommLicense = new System.Windows.Forms.Label();
+            this.txtCommercialLicenseNo = new System.Windows.Forms.TextBox();
+            this.lblExpiryDate = new System.Windows.Forms.Label();
+            this.dtpLicenseExpiryDate = new System.Windows.Forms.DateTimePicker();
+            this.lblManager = new System.Windows.Forms.Label();
+            this.txtManagerName = new System.Windows.Forms.TextBox();
+            this.lblCapacity = new System.Windows.Forms.Label();
+            this.numCapacity = new System.Windows.Forms.NumericUpDown();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.llSetLogo = new System.Windows.Forms.LinkLabel();
+            this.llRemoveLogo = new System.Windows.Forms.LinkLabel();
+            this.lblDocumentFileName = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.pnlDocument = new System.Windows.Forms.Panel();
+            this.lblDragInfo = new System.Windows.Forms.Label();
+
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -234,6 +250,120 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // lblCommLicense
+            // 
+            this.lblCommLicense.AutoSize = true;
+            this.lblCommLicense.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCommLicense.Location = new System.Drawing.Point(530, 75);
+            this.lblCommLicense.Name = "lblCommLicense";
+            this.lblCommLicense.Size = new System.Drawing.Size(164, 25);
+            this.lblCommLicense.Text = "Comm. License:";
+            // 
+            // txtCommercialLicenseNo
+            // 
+            this.txtCommercialLicenseNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
+            this.txtCommercialLicenseNo.Location = new System.Drawing.Point(710, 71);
+            this.txtCommercialLicenseNo.Size = new System.Drawing.Size(220, 27);
+            // 
+            // lblExpiryDate
+            // 
+            this.lblExpiryDate.AutoSize = true;
+            this.lblExpiryDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lblExpiryDate.Location = new System.Drawing.Point(530, 118);
+            this.lblExpiryDate.Text = "Expiry Date:";
+            // 
+            // dtpLicenseExpiryDate
+            // 
+            this.dtpLicenseExpiryDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
+            this.dtpLicenseExpiryDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpLicenseExpiryDate.Location = new System.Drawing.Point(710, 118);
+            this.dtpLicenseExpiryDate.Size = new System.Drawing.Size(220, 27);
+            // 
+            // lblManager
+            // 
+            this.lblManager.AutoSize = true;
+            this.lblManager.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lblManager.Location = new System.Drawing.Point(530, 166);
+            this.lblManager.Text = "Manager:";
+            // 
+            // txtManagerName
+            // 
+            this.txtManagerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
+            this.txtManagerName.Location = new System.Drawing.Point(710, 162);
+            this.txtManagerName.Size = new System.Drawing.Size(220, 27);
+            // 
+            // lblCapacity
+            // 
+            this.lblCapacity.AutoSize = true;
+            this.lblCapacity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lblCapacity.Location = new System.Drawing.Point(530, 213);
+            this.lblCapacity.Text = "Capacity:";
+            // 
+            // numCapacity
+            // 
+            this.numCapacity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
+            this.numCapacity.Location = new System.Drawing.Point(710, 213);
+            this.numCapacity.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
+            this.numCapacity.Size = new System.Drawing.Size(100, 27);
+            // 
+            // pbLogo
+            // 
+            this.pbLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbLogo.Location = new System.Drawing.Point(710, 254);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(100, 100);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogo.AllowDrop = true;
+            this.pbLogo.DragEnter += new System.Windows.Forms.DragEventHandler(this.ctrl_DragEnter);
+            this.pbLogo.DragDrop += new System.Windows.Forms.DragEventHandler(this.pbLogo_DragDrop);
+            // 
+            // llSetLogo
+            // 
+            this.llSetLogo.AutoSize = true;
+            this.llSetLogo.Location = new System.Drawing.Point(707, 357);
+            this.llSetLogo.Text = "Set Logo";
+            this.llSetLogo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llSetLogo_LinkClicked);
+            // 
+            // llRemoveLogo
+            // 
+            this.llRemoveLogo.AutoSize = true;
+            this.llRemoveLogo.Location = new System.Drawing.Point(780, 357);
+            this.llRemoveLogo.Text = "Remove";
+            this.llRemoveLogo.Visible = false;
+            this.llRemoveLogo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llRemoveLogo_LinkClicked);
+            // 
+            // pnlDocument
+            // 
+            this.pnlDocument.AllowDrop = true;
+            this.pnlDocument.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlDocument.Controls.Add(this.lblDocumentFileName);
+            this.pnlDocument.Controls.Add(this.lblDragInfo);
+            this.pnlDocument.Location = new System.Drawing.Point(535, 262);
+            this.pnlDocument.Name = "pnlDocument";
+            this.pnlDocument.Size = new System.Drawing.Size(159, 92);
+            this.pnlDocument.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnlDocument_DragDrop);
+            this.pnlDocument.DragEnter += new System.Windows.Forms.DragEventHandler(this.ctrl_DragEnter);
+            this.pnlDocument.Click += new System.EventHandler(this.pnlDocument_Click);
+            // 
+            // lblDocumentFileName
+            // 
+            this.lblDocumentFileName.Location = new System.Drawing.Point(3, 45);
+            this.lblDocumentFileName.Size = new System.Drawing.Size(151, 40);
+            this.lblDocumentFileName.Text = "No file";
+            this.lblDocumentFileName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblDragInfo
+            // 
+            this.lblDragInfo.Location = new System.Drawing.Point(3, 5);
+            this.lblDragInfo.Size = new System.Drawing.Size(151, 35);
+            this.lblDragInfo.Text = "Drag Docs Here or Click";
+            this.lblDragInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+
+            // 
             // frmAddUpdateDrivingInstitutes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -257,6 +387,19 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.lblAddress);
+            this.Controls.Add(this.lblCommLicense);
+            this.Controls.Add(this.txtCommercialLicenseNo);
+            this.Controls.Add(this.lblExpiryDate);
+            this.Controls.Add(this.dtpLicenseExpiryDate);
+            this.Controls.Add(this.lblManager);
+            this.Controls.Add(this.txtManagerName);
+            this.Controls.Add(this.lblCapacity);
+            this.Controls.Add(this.numCapacity);
+            this.Controls.Add(this.pbLogo);
+            this.Controls.Add(this.llSetLogo);
+            this.Controls.Add(this.llRemoveLogo);
+            this.Controls.Add(this.pnlDocument);
+
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -293,5 +436,20 @@
         private System.Windows.Forms.Label lblInstituteID;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label lblCommLicense;
+        private System.Windows.Forms.TextBox txtCommercialLicenseNo;
+        private System.Windows.Forms.Label lblExpiryDate;
+        private System.Windows.Forms.DateTimePicker dtpLicenseExpiryDate;
+        private System.Windows.Forms.Label lblManager;
+        private System.Windows.Forms.TextBox txtManagerName;
+        private System.Windows.Forms.Label lblCapacity;
+        private System.Windows.Forms.NumericUpDown numCapacity;
+        private System.Windows.Forms.PictureBox pbLogo;
+        private System.Windows.Forms.LinkLabel llSetLogo;
+        private System.Windows.Forms.LinkLabel llRemoveLogo;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Panel pnlDocument;
+        private System.Windows.Forms.Label lblDocumentFileName;
+        private System.Windows.Forms.Label lblDragInfo;
     }
-}
+}

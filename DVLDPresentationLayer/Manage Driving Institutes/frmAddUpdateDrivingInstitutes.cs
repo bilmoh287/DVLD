@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -57,7 +57,15 @@ namespace DVLDPresentationLayer
             txtPhone.Text = "";
             txtEmail.Text = "";
             chkIsActive.Checked = true;
+            txtCommercialLicenseNo.Text = "";
+            dtpLicenseExpiryDate.Value = DateTime.Now;
+            txtManagerName.Text = "";
+            numCapacity.Value = 0;
+            pbLogo.Image = null;
+            llRemoveLogo.Visible = false;
+            lblDocumentFileName.Text = "No file";
         }
+
 
         private void _LoadData()
         {
@@ -76,7 +84,24 @@ namespace DVLDPresentationLayer
             txtPhone.Text = _Institute.Phone;
             txtEmail.Text = _Institute.Email;
             chkIsActive.Checked = _Institute.IsActive;
+
+            txtCommercialLicenseNo.Text = _Institute.CommercialLicenseNo;
+            dtpLicenseExpiryDate.Value = _Institute.LicenseExpiryDate;
+            txtManagerName.Text = _Institute.ManagerName;
+            numCapacity.Value = _Institute.Capacity;
+            
+            if (!string.IsNullOrEmpty(_Institute.LogoPath))
+            {
+                pbLogo.ImageLocation = _Institute.LogoPath;
+                llRemoveLogo.Visible = true;
+            }
+
+            if (!string.IsNullOrEmpty(_Institute.DocumentPath))
+            {
+                lblDocumentFileName.Text = System.IO.Path.GetFileName(_Institute.DocumentPath);
+            }
         }
+
 
         private void ManageDrivingInstitute_Load(object sender, EventArgs e)
         {
@@ -171,6 +196,14 @@ namespace DVLDPresentationLayer
             _Institute.IsActive = chkIsActive.Checked;
             _Institute.CreatedByUserID = clsGlobal.CurrentUser.UserID;
 
+            _Institute.CommercialLicenseNo = txtCommercialLicenseNo.Text.Trim();
+            _Institute.LicenseExpiryDate = dtpLicenseExpiryDate.Value;
+            _Institute.ManagerName = txtManagerName.Text.Trim();
+            _Institute.Capacity = (int)numCapacity.Value;
+            _Institute.LogoPath = pbLogo.ImageLocation;
+            // DocumentPath is set during drag/click
+
+
             // Assuming current user ID is handled globally or passed to the form
             // _Institute.CreatedByUserID = clsGlobal.CurrentUser.UserID;
 
@@ -205,5 +238,65 @@ namespace DVLDPresentationLayer
                 _LoadData();
             }
         }
+
+        private void ctrl_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy;
+            else
+                e.Effect = DragDropEffects.None;
+        }
+
+        private void pbLogo_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (files.Length > 0)
+            {
+                pbLogo.ImageLocation = files[0];
+                llRemoveLogo.Visible = true;
+            }
+        }
+
+        private void llSetLogo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            openFileDialog1.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pbLogo.ImageLocation = openFileDialog1.FileName;
+                llRemoveLogo.Visible = true;
+            }
+        }
+
+        private void llRemoveLogo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            pbLogo.ImageLocation = null;
+            pbLogo.Image = null;
+            llRemoveLogo.Visible = false;
+        }
+
+        private void pnlDocument_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (files.Length > 0)
+            {
+                _HandleDocumentSelection(files[0]);
+            }
+        }
+
+        private void pnlDocument_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "All Files|*.*";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                _HandleDocumentSelection(openFileDialog1.FileName);
+            }
+        }
+
+        private void _HandleDocumentSelection(string filePath)
+        {
+            _Institute.DocumentPath = filePath;
+            lblDocumentFileName.Text = System.IO.Path.GetFileName(filePath);
+        }
     }
 }
+

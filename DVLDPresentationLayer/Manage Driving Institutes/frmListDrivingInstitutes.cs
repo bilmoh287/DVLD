@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -47,8 +47,14 @@ namespace DVLDPresentationLayer
                 dataGridView1.Columns[4].HeaderText = "Email";
                 dataGridView1.Columns[4].Width = 200;
 
-                dataGridView1.Columns[5].HeaderText = "Is Active";
-                dataGridView1.Columns[5].Width = 100;
+                dataGridView1.Columns[5].HeaderText = "Manager Name";
+                dataGridView1.Columns[5].Width = 140;
+
+                dataGridView1.Columns[6].HeaderText = "Capacity";
+                dataGridView1.Columns[6].Width = 80;
+
+                dataGridView1.Columns[7].HeaderText = "Is Active";
+                dataGridView1.Columns[7].Width = 80;
 
             }
         }

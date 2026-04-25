@@ -1,10 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DVLDDataAccessLayer.DTOs;
+
 
 namespace DVLDDataAccessLayer
 {
@@ -13,7 +14,7 @@ namespace DVLDDataAccessLayer
         public static DataTable GetAllInstitutes()
         {
             DataTable dt = new DataTable();
-            string query = @"SELECT InstituteID, InstituteName, Address, Phone, Email, IsActive from DrivingInstitutes;";
+            string query = @"SELECT * from DrivingInstitutes;";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
@@ -32,10 +33,9 @@ namespace DVLDDataAccessLayer
             return dt;
         }
 
-        public static bool GetInstituteInfoByID(int InstituteID, ref string InstituteName,
-            ref string Address, ref string Phone, ref string Email, ref bool IsActive, ref int CreatedByUserID)
+        public static DrivingInstituteDTO GetInstituteInfoByID(int InstituteID)
         {
-            bool isFound = false;
+            DrivingInstituteDTO dto = null;
             string query = @"SELECT * FROM DrivingInstitutes WHERE InstituteID = @InstituteID";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
@@ -46,45 +46,64 @@ namespace DVLDDataAccessLayer
                 try
                 {
                     connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    if (reader.Read())
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        isFound = true;
-                        InstituteName = (string)reader["InstituteName"];
-                        Address = (string)reader["Address"];
-                        Phone = (string)reader["Phone"];
-                        Email = (string)reader["Email"];
-                        IsActive = (bool)reader["IsActive"];
-                        CreatedByUserID = (int)reader["CreatedByUserID"];
+                        if (reader.Read())
+                        {
+                            dto = new DrivingInstituteDTO(
+                                (int)reader["InstituteID"],
+                                (string)reader["InstituteName"],
+                                (string)reader["Address"],
+                                (string)reader["Phone"],
+                                (string)reader["Email"],
+                                (bool)reader["IsActive"],
+                                (int)reader["CreatedByUserID"],
+                                (string)reader["CommercialLicenseNo"],
+                                (DateTime)reader["LicenseExpiryDate"],
+                                (string)reader["ManagerName"],
+                                Convert.ToInt32(reader["Capacity"]),
+                                reader["LogoPath"] == DBNull.Value ? "" : (string)reader["LogoPath"],
+                                reader["DocumentPath"] == DBNull.Value ? "" : (string)reader["DocumentPath"]
+                            );
+                        }
                     }
-                    reader.Close();
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("Error loading Institute: " + ex.Message);
                 }
             }
-            return isFound;
+            return dto;
         }
 
-        public static int AddNewInstitute(string InstituteName, string Address,
-            string Phone, string Email, bool IsActive, int CreatedByUserID)
+
+        public static int AddNewInstitute(DrivingInstituteDTO dto)
+
+
         {
             int newID = -1;
-            string query = @"INSERT INTO DrivingInstitutes (InstituteName, Address, Phone, Email, IsActive, CreatedByUserID)
-                             VALUES (@InstituteName, @Address, @Phone, @Email, @IsActive, @CreatedByUserID);
+            string query = @"INSERT INTO DrivingInstitutes (InstituteName, Address, Phone, Email, IsActive, CreatedByUserID,
+                             CommercialLicenseNo, LicenseExpiryDate, ManagerName, Capacity, LogoPath, DocumentPath)
+                             VALUES (@InstituteName, @Address, @Phone, @Email, @IsActive, @CreatedByUserID,
+                             @CommercialLicenseNo, @LicenseExpiryDate, @ManagerName, @Capacity, @LogoPath, @DocumentPath);
                              SELECT SCOPE_IDENTITY();";
+
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
             {
-                command.Parameters.AddWithValue("@InstituteName", InstituteName);
-                command.Parameters.AddWithValue("@Address", Address);
-                command.Parameters.AddWithValue("@Phone", Phone);
-                command.Parameters.AddWithValue("@Email", Email);
-                command.Parameters.AddWithValue("@IsActive", IsActive);
-                command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+                command.Parameters.AddWithValue("@InstituteName", dto.InstituteName);
+                command.Parameters.AddWithValue("@Address", dto.Address);
+                command.Parameters.AddWithValue("@Phone", dto.Phone);
+                command.Parameters.AddWithValue("@Email", dto.Email);
+                command.Parameters.AddWithValue("@IsActive", dto.IsActive);
+                command.Parameters.AddWithValue("@CreatedByUserID", dto.CreatedByUserID);
+                command.Parameters.AddWithValue("@CommercialLicenseNo", dto.CommercialLicenseNo);
+                command.Parameters.AddWithValue("@LicenseExpiryDate", dto.LicenseExpiryDate);
+                command.Parameters.AddWithValue("@ManagerName", dto.ManagerName);
+                command.Parameters.AddWithValue("@Capacity", dto.Capacity);
+                command.Parameters.AddWithValue("@LogoPath", (object)dto.LogoPath ?? DBNull.Value);
+                command.Parameters.AddWithValue("@DocumentPath", (object)dto.DocumentPath ?? DBNull.Value);
 
                 try
                 {
@@ -101,8 +120,9 @@ namespace DVLDDataAccessLayer
             return newID;
         }
 
-        public static bool UpdateInstitute(int InstituteID, string InstituteName, string Address,
-            string Phone, string Email, bool IsActive, int CreatedByUserID)
+        public static bool UpdateInstitute(DrivingInstituteDTO dto)
+
+
         {
             int rowsAffected = 0;
             string query = @"UPDATE DrivingInstitutes
@@ -111,19 +131,33 @@ namespace DVLDDataAccessLayer
                                  Phone = @Phone,
                                  Email = @Email,
                                  IsActive = @IsActive,
-                                 CreatedByUserID = @CreatedByUserID
+                                 CreatedByUserID = @CreatedByUserID,
+                                 CommercialLicenseNo = @CommercialLicenseNo,
+                                 LicenseExpiryDate = @LicenseExpiryDate,
+                                 ManagerName = @ManagerName,
+                                 Capacity = @Capacity,
+                                 LogoPath = @LogoPath,
+                                 DocumentPath = @DocumentPath
                              WHERE InstituteID = @InstituteID";
+
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
             {
-                command.Parameters.AddWithValue("@InstituteID", InstituteID);
-                command.Parameters.AddWithValue("@InstituteName", InstituteName);
-                command.Parameters.AddWithValue("@Address", Address);
-                command.Parameters.AddWithValue("@Phone", Phone);
-                command.Parameters.AddWithValue("@Email", Email);
-                command.Parameters.AddWithValue("@IsActive", IsActive);
-                command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+                command.Parameters.AddWithValue("@InstituteID", dto.InstituteID);
+                command.Parameters.AddWithValue("@InstituteName", dto.InstituteName);
+                command.Parameters.AddWithValue("@Address", dto.Address);
+                command.Parameters.AddWithValue("@Phone", dto.Phone);
+                command.Parameters.AddWithValue("@Email", dto.Email);
+                command.Parameters.AddWithValue("@IsActive", dto.IsActive);
+                command.Parameters.AddWithValue("@CreatedByUserID", dto.CreatedByUserID);
+                command.Parameters.AddWithValue("@CommercialLicenseNo", dto.CommercialLicenseNo);
+                command.Parameters.AddWithValue("@LicenseExpiryDate", dto.LicenseExpiryDate);
+                command.Parameters.AddWithValue("@ManagerName", dto.ManagerName);
+                command.Parameters.AddWithValue("@Capacity", dto.Capacity);
+                command.Parameters.AddWithValue("@LogoPath", (object)dto.LogoPath ?? DBNull.Value);
+                command.Parameters.AddWithValue("@DocumentPath", (object)dto.DocumentPath ?? DBNull.Value);
+
 
                 try
                 {
@@ -161,7 +195,35 @@ namespace DVLDDataAccessLayer
             return (rowsAffected > 0);
         }
 
+        public static DataTable GetInstituteMobileDetailByID(int InstituteID)
+        {
+            DataTable dt = new DataTable();
+            string query = @"
+                SELECT I.*, 
+                    (SELECT COUNT(*) FROM Enrollments E WHERE E.InstituteID = I.InstituteID AND E.IsActive = 1) as EnrollmentCount,
+                    (SELECT COUNT(*) FROM TrainingBatches B WHERE B.InstituteID = I.InstituteID AND B.Status = 'Active') as ActiveBatches
+                FROM DrivingInstitutes I
+                WHERE I.InstituteID = @InstituteID";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@InstituteID", InstituteID);
+                try
+                {
+                    connection.Open();
+                    dt.Load(command.ExecuteReader());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return dt;
+        }
+
         public static bool IsInstituteExist(int InstituteID)
+
         {
             bool exists = false;
             string query = @"SELECT 1 FROM DrivingInstitutes WHERE InstituteID = @InstituteID";
