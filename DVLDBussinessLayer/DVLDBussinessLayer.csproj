@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsAttendance.cs" />
     <Compile Include="clsDetainedLicenses.cs" />
     <Compile Include="clsDrivers.cs" />
     <Compile Include="clsDrivingInstitute.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="clsTestAppointments.cs" />
     <Compile Include="clsTests.cs" />
     <Compile Include="clsTestTypes.cs" />
+    <Compile Include="clsTrainingBatch.cs" />
     <Compile Include="clsUser.cs" />
     <Compile Include="clsUserPermission.cs" />
     <Compile Include="clsUserRole.cs" />

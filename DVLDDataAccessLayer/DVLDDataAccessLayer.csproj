@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="clsApplicationData.cs" />
     <Compile Include="clsApplicationTypesData.cs" />
+    <Compile Include="clsAttendanceData.cs" />
     <Compile Include="clsCountriesData.cs" />
     <Compile Include="clsDetainedLicenses.cs" />
     <Compile Include="clsDrivers.cs" />
@@ -57,11 +58,14 @@
     <Compile Include="clsTestAppointments.cs" />
     <Compile Include="clsTests.cs" />
     <Compile Include="clsTestTypesData.cs" />
+    <Compile Include="clsTrainingBatchData.cs" />
     <Compile Include="clsUserData.cs" />
     <Compile Include="clsUserRoleData.cs" />
     <Compile Include="DataAccessSetting.cs" />
     <Compile Include="clsPersonData.cs" />
     <Compile Include="clsInstituteCourseData.cs" />
+    <Compile Include="DTOs\AttendanceDTO.cs" />
+    <Compile Include="DTOs\TrainingBatchDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
