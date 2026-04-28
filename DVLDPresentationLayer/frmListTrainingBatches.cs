@@ -102,6 +102,32 @@ namespace DVLDPresentationLayer
             this.Close();
         }
 
+        private void btnAddBatch_Click(object sender, EventArgs e)
+        {
+            frmAddUpdateBatch frm;
+            
+            if (_InstituteID != -1)
+                frm = new frmAddUpdateBatch(true, _InstituteID);
+            else
+                frm = new frmAddUpdateBatch();
+
+            frm.BatchSaved += _RefreshBatchesList;
+            frm.ShowDialog();
+        }
+
+        private void editBatchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int BatchID = (int)dgvBatchesList.CurrentRow.Cells["TrainingBatchID"].Value;
+            frmAddUpdateBatch frm = new frmAddUpdateBatch(BatchID);
+            frm.BatchSaved += _RefreshBatchesList;
+            frm.ShowDialog();
+        }
+
+        private void _RefreshBatchesList(object sender, int BatchID)
+        {
+            _RefreshBatchesList();
+        }
+
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             string filterColumn = "BatchName";

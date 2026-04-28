@@ -1,4 +1,4 @@
-﻿namespace DVLDPresentationLayer
+namespace DVLDPresentationLayer
 {
     partial class frmAddUpdateBatch
     {
@@ -105,6 +105,7 @@
             this.btnClose.TabIndex = 170;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnSave
             // 
@@ -117,6 +118,7 @@
             this.btnSave.TabIndex = 167;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // cbInstitutes
             // 
@@ -195,6 +197,7 @@
             this.Name = "frmAddUpdateBatch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmAddUpdateBatch";
+            this.Load += new System.EventHandler(this.frmAddUpdateBatch_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudCapacity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

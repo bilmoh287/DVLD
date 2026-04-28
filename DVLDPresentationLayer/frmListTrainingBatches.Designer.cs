@@ -28,6 +28,7 @@ namespace DVLDPresentationLayer
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListTrainingBatches));
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblNewBaches = new System.Windows.Forms.Label();
@@ -48,13 +49,18 @@ namespace DVLDPresentationLayer
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.btnAddBatch = new System.Windows.Forms.Button();
+            this.cmsBatches = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editBatchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteBatchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel4.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBatchesList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBatchesList)).BeginInit();
+            this.cmsBatches.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel4
@@ -212,6 +218,7 @@ namespace DVLDPresentationLayer
             this.dgvBatchesList.AllowUserToOrderColumns = true;
             this.dgvBatchesList.BackgroundColor = System.Drawing.Color.White;
             this.dgvBatchesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBatchesList.ContextMenuStrip = this.cmsBatches;
             this.dgvBatchesList.Location = new System.Drawing.Point(12, 292);
             this.dgvBatchesList.Name = "dgvBatchesList";
             this.dgvBatchesList.ReadOnly = true;
@@ -219,6 +226,39 @@ namespace DVLDPresentationLayer
             this.dgvBatchesList.RowTemplate.Height = 24;
             this.dgvBatchesList.Size = new System.Drawing.Size(1283, 396);
             this.dgvBatchesList.TabIndex = 9;
+            // 
+            // btnAddBatch
+            // 
+            this.btnAddBatch.BackgroundImage = global::DVLDPresentationLayer.Properties.Resources.AddBatch_64;
+            this.btnAddBatch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAddBatch.Location = new System.Drawing.Point(1224, 222);
+            this.btnAddBatch.Name = "btnAddBatch";
+            this.btnAddBatch.Size = new System.Drawing.Size(71, 64);
+            this.btnAddBatch.TabIndex = 13;
+            this.btnAddBatch.UseVisualStyleBackColor = true;
+            this.btnAddBatch.Click += new System.EventHandler(this.btnAddBatch_Click);
+            // 
+            // cmsBatches
+            // 
+            this.cmsBatches.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsBatches.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editBatchToolStripMenuItem,
+            this.deleteBatchToolStripMenuItem});
+            this.cmsBatches.Name = "cmsBatches";
+            this.cmsBatches.Size = new System.Drawing.Size(163, 52);
+            // 
+            // editBatchToolStripMenuItem
+            // 
+            this.editBatchToolStripMenuItem.Name = "editBatchToolStripMenuItem";
+            this.editBatchToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
+            this.editBatchToolStripMenuItem.Text = "Edit Batch";
+            this.editBatchToolStripMenuItem.Click += new System.EventHandler(this.editBatchToolStripMenuItem_Click);
+            // 
+            // deleteBatchToolStripMenuItem
+            // 
+            this.deleteBatchToolStripMenuItem.Name = "deleteBatchToolStripMenuItem";
+            this.deleteBatchToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
+            this.deleteBatchToolStripMenuItem.Text = "Delete Batch";
             // 
             // txtSearch
             // 
@@ -306,6 +346,7 @@ namespace DVLDPresentationLayer
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel4);
+            this.Controls.Add(this.btnAddBatch);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmListTrainingBatches";
@@ -322,6 +363,7 @@ namespace DVLDPresentationLayer
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            this.cmsBatches.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -347,5 +389,9 @@ namespace DVLDPresentationLayer
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblTitle;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnAddBatch;
+        private System.Windows.Forms.ContextMenuStrip cmsBatches;
+        private System.Windows.Forms.ToolStripMenuItem editBatchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteBatchToolStripMenuItem;
     }
 }
