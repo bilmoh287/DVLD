@@ -121,7 +121,7 @@
   <data name="pictureBox8.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7AAAAOwAFq1okJAAAAB3RJ
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA6/AAAOvwE4BVMkAAAAB3RJ
         TUUH4wUeEgInrLzMpwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACfMSURBVHhe
         7d0JtC1XXedxCRkEQiZoDAlzEqYwKFMYAkkvRYgyCAFlaKKggCAQQCXSDYjDasJoMwUSaJQIgoA2goxp
         mVqCMtPKZGK0GTJgyEAIgQT49tp59eC9f15e7lDn1PnV/n7Wuitr5d1369Sueqe+t05V7Z/4CUmSJEmS
@@ -299,7 +299,7 @@
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA6/AAAOvwE4BVMkAAAAB3RJ
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA6+AAAOvgHqQrHAAAAAB3RJ
         TUUH4wUeEgInrLzMpwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACfMSURBVHhe
         7d0JtC1XXedxCRkEQiZoDAlzEqYwKFMYAkkvRYgyCAFlaKKggCAQQCXSDYjDasJoMwUSaJQIgoA2goxp
         mVqCMtPKZGK0GTJgyEAIgQT49tp59eC9f15e7lDn1PnV/n7Wuitr5d1369Sueqe+t05V7Z/4CUmSJEmS
@@ -477,7 +477,7 @@
   <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA6/AAAOvwE4BVMkAAAAB3RJ
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA6+AAAOvgHqQrHAAAAAB3RJ
         TUUH4wUeEgInrLzMpwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACfMSURBVHhe
         7d0JtC1XXedxCRkEQiZoDAlzEqYwKFMYAkkvRYgyCAFlaKKggCAQQCXSDYjDasJoMwUSaJQIgoA2goxp
         mVqCMtPKZGK0GTJgyEAIgQT49tp59eC9f15e7lDn1PnV/n7Wuitr5d1369Sueqe+t05V7Z/4CUmSJEmS
@@ -652,4 +652,10 @@
         YII=
 </value>
   </data>
+  <metadata name="cmsBatches.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>25</value>
+  </metadata>
 </root>
