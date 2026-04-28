@@ -98,12 +98,29 @@ namespace DVLDBussinessLayer
 
         public bool AssignApplicant(int ApplicationID)
         {
+            // 1. Check Capacity
+            DataTable dtApplicants = GetApplicants();
+            if (dtApplicants.Rows.Count >= this.MaxCapacity)
+            {
+                return false; // Batch is full
+            }
+
             return clsTrainingBatchData.AssignApplicantToBatch(ApplicationID, this.BatchID);
         }
 
         public DataTable GetApplicants()
         {
             return clsTrainingBatchData.GetApplicantsByBatch(this.BatchID);
+        }
+
+        public static DataTable GetEligibleStudents(int InstituteID)
+        {
+            return clsTrainingBatchData.GetEligibleApplicantsForBatch(InstituteID);
+        }
+
+        public static bool RemoveApplicant(int ApplicationID, int BatchID)
+        {
+            return clsTrainingBatchData.RemoveApplicantFromBatch(ApplicationID, BatchID);
         }
     }
 }

@@ -212,7 +212,8 @@ namespace DVLDDataAccessLayer
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
-                string query = @"SELECT A.ApplicationID, P.FirstName, P.LastName, AB.AssignedDate
+                string query = @"SELECT A.ApplicationID, P.FirstName + ' ' + P.LastName AS FullName, 
+                                 P.Phone, AB.AssignedDate
                                  FROM ApplicantBatch AB
                                  INNER JOIN Applications A ON AB.ApplicationID = A.ApplicationID
                                  INNER JOIN People P ON A.ApplicantPersonID = P.PersonID
@@ -234,6 +235,68 @@ namespace DVLDDataAccessLayer
                 }
             }
             return dt;
+        }
+
+        public static DataTable GetEligibleApplicantsForBatch(int InstituteID)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                // Fetch approved students (Status=3) who are enrolled in this institute
+                // and NOT yet assigned to any batch.
+                string query = @"SELECT DISTINCT A.ApplicationID, P.FirstName + ' ' + P.LastName AS FullName, 
+                                 A.ApplicationDate, P.Phone
+                                 FROM Applications A
+                                 INNER JOIN People P ON A.ApplicantPersonID = P.PersonID
+                                 INNER JOIN Enrollments E ON A.ApplicantPersonID = E.PersonID
+                                 WHERE A.ApplicationStatus = 3 
+                                 AND E.InstituteID = @InstituteID
+                                 AND A.ApplicationID NOT IN (SELECT ApplicationID FROM ApplicantBatch)";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@InstituteID", InstituteID);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    dt.Load(reader);
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return dt;
+        }
+
+        public static bool RemoveApplicantFromBatch(int ApplicationID, int BatchID)
+        {
+            int rowsAffected = 0;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string query = @"DELETE FROM ApplicantBatch 
+                                 WHERE ApplicationID = @ApplicationID 
+                                 AND TrainingBatchID = @BatchID";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+                command.Parameters.AddWithValue("@BatchID", BatchID);
+
+                try
+                {
+                    connection.Open();
+                    rowsAffected = command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return (rowsAffected > 0);
         }
     }
 }

@@ -243,7 +243,8 @@ namespace DVLDPresentationLayer
             this.cmsBatches.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.cmsBatches.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editBatchToolStripMenuItem,
-            this.deleteBatchToolStripMenuItem});
+            this.deleteBatchToolStripMenuItem,
+            this.manageStudentsToolStripMenuItem});
             this.cmsBatches.Name = "cmsBatches";
             this.cmsBatches.Size = new System.Drawing.Size(163, 52);
             // 
@@ -260,6 +261,13 @@ namespace DVLDPresentationLayer
             this.deleteBatchToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
             this.deleteBatchToolStripMenuItem.Text = "Delete Batch";
             this.deleteBatchToolStripMenuItem.Click += new System.EventHandler(this.deleteBatchToolStripMenuItem_Click);
+            // 
+            // manageStudentsToolStripMenuItem
+            // 
+            this.manageStudentsToolStripMenuItem.Name = "manageStudentsToolStripMenuItem";
+            this.manageStudentsToolStripMenuItem.Size = new System.Drawing.Size(193, 24);
+            this.manageStudentsToolStripMenuItem.Text = "Manage Students";
+            this.manageStudentsToolStripMenuItem.Click += new System.EventHandler(this.manageStudentsToolStripMenuItem_Click);
             // 
             // txtSearch
             // 
@@ -394,5 +402,6 @@ namespace DVLDPresentationLayer
         private System.Windows.Forms.ContextMenuStrip cmsBatches;
         private System.Windows.Forms.ToolStripMenuItem editBatchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteBatchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem manageStudentsToolStripMenuItem;
     }
 }
