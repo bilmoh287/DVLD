@@ -74,14 +74,27 @@ namespace DVLDPresentationLayer
             lblActiveBatches.Text = _dtAllBatches.Rows.Count.ToString();
 
             int totalCapacity = 0;
+            int totalEnrolled = 0;
             int startingSoon = 0;
+            int startingToday = 0;
+            int upcomingCount = 0;
             DateTime soonDate = DateTime.Now.AddDays(7);
 
             foreach (DataRow row in _dtAllBatches.Rows)
             {
-                totalCapacity += Convert.ToInt32(row["MaxCapacity"]);
+                int capacity = Convert.ToInt32(row["MaxCapacity"]);
+                int enrolled = Convert.ToInt32(row["CurrentStudents"]);
+                totalCapacity += capacity;
+                totalEnrolled += enrolled;
 
                 DateTime startDate = Convert.ToDateTime(row["StartDate"]);
+                
+                if (startDate.Date == DateTime.Now.Date)
+                    startingToday++;
+
+                if (startDate > DateTime.Now)
+                    upcomingCount++;
+
                 if (startDate >= DateTime.Now && startDate <= soonDate)
                 {
                     startingSoon++;
@@ -90,6 +103,14 @@ namespace DVLDPresentationLayer
 
             lblTotalCapacity.Text = totalCapacity.ToString();
             lblStartingSoon.Text = startingSoon.ToString();
+
+            // Dynamic Colored Labels
+            lblNewBaches.Text = $"+{upcomingCount} Upcoming";
+            
+            double utilization = totalCapacity > 0 ? (double)totalEnrolled / totalCapacity * 100 : 0;
+            lblNewStudents.Text = $"{utilization:0}% Seats Filled";
+            
+            lblUpcomingStudents.Text = $"{startingToday} Starting Today";
         }
 
         private void frmListTrainingBatches_Load(object sender, EventArgs e)
@@ -121,6 +142,24 @@ namespace DVLDPresentationLayer
             frmAddUpdateBatch frm = new frmAddUpdateBatch(BatchID);
             frm.BatchSaved += _RefreshBatchesList;
             frm.ShowDialog();
+        }
+
+        private void deleteBatchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to delete this batch?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                return;
+
+            int BatchID = (int)dgvBatchesList.CurrentRow.Cells["TrainingBatchID"].Value;
+
+            if (clsTrainingBatch.Delete(BatchID))
+            {
+                MessageBox.Show("Batch Deleted Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _RefreshBatchesList();
+            }
+            else
+            {
+                MessageBox.Show("Error: Could not delete batch. It might be linked to other data (Enrollments).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void _RefreshBatchesList(object sender, int BatchID)

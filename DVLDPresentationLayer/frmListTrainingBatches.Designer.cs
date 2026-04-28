@@ -259,6 +259,7 @@ namespace DVLDPresentationLayer
             this.deleteBatchToolStripMenuItem.Name = "deleteBatchToolStripMenuItem";
             this.deleteBatchToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
             this.deleteBatchToolStripMenuItem.Text = "Delete Batch";
+            this.deleteBatchToolStripMenuItem.Click += new System.EventHandler(this.deleteBatchToolStripMenuItem_Click);
             // 
             // txtSearch
             // 
