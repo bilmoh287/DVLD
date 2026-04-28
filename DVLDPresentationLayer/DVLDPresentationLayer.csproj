@@ -138,6 +138,12 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAddUpdateBatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddUpdateBatch.Designer.cs">
+      <DependentUpon>frmAddUpdateBatch.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddUpdateInstitueCourse.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -437,6 +443,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddUpdateBatch.resx">
+      <DependentUpon>frmAddUpdateBatch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddUpdateInstitueCourse.resx">
       <DependentUpon>frmAddUpdateInstitueCourse.cs</DependentUpon>

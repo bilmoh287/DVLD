@@ -30,38 +30,38 @@ namespace DVLDPresentationLayer
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListTrainingBatches));
             this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblNewBaches = new System.Windows.Forms.Label();
             this.lblActiveBatches = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblNewStudents = new System.Windows.Forms.Label();
             this.lblTotalCapacity = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblUpcomingStudents = new System.Windows.Forms.Label();
             this.lblStartingSoon = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.dgvBatchesList = new System.Windows.Forms.DataGridView();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnClose = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBatchesList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.pictureBox8);
-            this.panel4.Controls.Add(this.label6);
+            this.panel4.Controls.Add(this.lblNewBaches);
             this.panel4.Controls.Add(this.lblActiveBatches);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Location = new System.Drawing.Point(124, 82);
@@ -71,28 +71,17 @@ namespace DVLDPresentationLayer
             this.panel4.TabIndex = 7;
             this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
-            // pictureBox8
+            // lblNewBaches
             // 
-            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(206, 17);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(66, 48);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 6;
-            this.pictureBox8.TabStop = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            this.label6.Location = new System.Drawing.Point(19, 98);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(107, 20);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "15 New Orders";
+            this.lblNewBaches.AutoSize = true;
+            this.lblNewBaches.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblNewBaches.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.lblNewBaches.Location = new System.Drawing.Point(19, 98);
+            this.lblNewBaches.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNewBaches.Name = "lblNewBaches";
+            this.lblNewBaches.Size = new System.Drawing.Size(107, 20);
+            this.lblNewBaches.TabIndex = 5;
+            this.lblNewBaches.Text = "15 New Orders";
             // 
             // lblActiveBatches
             // 
@@ -122,7 +111,7 @@ namespace DVLDPresentationLayer
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.lblNewStudents);
             this.panel1.Controls.Add(this.lblTotalCapacity);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(507, 82);
@@ -131,28 +120,17 @@ namespace DVLDPresentationLayer
             this.panel1.Size = new System.Drawing.Size(291, 134);
             this.panel1.TabIndex = 8;
             // 
-            // pictureBox1
+            // lblNewStudents
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(206, 17);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(66, 48);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            this.label1.Location = new System.Drawing.Point(19, 98);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 20);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "15 New Orders";
+            this.lblNewStudents.AutoSize = true;
+            this.lblNewStudents.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblNewStudents.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.lblNewStudents.Location = new System.Drawing.Point(19, 98);
+            this.lblNewStudents.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNewStudents.Name = "lblNewStudents";
+            this.lblNewStudents.Size = new System.Drawing.Size(107, 20);
+            this.lblNewStudents.TabIndex = 5;
+            this.lblNewStudents.Text = "15 New Orders";
             // 
             // lblTotalCapacity
             // 
@@ -182,7 +160,7 @@ namespace DVLDPresentationLayer
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.lblUpcomingStudents);
             this.panel2.Controls.Add(this.lblStartingSoon);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Location = new System.Drawing.Point(890, 82);
@@ -191,28 +169,17 @@ namespace DVLDPresentationLayer
             this.panel2.Size = new System.Drawing.Size(291, 134);
             this.panel2.TabIndex = 8;
             // 
-            // pictureBox2
+            // lblUpcomingStudents
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(206, 17);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(66, 48);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 6;
-            this.pictureBox2.TabStop = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label5.Location = new System.Drawing.Point(19, 98);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(107, 20);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "15 New Orders";
+            this.lblUpcomingStudents.AutoSize = true;
+            this.lblUpcomingStudents.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblUpcomingStudents.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblUpcomingStudents.Location = new System.Drawing.Point(19, 98);
+            this.lblUpcomingStudents.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUpcomingStudents.Name = "lblUpcomingStudents";
+            this.lblUpcomingStudents.Size = new System.Drawing.Size(107, 20);
+            this.lblUpcomingStudents.TabIndex = 5;
+            this.lblUpcomingStudents.Text = "15 New Orders";
             // 
             // lblStartingSoon
             // 
@@ -294,6 +261,39 @@ namespace DVLDPresentationLayer
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(206, 17);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(66, 48);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(206, 17);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(66, 48);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 6;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
+            this.pictureBox8.Location = new System.Drawing.Point(206, 17);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(66, 48);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 6;
+            this.pictureBox8.TabStop = false;
+            // 
             // frmListTrainingBatches
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -307,20 +307,21 @@ namespace DVLDPresentationLayer
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel4);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmListTrainingBatches";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmListTrainingBatches";
             this.Load += new System.EventHandler(this.frmListTrainingBatches_Load);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBatchesList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,17 +330,17 @@ namespace DVLDPresentationLayer
         #endregion
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblNewBaches;
         private System.Windows.Forms.Label lblActiveBatches;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblNewStudents;
         private System.Windows.Forms.Label lblTotalCapacity;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblUpcomingStudents;
         private System.Windows.Forms.Label lblStartingSoon;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dgvBatchesList;
