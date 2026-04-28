@@ -91,6 +91,11 @@ namespace DVLDBussinessLayer
             return clsTrainingBatchData.GetAllBatches();
         }
 
+        public static DataTable GetBatchesByInstituteID(int InstituteID)
+        {
+            return clsTrainingBatchData.GetBatchesByInstituteID(InstituteID);
+        }
+
         public bool AssignApplicant(int ApplicationID)
         {
             return clsTrainingBatchData.AssignApplicantToBatch(ApplicationID, this.BatchID);

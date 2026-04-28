@@ -1,4 +1,4 @@
-﻿namespace DVLDPresentationLayer
+namespace DVLDPresentationLayer
 {
     partial class frmListTrainingBatches
     {
@@ -271,6 +271,7 @@
             this.txtSearch.SelectedText = "";
             this.txtSearch.Size = new System.Drawing.Size(310, 39);
             this.txtSearch.TabIndex = 10;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // lblTitle
             // 
@@ -291,6 +292,7 @@
             this.btnClose.TabIndex = 12;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // frmListTrainingBatches
             // 

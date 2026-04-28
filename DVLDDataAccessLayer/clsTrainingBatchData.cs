@@ -118,8 +118,52 @@ namespace DVLDDataAccessLayer
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
-                string query = "SELECT * FROM TrainingBatches";
+                string query = @"SELECT 
+                                    B.TrainingBatchID, 
+                                    I.InstituteName, 
+                                    B.BatchName, 
+                                    B.StartDate, 
+                                    B.EndDate, 
+                                    B.MaxCapacity,
+                                    (SELECT COUNT(*) FROM ApplicantBatch AB WHERE AB.TrainingBatchID = B.TrainingBatchID) as CurrentStudents
+                                 FROM TrainingBatches B
+                                 INNER JOIN DrivingInstitutes I ON B.InstituteID = I.InstituteID";
+                
                 SqlCommand command = new SqlCommand(query, connection);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    dt.Load(reader);
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return dt;
+        }
+
+        public static DataTable GetBatchesByInstituteID(int InstituteID)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string query = @"SELECT 
+                                    B.TrainingBatchID, 
+                                    B.BatchName, 
+                                    B.StartDate, 
+                                    B.EndDate, 
+                                    B.MaxCapacity,
+                                    (SELECT COUNT(*) FROM ApplicantBatch AB WHERE AB.TrainingBatchID = B.TrainingBatchID) as CurrentStudents
+                                 FROM TrainingBatches B
+                                 WHERE B.InstituteID = @InstituteID";
+                
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@InstituteID", InstituteID);
 
                 try
                 {

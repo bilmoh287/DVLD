@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +12,18 @@ namespace DVLDPresentationLayer
 {
     public partial class frmListTrainingBatches : Form
     {
+        private int _InstituteID = -1;
+        private DataTable _dtAllBatches;
+
         public frmListTrainingBatches()
         {
             InitializeComponent();
+        }
+
+        public frmListTrainingBatches(int InstituteID)
+        {
+            InitializeComponent();
+            _InstituteID = InstituteID;
         }
 
         private void panel4_Paint(object sender, PaintEventArgs e)
@@ -22,9 +31,89 @@ namespace DVLDPresentationLayer
 
         }
 
+        private void _RefreshBatchesList()
+        {
+            if (_InstituteID == -1)
+                _dtAllBatches = clsTrainingBatch.GetAllBatches();
+            else
+                _dtAllBatches = clsTrainingBatch.GetBatchesByInstituteID(_InstituteID);
+
+            dgvBatchesList.DataSource = _dtAllBatches;
+            _UpdateKPIs();
+            
+            if (dgvBatchesList.Rows.Count > 0)
+            {
+                dgvBatchesList.Columns["TrainingBatchID"].HeaderText = "ID";
+                dgvBatchesList.Columns["TrainingBatchID"].Width = 60;
+
+                if (_InstituteID == -1)
+                {
+                    dgvBatchesList.Columns["InstituteName"].HeaderText = "Institute";
+                    dgvBatchesList.Columns["InstituteName"].Width = 200;
+                }
+
+                dgvBatchesList.Columns["BatchName"].HeaderText = "Batch Name";
+                dgvBatchesList.Columns["BatchName"].Width = 250;
+
+                dgvBatchesList.Columns["StartDate"].HeaderText = "Start Date";
+                dgvBatchesList.Columns["StartDate"].Width = 120;
+
+                dgvBatchesList.Columns["EndDate"].HeaderText = "End Date";
+                dgvBatchesList.Columns["EndDate"].Width = 120;
+
+                dgvBatchesList.Columns["MaxCapacity"].HeaderText = "Capacity";
+                dgvBatchesList.Columns["MaxCapacity"].Width = 80;
+
+                dgvBatchesList.Columns["CurrentStudents"].HeaderText = "Enrolled";
+                dgvBatchesList.Columns["CurrentStudents"].Width = 80;
+            }
+        }
+
+        private void _UpdateKPIs()
+        {
+            lblActiveBatches.Text = _dtAllBatches.Rows.Count.ToString();
+
+            int totalCapacity = 0;
+            int startingSoon = 0;
+            DateTime soonDate = DateTime.Now.AddDays(7);
+
+            foreach (DataRow row in _dtAllBatches.Rows)
+            {
+                totalCapacity += Convert.ToInt32(row["MaxCapacity"]);
+
+                DateTime startDate = Convert.ToDateTime(row["StartDate"]);
+                if (startDate >= DateTime.Now && startDate <= soonDate)
+                {
+                    startingSoon++;
+                }
+            }
+
+            lblTotalCapacity.Text = totalCapacity.ToString();
+            lblStartingSoon.Text = startingSoon.ToString();
+        }
+
         private void frmListTrainingBatches_Load(object sender, EventArgs e)
         {
+            _RefreshBatchesList();
+        }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string filterColumn = "BatchName";
+            
+            if (string.IsNullOrWhiteSpace(txtSearch.Text))
+            {
+                _dtAllBatches.DefaultView.RowFilter = "";
+            }
+            else
+            {
+                _dtAllBatches.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", filterColumn, txtSearch.Text.Trim());
+            }
         }
     }
 }
