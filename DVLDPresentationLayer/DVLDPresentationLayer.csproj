@@ -150,6 +150,12 @@
     <Compile Include="frmAddUpdateInstitueCourse.Designer.cs">
       <DependentUpon>frmAddUpdateInstitueCourse.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAssignStudentToBatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAssignStudentToBatch.Designer.cs">
+      <DependentUpon>frmAssignStudentToBatch.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmListInstituteCourse.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,12 @@
     </Compile>
     <Compile Include="frmListTrainingBatches.Designer.cs">
       <DependentUpon>frmListTrainingBatches.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmManageBatchStudents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageBatchStudents.Designer.cs">
+      <DependentUpon>frmManageBatchStudents.cs</DependentUpon>
     </Compile>
     <Compile Include="frmRegisterApplicant.cs">
       <SubType>Form</SubType>
@@ -455,6 +467,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmListTrainingBatches.resx">
       <DependentUpon>frmListTrainingBatches.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageBatchStudents.resx">
+      <DependentUpon>frmManageBatchStudents.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRegistration.resx">
       <DependentUpon>frmRegistration.cs</DependentUpon>

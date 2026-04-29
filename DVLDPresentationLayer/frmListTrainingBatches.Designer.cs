@@ -292,6 +292,10 @@ namespace DVLDPresentationLayer
             this.manageStudentsToolStripMenuItem.Name = "manageStudentsToolStripMenuItem";
             this.manageStudentsToolStripMenuItem.Size = new System.Drawing.Size(193, 24);
             this.manageStudentsToolStripMenuItem.Text = "Manage Students";
+            // Fix for CS0149: Method name expected  
+            // The issue is that the method name `manageStudentsToolStripMenuItem` is being used incorrectly.  
+            // It should reference a method, not the ToolStripMenuItem itself.  
+
             this.manageStudentsToolStripMenuItem.Click += new System.EventHandler(this.manageStudentsToolStripMenuItem_Click);
             // 
             // txtSearch

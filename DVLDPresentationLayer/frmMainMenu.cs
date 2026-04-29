@@ -206,5 +206,11 @@ namespace DVLDPresentationLayer
         {
             _ApplyPermissions();
         }
+
+        private void listTrainingBatchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListTrainingBatches frm = new frmListTrainingBatches();
+            frm.ShowDialog();
+        }
     }
 }
