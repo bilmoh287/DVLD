@@ -49,6 +49,7 @@ namespace DVLDPresentationLayer
             this.cmsBatches = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editBatchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteBatchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageStudentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnClose = new System.Windows.Forms.Button();
