@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,7 +26,9 @@ namespace DVLDPresentationLayer
                 "FullName",
                 "ApplicationDate",
                 "PassedTestCount",
-                "Status"
+                "Status",
+                "InstituteName",
+                "BatchName"
             );
         public frmListLocalDrivingLicenseApplications()
         {
@@ -44,16 +46,46 @@ namespace DVLDPresentationLayer
                     "FullName",
                     "ApplicationDate",
                     "PassedTestCount",
-                    "Status"
+                    "Status",
+                    "InstituteName",
+                    "BatchName"
                 );
 
             dgvLocalDrivingLicenseApplications.DataSource = _dtLocalDrivingLicenseApplications;
             lblRecordsCount.Text = dgvLocalDrivingLicenseApplications.Rows.Count.ToString();
         }
+        private void _PopulateFilterComboBoxes()
+        {
+            // Populate Institute ComboBox
+            cbInstitute.Items.Clear();
+            cbInstitute.Items.Add("All");
+            var institutes = _dtAllLocalDrivingLicenseApplications.AsEnumerable()
+                                .Select(row => row.Field<string>("InstituteName"))
+                                .Where(name => !string.IsNullOrEmpty(name))
+                                .Distinct()
+                                .ToList();
+            foreach (var inst in institutes)
+                cbInstitute.Items.Add(inst);
+            if (cbInstitute.Items.Count > 0) cbInstitute.SelectedIndex = 0;
+
+            // Populate Batch ComboBox
+            cbBatch.Items.Clear();
+            cbBatch.Items.Add("All");
+            var batches = _dtAllLocalDrivingLicenseApplications.AsEnumerable()
+                                .Select(row => row.Field<string>("BatchName"))
+                                .Where(name => !string.IsNullOrEmpty(name))
+                                .Distinct()
+                                .ToList();
+            foreach (var batch in batches)
+                cbBatch.Items.Add(batch);
+            if (cbBatch.Items.Count > 0) cbBatch.SelectedIndex = 0;
+        }
+
         private void frmListLocalDrivingLicenseApplications_Load(object sender, EventArgs e)
         {
             dgvLocalDrivingLicenseApplications.DataSource = _dtLocalDrivingLicenseApplications;
             lblRecordsCount.Text = dgvLocalDrivingLicenseApplications.Rows.Count.ToString();
+            _PopulateFilterComboBoxes();
             cbFilterBy.SelectedIndex = 0;
 
             if (dgvLocalDrivingLicenseApplications.Rows.Count > 0)
@@ -79,17 +111,60 @@ namespace DVLDPresentationLayer
         }
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtFilterValue.Visible = (cbFilterBy.Text != "None");
+            // Hide all filter controls first
+            txtFilterValue.Visible = false;
+            cbInstitute.Visible = false;
+            cbBatch.Visible = false;
 
-            if (txtFilterValue.Visible)
+            if (cbFilterBy.Text == "Institute")
             {
+                cbInstitute.Visible = true;
+                cbInstitute.SelectedIndex = 0; // Trigger filter
+            }
+            else if (cbFilterBy.Text == "Batch")
+            {
+                cbBatch.Visible = true;
+                cbBatch.SelectedIndex = 0; // Trigger filter
+            }
+            else if (cbFilterBy.Text != "None")
+            {
+                txtFilterValue.Visible = true;
                 txtFilterValue.Text = "";
                 txtFilterValue.Focus();
+                _dtLocalDrivingLicenseApplications.DefaultView.RowFilter = "";
+                lblRecordsCount.Text = dgvLocalDrivingLicenseApplications.Rows.Count.ToString();
             }
-
-            _dtLocalDrivingLicenseApplications.DefaultView.RowFilter = "";
-            lblRecordsCount.Text = dgvLocalDrivingLicenseApplications.Rows.Count.ToString();
+            else
+            {
+                // None
+                _dtLocalDrivingLicenseApplications.DefaultView.RowFilter = "";
+                lblRecordsCount.Text = dgvLocalDrivingLicenseApplications.Rows.Count.ToString();
+            }
         }
+        private void cbInstitute_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbInstitute.Text == "All" || string.IsNullOrEmpty(cbInstitute.Text))
+                _dtLocalDrivingLicenseApplications.DefaultView.RowFilter = "";
+            else
+            {
+                string safeText = cbInstitute.Text.Replace("'", "''");
+                _dtLocalDrivingLicenseApplications.DefaultView.RowFilter = $"[InstituteName] = '{safeText}'";
+            }
+            lblRecordsCount.Text = _dtLocalDrivingLicenseApplications.DefaultView.Count.ToString();
+        }
+
+        private void cbBatch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbBatch.Text == "All" || string.IsNullOrEmpty(cbBatch.Text))
+                _dtLocalDrivingLicenseApplications.DefaultView.RowFilter = "";
+            else
+            {
+                string safeText = cbBatch.Text.Replace("'", "''");
+                _dtLocalDrivingLicenseApplications.DefaultView.RowFilter = $"[BatchName] = '{safeText}'";
+            }
+            lblRecordsCount.Text = _dtLocalDrivingLicenseApplications.DefaultView.Count.ToString();
+        }
+
         private void txtFilterValue_TextChanged(object sender, EventArgs e)
         {
             string FilterColumn = "";

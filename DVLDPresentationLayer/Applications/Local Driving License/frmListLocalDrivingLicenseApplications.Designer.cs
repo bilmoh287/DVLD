@@ -1,4 +1,4 @@
-﻿namespace DVLDPresentationLayer
+namespace DVLDPresentationLayer
 {
     partial class frmListLocalDrivingLicenseApplications
     {
@@ -34,6 +34,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.txtFilterValue = new System.Windows.Forms.TextBox();
+            this.cbInstitute = new System.Windows.Forms.ComboBox();
+            this.cbBatch = new System.Windows.Forms.ComboBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmsApplications = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -109,7 +111,9 @@
             "L.D.L.AppID",
             "National No.",
             "Full Name",
-            "Status"});
+            "Status",
+            "Institute",
+            "Batch"});
             this.cbFilterBy.Location = new System.Drawing.Point(90, 275);
             this.cbFilterBy.Name = "cbFilterBy";
             this.cbFilterBy.Size = new System.Drawing.Size(210, 33);
@@ -126,6 +130,28 @@
             this.txtFilterValue.TabIndex = 132;
             this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
             this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
+            // 
+            // cbInstitute
+            // 
+            this.cbInstitute.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbInstitute.FormattingEnabled = true;
+            this.cbInstitute.Location = new System.Drawing.Point(307, 275);
+            this.cbInstitute.Name = "cbInstitute";
+            this.cbInstitute.Size = new System.Drawing.Size(256, 33);
+            this.cbInstitute.TabIndex = 140;
+            this.cbInstitute.Visible = false;
+            this.cbInstitute.SelectedIndexChanged += new System.EventHandler(this.cbInstitute_SelectedIndexChanged);
+            // 
+            // cbBatch
+            // 
+            this.cbBatch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbBatch.FormattingEnabled = true;
+            this.cbBatch.Location = new System.Drawing.Point(307, 275);
+            this.cbBatch.Name = "cbBatch";
+            this.cbBatch.Size = new System.Drawing.Size(256, 33);
+            this.cbBatch.TabIndex = 141;
+            this.cbBatch.Visible = false;
+            this.cbBatch.SelectedIndexChanged += new System.EventHandler(this.cbBatch_SelectedIndexChanged);
             // 
             // lblTitle
             // 
@@ -362,6 +388,8 @@
             this.ContextMenuStrip = this.cmsApplications;
             this.Controls.Add(this.cbFilterBy);
             this.Controls.Add(this.txtFilterValue);
+            this.Controls.Add(this.cbInstitute);
+            this.Controls.Add(this.cbBatch);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnAddNewApplication);
@@ -399,6 +427,8 @@
         private System.Windows.Forms.PictureBox pbPersonImage;
         private System.Windows.Forms.ComboBox cbFilterBy;
         private System.Windows.Forms.TextBox txtFilterValue;
+        private System.Windows.Forms.ComboBox cbInstitute;
+        private System.Windows.Forms.ComboBox cbBatch;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ContextMenuStrip cmsApplications;

@@ -28,9 +28,31 @@ namespace DVLDPresentationLayer
             _dtBatchStudents = _Batch.GetApplicants();
             dgvStudents.DataSource = _dtBatchStudents;
             lblRecordsCount.Text = _dtBatchStudents.Rows.Count.ToString();
-            
-            // Update capacity label
             lblCapacity.Text = $"{_dtBatchStudents.Rows.Count} / {_Batch.MaxCapacity}";
+        }
+
+        private void _SetupColumns()
+        {
+            if (dgvStudents.Columns.Count == 0) return;
+
+            dgvStudents.Columns["ApplicationID"].HeaderText = "App ID";
+            dgvStudents.Columns["ApplicationID"].Width = 80;
+            dgvStudents.Columns["ApplicationID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+            dgvStudents.Columns["FullName"].HeaderText = "Full Name";
+            dgvStudents.Columns["FullName"].Width = 280;
+            dgvStudents.Columns["FullName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+            dgvStudents.Columns["ClassName"].HeaderText = "License Class";
+            dgvStudents.Columns["ClassName"].Width = 280;
+            dgvStudents.Columns["ClassName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+            dgvStudents.Columns["Phone"].HeaderText = "Phone";
+            dgvStudents.Columns["Phone"].Width = 150;
+            dgvStudents.Columns["Phone"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+            dgvStudents.Columns["AssignedDate"].HeaderText = "Assigned Date";
+            dgvStudents.Columns["AssignedDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void frmManageBatchStudents_Load(object sender, EventArgs e)
@@ -45,6 +67,7 @@ namespace DVLDPresentationLayer
 
             lblBatchName.Text = _Batch.BatchName;
             _RefreshStudentsList();
+            _SetupColumns();
         }
 
         private void btnAddStudent_Click(object sender, EventArgs e)

@@ -236,5 +236,64 @@ namespace DVLDDataAccessLayer
             }
             return exists;
         }
+        /// <summary>
+        /// Checks if a person is already enrolled at a specific institute (any course).
+        /// Used to auto-enroll students during in-person application creation.
+        /// </summary>
+        public static bool IsPersonEnrolledAtInstitute(int PersonID, int InstituteID)
+        {
+            bool exists = false;
+
+            string query = @"
+                SELECT 1 FROM Enrollments
+                WHERE PersonID = @PersonID AND InstituteID = @InstituteID AND IsActive = 1";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@PersonID", PersonID);
+                command.Parameters.AddWithValue("@InstituteID", InstituteID);
+                try
+                {
+                    connection.Open();
+                    exists = command.ExecuteScalar() != null;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error checking institute enrollment: " + ex.Message);
+                }
+            }
+            return exists;
+        }
+
+        /// <summary>
+        /// Gets the default CourseID for an institute (first active course).
+        /// Used as a fallback when auto-enrolling during in-person registration.
+        /// </summary>
+        public static int GetDefaultCourseIDForInstitute(int InstituteID)
+        {
+            int courseID = -1;
+
+            string query = @"SELECT TOP 1 CourseID FROM InstituteCourses 
+                             WHERE InstituteID = @InstituteID ORDER BY CourseID";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@InstituteID", InstituteID);
+                try
+                {
+                    connection.Open();
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                        courseID = Convert.ToInt32(result);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error getting default course: " + ex.Message);
+                }
+            }
+            return courseID;
+        }
     }
 }

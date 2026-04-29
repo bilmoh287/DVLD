@@ -115,6 +115,10 @@ namespace DVLDBussinessLayer
                     if (_AddNewLocalDrivingLicenseApplication())
                     {
                         _Mode = enMode.Update;
+
+                        // Auto-enroll the person at the selected institute if not already enrolled
+                        _AutoEnrollAtInstitute();
+
                         return true;
                     }
                     else
@@ -127,6 +131,23 @@ namespace DVLDBussinessLayer
                     return false;
             }
         }
+
+        private void _AutoEnrollAtInstitute()
+        {
+            if (this.InstituteID <= 0) return;
+
+            // Check if person is already enrolled at this institute
+            if (!clsEnrollmentData.IsPersonEnrolledAtInstitute(this.ApplicantPersonID, this.InstituteID))
+            {
+                // Get a default course for this institute
+                int defaultCourseID = clsEnrollmentData.GetDefaultCourseIDForInstitute(this.InstituteID);
+                if (defaultCourseID == -1) return; // No courses set up for this institute
+
+                // Create enrollment
+                clsEnrollmentData.AddNewEnrollment(this.ApplicantPersonID, this.InstituteID, defaultCourseID, this.CreatedByUserID);
+            }
+        }
+
         public static bool IsApplicationExist(int LocalDrivingLicenseApplicationID)
         {
             return clsLocalDrivingLicenseApplicationData.IsApplicationExist(LocalDrivingLicenseApplicationID);

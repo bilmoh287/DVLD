@@ -56,31 +56,32 @@ namespace DVLDPresentationLayer
             this.dgvEligibleStudents.AllowUserToDeleteRows = false;
             this.dgvEligibleStudents.BackgroundColor = System.Drawing.Color.White;
             this.dgvEligibleStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEligibleStudents.Location = new System.Drawing.Point(23, 116);
-            this.dgvEligibleStudents.MultiSelect = false;
+            this.dgvEligibleStudents.Location = new System.Drawing.Point(20, 116);
+            this.dgvEligibleStudents.MultiSelect = true;
             this.dgvEligibleStudents.Name = "dgvEligibleStudents";
             this.dgvEligibleStudents.ReadOnly = true;
             this.dgvEligibleStudents.RowHeadersWidth = 51;
-            this.dgvEligibleStudents.RowTemplate.Height = 24;
+            this.dgvEligibleStudents.RowTemplate.Height = 28;
             this.dgvEligibleStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEligibleStudents.Size = new System.Drawing.Size(760, 313);
+            this.dgvEligibleStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvEligibleStudents.Size = new System.Drawing.Size(1160, 400);
             this.dgvEligibleStudents.TabIndex = 1;
             // 
             // btnAssign
             // 
             this.btnAssign.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAssign.Location = new System.Drawing.Point(665, 447);
+            this.btnAssign.Location = new System.Drawing.Point(1062, 540);
             this.btnAssign.Name = "btnAssign";
             this.btnAssign.Size = new System.Drawing.Size(118, 38);
             this.btnAssign.TabIndex = 2;
-            this.btnAssign.Text = "Assign";
+            this.btnAssign.Text = "Assign Selected";
             this.btnAssign.UseVisualStyleBackColor = true;
             this.btnAssign.Click += new System.EventHandler(this.btnAssign_Click);
             // 
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(541, 447);
+            this.btnClose.Location = new System.Drawing.Point(938, 540);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(118, 38);
             this.btnClose.TabIndex = 3;
@@ -92,7 +93,7 @@ namespace DVLDPresentationLayer
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(23, 456);
+            this.label1.Location = new System.Drawing.Point(20, 548);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 20);
             this.label1.TabIndex = 4;
@@ -102,7 +103,7 @@ namespace DVLDPresentationLayer
             // 
             this.lblRecordsCount.AutoSize = true;
             this.lblRecordsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordsCount.Location = new System.Drawing.Point(129, 456);
+            this.lblRecordsCount.Location = new System.Drawing.Point(130, 548);
             this.lblRecordsCount.Name = "lblRecordsCount";
             this.lblRecordsCount.Size = new System.Drawing.Size(19, 20);
             this.lblRecordsCount.TabIndex = 5;
@@ -112,7 +113,7 @@ namespace DVLDPresentationLayer
             // 
             this.txtSearch.Location = new System.Drawing.Point(101, 79);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(253, 22);
+            this.txtSearch.Size = new System.Drawing.Size(350, 22);
             this.txtSearch.TabIndex = 6;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -131,7 +132,7 @@ namespace DVLDPresentationLayer
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(808, 510);
+            this.ClientSize = new System.Drawing.Size(1200, 600);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.lblRecordsCount);

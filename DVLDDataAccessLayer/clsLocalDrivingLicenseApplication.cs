@@ -12,10 +12,17 @@ namespace DVLDDataAccessLayer
     {
         public static DataTable GetAllApplicationsList()
         {
-            DataTable dtTestTypes = new DataTable();
+            DataTable dtApplications = new DataTable();
 
-            string query = @"select * from LocalDrivingLicenseApplications_View
-                             ORDER BY ApplicationDate DESC;";
+            string query = @"
+                SELECT V.*, I.InstituteName, B.BatchName
+                FROM LocalDrivingLicenseApplications_View V
+                INNER JOIN LocalDrivingLicenseApplications L ON V.LocalDrivingLicenseApplicationID = L.LocalDrivingLicenseApplicationID
+                LEFT JOIN DrivingInstitutes I ON L.InstituteID = I.InstituteID
+                LEFT JOIN Applications A ON L.ApplicationID = A.ApplicationID
+                LEFT JOIN ApplicantBatch AB ON A.ApplicationID = AB.ApplicationID
+                LEFT JOIN TrainingBatches B ON AB.TrainingBatchID = B.TrainingBatchID
+                ORDER BY V.ApplicationDate DESC;";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
@@ -26,16 +33,16 @@ namespace DVLDDataAccessLayer
                         connection.Open();
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            dtTestTypes.Load(reader);
+                            dtApplications.Load(reader);
                         }
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("Error loading TestTypes: " + ex.Message);
+                        Console.WriteLine("Error loading Applications: " + ex.Message);
                     }
                 }
 
-                return dtTestTypes;
+                return dtApplications;
             }
         }
 

@@ -31,32 +31,67 @@ namespace DVLDPresentationLayer
             lblRecordsCount.Text = _dtEligibleStudents.Rows.Count.ToString();
         }
 
+        private void _SetupColumns()
+        {
+            if (dgvEligibleStudents.Columns.Count == 0) return;
+
+            dgvEligibleStudents.Columns["ApplicationID"].HeaderText = "App ID";
+            dgvEligibleStudents.Columns["ApplicationID"].Width = 80;
+            dgvEligibleStudents.Columns["ApplicationID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+            dgvEligibleStudents.Columns["FullName"].HeaderText = "Full Name";
+            dgvEligibleStudents.Columns["FullName"].Width = 300;
+            dgvEligibleStudents.Columns["FullName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+            dgvEligibleStudents.Columns["ClassName"].HeaderText = "License Class";
+            dgvEligibleStudents.Columns["ClassName"].Width = 280;
+            dgvEligibleStudents.Columns["ClassName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+            dgvEligibleStudents.Columns["Phone"].HeaderText = "Phone";
+            dgvEligibleStudents.Columns["Phone"].Width = 150;
+            dgvEligibleStudents.Columns["Phone"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+            dgvEligibleStudents.Columns["ApplicationDate"].HeaderText = "Application Date";
+            dgvEligibleStudents.Columns["ApplicationDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
         private void frmAssignStudentToBatch_Load(object sender, EventArgs e)
         {
             _RefreshList();
+            _SetupColumns();
         }
 
         private void btnAssign_Click(object sender, EventArgs e)
         {
             if (dgvEligibleStudents.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Please select a student first.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select at least one student.", "Selection Required", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 return;
             }
 
-            int ApplicationID = (int)dgvEligibleStudents.CurrentRow.Cells["ApplicationID"].Value;
-            
             clsTrainingBatch batch = clsTrainingBatch.Find(_BatchID);
-            
-            if (batch.AssignApplicant(ApplicationID))
+            if (batch == null) return;
+
+            int successCount = 0;
+            int failCount = 0;
+
+            foreach (DataGridViewRow row in dgvEligibleStudents.SelectedRows)
             {
-                MessageBox.Show("Student assigned successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                _RefreshList();
+                int ApplicationID = (int)row.Cells["ApplicationID"].Value;
+                if (batch.AssignApplicant(ApplicationID))
+                    successCount++;
+                else
+                    failCount++;
             }
+
+            if (successCount > 0)
+                MessageBox.Show($"{successCount} student(s) assigned successfully!" + 
+                                (failCount > 0 ? $"\n{failCount} failed (batch may be full)." : ""),
+                                "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
-            {
-                MessageBox.Show("Error: Assignment failed. The batch might be full.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                MessageBox.Show("Assignment failed. The batch might be full.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            _RefreshList();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

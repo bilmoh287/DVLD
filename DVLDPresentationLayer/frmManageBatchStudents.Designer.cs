@@ -63,12 +63,15 @@ namespace DVLDPresentationLayer
             this.dgvStudents.BackgroundColor = System.Drawing.Color.White;
             this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStudents.ContextMenuStrip = this.cmsStudents;
-            this.dgvStudents.Location = new System.Drawing.Point(23, 168);
+            this.dgvStudents.Location = new System.Drawing.Point(20, 180);
             this.dgvStudents.Name = "dgvStudents";
             this.dgvStudents.ReadOnly = true;
             this.dgvStudents.RowHeadersWidth = 51;
-            this.dgvStudents.RowTemplate.Height = 24;
-            this.dgvStudents.Size = new System.Drawing.Size(1036, 403);
+            this.dgvStudents.RowTemplate.Height = 28;
+            this.dgvStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvStudents.MultiSelect = false;
+            this.dgvStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvStudents.Size = new System.Drawing.Size(1240, 490);
             this.dgvStudents.TabIndex = 1;
             // 
             // cmsStudents
@@ -109,7 +112,7 @@ namespace DVLDPresentationLayer
             // btnAddStudent
             // 
             this.btnAddStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddStudent.Location = new System.Drawing.Point(908, 110);
+            this.btnAddStudent.Location = new System.Drawing.Point(1115, 120);
             this.btnAddStudent.Name = "btnAddStudent";
             this.btnAddStudent.Size = new System.Drawing.Size(151, 43);
             this.btnAddStudent.TabIndex = 4;
@@ -120,7 +123,7 @@ namespace DVLDPresentationLayer
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(941, 586);
+            this.btnClose.Location = new System.Drawing.Point(1148, 692);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(118, 38);
             this.btnClose.TabIndex = 5;
@@ -132,7 +135,7 @@ namespace DVLDPresentationLayer
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(28, 592);
+            this.label2.Location = new System.Drawing.Point(20, 700);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(116, 25);
             this.label2.TabIndex = 6;
@@ -142,7 +145,7 @@ namespace DVLDPresentationLayer
             // 
             this.lblRecordsCount.AutoSize = true;
             this.lblRecordsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordsCount.Location = new System.Drawing.Point(150, 592);
+            this.lblRecordsCount.Location = new System.Drawing.Point(150, 700);
             this.lblRecordsCount.Name = "lblRecordsCount";
             this.lblRecordsCount.Size = new System.Drawing.Size(24, 25);
             this.lblRecordsCount.TabIndex = 7;
@@ -173,7 +176,7 @@ namespace DVLDPresentationLayer
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1081, 646);
+            this.ClientSize = new System.Drawing.Size(1290, 750);
             this.Controls.Add(this.lblCapacity);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblRecordsCount);
