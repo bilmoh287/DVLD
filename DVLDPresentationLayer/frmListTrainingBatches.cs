@@ -144,6 +144,18 @@ namespace DVLDPresentationLayer
             frm.ShowDialog();
         }
 
+        private void manageStudentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvBatchesList.CurrentRow == null) return;
+
+            int BatchID = (int)dgvBatchesList.CurrentRow.Cells["TrainingBatchID"].Value;
+            frmManageBatchStudents frm = new frmManageBatchStudents(BatchID);
+            frm.ShowDialog();
+
+            // Refresh the main list in case capacity counts changed
+            _RefreshBatchesList();
+        }
+
         private void deleteBatchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to delete this batch?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
