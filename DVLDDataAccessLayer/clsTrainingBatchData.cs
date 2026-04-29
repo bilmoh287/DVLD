@@ -212,10 +212,13 @@ namespace DVLDDataAccessLayer
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
-                string query = @"SELECT A.ApplicationID, P.FirstName + ' ' + P.LastName AS FullName, 
-                                 P.Phone, AB.AssignedDate
+                string query = @"SELECT AB.ApplicationID, 
+                                 P.FirstName + ' ' + P.LastName AS FullName, 
+                                 C.ClassName, P.Phone, AB.AssignedDate
                                  FROM ApplicantBatch AB
                                  INNER JOIN Applications A ON AB.ApplicationID = A.ApplicationID
+                                 INNER JOIN LocalDrivingLicenseApplications L ON A.ApplicationID = L.ApplicationID
+                                 INNER JOIN LicenseClasses C ON L.LicenseClassID = C.LicenseClassID
                                  INNER JOIN People P ON A.ApplicantPersonID = P.PersonID
                                  WHERE AB.TrainingBatchID = @BatchID";
 
@@ -243,11 +246,14 @@ namespace DVLDDataAccessLayer
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
-                // Fetch approved students (Status=3) who are enrolled in this institute
-                // and NOT yet assigned to any batch.
-                string query = @"SELECT DISTINCT A.ApplicationID, P.FirstName + ' ' + P.LastName AS FullName, 
-                                 A.ApplicationDate, P.Phone
-                                 FROM Applications A
+                // Fetch students who have an approved Local Driving License Application
+                // and are enrolled in this institute, but not yet in any batch.
+                string query = @"SELECT DISTINCT A.ApplicationID, 
+                                 P.FirstName + ' ' + P.LastName AS FullName, 
+                                 C.ClassName, A.ApplicationDate, P.Phone
+                                 FROM LocalDrivingLicenseApplications L
+                                 INNER JOIN Applications A ON L.ApplicationID = A.ApplicationID
+                                 INNER JOIN LicenseClasses C ON L.LicenseClassID = C.LicenseClassID
                                  INNER JOIN People P ON A.ApplicantPersonID = P.PersonID
                                  INNER JOIN Enrollments E ON A.ApplicantPersonID = E.PersonID
                                  WHERE A.ApplicationStatus = 3 
