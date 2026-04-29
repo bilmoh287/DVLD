@@ -64,6 +64,7 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.signOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelWindowScreen = new System.Windows.Forms.Panel();
+            this.listTrainingBatchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msMainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,7 +95,8 @@
             this.detainLicenseToolStripMenuItem,
             this.manToolStripMenuItem,
             this.manageTestTypesToolStripMenuItem,
-            this.manageDrivingInstitutesToolStripMenuItem});
+            this.manageDrivingInstitutesToolStripMenuItem,
+            this.listTrainingBatchToolStripMenuItem});
             this.applicationToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.applicationToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("applicationToolStripMenuItem.Image")));
             this.applicationToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -390,6 +392,13 @@
             this.panelWindowScreen.Size = new System.Drawing.Size(1406, 699);
             this.panelWindowScreen.TabIndex = 4;
             // 
+            // listTrainingBatchToolStripMenuItem
+            // 
+            this.listTrainingBatchToolStripMenuItem.Name = "listTrainingBatchToolStripMenuItem";
+            this.listTrainingBatchToolStripMenuItem.Size = new System.Drawing.Size(351, 70);
+            this.listTrainingBatchToolStripMenuItem.Text = "List Training Batch";
+            this.listTrainingBatchToolStripMenuItem.Click += new System.EventHandler(this.listTrainingBatchToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -452,6 +461,7 @@
         private System.Windows.Forms.ToolStripMenuItem releaseLicenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageDrivingInstitutesToolStripMenuItem;
         private System.Windows.Forms.Panel panelWindowScreen;
+        private System.Windows.Forms.ToolStripMenuItem listTrainingBatchToolStripMenuItem;
     }
 }
 

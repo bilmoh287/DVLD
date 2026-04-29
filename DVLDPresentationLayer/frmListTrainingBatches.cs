@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLDBussinessLayer;
 
 namespace DVLDPresentationLayer
 {
@@ -163,15 +164,15 @@ namespace DVLDPresentationLayer
 
             int BatchID = (int)dgvBatchesList.CurrentRow.Cells["TrainingBatchID"].Value;
 
-            if (clsTrainingBatch.Delete(BatchID))
-            {
-                MessageBox.Show("Batch Deleted Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                _RefreshBatchesList();
-            }
-            else
-            {
-                MessageBox.Show("Error: Could not delete batch. It might be linked to other data (Enrollments).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //if (clsTrainingBatch.dele(BatchID))
+            //{
+            //    MessageBox.Show("Batch Deleted Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    _RefreshBatchesList();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Error: Could not delete batch. It might be linked to other data (Enrollments).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void _RefreshBatchesList(object sender, int BatchID)
