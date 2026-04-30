@@ -55,6 +55,7 @@
             this.manToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageTestTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageDrivingInstitutesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listTrainingBatchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peopleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.driversToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,7 +65,7 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.signOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelWindowScreen = new System.Windows.Forms.Panel();
-            this.listTrainingBatchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newApplicantStudentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msMainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,7 +97,8 @@
             this.manToolStripMenuItem,
             this.manageTestTypesToolStripMenuItem,
             this.manageDrivingInstitutesToolStripMenuItem,
-            this.listTrainingBatchToolStripMenuItem});
+            this.listTrainingBatchToolStripMenuItem,
+            this.newApplicantStudentsToolStripMenuItem});
             this.applicationToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.applicationToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("applicationToolStripMenuItem.Image")));
             this.applicationToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -307,6 +309,13 @@
             this.manageDrivingInstitutesToolStripMenuItem.Text = "Manage Driving Institutes";
             this.manageDrivingInstitutesToolStripMenuItem.Click += new System.EventHandler(this.manageDrivingInstitutesToolStripMenuItem_Click_1);
             // 
+            // listTrainingBatchToolStripMenuItem
+            // 
+            this.listTrainingBatchToolStripMenuItem.Name = "listTrainingBatchToolStripMenuItem";
+            this.listTrainingBatchToolStripMenuItem.Size = new System.Drawing.Size(351, 70);
+            this.listTrainingBatchToolStripMenuItem.Text = "List Training Batch";
+            this.listTrainingBatchToolStripMenuItem.Click += new System.EventHandler(this.listTrainingBatchToolStripMenuItem_Click);
+            // 
             // peopleToolStripMenuItem
             // 
             this.peopleToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -392,12 +401,12 @@
             this.panelWindowScreen.Size = new System.Drawing.Size(1406, 699);
             this.panelWindowScreen.TabIndex = 4;
             // 
-            // listTrainingBatchToolStripMenuItem
+            // newApplicantStudentsToolStripMenuItem
             // 
-            this.listTrainingBatchToolStripMenuItem.Name = "listTrainingBatchToolStripMenuItem";
-            this.listTrainingBatchToolStripMenuItem.Size = new System.Drawing.Size(351, 70);
-            this.listTrainingBatchToolStripMenuItem.Text = "List Training Batch";
-            this.listTrainingBatchToolStripMenuItem.Click += new System.EventHandler(this.listTrainingBatchToolStripMenuItem_Click);
+            this.newApplicantStudentsToolStripMenuItem.Name = "newApplicantStudentsToolStripMenuItem";
+            this.newApplicantStudentsToolStripMenuItem.Size = new System.Drawing.Size(351, 70);
+            this.newApplicantStudentsToolStripMenuItem.Text = "New Applicant Students";
+            this.newApplicantStudentsToolStripMenuItem.Click += new System.EventHandler(this.newApplicantStudentsToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -462,6 +471,7 @@
         private System.Windows.Forms.ToolStripMenuItem manageDrivingInstitutesToolStripMenuItem;
         private System.Windows.Forms.Panel panelWindowScreen;
         private System.Windows.Forms.ToolStripMenuItem listTrainingBatchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newApplicantStudentsToolStripMenuItem;
     }
 }
 

@@ -30,12 +30,12 @@ namespace DVLDPresentationLayer
         {
             this.dgvUnderReviewList = new System.Windows.Forms.DataGridView();
             this.panelDetail = new System.Windows.Forms.Panel();
-            this.pbIdpictrue = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnApprove = new Guna.UI2.WinForms.Guna2Button();
             this.btnReject = new Guna.UI2.WinForms.Guna2Button();
-            this.lblTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.btnApprove = new Guna.UI2.WinForms.Guna2Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pbIdpictrue = new System.Windows.Forms.PictureBox();
             this.ctlPersonCard1 = new DVLDPresentationLayer.ctlPersonCard();
+            this.lblTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnderReviewList)).BeginInit();
             this.panelDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIdpictrue)).BeginInit();
@@ -71,22 +71,21 @@ namespace DVLDPresentationLayer
             this.panelDetail.Visible = false;
             this.panelDetail.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDetail_Paint);
             // 
-            // pbIdpictrue
+            // btnReject
             // 
-            this.pbIdpictrue.Location = new System.Drawing.Point(141, 335);
-            this.pbIdpictrue.Name = "pbIdpictrue";
-            this.pbIdpictrue.Size = new System.Drawing.Size(421, 216);
-            this.pbIdpictrue.TabIndex = 1;
-            this.pbIdpictrue.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 374);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 25);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "ID picture:";
+            this.btnReject.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnReject.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnReject.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnReject.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnReject.FillColor = System.Drawing.Color.Crimson;
+            this.btnReject.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnReject.ForeColor = System.Drawing.Color.White;
+            this.btnReject.Location = new System.Drawing.Point(861, 117);
+            this.btnReject.Name = "btnReject";
+            this.btnReject.Size = new System.Drawing.Size(111, 37);
+            this.btnReject.TabIndex = 4;
+            this.btnReject.Text = "Reject";
+            this.btnReject.Click += new System.EventHandler(this.btnReject_Click);
             // 
             // btnApprove
             // 
@@ -103,24 +102,33 @@ namespace DVLDPresentationLayer
             this.btnApprove.TabIndex = 3;
             this.btnApprove.Text = "Approve";
             this.btnApprove.Click += new System.EventHandler(this.btnApprove_Click);
-
             // 
-            // btnReject
+            // label1
             // 
-            this.btnReject.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnReject.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnReject.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnReject.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnReject.FillColor = System.Drawing.Color.Crimson;
-            this.btnReject.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnReject.ForeColor = System.Drawing.Color.White;
-            this.btnReject.Location = new System.Drawing.Point(861, 117);
-            this.btnReject.Name = "btnReject";
-            this.btnReject.Size = new System.Drawing.Size(111, 37);
-            this.btnReject.TabIndex = 4;
-            this.btnReject.Text = "Reject";
-            this.btnReject.Click += new System.EventHandler(this.btnReject_Click);
-
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(35, 374);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 25);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "ID picture:";
+            // 
+            // pbIdpictrue
+            // 
+            this.pbIdpictrue.Location = new System.Drawing.Point(141, 335);
+            this.pbIdpictrue.Name = "pbIdpictrue";
+            this.pbIdpictrue.Size = new System.Drawing.Size(421, 216);
+            this.pbIdpictrue.TabIndex = 1;
+            this.pbIdpictrue.TabStop = false;
+            // 
+            // ctlPersonCard1
+            // 
+            this.ctlPersonCard1.BackColor = System.Drawing.Color.White;
+            this.ctlPersonCard1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctlPersonCard1.Location = new System.Drawing.Point(13, 10);
+            this.ctlPersonCard1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctlPersonCard1.Name = "ctlPersonCard1";
+            this.ctlPersonCard1.Size = new System.Drawing.Size(841, 285);
+            this.ctlPersonCard1.TabIndex = 0;
             // 
             // lblTitle
             // 
@@ -132,16 +140,6 @@ namespace DVLDPresentationLayer
             this.lblTitle.Size = new System.Drawing.Size(339, 33);
             this.lblTitle.TabIndex = 4;
             this.lblTitle.Text = "Under Review Students List";
-            // 
-            // ctlPersonCard1
-            // 
-            this.ctlPersonCard1.BackColor = System.Drawing.Color.White;
-            this.ctlPersonCard1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctlPersonCard1.Location = new System.Drawing.Point(13, 10);
-            this.ctlPersonCard1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ctlPersonCard1.Name = "ctlPersonCard1";
-            this.ctlPersonCard1.Size = new System.Drawing.Size(841, 285);
-            this.ctlPersonCard1.TabIndex = 0;
             // 
             // frmUnderReview
             // 
@@ -155,6 +153,7 @@ namespace DVLDPresentationLayer
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmUnderReview";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmUnderReview";
             this.Load += new System.EventHandler(this.frmUnderReview_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnderReviewList)).EndInit();

@@ -168,6 +168,18 @@
     <Compile Include="frmListTrainingBatches.Designer.cs">
       <DependentUpon>frmListTrainingBatches.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main Dashboard\frmDashboardContent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main Dashboard\frmDashboardContent.Designer.cs">
+      <DependentUpon>frmDashboardContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main Dashboard\frmMaindashborad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main Dashboard\frmMaindashborad.Designer.cs">
+      <DependentUpon>frmMaindashborad.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmManageBatchStudents.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +203,12 @@
     </Compile>
     <Compile Include="frmUnderReview.Designer.cs">
       <DependentUpon>frmUnderReview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main Dashboard\User Controls\ucDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main Dashboard\User Controls\ucDashboard.Designer.cs">
+      <DependentUpon>ucDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Schools Dashboard\Forms\frmDashboard.cs">
       <SubType>Form</SubType>
@@ -462,11 +480,20 @@
     <EmbeddedResource Include="frmAddUpdateInstitueCourse.resx">
       <DependentUpon>frmAddUpdateInstitueCourse.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAssignStudentToBatch.resx">
+      <DependentUpon>frmAssignStudentToBatch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmListInstituteCourse.resx">
       <DependentUpon>frmListInstituteCourse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmListTrainingBatches.resx">
       <DependentUpon>frmListTrainingBatches.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main Dashboard\frmDashboardContent.resx">
+      <DependentUpon>frmDashboardContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main Dashboard\frmMaindashborad.resx">
+      <DependentUpon>frmMaindashborad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageBatchStudents.resx">
       <DependentUpon>frmManageBatchStudents.cs</DependentUpon>
@@ -476,6 +503,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmUnderReview.resx">
       <DependentUpon>frmUnderReview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main Dashboard\User Controls\ucDashboard.resx">
+      <DependentUpon>ucDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Schools Dashboard\Forms\frmDashboard.resx">
       <DependentUpon>frmDashboard.cs</DependentUpon>

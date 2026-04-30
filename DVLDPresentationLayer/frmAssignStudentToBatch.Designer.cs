@@ -44,9 +44,10 @@ namespace DVLDPresentationLayer
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.Red;
-            this.lblTitle.Location = new System.Drawing.Point(232, 21);
+            this.lblTitle.Location = new System.Drawing.Point(516, 11);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(360, 36);
+            this.lblTitle.Size = new System.Drawing.Size(358, 36);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Assign Student to Batch";
             // 
@@ -54,25 +55,26 @@ namespace DVLDPresentationLayer
             // 
             this.dgvEligibleStudents.AllowUserToAddRows = false;
             this.dgvEligibleStudents.AllowUserToDeleteRows = false;
+            this.dgvEligibleStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvEligibleStudents.BackgroundColor = System.Drawing.Color.White;
             this.dgvEligibleStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEligibleStudents.Location = new System.Drawing.Point(20, 116);
-            this.dgvEligibleStudents.MultiSelect = true;
+            this.dgvEligibleStudents.Location = new System.Drawing.Point(13, 135);
+            this.dgvEligibleStudents.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvEligibleStudents.Name = "dgvEligibleStudents";
             this.dgvEligibleStudents.ReadOnly = true;
             this.dgvEligibleStudents.RowHeadersWidth = 51;
             this.dgvEligibleStudents.RowTemplate.Height = 28;
             this.dgvEligibleStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEligibleStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvEligibleStudents.Size = new System.Drawing.Size(1160, 400);
+            this.dgvEligibleStudents.Size = new System.Drawing.Size(1114, 381);
             this.dgvEligibleStudents.TabIndex = 1;
             // 
             // btnAssign
             // 
             this.btnAssign.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAssign.Location = new System.Drawing.Point(1062, 540);
+            this.btnAssign.Location = new System.Drawing.Point(1016, 524);
+            this.btnAssign.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAssign.Name = "btnAssign";
-            this.btnAssign.Size = new System.Drawing.Size(118, 38);
+            this.btnAssign.Size = new System.Drawing.Size(111, 34);
             this.btnAssign.TabIndex = 2;
             this.btnAssign.Text = "Assign Selected";
             this.btnAssign.UseVisualStyleBackColor = true;
@@ -81,9 +83,10 @@ namespace DVLDPresentationLayer
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(938, 540);
+            this.btnClose.Location = new System.Drawing.Point(897, 524);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(118, 38);
+            this.btnClose.Size = new System.Drawing.Size(111, 34);
             this.btnClose.TabIndex = 3;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -93,9 +96,10 @@ namespace DVLDPresentationLayer
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(20, 548);
+            this.label1.Location = new System.Drawing.Point(13, 531);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 20);
+            this.label1.Size = new System.Drawing.Size(101, 20);
             this.label1.TabIndex = 4;
             this.label1.Text = "# Records:";
             // 
@@ -103,7 +107,8 @@ namespace DVLDPresentationLayer
             // 
             this.lblRecordsCount.AutoSize = true;
             this.lblRecordsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordsCount.Location = new System.Drawing.Point(130, 548);
+            this.lblRecordsCount.Location = new System.Drawing.Point(150, 531);
+            this.lblRecordsCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRecordsCount.Name = "lblRecordsCount";
             this.lblRecordsCount.Size = new System.Drawing.Size(19, 20);
             this.lblRecordsCount.TabIndex = 5;
@@ -111,9 +116,11 @@ namespace DVLDPresentationLayer
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(101, 79);
+            this.txtSearch.Location = new System.Drawing.Point(108, 98);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(350, 22);
+            this.txtSearch.Size = new System.Drawing.Size(270, 29);
             this.txtSearch.TabIndex = 6;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -121,18 +128,19 @@ namespace DVLDPresentationLayer
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(23, 79);
+            this.label2.Location = new System.Drawing.Point(26, 101);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 20);
+            this.label2.Size = new System.Drawing.Size(74, 20);
             this.label2.TabIndex = 7;
             this.label2.Text = "Search:";
             // 
             // frmAssignStudentToBatch
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1200, 600);
+            this.ClientSize = new System.Drawing.Size(1139, 565);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.lblRecordsCount);
@@ -141,7 +149,9 @@ namespace DVLDPresentationLayer
             this.Controls.Add(this.btnAssign);
             this.Controls.Add(this.dgvEligibleStudents);
             this.Controls.Add(this.lblTitle);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmAssignStudentToBatch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Assign Student to Batch";

@@ -212,5 +212,11 @@ namespace DVLDPresentationLayer
             frmListTrainingBatches frm = new frmListTrainingBatches();
             frm.ShowDialog();
         }
+
+        private void newApplicantStudentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUnderReview frm = new frmUnderReview();
+            frm.ShowDialog();
+        }
     }
 }
