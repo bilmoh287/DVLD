@@ -1,4 +1,4 @@
-﻿namespace DVLDPresentationLayer
+namespace DVLDPresentationLayer
 {
     partial class frmMaindashborad
     {
@@ -29,17 +29,22 @@
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnSettings = new System.Windows.Forms.Button();
+            this.btnNotifications = new System.Windows.Forms.Button();
+            this.btnComplaints = new System.Windows.Forms.Button();
+            this.btnReports = new System.Windows.Forms.Button();
+            this.btnVehicles = new System.Windows.Forms.Button();
+            this.btnLicenses = new System.Windows.Forms.Button();
+            this.btnTestManagement = new System.Windows.Forms.Button();
+            this.btnApplications = new System.Windows.Forms.Button();
+            this.btnApplicants = new System.Windows.Forms.Button();
+            this.btnDashboard = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl = new System.Windows.Forms.Label();
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.lblHeader = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnSetting = new System.Windows.Forms.Button();
-            this.btnInstructor = new System.Windows.Forms.Button();
-            this.btnCourses = new System.Windows.Forms.Button();
-            this.btnStudents = new System.Windows.Forms.Button();
-            this.btnDashboard = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -49,10 +54,15 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(58)))), ((int)(((byte)(96)))));
-            this.panelMenu.Controls.Add(this.btnSetting);
-            this.panelMenu.Controls.Add(this.btnInstructor);
-            this.panelMenu.Controls.Add(this.btnCourses);
-            this.panelMenu.Controls.Add(this.btnStudents);
+            this.panelMenu.Controls.Add(this.btnSettings);
+            this.panelMenu.Controls.Add(this.btnNotifications);
+            this.panelMenu.Controls.Add(this.btnComplaints);
+            this.panelMenu.Controls.Add(this.btnReports);
+            this.panelMenu.Controls.Add(this.btnVehicles);
+            this.panelMenu.Controls.Add(this.btnLicenses);
+            this.panelMenu.Controls.Add(this.btnTestManagement);
+            this.panelMenu.Controls.Add(this.btnApplications);
+            this.panelMenu.Controls.Add(this.btnApplicants);
             this.panelMenu.Controls.Add(this.btnDashboard);
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -61,6 +71,193 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(221, 669);
             this.panelMenu.TabIndex = 1;
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnSettings.FlatAppearance.BorderSize = 0;
+            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettings.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnSettings.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnSettings.Image = global::DVLDPresentationLayer.Properties.Resources.settings;
+            this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSettings.Location = new System.Drawing.Point(0, 619);
+            this.btnSettings.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnSettings.Size = new System.Drawing.Size(221, 50);
+            this.btnSettings.TabIndex = 10;
+            this.btnSettings.Text = "   Settings";
+            this.btnSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSettings.UseVisualStyleBackColor = true;
+            // 
+            // btnNotifications
+            // 
+            this.btnNotifications.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnNotifications.FlatAppearance.BorderSize = 0;
+            this.btnNotifications.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNotifications.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnNotifications.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnNotifications.Location = new System.Drawing.Point(0, 484);
+            this.btnNotifications.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnNotifications.Name = "btnNotifications";
+            this.btnNotifications.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnNotifications.Size = new System.Drawing.Size(221, 50);
+            this.btnNotifications.TabIndex = 9;
+            this.btnNotifications.Text = "   Notifications";
+            this.btnNotifications.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNotifications.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNotifications.UseVisualStyleBackColor = true;
+            // 
+            // btnComplaints
+            // 
+            this.btnComplaints.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnComplaints.FlatAppearance.BorderSize = 0;
+            this.btnComplaints.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnComplaints.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnComplaints.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnComplaints.Location = new System.Drawing.Point(0, 434);
+            this.btnComplaints.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnComplaints.Name = "btnComplaints";
+            this.btnComplaints.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnComplaints.Size = new System.Drawing.Size(221, 50);
+            this.btnComplaints.TabIndex = 8;
+            this.btnComplaints.Text = "   Complaints";
+            this.btnComplaints.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnComplaints.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnComplaints.UseVisualStyleBackColor = true;
+            // 
+            // btnReports
+            // 
+            this.btnReports.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReports.FlatAppearance.BorderSize = 0;
+            this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReports.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnReports.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnReports.Location = new System.Drawing.Point(0, 384);
+            this.btnReports.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnReports.Name = "btnReports";
+            this.btnReports.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnReports.Size = new System.Drawing.Size(221, 50);
+            this.btnReports.TabIndex = 7;
+            this.btnReports.Text = "   Reports";
+            this.btnReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnReports.UseVisualStyleBackColor = true;
+            // 
+            // btnVehicles
+            // 
+            this.btnVehicles.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnVehicles.FlatAppearance.BorderSize = 0;
+            this.btnVehicles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVehicles.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnVehicles.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnVehicles.Location = new System.Drawing.Point(0, 334);
+            this.btnVehicles.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnVehicles.Name = "btnVehicles";
+            this.btnVehicles.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnVehicles.Size = new System.Drawing.Size(221, 50);
+            this.btnVehicles.TabIndex = 6;
+            this.btnVehicles.Text = "   Vehicles";
+            this.btnVehicles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVehicles.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnVehicles.UseVisualStyleBackColor = true;
+            // 
+            // btnLicenses
+            // 
+            this.btnLicenses.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLicenses.FlatAppearance.BorderSize = 0;
+            this.btnLicenses.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLicenses.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnLicenses.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnLicenses.Location = new System.Drawing.Point(0, 284);
+            this.btnLicenses.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnLicenses.Name = "btnLicenses";
+            this.btnLicenses.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnLicenses.Size = new System.Drawing.Size(221, 50);
+            this.btnLicenses.TabIndex = 5;
+            this.btnLicenses.Text = "   Licenses";
+            this.btnLicenses.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLicenses.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLicenses.UseVisualStyleBackColor = true;
+            // 
+            // btnTestManagement
+            // 
+            this.btnTestManagement.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTestManagement.FlatAppearance.BorderSize = 0;
+            this.btnTestManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTestManagement.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnTestManagement.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnTestManagement.Location = new System.Drawing.Point(0, 234);
+            this.btnTestManagement.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnTestManagement.Name = "btnTestManagement";
+            this.btnTestManagement.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnTestManagement.Size = new System.Drawing.Size(221, 50);
+            this.btnTestManagement.TabIndex = 4;
+            this.btnTestManagement.Text = "   Test Management";
+            this.btnTestManagement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTestManagement.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTestManagement.UseVisualStyleBackColor = true;
+            // 
+            // btnApplications
+            // 
+            this.btnApplications.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnApplications.FlatAppearance.BorderSize = 0;
+            this.btnApplications.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnApplications.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnApplications.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnApplications.Location = new System.Drawing.Point(0, 184);
+            this.btnApplications.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnApplications.Name = "btnApplications";
+            this.btnApplications.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnApplications.Size = new System.Drawing.Size(221, 50);
+            this.btnApplications.TabIndex = 3;
+            this.btnApplications.Text = "   Applications";
+            this.btnApplications.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnApplications.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnApplications.UseVisualStyleBackColor = true;
+            // 
+            // btnApplicants
+            // 
+            this.btnApplicants.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnApplicants.FlatAppearance.BorderSize = 0;
+            this.btnApplicants.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnApplicants.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnApplicants.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnApplicants.Image = global::DVLDPresentationLayer.Properties.Resources.icons8_person_32;
+            this.btnApplicants.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnApplicants.Location = new System.Drawing.Point(0, 134);
+            this.btnApplicants.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnApplicants.Name = "btnApplicants";
+            this.btnApplicants.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnApplicants.Size = new System.Drawing.Size(221, 50);
+            this.btnApplicants.TabIndex = 2;
+            this.btnApplicants.Text = "   Applicants";
+            this.btnApplicants.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnApplicants.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnApplicants.UseVisualStyleBackColor = true;
+            // 
+            // btnDashboard
+            // 
+            this.btnDashboard.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDashboard.FlatAppearance.BorderSize = 0;
+            this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDashboard.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnDashboard.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnDashboard.Image = global::DVLDPresentationLayer.Properties.Resources.icons8_dashboard_32__1_;
+            this.btnDashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDashboard.Location = new System.Drawing.Point(0, 84);
+            this.btnDashboard.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnDashboard.Name = "btnDashboard";
+            this.btnDashboard.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnDashboard.Size = new System.Drawing.Size(221, 50);
+            this.btnDashboard.TabIndex = 1;
+            this.btnDashboard.Text = "   Dashboard";
+            this.btnDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDashboard.UseVisualStyleBackColor = true;
+            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
             // panelLogo
             // 
@@ -79,7 +276,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Cornsilk;
-            this.label1.Location = new System.Drawing.Point(55, 18);
+            this.label1.Location = new System.Drawing.Point(12, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 29);
             this.label1.TabIndex = 1;
@@ -90,7 +287,7 @@
             this.lbl.AutoSize = true;
             this.lbl.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl.ForeColor = System.Drawing.Color.Cornsilk;
-            this.lbl.Location = new System.Drawing.Point(56, 47);
+            this.lbl.Location = new System.Drawing.Point(13, 47);
             this.lbl.Name = "lbl";
             this.lbl.Size = new System.Drawing.Size(148, 19);
             this.lbl.TabIndex = 0;
@@ -128,96 +325,6 @@
             this.panel1.Size = new System.Drawing.Size(1776, 35);
             this.panel1.TabIndex = 5;
             // 
-            // btnSetting
-            // 
-            this.btnSetting.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSetting.FlatAppearance.BorderSize = 0;
-            this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetting.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSetting.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnSetting.Image = global::DVLDPresentationLayer.Properties.Resources.settings;
-            this.btnSetting.Location = new System.Drawing.Point(0, 324);
-            this.btnSetting.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnSetting.Name = "btnSetting";
-            this.btnSetting.Size = new System.Drawing.Size(221, 60);
-            this.btnSetting.TabIndex = 5;
-            this.btnSetting.Text = "   Settings";
-            this.btnSetting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSetting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSetting.UseVisualStyleBackColor = true;
-            // 
-            // btnInstructor
-            // 
-            this.btnInstructor.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnInstructor.FlatAppearance.BorderSize = 0;
-            this.btnInstructor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInstructor.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInstructor.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnInstructor.Image = global::DVLDPresentationLayer.Properties.Resources.icons8_person_32;
-            this.btnInstructor.Location = new System.Drawing.Point(0, 264);
-            this.btnInstructor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnInstructor.Name = "btnInstructor";
-            this.btnInstructor.Size = new System.Drawing.Size(221, 60);
-            this.btnInstructor.TabIndex = 4;
-            this.btnInstructor.Text = "   Instructor";
-            this.btnInstructor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInstructor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnInstructor.UseVisualStyleBackColor = true;
-            // 
-            // btnCourses
-            // 
-            this.btnCourses.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCourses.FlatAppearance.BorderSize = 0;
-            this.btnCourses.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCourses.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCourses.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnCourses.Image = global::DVLDPresentationLayer.Properties.Resources.graduation;
-            this.btnCourses.Location = new System.Drawing.Point(0, 204);
-            this.btnCourses.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnCourses.Name = "btnCourses";
-            this.btnCourses.Size = new System.Drawing.Size(221, 60);
-            this.btnCourses.TabIndex = 3;
-            this.btnCourses.Text = "   Courses";
-            this.btnCourses.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCourses.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCourses.UseVisualStyleBackColor = true;
-            // 
-            // btnStudents
-            // 
-            this.btnStudents.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnStudents.FlatAppearance.BorderSize = 0;
-            this.btnStudents.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStudents.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStudents.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnStudents.Image = global::DVLDPresentationLayer.Properties.Resources.icons8_students_32;
-            this.btnStudents.Location = new System.Drawing.Point(0, 144);
-            this.btnStudents.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnStudents.Name = "btnStudents";
-            this.btnStudents.Size = new System.Drawing.Size(221, 60);
-            this.btnStudents.TabIndex = 2;
-            this.btnStudents.Text = "   Students";
-            this.btnStudents.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStudents.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnStudents.UseVisualStyleBackColor = true;
-            // 
-            // btnDashboard
-            // 
-            this.btnDashboard.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDashboard.FlatAppearance.BorderSize = 0;
-            this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDashboard.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDashboard.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnDashboard.Image = global::DVLDPresentationLayer.Properties.Resources.icons8_dashboard_32__1_;
-            this.btnDashboard.Location = new System.Drawing.Point(0, 84);
-            this.btnDashboard.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnDashboard.Name = "btnDashboard";
-            this.btnDashboard.Size = new System.Drawing.Size(221, 60);
-            this.btnDashboard.TabIndex = 1;
-            this.btnDashboard.Text = "   Dashboard";
-            this.btnDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDashboard.UseVisualStyleBackColor = true;
-            // 
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -237,7 +344,10 @@
             this.Controls.Add(this.panelTitleBar);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmMaindashborad";
-            this.Text = "frmMaindashborad";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "DVLD Management System";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmMaindashborad_Load);
             this.panelMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
             this.panelLogo.PerformLayout();
@@ -250,10 +360,15 @@
         #endregion
 
         private System.Windows.Forms.Panel panelMenu;
-        private System.Windows.Forms.Button btnSetting;
-        private System.Windows.Forms.Button btnInstructor;
-        private System.Windows.Forms.Button btnCourses;
-        private System.Windows.Forms.Button btnStudents;
+        private System.Windows.Forms.Button btnSettings;
+        private System.Windows.Forms.Button btnNotifications;
+        private System.Windows.Forms.Button btnComplaints;
+        private System.Windows.Forms.Button btnReports;
+        private System.Windows.Forms.Button btnVehicles;
+        private System.Windows.Forms.Button btnLicenses;
+        private System.Windows.Forms.Button btnTestManagement;
+        private System.Windows.Forms.Button btnApplications;
+        private System.Windows.Forms.Button btnApplicants;
         private System.Windows.Forms.Button btnDashboard;
         private System.Windows.Forms.Panel panelLogo;
         private System.Windows.Forms.Label lbl;
