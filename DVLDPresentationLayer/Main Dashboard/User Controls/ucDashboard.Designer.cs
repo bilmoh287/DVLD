@@ -62,17 +62,29 @@ namespace DVLDPresentationLayer.Main_Dashboard.User_Controls
             this.mainLayout.Controls.Add(this.lblTitle, 0, 0);
             this.mainLayout.Controls.Add(this.lblWelcome, 0, 1);
             this.mainLayout.Controls.Add(this.kpiLayout, 0, 2);
+            this.mainLayout.Controls.Add(this.contentLayout, 0, 3);
             this.mainLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainLayout.RowCount = 4;
+            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 160F));
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainLayout.Size = new System.Drawing.Size(1288, 730);
 
             // lblTitle
             this.lblTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 26F, System.Drawing.FontStyle.Bold);
             this.lblTitle.Text = "Dashboard";
+            this.lblTitle.AutoSize = false;
+            this.lblTitle.Size = new System.Drawing.Size(400, 50);
+
+            // lblWelcome
+            this.lblWelcome.BackColor = System.Drawing.Color.Transparent;
+            this.lblWelcome.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.lblWelcome.ForeColor = System.Drawing.Color.Gray;
+            this.lblWelcome.Text = "Welcome back! Here\'s what\'s happening today.";
+            this.lblWelcome.AutoSize = false;
+            this.lblWelcome.Size = new System.Drawing.Size(600, 30);
 
             // kpiLayout
             this.kpiLayout.ColumnCount = 4;
@@ -85,6 +97,45 @@ namespace DVLDPresentationLayer.Main_Dashboard.User_Controls
             this.kpiLayout.Controls.Add(this.pnlKpi3, 2, 0);
             this.kpiLayout.Controls.Add(this.pnlKpi4, 3, 0);
             this.kpiLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kpiLayout.RowCount = 1;
+            this.kpiLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+
+            // pnlKpi (Adding white background and shadow)
+            this.pnlKpi1.FillColor = System.Drawing.Color.White;
+            this.pnlKpi1.BorderRadius = 10;
+            this.pnlKpi1.ShadowDecoration.Enabled = true;
+            this.pnlKpi1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlKpi1.Margin = new System.Windows.Forms.Padding(5);
+
+            this.pnlKpi2.FillColor = System.Drawing.Color.White;
+            this.pnlKpi2.BorderRadius = 10;
+            this.pnlKpi2.ShadowDecoration.Enabled = true;
+            this.pnlKpi2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlKpi2.Margin = new System.Windows.Forms.Padding(5);
+
+            this.pnlKpi3.FillColor = System.Drawing.Color.White;
+            this.pnlKpi3.BorderRadius = 10;
+            this.pnlKpi3.ShadowDecoration.Enabled = true;
+            this.pnlKpi3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlKpi3.Margin = new System.Windows.Forms.Padding(5);
+
+            this.pnlKpi4.FillColor = System.Drawing.Color.White;
+            this.pnlKpi4.BorderRadius = 10;
+            this.pnlKpi4.ShadowDecoration.Enabled = true;
+            this.pnlKpi4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlKpi4.Margin = new System.Windows.Forms.Padding(5);
+
+            // contentLayout
+            this.contentLayout.ColumnCount = 3;
+            this.contentLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.contentLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.contentLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34F));
+            this.contentLayout.Controls.Add(this.pnlPendingTasks, 0, 0);
+            this.contentLayout.Controls.Add(this.pnlQuickActions, 1, 0);
+            this.contentLayout.Controls.Add(this.pnlRecentApps, 2, 0);
+            this.contentLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.contentLayout.RowCount = 1;
+            this.contentLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 
             // pnlQuickActions
             this.pnlQuickActions.BorderRadius = 15;
