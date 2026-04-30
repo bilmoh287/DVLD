@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLDPresentationLayer.Main_Dashboard.User_Controls;
 
 namespace DVLDPresentationLayer
 {
@@ -40,6 +41,12 @@ namespace DVLDPresentationLayer
         {
             // Automatically load dashboard on startup
             btnDashboard_Click(null, null);
+        }
+
+        private void btnApplicants_Click(object sender, EventArgs e)
+        {
+            lblHeader.Text = "HELLO";
+            _LoadUserControl(new ucApplicants());
         }
     }
 }

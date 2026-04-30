@@ -204,6 +204,12 @@
     <Compile Include="frmUnderReview.Designer.cs">
       <DependentUpon>frmUnderReview.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main Dashboard\User Controls\ucApplicants.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main Dashboard\User Controls\ucApplicants.Designer.cs">
+      <DependentUpon>ucApplicants.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main Dashboard\User Controls\ucDashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -503,6 +509,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmUnderReview.resx">
       <DependentUpon>frmUnderReview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main Dashboard\User Controls\ucApplicants.resx">
+      <DependentUpon>ucApplicants.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main Dashboard\User Controls\ucDashboard.resx">
       <DependentUpon>ucDashboard.cs</DependentUpon>
