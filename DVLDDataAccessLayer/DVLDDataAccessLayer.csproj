@@ -67,6 +67,13 @@
     <Compile Include="DTOs\AttendanceDTO.cs" />
     <Compile Include="DTOs\DrivingInstituteDTO.cs" />
     <Compile Include="DTOs\TrainingBatchDTO.cs" />
+    <Compile Include="DTOs\LoginRequestDTO.cs" />
+    <Compile Include="DTOs\RegisterApplicantDTO.cs" />
+    <Compile Include="DTOs\AuthResponseDTO.cs" />
+    <Compile Include="DTOs\NewApplicationRequestDTO.cs" />
+    <Compile Include="DTOs\ApplicationStatusResponseDTO.cs" />
+    <Compile Include="DTOs\TestScheduleRequestDTO.cs" />
+    <Compile Include="DTOs\LicenseClassDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -28,7 +28,7 @@ namespace DVLDREST_API.Controllers
             }
 
             // Find user in the business layer
-            clsUser user = clsUser.FindByUsernameAndPassword(loginRequest.Username, loginRequest.Password);
+            clsUser user = clsUser.FindByUserNameAndPassword(loginRequest.Username, loginRequest.Password);
 
             if (user == null || !user.IsActive)
             {
@@ -48,6 +48,58 @@ namespace DVLDREST_API.Controllers
         }
 
         // Generate JWT Token
+        [HttpPost("register")]
+        public IActionResult Register([FromBody] RegisterApplicantDTO registerRequest)
+        {
+            if (registerRequest == null) return BadRequest("Invalid request.");
+
+            // Check if person already exists by NationalNo
+            if (clsPerson.IsPersonExist(registerRequest.NationalNo))
+            {
+                return Conflict("A person with this National Number already exists.");
+            }
+
+            // 1. Create Person
+            clsPerson person = new clsPerson();
+            person.NationalNo = registerRequest.NationalNo;
+            person.FirstName = registerRequest.FirstName;
+            person.SecondName = registerRequest.SecondName;
+            person.ThirdName = registerRequest.ThirdName;
+            person.LastName = registerRequest.LastName;
+            person.DateOfBirth = registerRequest.DateOfBirth;
+            person.Gender = registerRequest.Gender;
+            person.Address = registerRequest.Address;
+            person.Phone = registerRequest.Phone;
+            person.Email = registerRequest.Email;
+            person.CountryID = registerRequest.NationalityCountryID;
+            person.ImagePath = registerRequest.ImagePath;
+
+            if (!person.Save())
+            {
+                return StatusCode(500, "Error occurred while saving person details.");
+            }
+
+            // 2. Create User Account
+            clsUser user = new clsUser();
+            user.PersonID = person.PersonID;
+            user.UserName = registerRequest.NationalNo; // Using NationalNo as default username
+            user.SetPassword(registerRequest.Password);
+            user.IsActive = true;
+
+            if (!user.Save())
+            {
+                // Rollback person creation? (Optional for this simplified logic)
+                return StatusCode(500, "Error occurred while creating user account.");
+            }
+
+            // 3. Generate Token and Respond
+            string role = "Applicant";
+            var token = GenerateJwtToken(user, role);
+            var response = new AuthResponseDTO(token, user.UserID, user.PersonID, person.FullName, role);
+
+            return Ok(response);
+        }
+
         private string GenerateJwtToken(clsUser user, string role)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
