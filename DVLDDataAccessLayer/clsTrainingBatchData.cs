@@ -256,7 +256,7 @@ namespace DVLDDataAccessLayer
                                  INNER JOIN LicenseClasses C ON L.LicenseClassID = C.LicenseClassID
                                  INNER JOIN People P ON A.ApplicantPersonID = P.PersonID
                                  INNER JOIN Enrollments E ON A.ApplicantPersonID = E.PersonID
-                                 WHERE A.ApplicationStatus = 3 
+                                 WHERE A.ApplicationStatus = 4 -- Approved
                                  AND E.InstituteID = @InstituteID
                                  AND A.ApplicationID NOT IN (SELECT ApplicationID FROM ApplicantBatch)";
 

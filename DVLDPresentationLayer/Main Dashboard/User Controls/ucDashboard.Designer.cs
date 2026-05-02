@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucDashboard));
-            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panelQuickActions = new System.Windows.Forms.Panel();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.button5 = new System.Windows.Forms.Button();
@@ -63,7 +62,9 @@
             this.lblNewBaches = new System.Windows.Forms.Label();
             this.lblActiveBatches = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2CircleProgressBar1 = new Guna.UI2.WinForms.Guna2CircleProgressBar();
             this.panelQuickActions.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -74,17 +75,6 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
-            // 
-            // guna2HtmlLabel2
-            // 
-            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(27, 27);
-            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(143, 39);
-            this.guna2HtmlLabel2.TabIndex = 27;
-            this.guna2HtmlLabel2.Text = "Dashborad";
             // 
             // panelQuickActions
             // 
@@ -99,10 +89,10 @@
             this.panelQuickActions.Controls.Add(this.btnNewApplicant);
             this.panelQuickActions.Controls.Add(this.guna2HtmlLabel4);
             this.panelQuickActions.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelQuickActions.Location = new System.Drawing.Point(416, 290);
+            this.panelQuickActions.Location = new System.Drawing.Point(471, 322);
             this.panelQuickActions.Margin = new System.Windows.Forms.Padding(4);
             this.panelQuickActions.Name = "panelQuickActions";
-            this.panelQuickActions.Size = new System.Drawing.Size(494, 277);
+            this.panelQuickActions.Size = new System.Drawing.Size(525, 270);
             this.panelQuickActions.TabIndex = 26;
             // 
             // guna2HtmlLabel3
@@ -121,10 +111,10 @@
             this.button5.FlatAppearance.BorderSize = 2;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(26, 175);
+            this.button5.Location = new System.Drawing.Point(26, 164);
             this.button5.Name = "button5";
             this.button5.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.button5.Size = new System.Drawing.Size(133, 78);
+            this.button5.Size = new System.Drawing.Size(151, 78);
             this.button5.TabIndex = 5;
             this.button5.Text = "Schudule Test";
             this.button5.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -136,10 +126,10 @@
             this.button4.FlatAppearance.BorderSize = 2;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(180, 175);
+            this.button4.Location = new System.Drawing.Point(188, 164);
             this.button4.Name = "button4";
             this.button4.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.button4.Size = new System.Drawing.Size(133, 78);
+            this.button4.Size = new System.Drawing.Size(151, 78);
             this.button4.TabIndex = 4;
             this.button4.Text = "Renew License";
             this.button4.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -151,10 +141,10 @@
             this.button3.FlatAppearance.BorderSize = 2;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(336, 175);
+            this.button3.Location = new System.Drawing.Point(350, 164);
             this.button3.Name = "button3";
             this.button3.Padding = new System.Windows.Forms.Padding(7, 0, 0, 6);
-            this.button3.Size = new System.Drawing.Size(133, 78);
+            this.button3.Size = new System.Drawing.Size(151, 78);
             this.button3.TabIndex = 3;
             this.button3.Text = "Find Person";
             this.button3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -166,10 +156,10 @@
             this.button2.FlatAppearance.BorderSize = 2;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(336, 80);
+            this.button2.Location = new System.Drawing.Point(350, 80);
             this.button2.Name = "button2";
             this.button2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.button2.Size = new System.Drawing.Size(133, 78);
+            this.button2.Size = new System.Drawing.Size(151, 78);
             this.button2.TabIndex = 2;
             this.button2.Text = "Issue License";
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -181,10 +171,10 @@
             this.button1.FlatAppearance.BorderSize = 2;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(180, 80);
+            this.button1.Location = new System.Drawing.Point(188, 80);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.button1.Size = new System.Drawing.Size(133, 78);
+            this.button1.Size = new System.Drawing.Size(151, 78);
             this.button1.TabIndex = 1;
             this.button1.Text = "New Application";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -199,7 +189,7 @@
             this.btnNewApplicant.Location = new System.Drawing.Point(26, 80);
             this.btnNewApplicant.Name = "btnNewApplicant";
             this.btnNewApplicant.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.btnNewApplicant.Size = new System.Drawing.Size(133, 78);
+            this.btnNewApplicant.Size = new System.Drawing.Size(151, 78);
             this.btnNewApplicant.TabIndex = 0;
             this.btnNewApplicant.Text = "New Applicant";
             this.btnNewApplicant.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -211,9 +201,9 @@
             this.guna2HtmlLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel4.Location = new System.Drawing.Point(17, 36);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(459, 27);
+            this.guna2HtmlLabel4.Size = new System.Drawing.Size(483, 27);
             this.guna2HtmlLabel4.TabIndex = 7;
-            this.guna2HtmlLabel4.Text = "______________________________________";
+            this.guna2HtmlLabel4.Text = "________________________________________";
             // 
             // panel5
             // 
@@ -225,7 +215,7 @@
             this.panel5.Controls.Add(this.label5);
             this.panel5.Controls.Add(this.label6);
             this.panel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel5.Location = new System.Drawing.Point(1095, 125);
+            this.panel5.Location = new System.Drawing.Point(1098, 167);
             this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(312, 116);
@@ -297,7 +287,7 @@
             this.panel2.Controls.Add(this.lblNewStudents);
             this.panel2.Controls.Add(this.lblTotalCapacity);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(383, 125);
+            this.panel2.Location = new System.Drawing.Point(386, 167);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(312, 116);
@@ -370,7 +360,7 @@
             this.panel3.Controls.Add(this.lblStartingSoon);
             this.panel3.Controls.Add(this.label8);
             this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel3.Location = new System.Drawing.Point(739, 125);
+            this.panel3.Location = new System.Drawing.Point(742, 167);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(312, 116);
@@ -442,7 +432,7 @@
             this.panel4.Controls.Add(this.lblNewBaches);
             this.panel4.Controls.Add(this.lblActiveBatches);
             this.panel4.Controls.Add(this.label4);
-            this.panel4.Location = new System.Drawing.Point(27, 125);
+            this.panel4.Location = new System.Drawing.Point(30, 167);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(312, 116);
@@ -504,29 +494,66 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Active Batches";
             // 
-            // guna2HtmlLabel1
+            // guna2HtmlLabel5
             // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(27, 74);
-            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(353, 25);
-            this.guna2HtmlLabel1.TabIndex = 21;
-            this.guna2HtmlLabel1.Text = "Welcome Back! Hear is what happening today";
+            this.guna2HtmlLabel5.AutoSize = false;
+            this.guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel5.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel5.Location = new System.Drawing.Point(30, 34);
+            this.guna2HtmlLabel5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
+            this.guna2HtmlLabel5.Size = new System.Drawing.Size(300, 39);
+            this.guna2HtmlLabel5.TabIndex = 29;
+            this.guna2HtmlLabel5.Text = "Dashboard";
+            // 
+            // guna2HtmlLabel6
+            // 
+            this.guna2HtmlLabel6.AutoSize = false;
+            this.guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel6.Location = new System.Drawing.Point(30, 81);
+            this.guna2HtmlLabel6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.guna2HtmlLabel6.Name = "guna2HtmlLabel6";
+            this.guna2HtmlLabel6.Size = new System.Drawing.Size(500, 25);
+            this.guna2HtmlLabel6.TabIndex = 28;
+            this.guna2HtmlLabel6.Text = "Welcome Back! Hear is what happening today";
+            // 
+            // guna2CircleProgressBar1
+            // 
+            this.guna2CircleProgressBar1.Animated = true;
+            this.guna2CircleProgressBar1.Backwards = true;
+            this.guna2CircleProgressBar1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+            this.guna2CircleProgressBar1.FillThickness = 8;
+            this.guna2CircleProgressBar1.Font = new System.Drawing.Font("Segoe UI Semibold", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2CircleProgressBar1.ForeColor = System.Drawing.Color.Black;
+            this.guna2CircleProgressBar1.Location = new System.Drawing.Point(67, 322);
+            this.guna2CircleProgressBar1.Minimum = 0;
+            this.guna2CircleProgressBar1.Name = "guna2CircleProgressBar1";
+            this.guna2CircleProgressBar1.ProgressColor = System.Drawing.Color.Purple;
+            this.guna2CircleProgressBar1.ProgressColor2 = System.Drawing.Color.Magenta;
+            this.guna2CircleProgressBar1.ProgressEndCap = System.Drawing.Drawing2D.LineCap.RoundAnchor;
+            this.guna2CircleProgressBar1.ProgressStartCap = System.Drawing.Drawing2D.LineCap.Round;
+            this.guna2CircleProgressBar1.ProgressThickness = 7;
+            this.guna2CircleProgressBar1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2CircleProgressBar1.ShowText = true;
+            this.guna2CircleProgressBar1.Size = new System.Drawing.Size(173, 173);
+            this.guna2CircleProgressBar1.TabIndex = 30;
+            this.guna2CircleProgressBar1.Text = "guna2CircleProgressBar1";
+            this.guna2CircleProgressBar1.Value = 75;
             // 
             // ucDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.guna2HtmlLabel2);
+            this.Controls.Add(this.guna2CircleProgressBar1);
+            this.Controls.Add(this.guna2HtmlLabel5);
+            this.Controls.Add(this.guna2HtmlLabel6);
             this.Controls.Add(this.panelQuickActions);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.guna2HtmlLabel1);
             this.Name = "ucDashboard";
             this.Size = new System.Drawing.Size(1427, 712);
             this.panelQuickActions.ResumeLayout(false);
@@ -544,13 +571,10 @@
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private System.Windows.Forms.Panel panelQuickActions;
         private System.Windows.Forms.Button btnNewApplicant;
         private System.Windows.Forms.Panel panel5;
@@ -573,7 +597,6 @@
         private System.Windows.Forms.Label lblNewBaches;
         private System.Windows.Forms.Label lblActiveBatches;
         private System.Windows.Forms.Label label4;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel6;
@@ -585,5 +608,8 @@
         private System.Windows.Forms.Button button1;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
+        private Guna.UI2.WinForms.Guna2CircleProgressBar guna2CircleProgressBar1;
     }
 }

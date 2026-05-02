@@ -216,6 +216,12 @@
     <Compile Include="Main Dashboard\User Controls\ucDashboard.Designer.cs">
       <DependentUpon>ucDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main Dashboard\User Controls\ucDashboard2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main Dashboard\User Controls\ucDashboard2.Designer.cs">
+      <DependentUpon>ucDashboard2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Schools Dashboard\Forms\frmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
