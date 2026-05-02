@@ -52,16 +52,21 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
 
             lblBatchName.Text = batch.BatchName;
 
+            // Stop the grid from creating random extra columns
+            dgvAttendance.AutoGenerateColumns = false;
+
+            // Link your manual columns to the Data fields
+            dgvAttendance.Columns["ApplicationID"].DataPropertyName = "ApplicationID";
+            dgvAttendance.Columns["FullName"].DataPropertyName = "FullName";
+            dgvAttendance.Columns["ClassName"].DataPropertyName = "ClassName";
+
             DataTable dtStudents = batch.GetApplicants();
             dgvAttendance.DataSource = dtStudents;
 
-            if (dgvAttendance.Columns.Count > 0)
-            {
-                if (dgvAttendance.Columns["ApplicationID"] != null) dgvAttendance.Columns["ApplicationID"].Visible = false;
-                if (dgvAttendance.Columns["FullName"] != null) dgvAttendance.Columns["FullName"].Visible = true;
-                if (dgvAttendance.Columns["ClassName"] != null) dgvAttendance.Columns["ClassName"].Visible = true;
-                if (dgvAttendance.Columns["IsPresent"] != null) dgvAttendance.Columns["IsPresent"].Visible = true;
-            }
+            // Show only the columns we want
+            dgvAttendance.Columns["FullName"].Visible = true;
+            dgvAttendance.Columns["ClassName"].Visible = true;
+            dgvAttendance.Columns["IsPresent"].Visible = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

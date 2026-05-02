@@ -173,8 +173,8 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
             this.dgvAttendance.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvAttendance.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvAttendance.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAttendance.ThemeStyle.HeaderStyle.Height = 4;
-            this.dgvAttendance.ThemeStyle.ReadOnly = true;
+            this.dgvAttendance.ThemeStyle.HeaderStyle.Height = 40;
+            this.dgvAttendance.ThemeStyle.ReadOnly = false;
             this.dgvAttendance.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(252)))));
             this.dgvAttendance.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvAttendance.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -228,8 +228,8 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
             this.IsPresent.HeaderText = "Present?";
             this.IsPresent.MinimumWidth = 6;
             this.IsPresent.Name = "IsPresent";
-            this.IsPresent.ReadOnly = true;
-            this.IsPresent.Visible = false;
+            this.IsPresent.ReadOnly = false;
+            this.IsPresent.Visible = true;
             // 
             // panel1
             // 
