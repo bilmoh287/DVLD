@@ -1,6 +1,6 @@
-namespace DVLDPresentationLayer.Schools_Dashboard.Forms
+﻿namespace DVLDPresentationLayer.Schools_Dashboard.Forms
 {
-    partial class frmTakeAttendance
+    partial class frmAttendance
     {
         /// <summary>
         /// Required designer variable.
@@ -28,43 +28,40 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
-            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.panelHeader = new System.Windows.Forms.Panel();
             this.lblTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.dtpAttendanceDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblBatchName = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.dtpAttendanceDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.dgvAttendance = new Guna.UI2.WinForms.Guna2DataGridView();
             this.ApplicationID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsPresent = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.panelHeader = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).BeginInit();
             this.panelHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // guna2BorderlessForm1
+            // panelHeader
             // 
-            this.guna2BorderlessForm1.BorderRadius = 15;
-            this.guna2BorderlessForm1.ContainerControl = this;
-            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2BorderlessForm1.ShadowColor = System.Drawing.Color.DimGray;
-            this.guna2BorderlessForm1.TransparentWhileDrag = true;
-            // 
-            // guna2DragControl1
-            // 
-            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl1.UseTransparentDrag = true;
+            this.panelHeader.Controls.Add(this.lblTitle);
+            this.panelHeader.Controls.Add(this.btnClose);
+            this.panelHeader.Controls.Add(this.dtpAttendanceDate);
+            this.panelHeader.Controls.Add(this.guna2HtmlLabel1);
+            this.panelHeader.Controls.Add(this.lblBatchName);
+            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelHeader.Location = new System.Drawing.Point(0, 0);
+            this.panelHeader.Name = "panelHeader";
+            this.panelHeader.Size = new System.Drawing.Size(994, 55);
+            this.panelHeader.TabIndex = 8;
             // 
             // lblTitle
             // 
@@ -76,6 +73,28 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
             this.lblTitle.Size = new System.Drawing.Size(235, 33);
             this.lblTitle.TabIndex = 1;
             this.lblTitle.Text = "Take Daily Attendance";
+            // 
+            // btnClose
+            // 
+            this.btnClose.Image = global::DVLDPresentationLayer.Properties.Resources.Close_32;
+            this.btnClose.Location = new System.Drawing.Point(942, 3);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(44, 38);
+            this.btnClose.TabIndex = 0;
+            this.btnClose.UseVisualStyleBackColor = true;
+            // 
+            // dtpAttendanceDate
+            // 
+            this.dtpAttendanceDate.Checked = true;
+            this.dtpAttendanceDate.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtpAttendanceDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtpAttendanceDate.Location = new System.Drawing.Point(702, 6);
+            this.dtpAttendanceDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpAttendanceDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpAttendanceDate.Name = "dtpAttendanceDate";
+            this.dtpAttendanceDate.Size = new System.Drawing.Size(100, 38);
+            this.dtpAttendanceDate.TabIndex = 4;
+            this.dtpAttendanceDate.Value = new System.DateTime(2026, 5, 2, 15, 17, 49, 118);
             // 
             // guna2HtmlLabel1
             // 
@@ -98,19 +117,6 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
             this.lblBatchName.Size = new System.Drawing.Size(135, 33);
             this.lblBatchName.TabIndex = 3;
             this.lblBatchName.Text = "Batch Name:";
-            // 
-            // dtpAttendanceDate
-            // 
-            this.dtpAttendanceDate.Checked = true;
-            this.dtpAttendanceDate.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dtpAttendanceDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtpAttendanceDate.Location = new System.Drawing.Point(702, 6);
-            this.dtpAttendanceDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpAttendanceDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtpAttendanceDate.Name = "dtpAttendanceDate";
-            this.dtpAttendanceDate.Size = new System.Drawing.Size(100, 38);
-            this.dtpAttendanceDate.TabIndex = 4;
-            this.dtpAttendanceDate.Value = new System.DateTime(2026, 5, 2, 15, 17, 49, 118);
             // 
             // dgvAttendance
             // 
@@ -143,14 +149,14 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
             this.dgvAttendance.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvAttendance.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvAttendance.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(230)))), ((int)(((byte)(251)))));
-            this.dgvAttendance.Location = new System.Drawing.Point(0, 0);
+            this.dgvAttendance.Location = new System.Drawing.Point(0, 55);
             this.dgvAttendance.Name = "dgvAttendance";
             this.dgvAttendance.ReadOnly = true;
             this.dgvAttendance.RowHeadersVisible = false;
             this.dgvAttendance.RowHeadersWidth = 51;
             this.dgvAttendance.RowTemplate.Height = 40;
-            this.dgvAttendance.Size = new System.Drawing.Size(989, 600);
-            this.dgvAttendance.TabIndex = 6;
+            this.dgvAttendance.Size = new System.Drawing.Size(994, 531);
+            this.dgvAttendance.TabIndex = 9;
             this.dgvAttendance.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.LightBlue;
             this.dgvAttendance.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
             this.dgvAttendance.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -209,29 +215,15 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
             this.IsPresent.ReadOnly = true;
             this.IsPresent.Visible = false;
             // 
-            // panelHeader
-            // 
-            this.panelHeader.Controls.Add(this.lblTitle);
-            this.panelHeader.Controls.Add(this.btnClose);
-            this.panelHeader.Controls.Add(this.dtpAttendanceDate);
-            this.panelHeader.Controls.Add(this.guna2HtmlLabel1);
-            this.panelHeader.Controls.Add(this.lblBatchName);
-            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelHeader.Location = new System.Drawing.Point(0, 0);
-            this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(989, 55);
-            this.panelHeader.TabIndex = 7;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 558);
+            this.panel1.Location = new System.Drawing.Point(0, 544);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(989, 42);
-            this.panel1.TabIndex = 8;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panel1.Size = new System.Drawing.Size(994, 42);
+            this.panel1.TabIndex = 10;
             // 
             // btnSave
             // 
@@ -244,12 +236,11 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
             this.btnSave.FillColor = System.Drawing.Color.White;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(674, 3);
+            this.btnSave.Location = new System.Drawing.Point(900, 5);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(92, 34);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Save";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -262,42 +253,25 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
             this.btnCancel.FillColor = System.Drawing.Color.White;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Black;
-            this.btnCancel.Location = new System.Drawing.Point(562, 3);
+            this.btnCancel.Location = new System.Drawing.Point(788, 5);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(92, 34);
             this.btnCancel.TabIndex = 0;
             this.btnCancel.Text = "cancel";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // btnClose
+            // frmAttendance
             // 
-            this.btnClose.Image = global::DVLDPresentationLayer.Properties.Resources.Close_32;
-            this.btnClose.Location = new System.Drawing.Point(942, 3);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(44, 38);
-            this.btnClose.TabIndex = 0;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // frmTakeAttendance
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(989, 600);
+            this.ClientSize = new System.Drawing.Size(994, 586);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.dgvAttendance);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "frmTakeAttendance";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmTakeAttendance";
-            this.Load += new System.EventHandler(this.frmTakeAttendance_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).EndInit();
+            this.Controls.Add(this.panelHeader);
+            this.Name = "frmAttendance";
+            this.Text = "frmAttendance";
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -305,21 +279,19 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
-        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
-        private System.Windows.Forms.Button btnClose;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lblTitle;
         private System.Windows.Forms.Panel panelHeader;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblTitle;
+        private System.Windows.Forms.Button btnClose;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpAttendanceDate;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblBatchName;
         private Guna.UI2.WinForms.Guna2DataGridView dgvAttendance;
-        private System.Windows.Forms.Panel panel1;
-        private Guna.UI2.WinForms.Guna2Button btnCancel;
         private System.Windows.Forms.DataGridViewTextBoxColumn ApplicationID;
         private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClassName;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsPresent;
+        private System.Windows.Forms.Panel panel1;
         private Guna.UI2.WinForms.Guna2Button btnSave;
+        private Guna.UI2.WinForms.Guna2Button btnCancel;
     }
 }

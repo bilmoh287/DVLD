@@ -222,6 +222,12 @@
     <Compile Include="Main Dashboard\User Controls\ucDashboard2.Designer.cs">
       <DependentUpon>ucDashboard2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Schools Dashboard\Forms\frmAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Schools Dashboard\Forms\frmAttendance.Designer.cs">
+      <DependentUpon>frmAttendance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Schools Dashboard\Forms\frmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -527,6 +533,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main Dashboard\User Controls\ucDashboard.resx">
       <DependentUpon>ucDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schools Dashboard\Forms\frmAttendance.resx">
+      <DependentUpon>frmAttendance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Schools Dashboard\Forms\frmDashboard.resx">
       <DependentUpon>frmDashboard.cs</DependentUpon>
