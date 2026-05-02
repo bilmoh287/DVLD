@@ -22,7 +22,7 @@ namespace DVLDDataAccessLayer
                 LEFT JOIN Applications A ON L.ApplicationID = A.ApplicationID
                 LEFT JOIN ApplicantBatch AB ON A.ApplicationID = AB.ApplicationID
                 LEFT JOIN TrainingBatches B ON AB.TrainingBatchID = B.TrainingBatchID
-                ORDER BY V.ApplicationDate DESC;";
+                ORDER BY V.ApplicationDate DESC, V.LocalDrivingLicenseApplicationID DESC;";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
