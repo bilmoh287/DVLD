@@ -1,0 +1,3153 @@
+I 
+ 
+                        
+Adama Science and Technology University 
+School of Electrical Engineering and Computing 
+Department of Computer Science and 
+Engineering 
+ 
+PROJECT TITLE: 
+Driving and Vehicles License Department Management 
+System (DVLD) 
+ 
+ 
+ 
+ 
+ 
+II 
+ 
+DECLARATION 
+We declare that this project is the result of our own original work carried out as students of Adama 
+Science and Technology University, College of Electrical Engineering and Computing, in the 
+Department of Computer Science and Engineering. All information,  analyses, designs, and 
+implementations presented in this project are our independent efforts and have not been submitted 
+to any other institution for academic credit. Any materials, data, ideas, or references obtained from 
+other sources have been properly acknowledged and cited in accordance with academic and ethical 
+standards. 
+  NO. Student name  Id no. Signature 
+1 Bilal Mohammedhasen UGR/25886/14  
+2 Newal Hussen  UGR/25353/14  
+3 Multezem Mohammed UGR/25515/14  
+4 Eman Mohammed  UGR/25589/14  
+5 Eyob Tesfaye UGR/25361/14  
+ 
+Date of Submission: January 1, 2026 
+This project has been submission for examination with my approval as a university advisor. 
+Advisor Name: Ins. Mesfin Dagne            
+Signature:___________________ III 
+ 
+Contents 
+List of tables............................................................................................................................................... VI 
+Chapter 1: Introduction ............................................................................................................................. 1 
+1.1. Introduction ..................................................................................................................................... 1 
+1.2. Background of the Project .............................................................................................................. 1 
+1.3. Statement of the Problem ................................................................................................................ 2 
+1.4. Objective of the Project ................................................................................................................... 3 
+1.4.1. General Objectives ................................................................................................................... 3 
+1.4.2. Specific Objectives .................................................................................................................... 3 
+1.5. Scope and Limitation ....................................................................................................................... 4 
+1.5.1. Scope of the Project .................................................................................................................. 4 
+1.5.2. Limitations of the Project ........................................................................................................ 4 
+1.6. Deliverables ...................................................................................................................................... 5 
+1.7. Feasibility Study .............................................................................................................................. 5 
+1.7.1. Technical Feasibility .................................................................................................................. 5 
+1.7.2. Operational Feasibility ............................................................................................................ 6 
+1.7.3. Economic Feasibility ................................................................................................................ 6 
+1.8. Significance of the Project............................................................................................................... 6 
+1.9. Beneficiaries of the project ............................................................................................................. 7 
+1.10. Methodology ................................................................................................................................... 7 
+1.11. Development tools .......................................................................................................................... 8 
+1.12. Required resources with cost ........................................................................................................ 8 
+1.13. Task and Schedule ....................................................................................................................... 8 
+1.14. Team Composition ......................................................................................................................... 9 
+Chapter 2: Description of Existing System and Literature Review ..................................................... 10 
+2.1. Major Function of Existing System .............................................................................................. 10 IV 
+ 
+2.2. Users of the Current System ......................................................................................................... 12 
+2.3.  Drawbacks of the Current System .............................................................................................. 13 
+2.4. Literature Review .......................................................................................................................... 16 
+Chapter 3: Proposed System Documentation ......................................................................................... 20 
+3.1 Overview .......................................................................................................................................... 20 
+3.2 Functional Requirements ............................................................................................................... 20 
+3.2.1 Applicant (Mobile App) .......................................................................................................... 20 
+3.2.2 Driving School and DVLD Administrator (desktop app) .................................................... 21 
+3.2.3 System Services (Shared) ........................................................................................................ 21 
+3.3 Non-Functional Requirements ...................................................................................................... 22 
+3.4. System model.................................................................................................................................. 23 
+3.4.1 Scenarios .................................................................................................................................. 23 
+3.4.2. Use case model ........................................................................................................................ 29 
+3.5. Object Model .................................................................................................................................. 60 
+3.5.1. Data Dictionary ........................................................................................................................ 60 
+3.5.2. Class diagram ......................................................................................................................... 66 
+3.6. Dynamic model .......................................................................................................................... 67 
+3.6.1. Sequence diagram .................................................................................................................. 67 
+3.6.2. Activity diagram ....................................................................................................................... 73 
+3.6.3. State chart diagram ................................................................................................................... 84 
+Chapter 4: System design ......................................................................................................................... 92 
+4.1. Overview ......................................................................................................................................... 92 
+4.2. Purpose of the System Design ....................................................................................................... 93 
+4.3. Design Goals ................................................................................................................................... 94 
+4.4. Proposed System Architecture ..................................................................................................... 95 
+4.5. Subsystem Decomposition ............................................................................................................. 97 V 
+ 
+4.6. Subsystem Description .................................................................................................................. 98 
+2. Applicant and Application Management Subsystem ..................................................................... 99 
+3. Driving School and Training Management Subsystem ................................................................ 100 
+4. Test Management Subsystem ....................................................................................................... 101 
+5. License Management Subsystem ................................................................................................. 101 
+4.7. Persistent Data Management ...................................................................................................... 102 
+4.7.1 Data Storage Approach ........................................................................................................... 102 
+4.7.2 Core Data Entities ................................................................................................................... 102 
+4.7.3 Data Access and Retrieval ....................................................................................................... 103 
+4.7.4 Data Security and Access Control ........................................................................................... 103 
+4.7.5 Data Maintenance and Scalability ........................................................................................... 103 
+4.8. Component Diagram ................................................................................................................... 104 
+Main System Components ............................................................................................................. 104 
+Component Interaction and Dependencies .................................................................................. 106 
+4.9. Database Diagram ....................................................................................................................... 108 
+4.9.1. Entities and Attributes ......................................................................................................... 108 
+4.10. Access Control ............................................................................................................................ 112 
+Chapter 5: Implementation .................................................................................................................... 115 
+5.1. Overview ....................................................................................................................................... 115 
+5.2 Coding Standard ........................................................................................................................... 115 
+5.2.1 Naming Conventions ............................................................................................................. 116 
+5.2.2 Code Structure and Organization ........................................................................................ 116 
+5.2.3 Documentation Practices ...................................................................................................... 117 
+5.2.4 Security Best Practices .......................................................................................................... 117 
+5.3 Development Tools ....................................................................................................................... 118 
+5.4 Prototype ....................................................................................................................................... 120 VI 
+ 
+5.5 Implementation Detail .................................................................................................................. 122 
+5.5.1 Client-Side Implementation.................................................................................................. 122 
+5.5.2 Server-Side Implementation .................................................................................................... 128 
+References ........................................................................................................................................... 135 
+ 
+ACRONYM 
+ASTU : Adama Science and Technology University 
+DVLD : Driving and Vehicle License Department 
+UI/UX : User Interface / User Experience 
+API : Application Programming Interface 
+DBMS : Database Management System 
+SQL : Structured Query Language 
+IDE : Integrated Development Environment 
+UML : Unified Modeling Language 
+SDLC : Software Development Life Cycle 
+SRS : Software Requirements Specification 
+TCP/IP : Transmission Control Protocol / Internet Protocol 
+CRUD : Create, Read, Update, Delete 
+DBA : Database Administrator 
+API : Application Programming Interface 
+ASP.NET : Active Server Pages .NET 
+ADO.NET : ActiveX Data Objects .NET 
+.NET : Dot NET Framework 
+VS Code : Visual Studio Code 
+SQL Server : Structured Query Language Server 
+RDBMS : Relational Database Management System 
+RBAC : Role-Based Access Control 
+ VII 
+ 
+ABSTRACT 
+The Driving and Vehicle License Department (DVLD) Management System is developed to 
+modernize and automate the traditionally manual driving license administration process. In many 
+regions, including Ethiopia, licensing services rely heavily on paper -based procedures, physical 
+visits, and fragmented record management, which result in long processing times, data 
+inconsistency, limited transparency, and high operational workload. These challenges negatively 
+affect applicants, driving schools, and DVLD administ rative staff, creating a strong need for a 
+centralized and efficient digital solution. 
+This project proposes a secure, scalable, and integrated DVLD Management System that connects 
+applicants, driving schools, and DVLD authorities through a unified digital platform. The system 
+provides a mobile application for applicants and a desktop -based application for driving schools 
+and DVLD staff, enabling online registration, application tracking, document management, 
+automated scheduling, and notification services. Developed using a three -tier architecture and 
+modern technologies such as C#, .NET, Flutter, and SQL Server, the system ensures data security 
+through Role-Based Access Control (RBAC) and centralized database management. The proposed 
+solution enhances efficiency, reduces manual errors, improves service transparency, and supports 
+future expansion toward comprehensive e-government services. 
+ACKNOWLEDGEMENT 
+First and foremost, we thank Almighty God for granting us the strength, guidance, wisdom, and 
+perseverance required to successfully complete this project. We would also like to express our 
+sincere gratitude to our project advisor, Instructor Mesfin Dagne, for his continuous guidance, 
+constructive feedback, and dedicated support throughout the development of this project. In 
+addition, we extend our appreciation to the faculty members and staff of the Department of 
+Computer Science and Engineering and Softw are Engineering for providing the necessary 
+academic resources and technical assistance. Finally, we thank our classmates, peers, and friends 
+for their encouragement, cooperation, and valuable support, which greatly contributed to the 
+successful completion of this project. 
+ VIII 
+ 
+List of tables 
+Table 1: Team composition……………………………………………………………………...9 
+Table 2: Applicant data dictionary….………………………………………………………….60 
+Table 3: Document data dictionary…………………………………………………………….61 
+Table 4: Driving Institute data dictionary…..………………………………………………….61 
+Table 5: Application data dictionary……..…………………………………………………….62 
+Table 6: Application type data dictionary…..………………………………………………….62 
+Table 7: Exam data dictionary…………………………...……………………………………..63 
+Table 8: Licence data dictionary……………………………………………………………….63 
+Table 9: Notification data dictionary…………………..……………………………………….64 
+Table 10: Fraud check data dictionary…………………………………………………………64 
+Table 11: Compliant data dictionary…………………………………………………………...65 
+Table 12: Entities and Attribute……………………………………………………..………..108 
+ 
+List of figures 
+Figure 1: Use Case Diagram…………………………………………………………………..31 
+Figure 2: Class Diagram of DVLD Management System…………………………………….66 
+Figure 3: Sequence diagram of Applicant Registration……………………………………….68    
+Figure 4: Sequence diagram of Applicant Update Profile……………………………………..68 
+Figure 5: Sequence diagram of Receive Test Result……….……………………………….…69 
+Figure 6: Sequence diagram Stuff Review Application………………..…………………..….69 
+Figure 7: Sequence diagram of UpdateTest Result…………….…….…………………….….70 
+Figure 8: Sequence diagram of Staff Manages User……………………………………….…70 
+Figure 9: Sequence diagram of System send Exam reminder notification……..…………..…71 
+Figure 10: Sequence diagram of License Renew Process..………….……………………..…71 
+Figure 11: Sequence diagram of Damaged and Lost……...……………………………..……72 
+Figure 12: Sequence diagram of Detained License Process…………………………..………72 
+Figure 13: Sequence diagram of Release Detained License……...….………………………..73 
+Figure 14: Account Registration and Account Creation………..………………..……………74 
+Figure 15: Activity diagram of Profile Compilation………...……………….………………..75 
+Figure 16: Activity diagram of Apply for New Driving License………....….………………..76 
+Figure 17: Activity diagram of Vision Test Process...………………..………………………..77 
+Figure 18: Activity diagram of WrittenTest Process……………………………………..……78 
+Figure 19: Activity diagram of StreetTest Process………….……….……………………..….79 
+Figure 20: Activity diagram of Handling User Complaints…………………………………...80 
+Figure 21: Activity diagram of Automated exam reminder generation……………………….80 
+Figure 22: Activity diagram of Renewal/ lost/ damaged licence application…………………81 IX 
+ 
+Figure 23: Activity diagram of International licence application……………………………..82 
+Figure 24: Activity diagram of Licence detainment and release process……………………...83 
+Figure 25: State chart diagram of user registration process……………………………………85 
+Figure 26: State chart diagram of profile completion and document upload………………….86 
+Figure 27: State chart diagram of driving licence application…………………………………87 
+Figure 28: State chart diagram of exam scheduling and completion…………………………..88 
+Figure 29: State chart diagram of international licence application…………………………...89 
+Figure 30: State chart diagram of Renewal/ lost/ damaged licence application……………….90 
+Figure 31: State chart diagram of Licence detainment and release process……………………91 
+Figure 32: System Process Diagram…………………………………………………...………96 
+Figure 33: Component Diagram………………………………………………………...….....107 
+Figure 34: Database diagram…………………………………………………………………111 
+Figure 35: Login page design…………………………………………………………………121 
+Figure 36: Dashbord page design……………………………………………………………..121 
+Figure 37: Test Managmet page design………………………………………………………122 
+   
+  1 
+ 
+ Chapter 1: Introduction 
+1.1. Introduction 
+The Driving and Vehicle License Department (DVLD) Management System is intended to 
+streamline and computerize the formerly manual processes of driving license issuances, driving 
+schools and communication with the applicants.  The project unveils a more centralized and 
+organized digital platform bringing together an administrative system based on desktops and 
+mobile access by the applicants. 
+The system allows applicants to apply, monitor application status, and get notifications as well as 
+handle license-related services through a mobile -based application. A desktop based system is 
+used by driving schools and DVLD staff to run through registrations, training schedules, 
+examination and issuing of licenses.  The system provides adequate coordination between the 
+applicants, driving institutes, as well as the DVLD, by ensuring the existence of a centralized 
+database and a standardized workflow. 
+The DVLD Management System enhances efficiency, transparency, and service delivery by 
+automating scheduling and notifications and reducing manual paperwork and imposing structured 
+business rules. The project helps to continue enhancing the digital transformation processes in the 
+administration and maintain the security of the work as it offers a scalable, secure and user-friendly 
+solution to address driving license operations. 
+1.2. Background of the Project 
+In most areas, driving license administration remains in the manual systems by use of physical 
+documents, physical application and disjointed record storage systems across multiple offices and 
+driving schools. This has a tendency of making applicants wait a lot, visit several times and have 
+less visibility of the progress of the applications.  Driving schools also have independent records 
+that are not always aligned with the DVLD which increases the risk of errors and data 
+inconsistency. 2 
+ 
+As e-government projects expanded and more people started to use mobile technologies, it became 
+necessary to have a single chain that may link applicants, driving schools and the DVLD into a 
+single digital space. The suggested DVLD Management System provides solutions to these issues 
+by proposing the idea of mobile -based communication with the applicants, desktop -based 
+administrative control, centralized information management, and automated communication 
+systems. 
+The system substitutes the separated, paper -based processes with the organized computer 
+processes including electronic application processing, planned tests, training status monitoring, 
+and license management.  This will enhance better coordination between stakeholders and also 
+guarantee long term scalability and accuracy of data. 
+1.3. Statement of the Problem 
+Existing systems suffer from:  
+● Manual verification and data entry leading to long processing times  
+● No unified platform connecting applicants, driving schools, and the DVLD 
+● Lack of automated notifications and scheduling systems  
+● Difficulty tracking application status across different offices  
+● Lack of centralized digital records shared across institutions  
+● Fragmented and inconsistent record management 
+● Limited transparency for applicants during the licensing process  
+● Limited scalability for future nationwide expansion  
+There is a strong need for an automated system that:  
+● Integrates applicants, driving schools, and the DVLD into a single platform 
+● Supports mobile access for applicants and desktop dashboards for administrators 
+● Automates application tracking, scheduling, and notifications 
+● Ensures reliable and centralized data storage 
+● Improves operational efficiency and service transparency 
+● Allows future extensibility for additional digital services 3 
+ 
+1.4. Objective of the Project 
+1.4.1. General Objectives 
+To design and develop a secure, scalable, and fully automated Driving and Vehicle License 
+Department (DVLD) Management System that streamlines and modernizes the entire licensing 
+process. The system will enhance coordination and communication among applica nts, driving 
+schools, and the DVLD by providing an integrated platform accessible through both mobile and 
+desktop applications. It will ensure data security, support high user volumes, and automate key 
+workflows such as application submission, scheduling o f driving tests, issuance of licenses, and 
+renewal processes. By leveraging modern technologies, the platform will reduce manual errors, 
+minimize processing time, and improve transparency. Additionally, it will offer real-time tracking 
+of application status, digital notifications, and centralized record management, thereby fostering 
+efficiency, accountability, and user satisfaction across all stakeholders involved in the licensing 
+ecosystem. 
+1.4.2. Specific Objectives 
+● Develop a centralized database to securely store applicant, school, exam, and license 
+records for easy access and consistency. 
+● Enable mobile registration so applicants can sign up with driving schools directly through 
+a user-friendly app. 
+● Provide a desktop dashboard for schools to manage trainees, schedules, and progress with 
+simple reporting tools. 
+● Support the management and recording of theory and practical test results within the 
+system. 
+● Automate test scheduling and application status updates to reduce manual coordination. 
+● Provide timely notifications to applicants regarding schedules, approvals, and service 
+updates through in app alerts and messaging. 
+● Give DVLD administrators dashboards for oversight, license management, and monitoring 
+of schools and applicants. 
+● Ensure secure data synchronization between driving schools and the DVLD to maintain 
+accuracy and trust. 4 
+ 
+● Implement role-based access control to ensure secure and authorized system usage. 
+1.5. Scope and Limitation 
+1.5.1. Scope of the Project 
+The system includes the following modules: 
+● Applicant mobile application for registration, school selection, application tracking, and 
+notifications 
+● Driving school desktop dashboard for trainee management, scheduling, and reporting 
+● DVLD administrative desktop and web dashboard for application processing and license 
+management 
+● Centralized SQL Server database for storing and managing system data 
+● Vision, theory and practical test scheduling and result recording 
+● Automated reminders and system notifications (in-app and system-generated messages) 
+● Role-based access control for applicants, driving schools, and DVLD administrators 
+● Synchronization of data across all system components 
+1.5.2. Limitations of the Project 
+● Connectivity with the applicant mobile application may be limited due to the offline nature 
+of the DVLD desktop system.  
+● The system focuses on process management and record handling rather than real -time 
+online examination delivery. 
+● Identity verification relies on standard document submission and administrative review 
+rather than biometric or computer vision techniques. 
+● SMS-based notifications may depend on third-party service providers. 
+● Nationwide deployment would require additional infrastructure, policy alignment, and 
+integration with external government systems.  5 
+ 
+1.6. Deliverables 
+1. Fully functional DVLD desktop for  administration and Driving Institute dashboards  
+2. Mobile application for applicants  
+3. Centralized SQL Server database with defined schemas and relationships  
+4. Test scheduling and result management modules 
+5. Notification and reminder system  
+6. Role-based access control implementation 
+7. Complete project documentation and technical report  
+8. Testing and evaluation results  
+1.7. Feasibility Study 
+This section assesses whether the project is practical and appropriate, considering its goals, 
+resources, and potential impact. It outlines the main benefits, such as efficiency gains, cost savings, 
+or improved outcomes, and weighs them against the expecte d costs, including financial 
+investment, time, and risks. The analysis also considers how well the project fits with 
+organizational priorities and whether it can be sustained over time. 
+ 1.7.1. Technical Feasibility 
+The system is technically feasible, relying on reliable and widely supported technologies such as 
+C#, .NET, ASP.NET, Flutter/Xamarin, and SQL Server. These platforms enable secure data 
+handling, multi-platform development, and smooth integration with exist ing infrastructure. Their 
+widespread use ensures long -term stability, strong community support, and access to extensive 
+documentation, which reduces risks during implementation. Adopting a three -tier architecture 
+further strengthens the design by ensuring modularity, scalability, and easier maintenance, while 
+also allowing for future enhancements such as integration with national ID systems or broader 
+government services. 
+In addition, the availability of essential development tools including Visual Studio, SQL Server 
+Management Studio, GitHub, and open source librarires advances functionality. These resources 
+are freely accessible and widely used, lowering costs and enabling features like image recognition 6 
+ 
+or automated verification. Together, the chosen technologies and tools provide a solid technical 
+foundation that minimizes risks, supports long-term adaptability, and maximizes the likelihood of 
+successful project delivery. 
+ 1.7.2. Operational Feasibility 
+The system aligns with existing DVLD workflows while introducing automation and structured 
+communication between applicants, schools, and administrators. Driving schools can manage 
+students online and send training records to the DVLD. Applicants can apply , study, take theory 
+tests, and receive updates directly from their mobile devices. The DVLD can manage operations 
+through both online and offline dashboards, ensuring reliability even in areas with unstable internet 
+access. 
+1.7.3. Economic Feasibility  
+The system is economically feasible because it relies on widely available development tools and 
+technologies that do not require significant upfront investment, reducing barriers to adoption for 
+organizations of varying sizes. Its modular architecture makes it scalable at a national level without 
+causing major financial strain, allowing institutions to expand server capacity, integrate Computer 
+Vision models, and strengthen security measures gradually as the project grows. This phased 
+approach ensures that resources are allocated efficiently, minimizing risks while maximizing long-
+term value. As a result, the solution remains sustainable, practical, and suitable for long -term 
+implementation across the Driving and Vehicles Department, supporting both immediat e 
+operational needs and future innovation. 
+1.8. Significance of the Project 
+The system delivers major benefits to applicants, driving schools, and the government: 
+● Faster processing through automation of registration, exam management, and license 
+issuance  
+● Better transparency and fraud prevention using centralized records and managed process 
+● Improved applicant experience with mobile access, scheduling, and reminders  7 
+ 
+● Stronger coordination between schools and DVLD via real-time data exchange  
+● Foundation for future e -government services such as integration with traffic police or 
+national ID databases 
+1.9. Beneficiaries of the project 
+● Applicants: Online applications, exam schedules, reminders, and results  
+● Driving Schools: Dashboard for managing students and communicating with DVLD  
+● DVLD Offices: Reduced workload, fewer errors, centralized oversight  
+● Government: Improved transparency, reduced fraud, and better reporting  
+● Society: Competent and well-tested drivers, leading to safer roads 
+1.10. Methodology 
+Agile methodology will be used to ensure continuous refinement and iterative development across 
+all system modules. 
+Phases Include: 
+1. Requirement Analysis – Identify the needs of applicants, schools, and DVLD 
+administrators.  
+2. System Design – Develop the three -tier architecture, design UI/UX for the mobile and 
+desktop dashboards, and plan data synchronization structures.  
+3. Implementation – Build mobile, and desktop applications; implement scheduling for 
+Exams, and  a centralized database.  
+4. Integration & Testing – Perform functional, performance, and security testing for all 
+components.  
+5. Deployment & Documentation – Prepare manuals, deployment plans, and conduct user 
+training.  8 
+ 
+1.11. Development tools 
+● Languages: C# (.NET), Dart (Flutter)  
+● Database: SQL Server  
+● Frameworks: ASP.NET, WinForms  
+● Data Access: ADO.NET  
+● Version Control: GitHub  
+● IDEs: Visual Studio, VS Code 
+1.12. Required resources with cost  
+The project primarily relies on standard development tools, personal computing devices, and freely 
+available software frameworks, which keeps the overall development effort affordable and 
+accessible to a wide range of teams. While the initial build can be completed with minimal expense, 
+a fully scalable deployment would naturally require additional resources such as stable hosting 
+environments, stronger infrastructure, and long -term maintenance strategies to ensure reliability. 
+Importantly, these requirements grow gradually in line with system adoption, allowing costs to be 
+distributed over time rather than concentrated upfront. This incremental approach makes the 
+overall financial commitments both manageable and realistic for a government institution seeking 
+to modernize its services, ensuring that the investment supports sustainable growth, operational 
+efficiency, and future innovation. 
+1.13. Task and Schedule 
+The development of the system is organized across five months, ensuring steady progress and clear 
+milestones.  
+1. Month 1: Requirement Analysis and Planning Focus on understanding what the system 
+should achieve, outlining the main features, and shaping the overall direction of the project. 
+2. Month 2: System Design Create the system’s architecture, plan the database, and prepare 
+the layouts and workflows for the mobile and web platforms.  9 
+ 
+3. Month 3: Implementation – Backend and Core Functionalities Develop the essential 
+system logic, main modules, and the core operations that support communication between 
+the user, schools, and the department.  
+4. Month 4: Frontend Development and Integration Build and connect the interfaces for all 
+platforms, making sure they work smoothly with the backend and database.  
+5. Month 5: Testing, Debugging, and Deployment Preparation Test the system, make 
+necessary adjustments, and finalize everything needed for deployment, documentation, and 
+project submission.  
+1.14. Team Composition 
+ 
+No. Student Name Role 
+1. Bilal Mohammedhasen Team Leader, Project Manager,Full-stack Developer 
+2. Newal Hussen Back-End Developer, Database Architecture and design 
+3. Multezem Mohammed Front-End Developer, UI/UX Designer 
+4. Eman Mohammed Front-End Developer, UI/UX Designer 
+5. Eyob Tesfaye Back-End Developer, Database Architecture and design 
+ 
+ 
+ 
+ 
+ 
+ 
+ 10 
+ 
+Chapter 2: Description of Existing System and Literature Review  
+2.1. Major Function of Existing System 
+The current driving license management process in Ethiopia is largely manual, paper based, and 
+dependent on physical interactions between applicants and DVLD offices. Although some offices 
+have introduced partial computerization , the majority of core operations still rely on human driven 
+procedures. The existing system performs several major functions ,but each function is executed 
+through traditional work flows that lack automation, centralized data access , or real time 
+communication.   
+ Applicant Registration and Document Collection 
+Applicants must physically visit the DVLD office to submit registration forms and provide 
+supporting documents such as ID cards, previous license levels, medical certificates, and 
+payment receipts. The staff manually check these documents and record applic ant details 
+in logbooks or basic computer files. 
+Input: Paper forms, applicant documents 
+Process: Manual verification and data entry 
+Output: Paper-based applicant file 
+I. Written, Vision, and Practical Test Scheduling 
+The scheduling of vision tests, written exams, and street driving tests is handled manually 
+by staff. Applicants are assigned examination dates based on availability, often recorded 
+in notebooks or Excel sheets. Applicants must return or call to confirm their exam dates. 
+Input: Applicant information and preferred exam dates 
+Process: Staff manually assign test slots 
+Output: Handwritten or verbally communicated test schedules 
+II. Conducting Tests and Recording Results 11 
+ 
+Test results are recorded by evaluators on printed score sheets during the assessment 
+process. These sheets are then collected and submitted to administrative personnel, who 
+are responsible for manually entering the data into local files or official registers. Because 
+this process relies heavily on manual transcription, errors can occasionally occur when 
+transferring information. When such mistakes are identified, corrections must be handled 
+through a separate procedure, which not only increases the workloa d but also introduces 
+delays in finalizing and validating the records 
+Input: Test score sheets 
+Process: Manual scoring and manual entry 
+Output: Paper records and occasional scattered digital files 
+III. License Issuance and Renewal 
+Once an applicant passes the required tests, their information is manually processed to issue 
+a new license or renew an existing one. Staff prepare physical license cards, often relying 
+on basic printing tools without centralized validation across regions. 
+Input: Approved applicant records 
+Process: Manual license card preparation 
+Output: Physical driving license 
+IV. Handling Complaints and Communication 
+Communication between applicants and staff occurs mainly through in -person visits, 
+phone calls, or notice boards. There is no automated notification system for exam 
+reminders, document updates, or result announcements. 
+Input: Applicant complaints and inquiries 
+Process: Staff response via face-to-face or phone communication 
+Output: Informal issue handling and resolutions 
+V. Record Keeping and Reporting 12 
+ 
+DVLD offices maintain large volumes of physical files and scattered digital documents. 
+Generating reports for performance analysis, fraud investigation, or policy evaluation 
+requires extensive manual effort, and often the data is incomplete or inconsistent. 
+Input: Paper files, Excel sheets, local computer records 
+Process: Manual sorting and compilation 
+Output: Delayed and sometimes inaccurate reports 
+2.2. Users of the Current System 
+The existing driving license management process serves multiple stakeholders who directly 
+interact with the system for various purposes. These users depend on the current manual 
+procedures to perform tasks such as registration, verification, testing, licen se issuance, and 
+administrative management. The needs and expectations of these users vary based on their roles, 
+but most require faster processing, transparency, and reliable communication. 
+Below are the primary users of the current system:  
+I. Applicants (New and Renewal Candidates) 
+Applicants include individuals seeking a new driving license, upgrading their license level, 
+or renewing an existing license. They form the largest user group of the system. 
+Needs and expectations: 
+● Simple and clear registration process 
+● Accurate information about test dates 
+● Quick results and feedback 
+● Reduced waiting times and queues 
+● Reliable communication about requirements, exam schedules, and status updates 
+● Transparent procedures with minimal manual errors 
+II. DVLD Administrative Staff 
+These employees are responsible for handling key administrative tasks such as applicant 
+registration, document verification, accurate data entry, card printing, and maintaining 13 
+ 
+applicant records. They perform most of the manual work required in the current system, 
+ensuring that essential processes are completed efficiently. 
+Needs and expectations: 
+● Streamlined workflows to reduce workload 
+● Centralized applicant records for easy access 
+● Tools to minimize repetitive manual tasks 
+● Faster verification methods 
+● Reduced risk of errors during data entry 
+● improved accuracy and reduced paperwork 
+III. Management and Supervisors (DVLD Officials) 
+Higher-level officials are tasked with overseeing the overall operations of the system, 
+ensuring that processes run smoothly and efficiently. Their responsibilities include 
+preparing detailed reports, making key administrative and strategic decisions, and 
+monitoring adherence to national driving regulations. By fulfilling these duties, they play 
+an essential role in maintaining accountability, providing direction, and guiding the system 
+toward consistent and effective performance 
+Needs and expectations: 
+● Accurate and up-to-date reports 
+● Reliable record-keeping for auditing and monitoring 
+● Tools to detect fraud or duplication 
+● Insights for planning and resource allocation 
+2.3.  Drawbacks of the Current System 
+The existing driving license management system in Ethiopia relies heavily on manual procedures, 
+paper-based documentation, and fragmented digital tools. While it fulfills basic operational needs, 
+it suffers from numerous drawbacks that limit efficiency, ac curacy, transparency, and scalability. 14 
+ 
+These limitations directly affect applicants, DVLD staff, and other stakeholders who depend on 
+reliable and timely services. 
+The major drawbacks of the current system include: 
+I. Inefficiency and Slow Processing 
+Most procedures including registration, test scheduling, verification, and license issuance 
+are performed manually.  
+This leads to: 
+● Long queues and extended waiting times 
+● Delays in examination and result processing 
+● Difficulty handling large numbers of applicants 
+● Repetitive tasks that increase staff workload 
+II. High Risk of Errors and Inaccuracy 
+Manual data entry and paper-based record handling increase the chances of: 
+● Typographical mistakes 
+● Misplaced or incomplete files 
+● Incorrect exam results due to transcription errors 
+● Duplicate or conflicting records 
+III. Lack of Centralized Data Management 
+Different DVLD branches maintain their own local files, spreadsheets, or handwritten 
+logbooks to record and track applicant information. Because each branch relies on separate 
+systems, this fragmented approach often leads to duplication, inconsistencies, a nd 
+difficulties in consolidating records across the organization. This creates issues such as: 
+● Inconsistent records across regions 
+● Difficulty tracking applicants who register in multiple branches 
+● Limited ability to detect duplicate or fraudulent licenses 
+● Poor sharing of information between offices 15 
+ 
+IV. Limited Communication and No Notification System 
+Applicants receive updates manually through: 
+● Physical visits 
+● Phone calls 
+● Notice boards 
+            This communication method causes: 
+● Missed exam dates 
+● Lack of reminders for document submission 
+● Poor applicant-staff interaction 
+● Increased confusion and repeated office visits 
+V. Inadequate Fraud Prevention 
+Because records are stored manually, the system is vulnerable to: 
+● Fake documents 
+● Duplicate license issuance 
+● Altered or lost paper records 
+● Unauthorized access or manipulation 
+VI. Poor Reporting and Decision-Making 
+Generating reports for management requires: 
+● Sorting through large volumes of paper files 
+● Manually compiling data 
+● Cross-checking inconsistent records 
+            This results in: 
+● Delayed decisions 
+● Incomplete reports 
+● Inability to conduct real-time monitoring 16 
+ 
+● Lack of reliable data for planning and auditing 
+VII. Lack of Scalability and Modernization 
+The manual system does not support: 
+● Online services 
+● Remote access 
+● Mobile-based applications 
+● Integration with other systems (driving schools) 
+VIII.  Dependence on Human Labor 
+Nearly every stage of the licensing process requires staff involvement. This makes the 
+system vulnerable to: 
+● Human error 
+● Staff shortages 
+● Fatigue and burnout 
+● Inconsistent handling of cases 
+IX.  Poor Applicant Experience 
+For many applicants, the current system is frustrating due to: 
+● Long processing times 
+● Repeated trips to DVLD offices 
+● Unclear procedures 
+● No digital tracking of progress 
+2.4. Literature Review 
+A literature review examines existing studies, theories, and systems relevant to the development 
+of a Driving License Management System. It highlights previous efforts in digitalizing licensing 
+processes, explores technological frameworks applied in similar projects, and identifies gaps that 
+this project aims to address. This review is organized into thematic areas that reflect major 17 
+ 
+components of the system: e -government digitalization, license management systems, database -
+driven public services, AI-based automation, and software engineering methodologies. 
+I.  E-Government and Digital Public Service Delivery 
+Globally, governments have been transitioning from manual administrative processes to 
+automated digital platforms. According to studies on e -government systems, digitalization 
+improves transparency, reduces corruption, and enhances service delivery efficie ncy 
+(Sommerville, 2020). Research indicates that public institutions adopting electronic systems 
+benefit from reduced bureaucracy, faster communication, and better accountability due to 
+centralized data handling (Pressman, 2020). 
+In developing countries, including Ethiopia, the shift toward electronic public services remains a 
+priority. Literature emphasizes that digitized platforms significantly minimize the challenges 
+associated with paper -based systems, such as data loss, long q ueues, and inconsistent service 
+quality. This creates an enabling context for developing an intelligent DVLD system that aligns 
+with national digital transformation goals. 
+II. Driving License Management Systems in Other Countries 
+Several countries have implemented automated driving license systems that replace manual 
+registration and verification. For example, India and Kenya have adopted digital license issuance 
+systems integrated with centralized government databases, reducing fr aud and enabling online 
+verification. Similarly, Rwanda and Ghana use e -license platforms that allow applicants to 
+schedule tests, submit documents, and receive updates through mobile interfaces. Studies of these 
+systems show that automation leads to measu rable improvements in accuracy, workflow 
+efficiency, and record management. However, many African nations still face limitations in 
+scalability, offline support, cross -platform access, and AI integration. This suggests a gap in 
+standard license systems tha t your project aims to fill by combining desktop, mobile, and 
+intelligent functionalities. 
+III. Role of Databases in Public Administration 18 
+ 
+Literature on database systems emphasizes the importance of centralized data for ensuring data 
+consistency, accuracy, and secure access (Microsoft SQL Server Documentation, 2025). In 
+traditional government processes, decentralized data storage leads to dup lication, inconsistency, 
+and difficulty in auditing. Research highlights that structured database management systems 
+(DBMS) enable: 
+● Secure storage of citizen data 
+● Reliable retrieval and updating 
+● Prevention of unauthorized access 
+● Support for generating analytical reports 
+SQL-based systems are commonly used in government applications due to their robustness, 
+scalability, and support for complex queries. These insights justify the adoption of SQL Server in 
+this project to enhance the reliability and transparency of driving license records. 
+IV. Digital Identity, Validation, and Fraud Prevention 
+Research in digital identity systems highlights common challenges such as identity theft, duplicate 
+registrations, and document forgery. Systems that rely heavily on manual verification often 
+struggle to detect inconsistencies in applicant data. Studies re commend the use of automated 
+biometric verification, document scanning, and machine learning to enhance integrity.While 
+Ethiopia has implemented digital ID programs (Fayda ID), integration with DVLD systems 
+remains limited. Literature suggests that linking  identity records with intelligent license 
+management systems improves: 
+● Verification accuracy 
+● Data integrity 
+● National record consistency 
+V.  Identified Gaps in Existing Research and Systems 
+The literature highlights several notable gaps in existing driving license management solutions: 
+● Lack of combined desktop and mobile support  – Current systems often operate on a 
+single platform, limiting accessibility and flexibility for both administrators and applicants. 19 
+ 
+● Insufficient offline capabilities – In regions with poor or unstable internet connectivity, 
+users face significant challenges, as most solutions rely heavily on continuous online 
+access. 
+● Limited integration between public service platforms  – Fragmented systems prevent 
+seamless data sharing and coordination across government agencies, reducing efficiency 
+and transparency. 
+● Weak fraud detection mechanisms  – Reliance on manual checks makes it difficult to 
+identify and prevent fraudulent activities, leaving the system vulnerable to misuse. 
+● Limited user experience design – Interfaces are often not tailored to applicants with low 
+digital literacy, creating barriers to access and increasing the likelihood of errors during 
+application or renewal processes. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 20 
+ 
+Chapter 3: Proposed System Documentation 
+3.1 Overview 
+The proposed Driving and Vehicle License Department (DVLD) Management System aims at 
+integrating all key operations of licensing under the same digital platform. It links the applicants, 
+the driving schools and the DVLD in a unison of mobile and desktop applications where all three 
+parties are capable of accessing the services they require at ease. 
+The aim of the system is to enhance the whole system of licensing that includes registration and 
+document filing to the school approval, DVLD check, exam arrangement and issuing of the final 
+license. It also aids in online theory tests, automatic reminders  to the exam sessions, and safe 
+transfer of data between the driving schools and the main DVLD office. 
+The system is technically constructed on three tiers (presentation layer, business logic layer, and 
+data layer) and role -based access control. All the clients interact safely with a centralized SQL 
+Server database which promotes consistency and easy synchr onization of data with mobile and 
+desktop interfaces. 
+3.2 Functional Requirements 
+The functional requirements describe what the system must be able to do for each major user 
+group, as well as the shared services that support all operations. 
+3.2.1 Applicant (Mobile App) 
+● Register an account using personal information and upload required documents. 
+● Select a license category and submit a new driving license application. 
+● Provision supporting documentation through the Application Management Service for all 
+application types (new, renewal, lost, damaged, international). 
+● Schedule and take required exams (vision, written, street). 
+● View exam schedules, results, and retake options. 
+● Make payments for application fees, test fees, or renewal fees(not integrated with Banking 
+System but applied in the DVLD System) 21 
+ 
+● Receive notifications for exam dates, approvals, rejections, and license status updates. 
+● Track the full progress of license applications. 
+● Apply for license renewal and upload updated documents. 
+● Request replacement for lost or damaged licenses. 
+● Apply for an international driving license. 
+● View license details, expiry dates, and status. 
+● Access driving history and past test attempts. 
+● View and download payment receipts. 
+● Update profile information and re-upload documents if required. 
+3.2.2 Driving School and DVLD Administrator (desktop app) 
+● Consider applications provided by applicants and accept, reject or demand more 
+documentation or explanation. 
+● Check applications sent by driving schools, prior to formal testing and licensing. 
+● Accept or designate dates on official theories and practical examinations depending on 
+application status and qualification requirements. 
+● Control and schedule test events and document test results in the system. 
+● Issue driving licenses after all the requirements are completed and record the issue details. 
+● Operate driving school accounts such as the creation, updating and allocation of relevant 
+roles and permissions. 
+● Manage user activities including creating accounts, resetting passwords and assigning 
+roles. 
+● Create and access application status, test results, issued licenses, and institutional activity 
+reports. 
+● Keep databases in sync with the central database of DVLD SQL Server to have unified 
+data in the system. 
+● Monitor complaints or notifications that have been submitted by applicants or staff and 
+make the required administrative decisions. 
+3.2.3 System Services (Shared) 
+● Maintain secure, centralized storage for all applicant, exam, license, and school data. 22 
+ 
+● Handle scheduling for all exams and prevent timing conflicts. 
+● Deliver notifications through in-app alerts, SMS, or email when necessary. 
+● Process documents and identity checks using Computer Vision for face matching and 
+tamper detection. 
+● Provide secure APIs for all client applications, including proper authentication and access 
+control. 
+3.3 Non-Functional Requirements 
+The non-functional requirements describe the overall qualities the system must maintain to ensure 
+a smooth, reliable, and secure experience for all users. 
+❖ Performance 
+The system should respond quickly to user actions, handle multiple applicants and schools working 
+at the same time, and keep data processing such as scheduling or verification efficient even during 
+peak periods. 
+❖ Reliability 
+All core services should work consistently without frequent interruptions or unexpected downtime. 
+Data must remain intact and protected, avoiding loss or corruption. Critical operations like exam 
+scheduling and document verification should run smoothly without failures. 
+❖ Availability 
+The system should remain accessible at all times, ensuring users can depend on its availability 
+whenever needed. Driving schools and DVLD staff must be able to carry out their work without 
+interruptions or downtime. Applicants should also have reliable acc ess to mobile services, 
+allowing them to complete tasks smoothly at any time. 
+❖ Security 
+Sensitive data such as IDs, personal details, and exam records must be safeguarded at all times. 
+This protection should rely on secure authentication, strong encryption, and carefully controlled 23 
+ 
+access mechanisms. Only authorized users should be permitted to view, update, or modify records, 
+ensuring confidentiality and integrity 
+❖ Usability 
+All interfaces (mobile and desktop) should be simple to navigate, allowing users to complete tasks 
+without confusion. Applicants should find the mobile app straightforward, while staff dashboards 
+should support clear workflows. 
+❖ Scalability 
+The system should be designed to grow and expand over time, supporting an increasing number 
+of users and driving schools as demand rises. It must also be capable of scaling toward wider 
+national integration, ensuring smooth adoption across regions.This gro wth should be achieved 
+without requiring major redesigns, preserving stability while accommodating future needs. 
+❖ Maintainability 
+The system should be designed in a way that makes updates, bug fixes, and feature additions simple 
+to manage. By using a three-tier architecture, components remain well-structured, organized, and 
+easier to maintain over time.This approach ensures long-term flexibility, reduces complexity, and 
+supports efficient improvements as the system evolves. 
+3.4. System model 
+3.4.1 Scenarios 
+Scenario 1: Applicant Registration 
+● Initial Assumption: 
+The applicant can register either remotely using the DVLD mobile application or in 
+person at a DVLD office or affiliated driving school through the desktop system. 
+● Normal Flow (Mobile Registration): 
+The applicant opens the DVLD mobile application, enters personal information (full 
+name, date of birth, phone number, address), uploads a national ID and photograph, and 24 
+ 
+submits the registration form. If all data is valid, the system redirects the applicant to the 
+verification page. 
+● Alternative Flow (In-Person Registration via Desktop Application): 
+A DVLD staff member or driving school officer registers the applicant using the desktop 
+application by entering personal details and uploading required documents on behalf of 
+the applicant. 
+● What Can Go Wrong: 
+Invalid phone number format, missing mandatory fields, duplicate records, or 
+unsupported document formats. In such cases, the system displays an error message and 
+requires correction. 
+● System State on Completion: 
+Applicant data is saved with an unverified or pending verification status, and a 
+verification code or confirmation process is initiated. 
+Scenario 2: Applicant Login 
+● Initial Assumption: 
+ The applicant is registered and verified in the system. 
+● Normal Flow: 
+ The applicant enters their phone number and password. If credentials are valid, the 
+system authenticates the user and redirects them to the home dashboard. 
+● What Can Go Wrong: 
+ Invalid credentials or locked account. The system displays an appropriate error message. 
+● System State on Completion: 
+ A secure authenticated session is created for the applicant. 
+Scenario 3: Selecting a Driving School and Submitting Application 
+● Initial Assumption: 
+ The applicant is logged into the system. 
+● Normal Flow: 
+ The applicant selects a preferred driving school from the available list, reviews school 25 
+ 
+details, and submits a driving license application. Required documents are verified, and 
+the application is forwarded to the selected school. 
+● What Can Go Wrong: 
+ Missing documents, invalid selections, or unavailable training slots. 
+● System State on Completion: 
+ The application is stored in the system and marked as Pending School Review. 
+Scenario 4: Driving School Reviewing Applications 
+● Initial Assumption: 
+ A driving school administrator is authenticated using the desktop application. 
+● Normal Flow: 
+ The administrator reviews submitted applications, checks applicant details, and either 
+approves, rejects, or requests additional documents. 
+● What Can Go Wrong: 
+ Incomplete school authorization, missing applicant data, or system interruptions. 
+● System State on Completion: 
+ Application status is updated, and the applicant is notified of the decision. 
+Scenario 5: Training Schedule and Notifications 
+● Initial Assumption: 
+ The applicant has been accepted by a driving school. 
+● Normal Flow: 
+ The driving school administrator creates a training schedule and assigns instructors. The 
+applicant receives notifications and can view training dates through the mobile 
+application or via office communication. 
+● What Can Go Wrong: 
+ Schedule conflicts, unavailable instructors, or data synchronization issues. 
+● System State on Completion: 
+ Training schedule is stored and synchronized with the DVLD system. 
+Scenario 6: Vision Test Scheduling and Evaluation (Local License) 26 
+ 
+● Initial Assumption: 
+ The applicant has completed training and is eligible for testing. 
+● Normal Flow: 
+ DVLD staff schedules a vision test through the desktop application. The applicant is 
+notified of the schedule via the mobile app or in person. A vision test officer records the 
+test result in the system. 
+● What Can Go Wrong: 
+ Applicant fails the vision test, misses the appointment, or medical requirements are not 
+met. 
+● System State on Completion: 
+ Vision test results are stored. Passing the vision test is a prerequisite for the theory 
+test. 
+Scenario 7: Theory Test Scheduling and Attendance 
+● Initial Assumption: 
+ The applicant has passed the vision test. 
+● Normal Flow: 
+ DVLD staff schedules a theory exam using the desktop system. The applicant receives 
+the exam details through notification. The applicant attends the exam as scheduled. 
+● What Can Go Wrong: 
+ Unavailable slots, applicant absence, or scheduling conflicts. If the vision test is not 
+passed, theory scheduling is blocked. 
+● System State on Completion: 
+ Theory test attendance is recorded and awaits result entry. 
+Scenario 8: Theory Test Result and Retake (If Required) 
+● Initial Assumption: 
+ The applicant has attended the theory test. 
+● Normal Flow: 
+ A DVLD test officer records the theory test result. If the applicant passes, they become 
+eligible for the practical test. If failed, the applicant may request a retake. 27 
+ 
+● What Can Go Wrong: 
+ Applicant fails the test, exceeds retake limits, or has unpaid retake fees. 
+● System State on Completion: 
+ Applicant status updated to Theory Passed or Retake Required. 
+ Passing the theory test is a prerequisite for the practical test. 
+Scenario 9: Practical Test Scheduling 
+● Initial Assumption: 
+ The applicant has passed both the vision and theory tests. 
+● Normal Flow: 
+ DVLD staff assign a practical driving exam date using the desktop application. The 
+applicant receives notification via the mobile app. 
+● What Can Go Wrong: 
+ No available examiners, incomplete records, or scheduling conflicts. 
+● System State on Completion: 
+ Practical test appointment stored and confirmed. 
+Scenario 10: Practical Test Result and Retake (If Required) 
+● Initial Assumption: 
+ The applicant has attended the practical driving exam. 
+● Normal Flow: 
+ The examiner records the result in the system. If the applicant passes, they become 
+eligible for license issuance. If failed, a retake can be requested. 
+● What Can Go Wrong: 
+ Applicant fails the test, examiner report missing, or misconduct during the exam. 
+● System State on Completion: 
+ Applicant status updated to Practical Passed or Retake Required. 
+Scenario 11: Local Driving License Issuance 
+● Initial Assumption: 
+ The applicant has passed all required tests. 28 
+ 
+● Normal Flow: 
+ DVLD staff verifies the applicant’s records and issues a local driving license using the 
+desktop system. The applicant is notified and can view license details through the mobile 
+app. 
+● What Can Go Wrong: 
+ Outstanding fees, missing documents, or system processing errors. 
+● System State on Completion: 
+ License status updated to Issued and Active. 
+Scenario 12: Driving License Renewal 
+● Initial Assumption: 
+ The applicant owns an active or expiring driving license. 
+● Normal Flow: 
+ The applicant submits a renewal request via the mobile app or in person. Required 
+documents and medical reports are uploaded or verified. DVLD staff approves the 
+request and updates the license validity. 
+● What Can Go Wrong: 
+ Expired license beyond renewal limits, invalid medical report, or unpaid fees. 
+● System State on Completion: 
+ License validity updated or renewal request rejected. 
+Scenario 13: Lost or Damaged License Replacement 
+● Initial Assumption: 
+ The applicant owns a valid license that is lost or damaged. 
+● Normal Flow: 
+ The applicant submits a replacement request and pays the required fee. DVLD staff 
+verifies the record and issues a replacement license. 
+● What Can Go Wrong: 
+ Incorrect license details, identity mismatch, or unpaid replacement fees. 
+● System State on Completion: 
+ Replacement license issued and old license marked invalid or inactive. 29 
+ 
+Scenario 14: International Driving License Application 
+● Initial Assumption: 
+ The applicant holds a valid local driving license. 
+● Normal Flow: 
+ The applicant submits an international license request along with required documents 
+and payment. DVLD staff reviews and approves the application. 
+● What Can Go Wrong: 
+ Expired local license, missing passport, or payment issues. 
+● System State on Completion: 
+ International license application saved with Approved or Pending status. 
+Scenario 15: License Detainment and Release 
+● Initial Assumption: 
+ A traffic violation requiring license detainment has occurred. 
+● Normal Flow: 
+ Authorized personnel record the detainment in the system. After fine payment, the 
+applicant requests release. DVLD staff verifies payment and restores the license. 
+● What Can Go Wrong: 
+ Incorrect violation data, unpaid fines, or record mismatch. 
+● System State on Completion: 
+ License status restored to Active. 
+3.4.2. Use case model 
+lThe use case model serves as a foundational blueprint for understanding how different users 
+interact with the system and what functionalities the system must support. It outlines the full range 
+of operations by identifying each actor and the specific acti ons they can perform. In our project, 
+the primary actors are the Applicant, Owner, System Administrator, and the System itself. Each 
+actor has distinct responsibilities within the workflow: applicants may browse available properties, 
+submit applications, o r update their profiles; owners can manage property listings, review 
+applications, and track tenant activities; system administrators oversee platform settings, maintain 30 
+ 
+user roles, and ensure system security; while the system actor represents automated processes such 
+as sending notifications, validating data, and updating statuses. 
+By defining these interactions, the use case model provides a clear understanding of the functional 
+requirements of the entire platform. It ensures that every process —from property browsing to 
+application approval—fits into a structured workflow where each  actor’s role is clearly outlined. 
+This helps developers, designers, and stakeholders visualize how different parts of the system work 
+together, enabling better planning, implementation, and control throughout the project lifecycle. 
+ 31 
+ 
+ 
+Figure 1: Use Case Diagram 
+32 
+ 
+ 
+Use Case Description 
+ACTOR 1: APPLICANT  
+Use Case 1: Register Account 
+Description: 
+Allows a new applicant to create an account in the DVLD system by providing personal and login 
+information. 
+Pre-Conditions: 
+● The applicant does not already have an account. 
+Post-Conditions: 
+● A new applicant account is created and stored in the system. 
+Main Flow: 
+1. Applicant selects “Register Account.” 
+2. The system displays the registration form. 
+3. Applicant enters required personal and login details. 
+4. Applicant submits the form. 
+5. The system validates the information. 
+6. The system creates the account and confirms registration. 
+ 
+Exception Flows: 
+● Missing or invalid information → System requests correction. 
+● Username already exists → System prompts applicant to choose another. 
+Use Case 2: Login 33 
+ 
+Description: 
+Allows an applicant to authenticate and access the DVLD system. 
+Pre-Conditions: 
+● Applicant has a registered account. 
+Post-Conditions: 
+● The applicant is logged into the system. 
+Main Flow: 
+1. Applicant enters username and password. 
+2. System validates credentials. 
+3. The system grants access to the applicant dashboard. 
+Exception Flows: 
+● Invalid credentials → System displays an error message. 
+Use Case 3: Apply for New Driving License 
+Description: 
+ Allows an applicant to submit a request for a new local driving license by selecting a license 
+category and initiating the testing and approval workflow. 
+Pre-Conditions: 
+● The applicant is authenticated. 
+● Applicant profile information is complete. 
+Post-Conditions: 
+● A new driving license application is created and linked to the applicant. 
+● Application status is set to Pending. 34 
+ 
+Main Flow: 
+1. Applicant selects “Apply for New Driving License.” 
+2. The system displays available license categories. 
+3. Applicant selects a category and confirms. 
+4. The system validates age and eligibility rules. 
+5. The system creates the application record. 
+6. The system prompts the applicant to upload required documents. 
+Exception Flows: 
+● Applicant does not meet eligibility requirements → System rejects the application. 
+● System error occurs → Application is not created and applicant is notified. 
+Use Case 4: Upload Required Documents 
+Description: 
+ Allows the applicant to upload required documents for a driving license application. 
+Pre-Conditions: 
+● A valid application exists. 
+● The applicant is authenticated. 
+Post-Conditions: 
+● Documents are uploaded and linked to the application. 
+Main Flow: 
+1. Applicant selects “Upload Required Documents.” 
+2. System displays required document list. 
+3. Applicant uploads documents. 
+4. The system validates and stores the documents. 
+Exception Flows: 35 
+ 
+● Invalid or missing documents → System requests re-upload. 
+Use Case 5: Pay Application Fees 
+Description: 
+ Allows the applicant to pay required application fees. 
+Pre-Conditions: 
+● A valid application exists. 
+Post-Conditions: 
+● Payment is recorded in the system. 
+Main Flow: 
+1. Applicant selects “Pay Application Fees.” 
+2. The system displays payment details. 
+3. Applicant completes payment. 
+4. The system confirms successful payment. 
+Exception Flows: 
+● Payment failure → System prompts applicant to retry. 
+Use Case 6: Schedule Vision Test 
+Description: 
+ Allows the applicant to schedule a vision test appointment. 
+Pre-Conditions: 
+● Application is approved for testing. 
+● Required fees are paid. 
+Post-Conditions: 36 
+ 
+● Vision test appointment is scheduled. 
+Main Flow: 
+1. Applicant selects “Schedule Vision Test.” 
+2. The system displays available dates and locations. 
+3. Applicant selects a schedule. 
+4. The system confirms the appointment. 
+Use Case 7: Schedule Written Test 
+Description: 
+ Allows the applicant to schedule a written test. 
+Pre-Conditions: 
+● Vision test is passed. 
+Post-Conditions: 
+● Written test appointment is scheduled. 
+Main Flow: 
+1. Applicant selects “Schedule Written Test.” 
+2. The system displays available schedules. 
+3. Applicant confirms a selected slot. 
+4. The system records the appointment. 
+Use Case 8: Schedule Street Test 
+Description: 
+ Allows the applicant to schedule a street (practical) driving test. 
+Pre-Conditions: 
+● Written test is passed. 37 
+ 
+Post-Conditions: 
+● Street test appointment is scheduled. 
+Main Flow: 
+1. Applicant selects “Schedule Street Test.” 
+2. The system displays available test slots. 
+3. Applicant selects and confirms a slot. 
+4. The system schedules the test. 
+Use Case 9: Retake Test 
+Description: 
+ Allows the applicant to retake a failed test. 
+Pre-Conditions: 
+● Applicant has failed a previous test. 
+Post-Conditions: 
+● A new test appointment is scheduled. 
+Main Flow: 
+1. Applicant selects “Retake Test.” 
+2. The system displays available test dates. 
+3. Applicant selects a date. 
+4. The system confirms the retake schedule. 
+Use Case 10: View Test ResultsUse 
+Description: 
+ Allows the applicant to view the results of completed tests. 
+Pre-Conditions: 38 
+ 
+● Applicants have completed at least one test. 
+Post-Conditions: 
+● Test results are displayed. 
+Use Case 11: Check Application Status 
+Description: 
+ Allows the applicant to view the current status of submitted applications. 
+Use Case 12: Receive Approval / Rejection Notification 
+Description: 
+ Allows the applicant to receive notifications regarding application approval or rejection. 
+ACTOR 2: DRIVER USE CASE DESCRIPTIONS 
+Use Case 1: View License Details 
+Description: 
+ Allows the driver to view detailed information about their driving license, including license class, 
+issue date, expiration date, and current status. 
+Pre-Conditions: 
+● The driver is authenticated in the system. 
+● The driver has at least one license registered. 
+Post-Conditions: 
+● License details are displayed to the driver. 
+Main Flow: 
+1. The system displays the driver dashboard. 
+2. The driver selects “View License Details.” 39 
+ 
+3. The system retrieves license information. 
+4. The system displays the license details. 
+Exception Flows: 
+● No license found → The system displays an informational message. 
+Use Case 2: Check License Validity 
+Description: 
+ Allows the driver to verify whether their driving license is valid, expired, or suspended. 
+Pre-Conditions: 
+● The driver is authenticated. 
+Post-Conditions: 
+● License validity status is displayed. 
+Main Flow: 
+1. The system displays the driver services menu. 
+2. The driver selects “Check License Validity.” 
+3. The system checks the license status. 
+4. The system displays the validity result. 
+Exception Flows: 
+● License record not found → The system displays an error message. 
+Use Case 3: Renew License 
+Description: 
+ Allows the driver to request renewal of an existing driving license. 
+Pre-Conditions: 40 
+ 
+● The driver is authenticated. 
+● The driver has a license eligible for renewal. 
+Post-Conditions: 
+● A license renewal application is created. 
+● Application status is set to Pending. 
+Main Flow: 
+1. The system displays the driver services menu. 
+2. The driver selects “Renew License.” 
+3. The system validates renewal eligibility. 
+4. The system creates a renewal application. 
+5. The system prompts the driver to pay renewal fees. 
+Exception Flows: 
+● License not eligible for renewal → The system rejects the request. 
+● System error → Application is not created. 
+Use Case 4: Replace Lost License 
+Description: 
+ Allows the driver to request a replacement license if the original license is lost. 
+Pre-Conditions: 
+● The driver is authenticated. 
+● The driver has a valid license. 
+Post-Conditions: 
+● A replacement application is created. 
+Main Flow: 41 
+ 
+1. The system displays the driver services menu. 
+2. The driver selects “Replace Lost License.” 
+3. The system validates license ownership. 
+4. The system creates a replacement request. 
+5. The system prompts the driver to pay replacement fees. 
+Exception Flows: 
+● License not found → The system rejects the request. 
+Use Case 5: Replace Damaged License 
+Description: 
+ Allows the driver to request a replacement for a physically damaged or lost  license. 
+Pre-Conditions: 
+● The driver is authenticated. 
+● The driver has a valid license. 
+Post-Conditions: 
+● A damaged or lost  license replacement request is recorded. 
+Main Flow: 
+1. The system displays the driver services menu. 
+2. The driver selects “Replace Damaged or Lost  License.” 
+3. The system verifies license details. 
+4. The system creates a replacement application. 
+5. The system prompts the driver to proceed with payment. 
+Exception Flows: 
+● Invalid license details → The system displays an error. 42 
+ 
+Use Case 6: Request License Release 
+Description: 
+ Allows the driver to request the release of a detained license after fulfilling required conditions. 
+Pre-Conditions: 
+● The driver is authenticated. 
+● The driver has a detained license. 
+Post-Conditions: 
+● A license release request is submitted. 
+Main Flow: 
+1. The system displays the driver services menu. 
+2. The driver selects “Request License Release.” 
+3. The system checks detention records. 
+4. The system prompts the driver to pay detainment fines. 
+5. The system submits the release request. 
+Exception Flows: 
+● License not detained → The system rejects the request. 
+Use Case 7: Pay Detainment Fines 
+Description: 
+ Allows the driver to pay fines associated with a detained license. 
+Pre-Conditions: 
+● The driver is authenticated. 
+● Outstanding detainment fines exist. 
+Post-Conditions: 43 
+ 
+● Fine payment is recorded. 
+● License release process can proceed. 
+Main Flow: 
+1. The system displays fine details. 
+2. The driver selects “Pay Detainment Fines.” 
+3. The driver completes the payment. 
+4. The system confirms successful payment. 
+Exception Flows: 
+● Payment failure → The system prompts the driver to retry. 
+ACTOR 3: TEST OFFICER 
+Use Case 1: Conduct Vision Test 
+Description: 
+Allows the Test Officer to conduct a vision test for an applicant and evaluate their eyesight 
+according to DVLD rules. 
+Pre-Conditions: 
+● The applicant has scheduled a vision test. 
+● The Test Officer is authenticated in the system. 
+Post-Conditions: 
+● Vision test results are recorded in the system. 
+Main Flow: 
+1. Test Officer logs into the DVLD system. 
+2. The Test Officer views the list of scheduled vision tests. 
+3. The Test Officer selects an applicant. 44 
+ 
+4. Vision test is conducted. 
+5. The Test Officer records the test result. 
+6. The system saves the result. 
+Exception Flows: 
+● Applicant absent → Test marked as missed. 
+● System error → Test result not saved and error message displayed. 
+Use Case 2: Conduct Written Test 
+Description: 
+Allows the Test Officer to supervise and conduct the written driving knowledge test. 
+Pre-Conditions: 
+● The applicant has scheduled a written test. 
+● The Test Officer is logged in. 
+Post-Conditions: 
+● Written test results are stored in the system. 
+Main Flow: 
+1. Test Officer accesses scheduled written tests. 
+2. Applicants complete the written test. 
+3. The Test Officer evaluates the answers. 
+4. The Test Officer submits the test result. 
+5. The system saves the result. 
+Exception Flows: 
+● Cheating detected → Test marked as failed. 
+● Incomplete test → Test flagged for retake. 45 
+ 
+Use Case 3: Conduct Street Test 
+Description: 
+Allows the Test Officer to conduct and evaluate the applicant’s on-road driving skills. 
+Pre-Conditions: 
+● Applicant has passed previous required tests. 
+● A street test is scheduled. 
+Post-Conditions: 
+● Street test results are recorded. 
+Main Flow: 
+1. The Test Officer selects the scheduled street test. 
+2. Applicant performs the driving test. 
+3. Test Officer evaluates driving performance. 
+4. Test Officer submits test result. 
+5. System updates applicant status. 
+Exception Flows: 
+● Unsafe driving → Immediate failure. 
+● Test interrupted → Reschedule required. 
+Use Case 4: Record Test Results 
+Description: 
+Allows the Test Officer to record and submit test results for any conducted test. 
+Pre-Conditions: 
+● A test has been completed. 
+Post-Conditions: 46 
+ 
+● Test results are saved and linked to the applicant’s record. 
+Main Flow: 
+1. The Test Officer selects the completed test. 
+2. The Test Officer enters test results and notes. 
+3. The Test Officer submits the result. 
+4. The system stores the data. 
+Exception Flows: 
+● Missing result data → System requests completion. 
+ACTOR 4: REGISTRATION OFFICER 
+Use Case 1: Register Applicant 
+Description: 
+ Allows the Registration Officer to register a new applicant in the DVLD system. 
+Pre-Conditions: 
+● Applicant provides required personal information. 
+● The Registration Officer is logged in. 
+Post-Conditions: 
+● Applicant profile is created in the system. 
+Main Flow: 
+1. The Registration Officer selects “Register Applicant.” 
+2. The system displays the applicant registration form. 
+3. Officer enters applicant details. 
+4. The system validates the information. 
+5. Applicant record is created. 47 
+ 
+Exception Flows: 
+● Missing information → System requests correction. 
+● Duplicate national ID → Registration rejected. 
+Use Case 2: Verify Applicant Details 
+Description: 
+ Allows the Registration Officer to verify applicant identity and submitted documents. 
+Pre-Conditions: 
+● The applicant has submitted required documents. 
+Post-Conditions: 
+● Applicant details are verified or rejected. 
+Main Flow: 
+1. Officer views pending applications. 
+2. The officer reviews applicant information and documents. 
+3. Officer verifies authenticity. 
+4. System updates verification status. 
+Exception Flows: 
+● Invalid documents → Application rejected. 
+● Incomplete documents → Applicant notified. 
+Use Case 3: Review Application 
+Description: 
+Allows the Registration Officer to review license applications before approval or rejection. 
+Pre-Conditions: 48 
+ 
+● Application is submitted and verified. 
+Post-Conditions: 
+● Application status is updated. 
+Main Flow: 
+1. Officer opens application list. 
+2. The officer reviews application details. 
+3. Officer approves or rejects application. 
+4. System records decision. 
+Exception Flows: 
+● Missing requirements → Application returned for correction. 
+Use Case 4: Upload Required Documents 
+Description: 
+Allows the Registration Officer to upload or attach required documents to an applicant’s 
+application. 
+Pre-Conditions: 
+● Applicants have an active application. 
+Post-Conditions: 
+● Documents are stored and linked to the application. 
+Main Flow: 
+1. Officer selects applicant application. 
+2. Officer uploads documents. 
+3. System validates file format. 
+4. The system saves documents. 49 
+ 
+Exception Flows: 
+● Unsupported file format → Upload rejected. 
+Use Case 5: Update Application Status 
+Description: 
+Allows the Registration Officer to update the status of an application (Pending, Approved, 
+Rejected). 
+Pre-Conditions: 
+● Application exists in the system. 
+Post-Conditions: 
+● Updated application status is saved. 
+Main Flow: 
+1. Officer selects application. 
+2. Officer changes application status. 
+3. System records the update. 
+4. Applicants are notified. 
+Exception Flows: 
+● Invalid status change → System blocks update. 
+ACTOR 5: LICENSE ISSUER 
+Use Case 1: Issue License 
+Description: 
+Allows the License Issuer to issue a driving license to an applicant who has successfully completed 
+all required tests. 50 
+ 
+Pre-Conditions: 
+● Applicants have passed all mandatory tests. 
+● Application status is approved. 
+● License Issuer is authenticated. 
+Post-Conditions: 
+● A new driving license is issued and stored in the system. 
+Main Flow: 
+1. License Issuer logs into the system. 
+2. License Issuer searches for approved applications. 
+3. License Issuer selects an applicant. 
+4. The system displays applicant and test details. 
+5. License Issuer issues the license. 
+6. The system generates license records. 
+Exception Flows: 
+● Incomplete test results → License issuance blocked. 
+● System error → License not generated. 
+Use Case 2: Renew License 
+Description: 
+ Allows the License Issuer to renew an existing driving license. 
+Pre-Conditions: 
+● Driver submits renewal request. 
+● License is eligible for renewal. 
+Post-Conditions: 51 
+ 
+● License expiration date is updated. 
+Main Flow: 
+1. License Issuer opens renewal requests. 
+2. The system displays license details. 
+3. License Issuer verifies eligibility. 
+4. License Issuer renews license. 
+5. System updates expiration date. 
+Exception Flows: 
+● License expired beyond allowed period → Renewal rejected. 
+● Outstanding fines → Renewal blocked. 
+Use Case 3: Replace Lost License 
+Description: 
+Allows the License Issuer to issue a replacement for a lost license. 
+Pre-Conditions: 
+● Driver reports lost license. 
+● Driver identity is verified. 
+Post-Conditions: 
+● Replacement license is issued. 
+Main Flow: 
+1. License Issuer receives replacement request. 
+2. System verifies driver details. 
+3. License Issuer issues replacement license. 
+4. The system invalidates old licenses. 52 
+ 
+Exception Flows: 
+● Identity mismatch → Replacement denied. 
+Use Case 4: Replace Damaged License 
+Description: 
+ Allows the License Issuer to replace a damaged driving license. 
+Pre-Conditions: 
+● Driver submits damaged license. 
+● Replacement fee is paid. 
+Post-Conditions: 
+● A new license is issued. 
+Main Flow: 
+1. License Issuer reviews replacement requests. 
+2. License Issuer verifies license condition. 
+3. System issues new license. 
+4. Old license marked as replaced. 
+Exception Flows: 
+● License not verifiable → Replacement rejected. 
+Use Case 5: Detain License 
+Description: 
+ Allows the License Issuer to detain a driver’s license due to violations. 
+Pre-Conditions: 
+● Valid violation records exist. 53 
+ 
+Post-Conditions: 
+● License is marked as detained. 
+Main Flow: 
+1. License Issuer selects driver record. 
+2. License Issuer enters detention details. 
+3. System records detention. 
+4. License status updated to detained. 
+Exception Flows: 
+● Missing violation details → Detainment canceled. 
+Use Case 6: Release Detained License 
+Description: 
+ Allows the License Issuer to release a detained license after fines are paid. 
+Pre-Conditions: 
+● License is detained. 
+● All fines are paid. 
+Post-Conditions: 
+● License status updated to active. 
+Main Flow: 
+1. License Issuer checks detained license records. 
+2. The system verifies fine payment. 
+3. License Issuer releases license. 
+4. System updates license status. 
+Exception Flows: 54 
+ 
+● Unpaid fines → License not released. 
+Use Case 7: Check License Validity 
+Description: 
+Allows the License Issuer to verify whether a license is valid. 
+Pre-Conditions: 
+● License exists in the system. 
+Post-Conditions: 
+● License validity status is displayed. 
+Main Flow: 
+1. License Issuer enters license number. 
+2. The system retrieves license records. 
+3. The system displays validity status. 
+Exception Flows: 
+● License not found → Error message displayed. 
+ACTOR 6: ADMINISTRATOR 
+Use Case 1: Add User 
+Description: 
+ Allows the Administrator to add new system users. 
+Pre-Conditions: 
+● Administrator is authenticated. 
+Post-Conditions: 55 
+ 
+● A new user account is created. 
+Main Flow: 
+1. Administrator selects “Add User.” 
+2. The system displays user forms. 
+3. Administrator enters details. 
+4. The system saves user accounts. 
+Exception Flows: 
+● Duplicate username → Creation rejected. 
+Use Case 2: Add Test Officer 
+Description: 
+ Allows the Administrator to add a Test Officer to the system. 
+Pre-Conditions: 
+● Administrator is logged in. 
+Post-Conditions: 
+● A Test Officer account is created. 
+Main Flow: 
+1. Administrator selects “Add Test Officer.” 
+2. Enter officer details. 
+3. The system validates and saves data. 
+Exception Flows: 
+● Missing required data → Request correction. 
+Use Case 3: Manage License Classes 56 
+ 
+Description: 
+ Allows the Administrator to manage driving license classes. 
+Pre-Conditions: 
+● Administrator authenticated. 
+Post-Conditions: 
+● License classes updated. 
+Main Flow: 
+1. Administrator opens license class management. 
+2. Adds or updates class details. 
+3. The system saves changes. 
+Exception Flows: 
+● Invalid class data → Update rejected. 
+Use Case 4: View Reports 
+Description: 
+ Allows the Administrator to view system reports and statistics. 
+Pre-Conditions: 
+● System data available. 
+Post-Conditions: 
+● Reports displayed. 
+Main Flow: 
+1. Administrator selects report type. 
+2. The system generates reports. 57 
+ 
+3. Administrator views data. 
+Exception Flows: 
+● No data available → Empty report shown. 
+Use Case 5: Add Driving School Institute 
+Description: 
+ Allows the Administrator to register and manage driving school institutes in the system. 
+Pre-Conditions: 
+● Administrator is authenticated. 
+Post-Conditions: 
+● Driving institute details are stored in the system. 
+Main Flow: 
+1. Administrator selects “Add Driving School Institute.” 
+2. The system displays the institute registration form. 
+3. Administrator enters institute details. 
+4. Administrator submits the form. 
+5. The system validates and saves the information. 
+Exception Flows: 
+● Missing or invalid data → System requests correction. 
+ACTOR 7: INSTITUTE MANAGER 
+Use Case 1: Manage Driving Institute 
+Description: 
+ Allows the Institute Manager to manage driving school details. 58 
+ 
+Pre-Conditions: 
+● Institute Manager authenticated. 
+Post-Conditions: 
+● Institute details updated. 
+Main Flow: 
+1. Manager opens institute profile. 
+2. Updates institute information. 
+3. The system saves changes. 
+Exception Flows: 
+● Invalid data → Update rejected. 
+Use Case 2: Create Training Schedule 
+Description: 
+ Allows the Institute Manager to create training schedules for students. 
+Pre-Conditions: 
+● Students enrolled. 
+Post-Conditions: 
+● Training schedule created. 
+Main Flow: 
+1. Manager selects “Create Schedule.” 
+2. Enters training dates and times. 
+3. The system saves schedules. 
+Exception Flows: 59 
+ 
+● Schedule conflict → System warns manager. 
+Use Case 3: Submit Training Completion Report 
+Description: 
+ Allows the Institute Manager to submit training completion reports. 
+Pre-Conditions: 
+● Students completed training. 
+Post-Conditions: 
+● Training completion recorded. 
+Main Flow: 
+1. The manager selects students. 
+2. Uploads completion report. 
+3. System stores report. 
+Exception Flows: 
+● Missing report → Submission blocked. 
+Use Case 4: View Student Progress 
+Description: 
+ Allows the Institute Manager to monitor student progress. 
+Pre-Conditions: 
+● Students registered under the institute. 
+Post-Conditions: 
+● Progress information displayed. 60 
+ 
+Main Flow: 
+1. The manager selects students. 
+2. The system displays training progress. 
+Exception Flows: 
+• Student not found → Error displayed 
+3.5. Object Model 
+3.5.1. Data Dictionary 
+1.Applicant 
+Attributes Data Type Description 
+applicant_id INT(PK) Unique identifier for each applicant 
+first_name VARCHAR(50) Applicant's first name 
+dob DATE Date of birth 
+phone VARCHAR(15) Contact phone number 
+email 
+VARCHAR(100) 
+Email address (optional) 
+address 
+VARCHAR(200) 
+Residential address 
+status ENUM(‘submitted’,’school 
+accepted’, 'DVLDVerified', 
+'ExamScheduled', 
+'Completed', 'Rejected') 
+Current application status 
+created_at DATETIME Record creation timestamp 
+updated_at DATETIME Last update timestamp 
+Table 2: Applicant data dictionary 
+ 61 
+ 
+2.Documents 
+ 
+Attribute Data type Description 
+document _id INT(PK) Unique document identifier 
+applicant_id INT(FK) Reference to applicant 
+type ENUM('ID', 'Medical', 
+'Photo') 
+Type of document 
+file_path VARCHAR(255) Storage path of uploaded file 
+verified BOOLEAN Verification status 
+uploaded_at DATETIME Upload timestamp 
+                     Table 3: Document data dictionary 
+3.Driving Institute 
+Attribute Datatype Description 
+school_id INT(PK) Unique school identifier 
+name 
+VARCHAR(100) 
+School name 
+address 
+VARCHAR(200) 
+School physical address 
+contact_phone 
+VARCHAR(15) 
+School contact number 
+contact_email 
+VARCHAR(100) 
+School email address 
+status 
+ENUM('Registered', 
+'Blocked') 
+School registration status 62 
+ 
+created_at 
+DATETIME 
+Registration date 
+Table 4: Driving institute data dictionary 
+4.Application 
+Attribute Datatype Description 
+application_id INT(PK) Unique application identifier 
+applicant_id INT(FK) Reference to applicant 
+school_id INT(FK) Reference to selected school 
+applied_on DATE Application submission date 
+current_status VARCHAR(50) Current application status 
+remarks TEXT Additional notes/comments 
+                Table 5: Application data dictionary 
+5.Application Types 
+Attribute Datatype Description 
+type_id INT(PK) Unique type identifier 
+title VARCHAR(100) Type title (New, Renewal, 
+Replacement, International, 
+Release) 
+fees DECIMAL(10,2) Fee amount 
+Table 6: application type data dictionary 
+ 
+ 63 
+ 
+6.Exam 
+Attribute Datatype Description 
+exam_id INT (PK) Unique exam identifier 
+application_id INT (FK) Reference to application 
+exam_type ENUM('Theory', 'Practical') Type of examination 
+scheduled_at DATETIME Scheduled date and time 
+location 
+VARCHAR(100) 
+Exam venue/location 
+status 
+ENUM('Scheduled', 
+'Completed', 'Canceled') 
+Exam status 
+score 
+INT (NULLABLE) 
+Exam score (if completed) 
+result 
+ENUM('Pass', 'Fail', 
+'Pending') 
+Exam result 
+Table 7: Exam data dictionary 
+7.License 
+Attribute Datatype Description 
+license_id INT(PK) Unique license identifier 
+applicant_id 
+INT(FK) 
+Reference to applicant 
+license_number VARCHAR(20) Official license number 
+issue_date DATE License issuance date 
+expiry_date DATE License expiration date 64 
+ 
+status ENUM('Active', 'Expired', 
+'Suspended', 'Revoked') 
+License status 
+Table 8: Licence data dictionary 
+ 
+8.Notification 
+Attribute Datatype Description 
+notification_id INT(PK) Unique notification identifier 
+recipient_id INT ID of recipient 
+(applicant/school/DVLD) 
+channel ENUM('In-App', 'SMS', 
+'Email') 
+Delivery channel 
+message TEXT Notification content 
+sent_at DATETIME Send timestamp 
+status ENUM('Sent', 'Delivered', 
+'Failed') 
+Delivery status 
+Table 9: Notification data dictionary 
+9.Fraudcheck 
+Attribute 
+Attribute 
+Description 
+check_id INT(PK) Unique check identifier 
+application_id INT(FK) Reference to application 
+confidence_score DECIMAL(5,2) Match confidence percentage 
+performed_at DATETIME Check execution timestamp 
+notes TEXT Additional observations 
+  65 
+ 
+ Table 10: Fraud check data dictionary 
+10.Complaint 
+Attribute Attribute Description 
+complaint_id INT(PK) Unique complaint identifier 
+application_id INT(FK) Reference to application 
+institue_id INT(FK) Reference to institute 
+description TEXT complain text 
+                       
+                                                  Table 11: Complaint data dictionary 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 66 
+ 
+3.5.2. Class diagram 
+              
+Figure 2: Class Diagram of DVLD Management System 
+ 
+67 
+ 
+3.6. Dynamic model 
+The Dynamic Model describes the behavior of the DVLD Management System over time by 
+illustrating how different actors interact with the system during various operational workflows. It 
+focuses on the sequence of actions, data exchanges, and state transition s that occur while 
+performing core processes such as applicant registration, training management, test scheduling, 
+examination handling, license issuance, renewal, and detention. 
+This model helps in understanding how system components respond to user actions, how decisions 
+are made at different stages, and how information flows between the mobile application, desktop 
+system, business logic, and database. By capturing these time-dependent interactions, the Dynamic 
+Model provides a clear view of the system’s operational logic and ensures that all functional 
+requirements are executed in the correct order. 
+3.6.1. Sequence diagram 
+The Sequence Diagram illustrates the chronological order of interactions between system 
+components and actors over time, showing how requests move from the applicant through mobile 
+or desktop interfaces, into the business logic layer, and finally to the da tabase where information 
+is stored or retrieved. It highlights key processes such as registration, test scheduling, and license 
+issuance, making clear how each step depends on the proper exchange of messages. By mapping 
+these interactions, the diagram clarifies both the flow of communication and the system’s response 
+at each stage, helping stakeholders understand dependencies, identify potential bottlenecks, and 
+ensure that workflows remain consistent and reliable. 
+ 
+ 
+ 
+ 
+ 68 
+ 
+ 
+Figure 3: Sequence diagram of Applicant Registration 
+ 
+Figure 4: Sequence diagram of Applicant Update Profile 
+69 
+ 
+ 
+ 
+Figure 5: Sequence diagram of Receive Test Result 
+ 
+70 
+ 
+Figure 6: Sequence diagram Stuff Review Application 
+ 
+Figure 7: Sequence diagram of Update Test Result 
+ 
+Figure 8: Sequence diagram of Staff Manages User Accounts 
+71 
+ 
+ 
+Figure 9: Sequence diagram of System send Exam reminder notification 
+ 
+Figure 10: Sequence diagram of License Renew Process 
+72 
+ 
+ 
+Figure 11: Sequence diagram of Damaged and Lost 
+ 
+Figure 12: Sequence diagram of Detained License Process 
+73 
+ 
+ 
+Figure 13: Sequence diagram of Release Detained License 
+3.6.2. Activity diagram 
+The Activity Diagram represents the flow of activities and decision points within the DVLD 
+system, offering a structured view of how different tasks are carried out from start to finish. It 
+emphasizes the step -by-step execution of processes, including vali dations, approvals, test 
+outcomes, and alternative paths such as rejections or retakes, ensuring that all possible scenarios 
+are accounted for. By mapping these actions and decisions, the diagram provides a clear 
+understanding of the overall process logic and operational flow, helping stakeholders visualize 
+dependencies, identify potential inefficiencies, and ensure that the system operates in a consistent 
+and reliable manner. 
+ 
+74 
+ 
+ 
+Figure 14: Account Registration and Account Creation 
+75 
+ 
+ 
+ 
+Figure 15: Activity diagram of Profile Compilation 
+ 
+ 
+76 
+ 
+ 
+Figure 16: Activity diagram of Apply for New Driving License 
+77 
+ 
+ 
+Figure 17: Activity diagram of Vision Test Process 
+ 
+78 
+ 
+ 
+Figure 18: Activity diagram of Written Test Process 
+79 
+ 
+ 
+Figure 19: Activity diagram of Street Test Process 
+80 
+ 
+ 
+Figure 20: Activity diagram of Handling User Complaints 
+ 
+Figure 21: Activity diagram of Automated exam reminder generation 
+81 
+ 
+ 
+Figure 22: Activity diagram of Renewal/ lost/ damaged licence application 
+ 
+82 
+ 
+ 
+Figure 23: Activity diagram of International license application 
+83 
+ 
+                
+       Figure 24: Activity diagram of License Detainment and Release Process 
+84 
+ 
+3.6.3. State chart diagram 
+The State Chart Diagram represents the overall lifecycle of a user’s driving -license-related 
+activities within the DVLD System. It illustrates how an applicant moves from one system state to 
+another based on actions such as applying for a license,completin g payments, taking exams, or 
+renewing an existing license. The diagram focuses on system behavior rather than user actions and 
+shows how the system responds at every stage.The process begins at the Initial State, where no 
+application exists. When the user initiates a new driving license request, renewal, lost/damaged 
+replacement, or international license application, the system transitions to the Application Created 
+state. From here, the system requires the applicant to upload mandatory documents, moving th e 
+process to the Document Submission state. If the documents are incomplete or invalid, the system 
+returns the application to the submission state until all requirements are satisfied. 
+Once documents are accepted, the system enters the Pending Verification state, where DVLD staff 
+review and approve the documents. If rejected, the system transitions back to Document 
+Submission for corrections. Upon approval, the system advances to the Pay ment Pending state, 
+where applicants must complete the required fees. A successful payment moves the application to 
+the next phase, while failed payments return the system to the Payment Pending state. 
+For New License Applications, the system progresses through three exam-related states: 
+● Vision Test Pending 
+● Written Test Pending 
+● Street Test Pending 
+Each test may lead to a Passed or Failed state. A fail returns the system to scheduling for a retake, 
+whereas passing all three tests transitions the system to All Tests Completed. Renewal, 
+lost/damaged, and international applications bypass the exam stages. 
+Overall, the State Chart Diagram provides a comprehensive view of the driving license application 
+lifecycle, demonstrating state transitions, approval loops, verification processes, and final license 
+issuance. It ensures clarity in how the DVLD system mana ges different license services and 
+maintains consistent, rule-based progression through all stages. 85 
+ 
+ 
+Figure 25: State chart diagram of user registration process 
+ 
+ 
+86 
+ 
+ 
+Figure 26: State chart diagram of profile completion and document upload 
+ 
+ 
+ 
+87 
+ 
+ 
+Figure 27: State chart diagram of driving license application 
+88 
+ 
+ 
+Figure 28: State chart diagram of exam scheduling and completion 
+ 
+89 
+ 
+ 
+Figure 29: State chart diagram of international license application 
+90 
+ 
+ 
+Figure 30: State chart diagram of Renewal/ lost/ damaged license application 
+91 
+ 
+ 
+Figure 31: State chart diagram of License detainment and release process 
+92 
+ 
+Chapter 4: System design  
+4.1. Overview 
+This section provides an overview of the system design for the proposed Driving License 
+Management System (DVLD). The system is designed to support the complete lifecycle of driving 
+license management, including application submission, mandatory training, testing, license 
+issuance, renewal, and administrative control. 
+The DVLD system adopts a layered and modular design, consisting of a presentation layer, 
+business logic layer, and data layer. The presentation layer includes a single desktop application 
+used by DVLD staff and driving institute personnel, as well as a mob ile application used by 
+applicants. Access to system functionalities within the desktop application is controlled using role-
+based access control (RBAC), ensuring that each user interacts only with the features relevant to 
+their role. 
+Multiple stakeholders are supported within the same system environment, including system 
+administrators, registration officers, test officers, license issuers, institute managers, and institute 
+trainers. Although these users share the same desktop application, the user interface and available 
+menus are dynamically adjusted based on the authenticated user’s role. This approach avoids 
+duplication of applications, simplifies deployment, and improves system maintainability. 
+The system also integrates driving institutes as part of the license issuance workflow. Training is 
+modeled as a mandatory stage within the new driving license application process, rather than as a 
+separate application type. Applicants select an institute and training batch using the mobile 
+application, while institute staff manage batches, training progress, and attendance through the 
+desktop application. Completion of training is a prerequisite for enabling driving test scheduling 
+by DVLD officers. 
+External systems, such as payment services and notification mechanisms, may interact with the 
+DVLD system. However, training fees are handled externally by driving institutes and are not 
+processed as part of DVLD financial transactions. 93 
+ 
+Overall, the system design emphasizes security, scalability, role separation, and real -world 
+alignment, providing a clear and practical blueprint for implementation while supporting efficient 
+coordination between DVLD authorities, driving institutes, and applicants. 
+4.2. Purpose of the System Design 
+The purpose of the system design for the Driving License Management System (DVLD) is to 
+translate the identified functional and non -functional requirements into a structured, 
+implementable, and maintainable solution. This design serves as a blueprint that guides system 
+development, integration, testing, and future enhancement. 
+The system design aims to ensure that all functional requirements such as license application 
+processing, mandatory training management, test scheduling, license issuance, and renewal are 
+supported in a clear and logical workflow. By integrating driving institute training as a mandatory 
+stage within the new driving license application process, the design ensures real -world accuracy 
+and enforces regulatory compliance before applicants proceed to driving tests. 
+From a non-functional perspective, the design focuses on security, scalability, maintainability, and 
+usability. The use of role -based access control (RBAC) ensures that users can access only the 
+system functions relevant to their responsibilities, thereby protecting sensitive data and reducing 
+the risk of unauthorized actions. A single desktop application with dynamic role -based interfaces 
+minimizes system complexity and simplifies deployment and maintenance. 
+The system design also supports the system model and object -oriented model by clearly defining 
+system components, subsystems, classes, and their interactions. Business logic is separated from 
+the presentation to promote modularity and reduce coupling, maki ng the system easier to test, 
+debug, and extend. New features, such as training management, can be added without affecting 
+core licensing and testing logic. 
+Finally, the system design facilitates effective implementation and testing by providing well -
+defined interfaces, workflows, and data structures. This structured approach ensures that each 
+subsystem can be developed and verified independently while maintai ning seamless integration 
+across the entire DVLD system. 94 
+ 
+4.3. Design Goals 
+The design of the Driving License Management System (DVLD) is guided by a set of well-defined 
+design goals and object -oriented principles to ensure that the system is robust, scalable, secure, 
+and easy to maintain. These goals influence architectural decisions, subsystem decomposition, and 
+implementation strategies. 
+Modularity is a primary design goal of the DVLD system. The system is divided into distinct 
+subsystems such as user management, license applications, training management, testing, and 
+license issuance. Each subsystem performs a specific function, allowing independent 
+development, testing, and maintenance without affecting other parts of the system. 
+High cohesion and low coupling are emphasized throughout the design. Components within a 
+subsystem are closely related and focused on a single responsibility, while dependencies between 
+subsystems are minimized. For example, training management logic is isolated from licensing and 
+testing logic, ensuring that changes in training processes do not impact core DVLD operations. 
+Abstraction and encapsulation are applied to hide internal implementation details and expose only 
+necessary interfaces. Business rules, validation logic, and data access operations are encapsulated 
+within the business layer, preventing direct access from t he presentation layer. This improves 
+system security and reduces complexity. 
+The system design also follows object -oriented principles such as inheritance and polymorphism 
+where appropriate. Common attributes and behaviors are abstracted into base classes, enabling 
+code reuse and extensibility. Polymorphism allows the system to han dle different user roles and 
+processes using unified interfaces while executing role-specific behavior. 
+Reusability and scalability are key design goals. Avoiding duplicated applications and adopting a 
+single role-based desktop application allows shared components to be reused across multiple user 
+roles. The architecture supports future expansion, such as adding new roles, services, or modules, 
+with minimal changes to existing components. 
+Finally, security and usability are central to the system design. Role-based access control ensures 
+secure operation, while dynamic user interfaces tailored to each role improve usability and reduce 95 
+ 
+user errors. Together, these design goals ensure that the DVLD system is efficient, reliable, and 
+aligned with real-world operational requirements. 
+4.4. Proposed System Architecture 
+The proposed architecture of the Driving License Management System (DVLD) is based on a 
+layered architectural style, which separates the system into clearly defined layers to improve 
+maintainability, scalability, and security. This architecture ensures tha t responsibilities are well 
+organized and that changes in one layer have minimal impact on others. 
+The presentation layer is responsible for user interaction and includes two main interfaces: a 
+desktop application and a mobile application. The desktop application is used by DVLD staff and 
+driving institute personnel and operates as a single executable w ith role -based access control 
+(RBAC). Based on the authenticated user’s role, the system dynamically loads the appropriate 
+menus and screens. The mobile application is designed for applicants and allows them to apply for 
+licenses, select driving institutes and training batches, and track training and application status. 
+The business logic layer contains the core system functionality and enforces all business rules. It 
+handles processes such as license application management, training coordination, test scheduling, 
+result evaluation, and license issuance. Training -related services are implemented as separate 
+business components and are integrated into the new driving license application workflow without 
+interfering with licensing or testing logic. This layer acts as an intermediary between the 
+presentation and data layers, ensuring consistency and validation of system operations. 
+The data access layer manages persistent data storage and retrieval. It provides controlled access 
+to the database and ensures data integrity through well-defined data models and relationships. Core 
+entities such as applicants, applications, licenses, test s, training batches, and attendance records 
+are stored in the database, with training data logically linked to license applications. 
+The DVLD system architecture also supports interaction with external services, such as payment 
+gateways and notification systems. While DVLD -related payments are processed within the 
+system, training fees are managed externally by driving institutes and ar e not handled as part of 
+DVLD financial transactions. 96 
+ 
+Overall, this layered architecture promotes separation of concerns, enhances system security, 
+supports role-based operations, and provides a flexible foundation for future enhancements to the 
+DVLD system. 
+ 
+Figure 32: System Process Diagram 
+97 
+ 
+4.5. Subsystem Decomposition 
+This section describes the decomposition of the Driving License Management System (DVLD) 
+into well -defined subsystems based on functional responsibilities. The objective of this 
+decomposition is to group related system components and modules into logical s ubsystems that 
+simplify system design, development, testing, and maintenance. 
+The DVLD system is decomposed using a functional and hierarchical approach, where each 
+subsystem represents a major operational domain of the system. Each subsystem is designed to be 
+highly cohesive, performing a specific set of related functions, while ma intaining low coupling 
+with other subsystems through clearly defined interfaces. 
+Based on the proposed system architecture and functional requirements, the DVLD system is 
+decomposed into the following primary subsystems: 
+1. User and Access Management Subsystem 
+This subsystem groups all components related to user authentication, authorization, and 
+role-based access control. It manages system users, roles, and permissions for DVLD 
+staff and driving institute personnel, ensuring secure and controlled access to system 
+functionalities. 
+2. License Application Management Subsystem 
+This subsystem is responsible for creating, processing, and tracking driving license 
+applications. It manages application types such as new driving license applications, 
+renewal requests, replacement requests for lost or damaged licenses, and international 
+license applications. It acts as the central workflow coordinator and interacts with 
+training, testing, and license-related subsystems. 
+3. Training Management Subsystem 
+This subsystem groups components related to driving institute operations, including 
+institute management, training batch creation, applicant enrollment, attendance tracking, 
+and training completion verification. Training is modeled as a mandatory stage for new 
+driving license applications and must be completed before applicants can proceed to 
+testing. 98 
+ 
+4. Testing Management Subsystem 
+This subsystem manages all driving test-related activities, including test scheduling, test 
+execution, result recording, and eligibility verification. It also supports test retake 
+management, allowing applicants who fail a test to reschedule and retake the required 
+tests according to DVLD regulations. 
+5. License Issuance Subsystem 
+This subsystem includes components responsible for issuing new driving licenses and 
+international driving licenses after applicants successfully complete all required stages. It 
+generates license records and maintains license issuance history. 
+6. License Renewal and Replacement Subsystem 
+This subsystem manages license renewal processes and handles replacement of lost or 
+damaged licenses. It verifies eligibility, validates required conditions, and updates license 
+status without repeating unnecessary application stages. 
+7. Payment and Notification Subsystem 
+This subsystem groups components responsible for managing DVLD-related payment 
+records associated with system services such as license applications, test fees, renewals, 
+and license replacements. Payments are recorded and maintained internally within the 
+system database, where each payment is directly linked to the corresponding process or 
+entity that requires payment. The subsystem does not integrate with external banking or 
+payment gateway systems in the current implementation. 
+4.6. Subsystem Description 
+This section describes the major subsystems of the Driving and Vehicle License Department 
+(DVLD) Management System. Each subsystem is presented with its function, interfaces, 
+interactions, dependencies, and main components. Together, these subsystems ensur e efficient 
+management of applicants, driving schools, examinations, and license services. 
+1. User and Identity Management Subsystem 
+Function: 
+ Manages user registration, authentication, authorization, and role -based access for applicants, 
+DVLD staff, and driving school personnel. 99 
+ 
+Interface: 
+● Mobile application interfaces for applicants 
+● Desktop application interfaces for DVLD staff 
+● Desktop interfaces for driving schools 
+Interaction: 
+ Interacts with all other subsystems to verify user identity and permissions before allowing access 
+to system functions. 
+Dependencies: 
+ Depends on the centralized SQL Server database for storing user credentials, roles, and account 
+status. 
+ 
+2. Applicant and Application Management Subsystem 
+Function: 
+ Handles applicant data, driving license applications, document submissions, and application status 
+tracking. 
+Interface: 
+● Mobile app for applicants 
+● Desktop application for registration officers 
+Interaction: 
+ Communicates with the Test Management and License Management subsystems to update 
+application progress. 
+Component Description 
+Registration Module Handles applicant and staff registration 
+Authentication Module Manages login and session validation 
+Role-Based Access Control Module Enforces permissions based on user roles 
+User Activity Logging Module Records login attempts and system activities 100 
+ 
+Dependencies: 
+ Relies on the database subsystem for applicant records and document storage. 
+ 
+3. Driving School and Training Management Subsystem 
+Function: 
+ Manages driving schools, training programs, schedules, instructors, and attendance records. 
+Interface: 
+● Desktop/web interface for driving school administrators 
+● Read-only access for DVLD administrators 
+Interaction: 
+ Shares training completion data with the Test Management subsystem and DVLD administration. 
+Dependencies: 
+ Depends on user and database subsystems for school accounts and training data. 
+ 
+ 
+ 
+Component Description 
+Applicant Profile Module Stores personal and identification details 
+Application Processing Module Manages submission, review, and approval 
+Document Management Module Handles upload and verification of documents 
+Application Status Tracker Tracks progress across all stages 
+Component Description 
+Driving School Management Module Registers and manages schools 
+Training Schedule Module Creates and manages training plans 
+Attendance Tracking Module Handles upload and verification of documents 
+Training Completion Reporting Module Submits reports to DVLD 101 
+ 
+4. Test Management Subsystem 
+Function: 
+ Manages vision, theory, and practical driving tests, including scheduling, execution, results, and 
+retakes. 
+Interface: 
+● Desktop application for test officers 
+● Mobile notifications for applicants 
+Interaction: 
+ Receives eligibility data from the Application subsystem and sends results to the License 
+Management subsystem. 
+Dependencies: 
+ Relies on centralized database and user roles for secure operation. 
+5. License Management Subsystem 
+Function: 
+ Handles issuance, renewal, replacement, detention, and release of driving licenses. 
+Interface: 
+ Desktop application used by license issuers and DVLD administrators. 
+Interaction: 
+ Receives verified test results and application approvals before issuing licenses. 
+Dependencies: 
+ Depends on Test Management and Applicant subsystems for eligibility verification. 
+Component Description 
+Vision Test Module Records vision test results 
+Theory Test Module Manages online or scheduled theory exams 
+Practical Test Module Handles road test scheduling and evaluation 
+Retake Management Module Manages failed test retries 102 
+ 
+ 
+4.7. Persistent Data Management 
+This section explains how the DVLD Management System stores, manages, and protects persistent 
+data. Reliable data management ensures accuracy, security, and long-term availability of licensing 
+records. 
+4.7.1 Data Storage Approach 
+The DVLD system uses Microsoft SQL Server as its centralized relational database management 
+system. SQL Server was chosen for its strong transactional support, reliability, and suitability for 
+government-scale administrative systems. 
+Data is stored in normalized relational tables to maintain consistency and eliminate redundancy. 
+4.7.2 Core Data Entities 
+The system persistently stores the following core entities: 
+● User Data: User accounts, roles, login credentials, permissions 
+● Applicant Data: Personal details, identification documents 
+● Application Data: License applications, types, statuses 
+● Driving School Data: School details, instructors, training schedules 
+● Test Data: Vision, theory, and practical test records 
+● License Data: Issued licenses, renewals, replacements, detainments 
+● Notification Logs: Alerts and communication history 
+● Audit Logs: Administrative actions and system changes 
+Component Description 
+License Issuance Module Issues new driving licenses 
+License Renewal Module Processes renewals 
+Lost/Damaged License Module Handles replacements 
+License Detainment Module Manages detained licenses 
+License Detainment Module Restores released licenses 103 
+ 
+4.7.3 Data Access and Retrieval 
+Data access is performed through the Data Access Layer (DAL) using ADO.NET. 
+The system supports full CRUD operations: 
+● Create 
+● Read 
+● Update 
+● Delete 
+All database interactions use parameterized queries and stored procedures to ensure security and 
+performance. 
+4.7.4 Data Security and Access Control 
+Persistent data is protected using multiple security mechanisms: 
+● Secure password hashing 
+● Role-Based Access Control (RBAC) 
+● Parameterized SQL queries 
+● Controlled database connections 
+● Restricted access through DAL only 
+Sensitive operations are logged for auditing and accountability. 
+4.7.5 Data Maintenance and Scalability 
+SQL Server supports efficient scaling as the number of applicants, licenses, and institutions 
+grows. Routine maintenance includes: 
+● Regular database backups 
+● Archiving old records 
+● Monitoring query performance 
+● Index optimization 104 
+ 
+This persistent data management strategy ensures the DVLD system remains secure, reliable, 
+and scalable while supporting long-term national deployment. 
+4.8. Component Diagram 
+This section presents the component diagram of the proposed Driving License Management 
+System (DVLD). The component diagram illustrates the high -level software components of the 
+system and shows how these components interact through defined interfaces and connections. 
+The DVLD system is organized into components that correspond to the layered architecture, 
+ensuring a clear separation between user interfaces, business logic, and data access. Each 
+component encapsulates a specific set of responsibilities and communicates with other components 
+through well-defined interfaces. 
+Main System Components 
+Presentation Components 
+ The presentation layer consists of two main components: 
+● Desktop Application Component , used by DVLD staff and driving institute personnel. 
+This component provides role -based user interfaces and interacts with business 
+components to perform system operations. 
+● Mobile Application Component, used by applicants to submit applications, select training 
+institutes and batches, and view application status. 
+These components do not directly access the database and rely entirely on business components 
+for system functionality. 
+Business Logic Components 
+The business layer is composed of several core components, including: 
+● User and Access Management Component 
+● License Application Management Component 
+● Training Management Component 
+● Testing Management Component 105 
+ 
+● License Issuance Component 
+● License Renewal and Replacement Component 
+● Payment Management Component 
+Each business component implements specific system rules and exposes interfaces that are used 
+by the presentation components. Interactions between business components occur where process 
+coordination is required, such as verifying training completion before test scheduling. 
+Data Access Components 
+ The data layer includes components responsible for persistent data handling, such as: 
+● User Data Component 
+● Application and License Data Component 
+● Training Data Component 
+● Test and Payment Data Component 
+These components manage database communication and provide data services to the business 
+layer through controlled interfaces. 
+Database Component 
+The Database Component represents the Microsoft SQL Server database at the core of the DVLD 
+system. Acting as the central repository, it stores and manages all persistent and operational data 
+required by the system, ensuring reliability, integrity, and availability across all modules, including 
+both the desktop and mobile applications. 
+Designed using a relational model, the database employs well‑defined tables, primary keys, foreign 
+keys, and constraints to accurately capture real‑world entities and their relationships within the 
+driving license management domain. This structure guarante es consistency, enforces business 
+rules, and supports seamless integration between different system components. 
+Key Data Domains 
+● People and User Accounts 
+ Stores personal information, login credentials, roles, and permission data for applicants, 106 
+ 
+DVLD staff, and institute staff. This ensures secure access control and accountability 
+across the system. 
+● Applications and Application Types 
+ Maintains records of all submitted applications, including new licenses, renewals, 
+replacements, international licenses, and detained license releases. Each record tracks 
+application status, associated fees, and processing history, enabling transparent 
+workflows and efficient case management. 
+● Licenses and License Classes 
+ Contains details of issued licenses, license numbers, validity periods, license classes, and 
+current license status (active, expired, detained, or revoked). This supports accurate 
+monitoring of license lifecycles and compliance enforcement. 
+● Test Appointments and Results 
+ Manages schedules and outcomes for vision, theory, and practical tests. Data includes 
+test scores, results, and retake information, all linked to specific applications to provide a 
+complete applicant profile. 
+● Training Institutes, Batches, and Attendance 
+ Records information about registered driving institutes, training batches, applicant 
+enrollment, and attendance tracking during the training phase. This ensures proper 
+oversight of training programs and applicant readiness. 
+Component Interaction and Dependencies 
+The component diagram shows that: 
+● Presentation components depend on business logic components to execute system 
+functions. 
+● Business logic components depend on data access components to store and retrieve 
+persistent data. 
+● Direct interaction between presentation components and the database is not allowed. 
+This structured component interaction improves system maintainability, supports independent 
+component development, and allows future system enhancements with minimal impact on 
+existing components. 107 
+ 
+ 
+     Figure 33: Component Diagram 
+108 
+ 
+4.9. Database Diagram 
+This section presents the database diagram of the proposed Driving License Management System 
+(DVLD). The database diagram illustrates the structure of the system database, including the main 
+tables, their attributes, primary keys, foreign keys, and the relationships between them. It provides 
+a clear view of how system data is organized and interconnected. 
+The DVLD database is designed using a relational database model to ensure data integrity, 
+consistency, and efficient data retrieval. Each table represents a specific system entity, and 
+relationships are established to support system workflows such as application processing, training 
+management, testing, and license issuance. 
+4.9.1. Entities and Attributes 
+Entity Attributes 
+User • user_id (pk) 
+• person_id (fk → People.person_id) 
+• username 
+• password 
+• is_active 
+People • person_id (pk) 
+• national_no 
+• first_name 
+• middle_name 
+• last_name 
+People • date_of_birth 
+• gender 
+• address 
+• phone 
+• email 
+• nationality_country_id (fk → Countries.country_id) 
+• image_path 
+Countries • country_id (pk) 
+• country_name 109 
+ 
+Drivers • driver_id (pk) 
+• person_id (fk → People.person_id) 
+• created_by_user_id (fk → Users.user_id) 
+• created_date 
+LicenseClasses • license_class_id (pk) 
+• class_name 
+• class_description 
+• minimum_allowed_age 
+• default_validity_length 
+class_fees 
+Applications • application_id(pk) 
+• applicant_person_id (fk → People.person_id) 
+• application_date 
+• application_type_id (fk → ApplicationTypes.application_type_id) 
+• application_status 
+• last_status_date 
+• paid_fees 
+• created_by_user_id (fk → Users.user_id) 
+ApplicationTypes • application_type_id (pk) 
+• application_type_title 
+• application_fees 
+LocalDrivingLicenseApplicati
+ons 
+• local_driving_license_application_id (pk) 
+• application_id (fk → Applications.application_id) 
+•license_class_id (fk → LicenseClasses.license_class_id) 
+Licenses • license_id (pk) 
+• application_id (fk → Applications.application_id) 
+• driver_id (fk → Drivers.driver_id) 
+• license_class 
+• issue_date 
+• paid_fees 
+• is_active 
+• issue_reason 
+created_by_user_id (fk → Users.user_id) 110 
+ 
+DetainedLicenses • detained_id (pk) 
+•license_id (fk → Licenses.license_id) 
+• detained_date 
+• fine_fees 
+• created_by_user_id (fk → Users.user_id) 
+• is_released 
+• released_by_user_id (fk → Users.user_id) 
+• release_application_id (fk → Applications.application_id) 
+TestTypes • test_type_id (pk) 
+• test_type_title 
+• test_type_description 
+• test_type_fees 
+TestAppointments • test_appointment_id (pk) 
+• test_type_id (fk → TestTypes.test_type_id) 
+• local_driving_license_application_id (fk → 
+LocalDrivingLicenseApplications.local_driving_license_application
+_id) 
+• appointment_date 
+• paid_fees 
+• created_by_user_id (fk → Users.user_id) 
+• is_locked 
+• retake_test_application_id (fk → Applications.application_id) 
+Tests • test_id (pk) 
+• test_appointment_id (fk → 
+TestAppointments.test_appointment_id) 
+• test_result 
+• notes 
+• created_by_user_id (fk → Users.user_id) 
+Attendance • attendance_id (pk) 
+• application_id (fk → Applications.application_id) 
+• course_id (fk → InstituteCourses.course_id) 
+• attendance_date 
+• is_present 
+InstituteCourses • course_id (pk) 
+• institute_id (fk → DrivingInstitutes.institute_id) 
+• course_name 
+• duration_days 
+• course_fees 111 
+ 
+DrivingInstitutes • institute_id (pk) 
+• created_by_user_id (fk → Users.user_id) 
+• institute_name 
+• address 
+• phone 
+• email 
+• is_active 
+ 
+Figure 34: Database Diagram 
+112 
+ 
+4.10. Access Control 
+The Driving License Management System (DVLD)  incorporates robust access control 
+mechanisms to safeguard system security, protect sensitive data, and ensure proper authorization 
+of users. Access control is a fundamental aspect of the system’s architecture, designed to restrict 
+functionalities based on user identity and assigned responsibilities. By enforcing strict boundaries 
+between roles and permissions, the DVLD system minimizes risks of unauthorized actions and 
+ensures that each user interacts only with the features necessary for their duties. 
+At the core of this design is Role-Based Access Control (RBAC), the primary mechanism used 
+to manage permissions. Under RBAC, every system user is assigned a specific role, and 
+permissions are granted according to that role. This structured approach guarantees that staff, 
+institute personnel, and applicants operate within clearly defined boundaries, reducing complexity 
+while maintaining flexibility. 
+User Roles and Permissions 
+The DVLD system supports multiple user roles, each with predefined permissions tailored to their 
+responsibilities: 
+● System Administrator – Oversees the entire system, manages user accounts, configures 
+permissions, and ensures smooth operation of all modules. 
+● Registration Officer – Handles applicant registration, manages submitted applications, 
+and verifies applicant details. 
+● Test Officer – Schedules and supervises vision, theory, and practical tests, records results, 
+and manages retakes. 
+● License Issuer  – Responsible for issuing new licenses, renewals, replacements, and 
+handling detained or revoked licenses. 
+● Institute Manager – Manages driving institutes, training batches, and ensures compliance 
+with DVLD standards. 
+● Institute Trainer – Tracks applicant attendance, supervises training sessions, and records 
+progress during the training phase. 113 
+ 
+● Applicant – Accesses limited functions through the mobile application, such as submitting 
+applications, booking test appointments, and viewing license or application status. 
+This role-based structure ensures that DVLD staff can manage applications, tests, and licenses, 
+while institute staff focus exclusively on training -related activities. Applicants, meanwhile, are 
+restricted to self-service features, preventing them from accessing administrative or sensitive data. 
+Authentication and Authorization 
+Access control begins with authentication, which is carried out through a secure login mechanism 
+designed to verify user credentials before granting access to the system. This process ensures that 
+only legitimate users are able to enter, protecting sensiti ve data and preventing unauthorized 
+activities. By enforcing strong authentication measures, the system maintains integrity, safeguards 
+user information, and establishes a trusted foundation for all subsequent operations. 
+Once authenticated, authorization checks are applied to determine which menus, screens, and 
+operations are available to the user. The system dynamically loads user interfaces based on the 
+authenticated user’s role, ensuring that restricted features remain inaccessible. For example, a Test 
+Officer will see test scheduling and result management options, while an Applicant will only see 
+application submission and status tracking features. This dynamic interface design enhances 
+usability while reinforcing security. 
+Data Access Control 
+Beyond functional restrictions, the DVLD system enforces strict and role-based data access control 
+to safeguard sensitive information. Critical data such as license details and applicant records are 
+accessible only to authorized DVLD staff whose responsibi lities require direct interaction with 
+these records. In contrast, institute trainers are limited to training -related information, ensuring 
+they have the resources necessary for their duties without exposure to confidential applicant data. 
+This separation of access not only protects privacy but also strengthens accountability, reduces the 
+risk of misuse, and maintains the integrity of the overall system. 
+To further strengthen security, the DVLD system prohibits any direct access to the database from 
+the presentation layer, ensuring that user-facing components cannot bypass established safeguards. 114 
+ 
+Instead, all data operations are routed exclusively through the business layer, which enforces strict 
+access rules, applies business constraints, and validates requests before they reach the database. 
+This layered architecture not only prevents unauthorize d queries but also guarantees consistency 
+across transactions, reduces the risk of data misuse, and provides a clear separation of 
+responsibilities between system components, thereby enhancing both reliability and 
+maintainability. 
+Security and Future Enhancements 
+The access control design significantly enhances overall system security by minimizing 
+unauthorized actions and reducing the likelihood of data breaches. By carefully aligning user 
+permissions with specific roles and responsibilities, the DVLD system ensures that each actor has 
+access only to the information and functions necessary for their tasks. This role -based approach 
+not only strengthens accountability and transparency across all operations but also helps maintain 
+data integrity, protect sensitive rec ords, and build trust among stakeholders who rely on the 
+system’s reliability and security. 
+The architecture is also forward‑looking, allowing for future enhancements  without major 
+structural changes. Potential improvements include: 
+● More granular permission levels for fine‑tuned control. 
+● Comprehensive auditing of user activities to track and analyze system usage. 
+● Integration with external authentication services such as biometric verification or single 
+sign‑on (SSO). 
+These enhancements would further strengthen the system’s resilience by ensuring it can withstand 
+potential disruptions and continue operating reliably under varying conditions. At the same time, 
+they preserve the system’s scalability, allowing it to handle growing numbers of users, institutions, 
+and services without performance degradation. By maintaining adaptability, the system remains 
+flexible enough to integrate new features, support evolving requirements, and align with future 
+expansion goals, ultimately providing a secure and sustainable foundation for long-term success. 
+ 115 
+ 
+Chapter 5: Implementation 
+5.1. Overview 
+This chapter describes the overall implementation approach of the Driving and Vehicle License 
+Department (DVLD) Management System, explaining how the proposed system design and 
+requirements are transformed into a functional software solution. The implement ation follows a 
+modular, multi -tier architecture that clearly separates the Presentation Layer, Business Logic 
+Layer, and Data Access Layer to enhance maintainability, scalability, and reliability. 
+The system is primarily implemented as a desktop -based application for DVLD staff and driving 
+institutes, while a mobile application is planned for applicants to support registration, application 
+tracking, and communication. The system is designed to suppo rt multiple user roles, including 
+Applicants, DVLD Staff, Test Officers, License Issuers, Driving Institutes, and System 
+Administrators, each with clearly defined responsibilities and access privileges enforced through 
+role-based access control. 
+Microsoft SQL Server is used as the backend database to ensure secure and reliable data storage, 
+while ADO.NET is used for database connectivity and transaction management. The modular 
+design allows the system to be extended in the future to support additional features such as online 
+payments, advanced reporting, and AI-assisted fraud detection. 
+5.2 Coding Standard 
+To ensure high code quality, maintainability, and consistency, the DVLD Management System 
+follows well-defined coding standards across all layers of the application. These standards are 
+applied throughout the Presentation Layer, Business Logic Layer, and Data Access Layer. 
+Consistent formatting rules are enforced, including proper indentation, meaningful variable 
+naming, and structured exception handling. Hard -coded values are avoided where possible, and 
+configuration values such as database connection strings are stored securely in configuration files. 
+These coding practices help reduce errors, improve readability, and simplify future maintenance 
+and enhancement of the system. 116 
+ 
+5.2.1 Naming Conventions 
+Clear and descriptive naming conventions are used consistently across the entire system to improve 
+code readability and understanding. 
+● Variables and Methods: camelCase 
+ (e.g., applicationDate, saveApplication()) 
+● Classes and User Controls: PascalCase 
+ (e.g., clsApplication, frmAddUpdateLicense, ctlPersonCard) 
+● Constants and Enumerations: UPPER_SNAKE_CASE 
+ (e.g., MAX_LOGIN_ATTEMPTS, APPLICATION_STATUS_NEW) 
+● Files and Folders: PascalCase or meaningful naming based on functionality 
+These conventions help ensure uniformity across the codebase and make it easier for developers 
+to understand and extend the system. 
+5.2.2 Code Structure and Organization 
+The DVLD system follows a layered and modular architecture, ensuring a clear separation of 
+concerns: 
+● Presentation Layer (PL): 
+ Contains Windows Forms, user controls, and UI-related logic responsible for interacting 
+with system users. 
+● Business Logic Layer (BLL): 
+ Contains core business rules, validations, workflows, and domain models such as 
+applications, licenses, tests, and users. 
+● Data Access Layer (DAL): 
+ Handles all database interactions using ADO.NET, including executing SQL commands, 
+managing connections, and handling transactions. 
+The project structure emphasizes: 
+● Clear separation between UI, logic, and data 117 
+ 
+● Reusable classes and user controls 
+● Consistent folder organization 
+● Maintainable and extensible design 
+This structure allows each layer to evolve independently without affecting the others. 
+5.2.3 Documentation Practices 
+To support maintainability and ease of understanding, proper documentation practices are 
+followed throughout the project: 
+● Inline comments are used to explain complex logic or critical operations. 
+● Classes and methods are designed with clear responsibilities and self-explanatory names. 
+● A project-level documentation file (README) is prepared to describe the system 
+overview, setup instructions, and architectural design. 
+● Database tables and relationships are documented using ER diagrams to support clarity 
+and future maintenance. 
+These practices ensure that the system can be easily understood and extended by other 
+developers or future teams. 
+5.2.4 Security Best Practices 
+Security is a key consideration in the implementation of the DVLD Management System. 
+Several best practices are applied to protect system data and user access: 
+● Secure Authentication: 
+ User authentication is enforced through a login system, with passwords stored in 
+encrypted or hashed form using secure algorithms. 
+● Role-Based Access Control (RBAC): 
+ System access is restricted based on user roles and permissions, ensuring that users can 
+only access features relevant to their responsibilities. 118 
+ 
+● Secure Database Access: 
+ ADO.NET parameterized queries are used to prevent SQL injection attacks and ensure 
+safe data handling. 
+● Input Validation: 
+ User input is validated and sanitized at both the UI and business logic levels to prevent 
+invalid or malicious data submissions. 
+● Configuration Security: 
+ Sensitive information such as database connection strings is stored securely and not 
+hard-coded into the application. 
+These measures help protect the system from unauthorized access and common security threats. 
+5.3 Development Tools 
+The following tools and technologies are used for the development, testing, and management of 
+the Driving and Vehicle License Department (DVLD) Management System. These tools support 
+efficient development, collaboration, debugging, and long-term maintainability of the system. 
+Integrated Development Environment (IDE) 
+Microsoft Visual Studio is used as the primary development environment for building the DVLD 
+desktop application. Visual Studio provides strong support for C#, Windows Forms, ADO.NET, 
+and SQL Server integration, along with advanced debugging, refactoring, and UI design tools. Its 
+built-in designers simplify the development of complex user interfaces and user controls used 
+throughout the system. 
+Database Management Tools 
+Microsoft SQL Server is used as the primary relational database management system for storing 
+all system data, including users, applications, licenses, tests, payments, and institutes. 
+SQL Server Management Studio (SSMS) is used to: 
+● Design and manage database tables and relationships 
+● Execute SQL scripts and queries 119 
+ 
+● Inspect stored data and constraints 
+● Perform backup and restore operations 
+Data Access and Connectivity Tools 
+ADO.NET is used for database connectivity and data manipulation. It enables: 
+● Secure communication between the application and SQL Server 
+● Execution of parameterized queries to prevent SQL injection 
+● Transaction management for critical operations 
+● Efficient handling of data readers and data tables 
+Debugging and Testing Tools 
+Several tools and techniques are used to ensure correct system behavior: 
+● Visual Studio Debugger for step-by-step execution, breakpoints, and variable inspection 
+● Logging mechanisms to track application behavior and errors 
+● Manual testing of business workflows such as application submission, test scheduling, and 
+license issuance 
+● Database-level validation using SQL queries to verify stored data accuracy 
+These tools help identify logic errors early and ensure reliable system performance. 
+API and Mobile Integration Tools 
+To support mobile access and system extensibility, the DVLD Management System includes a 
+.NET Core–based RESTful Web API that exposes selected backend services to external clients. 
+The API is primarily designed to serve the applicant mobile application and  provides secure 
+endpoints for authentication, application tracking, test information, and notifications. 
+The following tools and technologies are used or planned for API and mobile integration: 
+● ASP.NET Core Web API for implementing RESTful services and handling client–server 
+communication 120 
+ 
+● Postman for testing and validating API endpoints, request/response formats, and 
+authentication mechanisms 
+● OpenAPI/Swagger for automatic API documentation and interface definition 
+● Flutter or Xamarin  (planned) for developing the applicant mobile application that 
+consumes the API services 
+This approach ensures a clear separation between the presentation layer and backend services, 
+enabling easier maintenance, improved scalability, and support for future clients such as web or 
+third-party systems. 
+Version Control System 
+Git is used as the version control system, with GitHub serving as the remote hosting platform. This 
+setup enables effective collaboration and code management throughout the development lifecycle. 
+Key benefits include: 
+● Tracking changes to source code 
+● Supporting collaboration among team members 
+● Branching for feature development and bug fixes 
+● Rollback to previous stable versions when needed 
+Productivity and Collaboration Tools 
+● GitHub Projects for task management and progress tracking 
+● Google Docs for project documentation and report writing 
+● Online communication platforms (e.g., Telegram or Slack) for team coordination 
+5.4 Prototype 
+The prototype of the Driving and Vehicle License Department (DVLD) Management System is 
+implemented as a desktop-based application developed using Microsoft Visual Studio . The 
+desktop prototype is built with C# and Windows Forms (WinForms) under the .NET Framework 
+and demonstrates the core system functionalities, including user authentication, application 
+processing, test management, license issuance, and reporting. 121 
+ 
+ 
+Figure 35: Login Page Design(planned) 
+ 
+Figure 36: Dashboard Page Design(planned) 
+122 
+ 
+ 
+Figure 37: Test Management Page Design(planned) 
+5.5 Implementation Detail 
+This section describes how the Driving and Vehicle License Department (DVLD) Management 
+System was practically developed, highlighting the technologies used, architectural structure, and 
+key implementation approaches applied in both the desktop client and server-side components. It 
+explains how system functionalities were translated into working software modules to ensure 
+reliability, security, and maintainability. 
+5.5.1 Client-Side Implementation 
+The client-side of the Driving and Vehicle License Department (DVLD) Management System is 
+implemented as a multi-client environment , consisting of a desktop-based application  for 
+internal DVLD staff and driving institutes, and a mobile application for applicants. This design 
+ensures accessibility for different user groups while maintaining centralized control and data 
+consistency. 
+The desktop client is developed using C# and Windows Forms (WinForms) within the Microsoft 
+.NET Framework, providing a robust, event -driven environment suitable for administrative and 
+transaction-heavy workflows. The mobile client enables applicants to access selected DVLD 
+services remotely through secure API communication. 
+123 
+ 
+Both clients are designed to interact with the same core system logic, ensuring uniform 
+enforcement of business rules and system behavior.The implementation strictly follows object-
+oriented programming (OOP) principles , where each major system function is encapsulated 
+within dedicated classes and modules, promoting code reusability, maintainability, and scalability. 
+5.5.1.2. Client-Side Technologies Used 
+The DVLD Management System employs stable and enterprise -proven technologies to ensure 
+reliability, performance, and long-term maintainability. 
+C# (.NET Framework) 
+Overview: 
+ C# is a modern, object-oriented programming language developed by Microsoft and widely used 
+for enterprise-grade desktop and backend systems. 
+Benefits: 
+● Strong Object-Oriented Support: Enables accurate modeling of real-world entities such as 
+users, applications, licenses, tests, and drivers. 
+● Type Safety: Reduces runtime errors through compile-time validation. 
+● Rich Standard Library: Provides built -in support for UI development, security, file 
+handling, and database communication. 
+● Maintainability: Encourages modular, readable, and well-structured code. 
+Windows Forms (WinForms) 
+Overview: 
+ Windows Forms is a graphical user interface framework for building Windows desktop 
+applications using the .NET platform. 
+Benefits: 
+● Event-Driven Architecture: Supports responsive interactions through events such as button 
+clicks, form loading, and data selection. 124 
+ 
+● Rapid Application Development: Visual designers simplify UI creation and iteration. 
+● Native Windows Integration: Seamless interaction with operating system features. 
+● Suitability for Administrative Systems: Well -suited for data -intensive, form -based 
+applications such as DVLD workflows. 
+Mobile Client Application 
+Overview: 
+ The mobile application is designed for DVLD applicants to access system services remotely using 
+smartphones. 
+Capabilities: 
+● Application submission and tracking 
+● Viewing test schedules and results 
+● Receiving license status updates and notifications 
+The mobile client does not access the database directly and communicates exclusively with the 
+backend through secure RESTful APIs. 
+ADO.NET 
+Overview: 
+ ADO.NET is used for database connectivity and communication with Microsoft SQL Server. 
+Benefits: 
+● Efficient Data Access: Enables secure and high-performance CRUD operations. 
+● Parameterized Queries: Protects against SQL injection attacks. 
+● Transaction Management: Ensures data consistency during multi -step operations such as 
+license issuance or test result submission. 
+● Tight SQL Server Integration: Optimized for enterprise-level relational databases. 125 
+ 
+5.5.1.3 Client-Side Architecture 
+The client-side architecture follows a layered and object-oriented design, aligning with the overall 
+system architecture. 
+Form-Based Modular Design 
+Each Windows Form corresponds to a specific business function, including: 
+● User and role management 
+● Driving license application processing 
+● Test scheduling and result management 
+● License issuance, renewal, and detention handling 
+● Reporting and statistical analysis 
+This modular structure enables independent development, testing, and maintenance of individual 
+system features. 
+Business Entity Representation 
+Core system entities such as: 
+● Users 
+● Applications 
+● Licenses 
+● Tests 
+● Drivers 
+● Payments 
+are represented using dedicated C# classes. These classes closely reflect the underlying database 
+schema and business rules, ensuring consistency between the presentation layer, business logic, 
+and data storage. 
+Role-Aware Interface 
+The user interface dynamically adapts based on the authenticated user’s role: 
+● Administrators have full system access 126 
+ 
+● Registration officers manage applications 
+● Test officers conduct and record tests 
+● License issuers process license creation and renewal 
+Unauthorized features are hidden or disabled at the user interface level, providing an additional 
+layer of access control alongside server-side validation. 
+5.5.1.4 User Interface (UI) Design 
+The DVLD system’s UI is designed with a focus on usability, clarity, and operational efficiency, 
+particularly for administrative users. 
+Layout Structure 
+● Main Navigation Menu: Provides access to core system modules 
+● Work Area: Displays active forms, lists, and data grids 
+● Dialog Windows: Used for confirmations, alerts, and detailed data entry 
+Consistency and Readability 
+● Uniform color scheme and font usage 
+● Clear labeling and grouped input fields 
+● Consistent button placement and naming conventions 
+Form Validation 
+● Mandatory fields are clearly indicated 
+● Input validation is performed before database submission 
+● User-friendly error messages guide corrective actions 
+Error Handling 
+● Informative error dialogs are displayed for invalid operations 
+● System exceptions are logged to assist debugging and maintenance 
+ 127 
+ 
+5.5.1.5 Interaction with the Server-Side 
+The desktop client communicates with backend functionality through the Business Logic Layer 
+(BLL) and Data Access Layer (DAL). 
+Communication Method 
+● Direct method calls between UI forms and business logic classes 
+● Secure database access via ADO.NET 
+● Transaction-based execution for critical workflows 
+Data Format 
+● Strongly typed C# objects used for internal data exchange 
+● SQL queries and stored procedures handle database interaction 
+Mobile Client Interaction 
+The mobile application interacts with the DVLD system through an ASP.NET Core Web API. 
+● RESTful API endpoints expose selected system functionalities 
+JSON-based request and response format 
+● All requests are validated and authorized at the API level 
+● API invokes shared BLL methods, ensuring consistent business rules 
+● No direct database access from the mobile client 
+This approach allows both desktop and mobile clients to operate on the same system logic while 
+using different communication mechanisms. 
+5.5.1.6 Security and Performance Considerations 
+Security Considerations 
+● Authentication: Users must log in before accessing system features. 
+● Role-Based Access Control: Enforced at both UI and business logic levels. 
+● Input Validation: Prevents invalid or malicious data entry. 128 
+ 
+● Secure Database Access: Parameterized queries and controlled connections. 
+Performance Considerations 
+● Optimized SQL queries and indexing 
+● Efficient data loading for large datasets 
+● Proper event handling to avoid UI blocking 
+● Structured exception handling to ensure application stability 
+5.5.2 Server-Side Implementation 
+The server-side of the Driving and Vehicle License Department (DVLD) Management System is 
+designed using a layered and service-oriented architecture that supports both desktop and mobile 
+clients. The system separates presentation concerns from business log ic and data access 
+responsibilities, ensuring high maintainability, security, and scalability. 
+The DVLD system operates as a multi-client platform, consisting of: 
+● A Windows Forms desktop application for DVLD staff and driving institutes 
+● A mobile application for applicants 
+Both clients interact with a centralized backend through shared business logic and secure data 
+access mechanisms, with the mobile application communicating via ASP.NET Core Web API 
+services. 
+5.5.2.1 Server Architecture 
+The DVLD system follows a layered architecture with service exposure, enabling multiple client 
+platforms to operate on the same core system logic. 
+Main Architectural Components 
+1. Presentation Layer (PL) 
+The Presentation Layer consists of two active client applications, each serving a specific user 
+group. 129 
+ 
+a) Desktop Presentation Layer (Windows Forms) 
+Function: 
+Provides a rich desktop interface for DVLD staff and driving institute personnel. 
+Responsibilities: 
+● Capture user input through forms and controls 
+● Display structured data and reports 
+● Perform UI-level validation 
+● Restrict access based on user roles 
+● Forward requests to the Business Logic Layer through direct method calls 
+b) Mobile Presentation Layer (Applicant Mobile Application) 
+Function: 
+ Provides applicants with mobile access to DVLD services. 
+Responsibilities: 
+● Allow applicants to submit and track applications 
+● Display test schedules and license status 
+● Receive system notifications 
+● Communicate exclusively with the backend via RESTful APIs 
+● Send and receive data in JSON format 
+The mobile client does not access the database directly and relies entirely on the Web API for 
+secure communication. 
+2. Service Layer (ASP.NET Core Web API) 
+Function: 
+Acts as a secure communication bridge between the mobile application and the core DVLD 
+system. 
+Responsibilities: 130 
+ 
+● Expose DVLD functionalities through RESTful endpoints Authenticate and authorize 
+mobile users 
+● Validate incoming HTTP requests 
+● Invoke Business Logic Layer methods Return structured JSON responses 
+● Enforce security policies and access rules 
+Key Characteristics: 
+● Built using ASP.NET Core Web API 
+● Stateless request handling 
+● Platform-independent client support 
+● Reuses existing .NET business logic libraries 
+3. Business Logic Layer (BLL) 
+Function: 
+ Represents the core processing engine of the DVLD system and is shared across all client 
+platforms. 
+Responsibilities: 
+● Enforce DVLD business rules and workflows 
+● Validate system operations (eligibility, test requirements, license issuance) 
+● Coordinate multi-step processes 
+● Apply role-based permissions 
+● Serve both desktop and API requests using the same logic 
+Implementation Detail: 
+ The BLL is implemented as a .NET Framework C# class library, allowing it to be: 
+● Directly referenced by the desktop application 
+● Consumed by the ASP.NET Core Web API 
+4. Data Access Layer (DAL) 131 
+ 
+Function: 
+ Handles all interactions with the Microsoft SQL Server database. 
+Responsibilities: 
+● Execute parameterized SQL queries and stored procedures  
+Perform CRUD operations 
+● Manage database connections and transactions 
+● Maintain data consistency and integrity 
+● Abstract database operations from higher layers 
+Implementation Detail:  
+The DAL is implemented as a .NET Framework C# class library, ensuring consistent and secure 
+data access for both desktop and API-based requests. 
+Architectural Advantages 
+● Single Source of Business Logic for all clients 
+● Secure Mobile Integration via Web APIs 
+● No Direct Database Access from Clients 
+● Code Reusability Across Platforms 
+● Scalable and Maintainable Design 
+5.5.2.2 Server-Side Technologies and Frameworks 
+The DVLD system utilizes enterprise -grade technologies suitable for administrative and 
+government systems. 
+C# (.NET Framework) 
+● Used for Business Logic Layer and Data Access Layer 
+● Object-oriented and strongly typed 
+● Encourages modular and maintainable code 
+● Shared across desktop and API projects 132 
+ 
+ASP.NET Core Web API 
+● Exposes backend services for mobile application 
+● Supports RESTful communication 
+● Built-in middleware for authentication and logging 
+● High performance and scalability 
+Microsoft SQL Server 
+● Centralized relational database 
+● Supports transactions, constraints, and indexing 
+● Ensures data consistency and durability 
+ADO.NET 
+● Used in DAL for database communication 
+● Parameterized queries to prevent SQL injection 
+● Transaction handling for critical operations 
+5.5.2.3 Request Handling Workflow 
+Desktop Client Request Flow 
+1. User interacts with Windows Forms UI 
+2. UI validates input and calls BLL methods 
+3. BLL applies business rules and permissions 
+4. DAL executes database operations 
+5. SQL Server processes the request 
+6. Results return to UI 
+7. Errors are handled and logged 
+Mobile Client Request Flow 
+1. Mobile app sends HTTP request to Web API 
+2. API validates authentication and input 133 
+ 
+3. API calls shared BLL methods 
+4. BLL interacts with DAL 
+5. SQL Server processes the data 
+6. API returns JSON response to mobile client 
+5.5.2.4 Data Management 
+Data is centrally managed using Microsoft SQL Server. 
+Managed Data Includes 
+● Applicants and DVLD users 
+● Applications and license requests 
+● Tests and evaluation results 
+● Licenses and renewals 
+● Institutes and training records 
+● Payments, fines, and complaints 
+Data Handling Strategy 
+● Normalized relational schema 
+● Primary and foreign key enforcement 
+● Stored procedures for complex workflows 
+● Parameterized queries for security 
+● Transaction-based updates 
+5.5.2.5 Security and Access Control 
+Authentication 
+● Secure login for desktop users 
+● Token-based authentication for mobile users via Web API 
+Authorization 134 
+ 
+● Role-based access control enforced in BLL 
+● UI-level restrictions for desktop users 
+● API-level permission validation for mobile users 
+Data Protection 
+● Encrypted or hashed credentials 
+● No direct database access from clients 
+● Centralized validation of all inputs 
+5.5.2.6 Scalability and Extensibility 
+● Layered architecture enables easy expansion 
+● Mobile and desktop clients share core logic 
+● Web API allows additional clients (web portals, kiosks) 
+● Database optimized for growing data volume 
+● New services can be added without restructuring existing layers 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 135 
+ 
+References 
+1. Sommerville, I. (2016). Software engineering (10th ed.). Pearson Education.(Core 
+reference for system design, requirements, architecture, and implementation) 
+2. Ministry of Transport and Logistics, Ethiopia. (n.d.). Road transport and driver licensing 
+services. https://www.motl.gov.et/ (Primary government authority responsible for 
+transport regulation and licensing in Ethiopia) Ethiopian Roads Administration (ERA). 
+(n.d.).  
+3. Road transport management and safety. 
+https://www.era.gov.et/ (Provides contextual reference for road safety and transport 
+regulation) 
+4. Pressman, R. S., & Maxim, B. R. (2020). Software engineering: A practitioner’s 
+approach (9th ed.). McGraw-Hill Education.(Used to justify SDLC, layered architecture, 
+and implementation approach) 
+5. Ethio-Menged Transport Authority. (n.d.). Driver licensing and transport services. 
+ (Referenced as a national transport service system involved in driver and vehicle 
+regulation in Ethiopia) 
+6. Federal Democratic Republic of Ethiopia – Ministry of Transport and Logistics. 
+7. International Transport Forum (ITF). (2019).Improving Driver Licensing Systems for 
+Road Safety. OECD Publishing .https://www.itf-oecd.org/sites/default/files/docs/dp2019-
+08.pdf 
+8. United Nations Department of Economic and Social Affairs (UNDESA). (2022). E-
+Government Survey 2022: The Future of Digital Government. United Nations. 
+https://www.un.org/development/desa/publications/publication/2022-egovernment-
+survey 
+ 
+ 
