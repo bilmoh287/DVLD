@@ -267,5 +267,107 @@ namespace DVLDDataAccessLayer
             }
             return dt;
         }
+
+        /// <summary>
+        /// Returns the number of batches currently active at this institute.
+        /// </summary>
+        public static int GetActiveBatchesCount(int InstituteID)
+        {
+            int count = 0;
+            string query = @"
+                SELECT COUNT(*) FROM TrainingBatches
+                WHERE InstituteID = @InstituteID AND EndDate >= CAST(GETDATE() AS DATE)";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@InstituteID", InstituteID);
+                try
+                {
+                    connection.Open();
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                        count = Convert.ToInt32(result);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error counting active batches: " + ex.Message);
+                }
+            }
+            return count;
+        }
+
+        /// <summary>
+        /// Returns the number of students who are approved but not yet in a training batch.
+        /// </summary>
+        public static int GetWaitingListCount(int InstituteID)
+        {
+            int count = 0;
+            string query = @"
+                SELECT COUNT(DISTINCT L.LocalDrivingLicenseApplicationID)
+                FROM LocalDrivingLicenseApplications L
+                INNER JOIN Applications A ON L.ApplicationID = A.ApplicationID
+                WHERE L.InstituteID = @InstituteID 
+                  AND A.ApplicationStatus = 3
+                  AND L.ApplicationID NOT IN (SELECT ApplicationID FROM ApplicantBatch)";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@InstituteID", InstituteID);
+                try
+                {
+                    connection.Open();
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                        count = Convert.ToInt32(result);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error counting waiting list: " + ex.Message);
+                }
+            }
+            return count;
+        }
+
+        /// <summary>
+        /// Returns the percentage of students marked present today across all batches.
+        /// </summary>
+        public static int GetTodayAttendanceRate(int InstituteID)
+        {
+            string query = @"
+                SELECT 
+                    Total = COUNT(*),
+                    Present = SUM(CASE WHEN IsPresent = 1 THEN 1 ELSE 0 END)
+                FROM Attendance A
+                INNER JOIN TrainingBatches TB ON A.TrainingBatchID = TB.TrainingBatchID
+                WHERE TB.InstituteID = @InstituteID 
+                  AND CAST(A.AttendanceDate AS DATE) = CAST(GETDATE() AS DATE)";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@InstituteID", InstituteID);
+                try
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read() && reader["Total"] != DBNull.Value)
+                        {
+                            int total = Convert.ToInt32(reader["Total"]);
+                            int present = Convert.ToInt32(reader["Present"]);
+                            if (total == 0) return 0;
+                            return (int)Math.Round((double)present / total * 100);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error calculating attendance rate: " + ex.Message);
+                }
+            }
+            return 0;
+        }
     }
 }

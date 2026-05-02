@@ -27,13 +27,19 @@ namespace DVLDBussinessLayer
         // ── Analytics Data ───────────────────────────────────────────────────
         public DataTable MonthlyEnrollmentStats { get; private set; }
 
+        // ── Training Batch & Attendance Metrics ──────────────────────────────
+        public int ActiveBatches         { get; private set; }
+        public int WaitingList           { get; private set; }
+        public int TodayAttendanceRate   { get; private set; }
+
         // Private constructor — always use Load()
         private clsSchoolDashboardStats(
             int totalStudents, int newStudentsThisMonth,
             int activeCourses, int totalInstructors, int testsToday,
             decimal totalEarnings,
             int passRateVision, int passRateTheory, int passRateRoad,
-            DataTable monthlyEnrollmentStats)
+            DataTable monthlyEnrollmentStats,
+            int activeBatches, int waitingList, int todayAttendanceRate)
         {
             TotalStudents         = totalStudents;
             NewStudentsThisMonth  = newStudentsThisMonth;
@@ -45,6 +51,9 @@ namespace DVLDBussinessLayer
             PassRateTheory        = passRateTheory;
             PassRateRoad          = passRateRoad;
             MonthlyEnrollmentStats = monthlyEnrollmentStats;
+            ActiveBatches         = activeBatches;
+            WaitingList           = waitingList;
+            TodayAttendanceRate   = todayAttendanceRate;
         }
 
         /// <summary>
@@ -63,7 +72,10 @@ namespace DVLDBussinessLayer
                 passRateVision:         clsSchoolDashboardData.GetPassRateByTestType(InstituteID, 1),
                 passRateTheory:         clsSchoolDashboardData.GetPassRateByTestType(InstituteID, 2),
                 passRateRoad:           clsSchoolDashboardData.GetPassRateByTestType(InstituteID, 3),
-                monthlyEnrollmentStats: clsSchoolDashboardData.GetMonthlyEnrollmentStats(InstituteID)
+                monthlyEnrollmentStats: clsSchoolDashboardData.GetMonthlyEnrollmentStats(InstituteID),
+                activeBatches:          clsSchoolDashboardData.GetActiveBatchesCount(InstituteID),
+                waitingList:            clsSchoolDashboardData.GetWaitingListCount(InstituteID),
+                todayAttendanceRate:    clsSchoolDashboardData.GetTodayAttendanceRate(InstituteID)
             );
         }
     }
