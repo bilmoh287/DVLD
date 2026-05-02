@@ -117,5 +117,11 @@ namespace DVLDPresentationLayer
         {
             ActivateButton(sender);
         }
+
+        private void btnAttendance_Click(object sender, EventArgs e)
+        {
+            frmTakeAttendance frm = new frmTakeAttendance();
+            frm.ShowDialog();
+        }
     }
 }

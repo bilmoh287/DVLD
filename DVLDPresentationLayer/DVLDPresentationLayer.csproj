@@ -234,6 +234,12 @@
     <Compile Include="Schools Dashboard\Forms\frmStudents.Designer.cs">
       <DependentUpon>frmStudents.cs</DependentUpon>
     </Compile>
+    <Compile Include="Schools Dashboard\Forms\frmTakeAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Schools Dashboard\Forms\frmTakeAttendance.Designer.cs">
+      <DependentUpon>frmTakeAttendance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Schools Dashboard\frmSchoolDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -527,6 +533,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Schools Dashboard\Forms\frmStudents.resx">
       <DependentUpon>frmStudents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schools Dashboard\Forms\frmTakeAttendance.resx">
+      <DependentUpon>frmTakeAttendance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Schools Dashboard\frmSchoolDashboard.resx">
       <DependentUpon>frmSchoolDashboard.cs</DependentUpon>
