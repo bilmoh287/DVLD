@@ -11,6 +11,8 @@ namespace DVLDDataAccessLayer.DTOs
         public bool IsPresent { get; set; }
         public int MarkedByUserID { get; set; }
 
+        public AttendanceDTO() { }
+
         public AttendanceDTO(int attendanceID, int applicationID, int batchID, DateTime attendanceDate, bool isPresent, int markedByUserID)
         {
             this.AttendanceID = attendanceID;

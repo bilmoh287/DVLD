@@ -338,7 +338,7 @@ namespace DVLDDataAccessLayer
             string query = @"
                 SELECT 
                     Total = COUNT(*),
-                    Present = SUM(CASE WHEN IsPresent = 1 THEN 1 ELSE 0 END)
+                    Present = SUM(CASE WHEN A.IsPresent = 1 THEN 1 ELSE 0 END)
                 FROM Attendance A
                 INNER JOIN TrainingBatches TB ON A.TrainingBatchID = TB.TrainingBatchID
                 WHERE TB.InstituteID = @InstituteID 
