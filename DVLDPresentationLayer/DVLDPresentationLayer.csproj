@@ -240,6 +240,7 @@
     <Compile Include="Schools Dashboard\Forms\frmStudents.Designer.cs">
       <DependentUpon>frmStudents.cs</DependentUpon>
     </Compile>
+    <Compile Include="Schools Dashboard\Forms\frmTakeAttendance.cs" />
     <Compile Include="Schools Dashboard\frmSchoolDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
