@@ -1,4 +1,4 @@
-﻿namespace DVLDPresentationLayer.Schools_Dashboard.Forms
+namespace DVLDPresentationLayer.Schools_Dashboard.Forms
 {
     partial class frmAttendance
     {
@@ -82,6 +82,7 @@
             this.btnClose.Size = new System.Drawing.Size(44, 38);
             this.btnClose.TabIndex = 0;
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // dtpAttendanceDate
             // 
@@ -132,7 +133,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvAttendance.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvAttendance.ColumnHeadersHeight = 4;
+            this.dgvAttendance.ColumnHeadersHeight = 40;
             this.dgvAttendance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvAttendance.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ApplicationID,
@@ -170,8 +171,8 @@
             this.dgvAttendance.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvAttendance.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvAttendance.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgvAttendance.ThemeStyle.HeaderStyle.Height = 4;
-            this.dgvAttendance.ThemeStyle.ReadOnly = true;
+            this.dgvAttendance.ThemeStyle.HeaderStyle.Height = 40;
+            this.dgvAttendance.ThemeStyle.ReadOnly = false;
             this.dgvAttendance.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(252)))));
             this.dgvAttendance.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvAttendance.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -212,8 +213,8 @@
             this.IsPresent.HeaderText = "Present?";
             this.IsPresent.MinimumWidth = 6;
             this.IsPresent.Name = "IsPresent";
-            this.IsPresent.ReadOnly = true;
-            this.IsPresent.Visible = false;
+            this.IsPresent.ReadOnly = false;
+            this.IsPresent.Visible = true;
             // 
             // panel1
             // 
@@ -241,6 +242,7 @@
             this.btnSave.Size = new System.Drawing.Size(92, 34);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -258,6 +260,7 @@
             this.btnCancel.Size = new System.Drawing.Size(92, 34);
             this.btnCancel.TabIndex = 0;
             this.btnCancel.Text = "cancel";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // frmAttendance
             // 
@@ -269,6 +272,7 @@
             this.Controls.Add(this.panelHeader);
             this.Name = "frmAttendance";
             this.Text = "frmAttendance";
+            this.Load += new System.EventHandler(this.frmAttendance_Load);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).EndInit();
