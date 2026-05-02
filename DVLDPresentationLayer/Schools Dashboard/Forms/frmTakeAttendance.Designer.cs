@@ -1,4 +1,4 @@
-﻿namespace DVLDPresentationLayer.Schools_Dashboard.Forms
+namespace DVLDPresentationLayer.Schools_Dashboard.Forms
 {
     partial class frmTakeAttendance
     {
@@ -258,6 +258,7 @@
             this.btnCancel.Size = new System.Drawing.Size(91, 35);
             this.btnCancel.TabIndex = 0;
             this.btnCancel.Text = "cancel";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -275,6 +276,7 @@
             this.btnSave.Size = new System.Drawing.Size(91, 35);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // frmTakeAttendance
             // 
@@ -290,6 +292,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmTakeAttendance";
             this.Text = "frmTakeAttendance";
+            this.Load += new System.EventHandler(this.frmTakeAttendance_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).EndInit();
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
