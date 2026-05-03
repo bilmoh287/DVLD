@@ -20,6 +20,7 @@ namespace DVLDPresentationLayer
 
         private void frmListDrivingInstitutes2_Load(object sender, EventArgs e)
         {
+            dataGridView1.Columns.Clear(); // Force clear old columns
             dataGridView1.DataSource = clsDrivingInstitute.GetAllInstitutes();
             lblRecordsCount.Text = dataGridView1.Rows.Count.ToString();
 
