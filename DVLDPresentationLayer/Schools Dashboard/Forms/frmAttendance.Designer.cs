@@ -152,7 +152,6 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
             this.dgvAttendance.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(230)))), ((int)(((byte)(251)))));
             this.dgvAttendance.Location = new System.Drawing.Point(0, 55);
             this.dgvAttendance.Name = "dgvAttendance";
-            this.dgvAttendance.ReadOnly = true;
             this.dgvAttendance.RowHeadersVisible = false;
             this.dgvAttendance.RowHeadersWidth = 51;
             this.dgvAttendance.RowTemplate.Height = 40;
@@ -186,7 +185,6 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
             this.ApplicationID.HeaderText = "Application ID";
             this.ApplicationID.MinimumWidth = 6;
             this.ApplicationID.Name = "ApplicationID";
-            this.ApplicationID.ReadOnly = true;
             this.ApplicationID.Visible = false;
             // 
             // FullName
@@ -195,7 +193,6 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
             this.FullName.HeaderText = "Student Name";
             this.FullName.MinimumWidth = 6;
             this.FullName.Name = "FullName";
-            this.FullName.ReadOnly = true;
             this.FullName.Visible = false;
             // 
             // ClassName
@@ -204,7 +201,6 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
             this.ClassName.HeaderText = "Course";
             this.ClassName.MinimumWidth = 6;
             this.ClassName.Name = "ClassName";
-            this.ClassName.ReadOnly = true;
             this.ClassName.Visible = false;
             // 
             // IsPresent
@@ -213,8 +209,6 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
             this.IsPresent.HeaderText = "Present?";
             this.IsPresent.MinimumWidth = 6;
             this.IsPresent.Name = "IsPresent";
-            this.IsPresent.ReadOnly = false;
-            this.IsPresent.Visible = true;
             // 
             // panel1
             // 

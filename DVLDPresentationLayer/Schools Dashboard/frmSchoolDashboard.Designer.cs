@@ -34,12 +34,12 @@ namespace DVLDPresentationLayer
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelDesktopPane = new System.Windows.Forms.Panel();
+            this.btnAttendance = new System.Windows.Forms.Button();
             this.btnSetting = new System.Windows.Forms.Button();
             this.btnInstructor = new System.Windows.Forms.Button();
             this.btnCourses = new System.Windows.Forms.Button();
             this.btnStudents = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
-            this.btnAttendance = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
@@ -89,7 +89,7 @@ namespace DVLDPresentationLayer
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitleBar.Location = new System.Drawing.Point(220, 0);
             this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(1186, 80);
+            this.panelTitleBar.Size = new System.Drawing.Size(1186, 56);
             this.panelTitleBar.TabIndex = 1;
             // 
             // lblTitle
@@ -98,7 +98,7 @@ namespace DVLDPresentationLayer
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("MS Reference Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(526, 24);
+            this.lblTitle.Location = new System.Drawing.Point(526, 12);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(96, 34);
             this.lblTitle.TabIndex = 0;
@@ -108,10 +108,28 @@ namespace DVLDPresentationLayer
             // 
             this.panelDesktopPane.AllowDrop = true;
             this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktopPane.Location = new System.Drawing.Point(220, 80);
+            this.panelDesktopPane.Location = new System.Drawing.Point(220, 56);
             this.panelDesktopPane.Name = "panelDesktopPane";
-            this.panelDesktopPane.Size = new System.Drawing.Size(1186, 691);
+            this.panelDesktopPane.Size = new System.Drawing.Size(1186, 715);
             this.panelDesktopPane.TabIndex = 2;
+            // 
+            // btnAttendance
+            // 
+            this.btnAttendance.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAttendance.FlatAppearance.BorderSize = 0;
+            this.btnAttendance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAttendance.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAttendance.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnAttendance.Image = global::DVLDPresentationLayer.Properties.Resources.icons8_students_32;
+            this.btnAttendance.Location = new System.Drawing.Point(0, 380);
+            this.btnAttendance.Name = "btnAttendance";
+            this.btnAttendance.Size = new System.Drawing.Size(220, 60);
+            this.btnAttendance.TabIndex = 6;
+            this.btnAttendance.Text = "   Attendance";
+            this.btnAttendance.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAttendance.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAttendance.UseVisualStyleBackColor = true;
+            this.btnAttendance.Click += new System.EventHandler(this.btnAttendance_Click);
             // 
             // btnSetting
             // 
@@ -202,24 +220,6 @@ namespace DVLDPresentationLayer
             this.btnDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDashboard.UseVisualStyleBackColor = true;
             this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
-            // 
-            // btnAttendance
-            // 
-            this.btnAttendance.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAttendance.FlatAppearance.BorderSize = 0;
-            this.btnAttendance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAttendance.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAttendance.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnAttendance.Image = global::DVLDPresentationLayer.Properties.Resources.icons8_students_32;
-            this.btnAttendance.Location = new System.Drawing.Point(0, 380);
-            this.btnAttendance.Name = "btnAttendance";
-            this.btnAttendance.Size = new System.Drawing.Size(220, 60);
-            this.btnAttendance.TabIndex = 6;
-            this.btnAttendance.Text = "   Attendance";
-            this.btnAttendance.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAttendance.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAttendance.UseVisualStyleBackColor = true;
-            this.btnAttendance.Click += new System.EventHandler(this.btnAttendance_Click);
             // 
             // frmSchoolDashboard
             // 

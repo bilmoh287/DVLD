@@ -63,6 +63,12 @@ namespace DVLDPresentationLayer
             this.pnlDocument = new System.Windows.Forms.Panel();
             this.lblDragInfo = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.txtCity = new System.Windows.Forms.TextBox();
+            this.txtRegion = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -71,13 +77,15 @@ namespace DVLDPresentationLayer
             ((System.ComponentModel.ISupportInitialize)(this.numCapacity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.pnlDocument.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(104, 276);
+            this.lblEmail.Location = new System.Drawing.Point(103, 239);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(67, 25);
             this.lblEmail.TabIndex = 119;
@@ -87,7 +95,7 @@ namespace DVLDPresentationLayer
             // 
             this.lblPhone.AutoSize = true;
             this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhone.Location = new System.Drawing.Point(104, 227);
+            this.lblPhone.Location = new System.Drawing.Point(103, 190);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(81, 25);
             this.lblPhone.TabIndex = 118;
@@ -107,7 +115,7 @@ namespace DVLDPresentationLayer
             // txtInstituteName
             // 
             this.txtInstituteName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInstituteName.Location = new System.Drawing.Point(249, 132);
+            this.txtInstituteName.Location = new System.Drawing.Point(249, 134);
             this.txtInstituteName.Multiline = true;
             this.txtInstituteName.Name = "txtInstituteName";
             this.txtInstituteName.Size = new System.Drawing.Size(249, 33);
@@ -117,7 +125,7 @@ namespace DVLDPresentationLayer
             // pictureBox4
             // 
             this.pictureBox4.Image = global::DVLDPresentationLayer.Properties.Resources.Email_32;
-            this.pictureBox4.Location = new System.Drawing.Point(212, 275);
+            this.pictureBox4.Location = new System.Drawing.Point(211, 238);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(31, 26);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -127,7 +135,7 @@ namespace DVLDPresentationLayer
             // pictureBox2
             // 
             this.pictureBox2.Image = global::DVLDPresentationLayer.Properties.Resources.Man_32;
-            this.pictureBox2.Location = new System.Drawing.Point(212, 227);
+            this.pictureBox2.Location = new System.Drawing.Point(211, 190);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(31, 26);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -137,7 +145,7 @@ namespace DVLDPresentationLayer
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DVLDPresentationLayer.Properties.Resources.Number_32;
-            this.pictureBox1.Location = new System.Drawing.Point(212, 183);
+            this.pictureBox1.Location = new System.Drawing.Point(212, 379);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(31, 26);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -158,7 +166,7 @@ namespace DVLDPresentationLayer
             // 
             this.lblAddress.AutoSize = true;
             this.lblAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddress.Location = new System.Drawing.Point(104, 180);
+            this.lblAddress.Location = new System.Drawing.Point(104, 376);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(99, 25);
             this.lblAddress.TabIndex = 117;
@@ -167,7 +175,7 @@ namespace DVLDPresentationLayer
             // txtAddress
             // 
             this.txtAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.Location = new System.Drawing.Point(249, 176);
+            this.txtAddress.Location = new System.Drawing.Point(249, 374);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(249, 33);
@@ -177,7 +185,7 @@ namespace DVLDPresentationLayer
             // txtPhone
             // 
             this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhone.Location = new System.Drawing.Point(249, 220);
+            this.txtPhone.Location = new System.Drawing.Point(249, 185);
             this.txtPhone.Multiline = true;
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(249, 33);
@@ -187,7 +195,7 @@ namespace DVLDPresentationLayer
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(249, 268);
+            this.txtEmail.Location = new System.Drawing.Point(249, 233);
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(249, 33);
@@ -198,7 +206,7 @@ namespace DVLDPresentationLayer
             // 
             this.chkIsActive.AutoSize = true;
             this.chkIsActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkIsActive.Location = new System.Drawing.Point(212, 327);
+            this.chkIsActive.Location = new System.Drawing.Point(192, 438);
             this.chkIsActive.Name = "chkIsActive";
             this.chkIsActive.Size = new System.Drawing.Size(117, 29);
             this.chkIsActive.TabIndex = 4;
@@ -209,7 +217,7 @@ namespace DVLDPresentationLayer
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(516, 440);
+            this.btnSave.Location = new System.Drawing.Point(506, 475);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(130, 36);
             this.btnSave.TabIndex = 135;
@@ -245,7 +253,7 @@ namespace DVLDPresentationLayer
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(368, 440);
+            this.btnClose.Location = new System.Drawing.Point(358, 475);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(130, 36);
             this.btnClose.TabIndex = 138;
@@ -268,7 +276,7 @@ namespace DVLDPresentationLayer
             this.txtCommercialLicenseNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             this.txtCommercialLicenseNo.Location = new System.Drawing.Point(792, 85);
             this.txtCommercialLicenseNo.Name = "txtCommercialLicenseNo";
-            this.txtCommercialLicenseNo.Size = new System.Drawing.Size(220, 27);
+            this.txtCommercialLicenseNo.Size = new System.Drawing.Size(249, 27);
             this.txtCommercialLicenseNo.TabIndex = 140;
             // 
             // lblExpiryDate
@@ -305,7 +313,7 @@ namespace DVLDPresentationLayer
             this.txtManagerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             this.txtManagerName.Location = new System.Drawing.Point(792, 176);
             this.txtManagerName.Name = "txtManagerName";
-            this.txtManagerName.Size = new System.Drawing.Size(220, 27);
+            this.txtManagerName.Size = new System.Drawing.Size(249, 27);
             this.txtManagerName.TabIndex = 144;
             // 
             // lblCapacity
@@ -414,12 +422,76 @@ namespace DVLDPresentationLayer
             this.lblTitle.Text = "Add Driving Institue";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // txtCity
+            // 
+            this.txtCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCity.Location = new System.Drawing.Point(249, 327);
+            this.txtCity.Multiline = true;
+            this.txtCity.Name = "txtCity";
+            this.txtCity.Size = new System.Drawing.Size(249, 33);
+            this.txtCity.TabIndex = 156;
+            // 
+            // txtRegion
+            // 
+            this.txtRegion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegion.Location = new System.Drawing.Point(249, 279);
+            this.txtRegion.Multiline = true;
+            this.txtRegion.Name = "txtRegion";
+            this.txtRegion.Size = new System.Drawing.Size(249, 33);
+            this.txtRegion.TabIndex = 155;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(103, 333);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 25);
+            this.label2.TabIndex = 152;
+            this.label2.Text = "City:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(103, 284);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 25);
+            this.label3.TabIndex = 151;
+            this.label3.Text = "Region:";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::DVLDPresentationLayer.Properties.Resources.Email_32;
+            this.pictureBox3.Location = new System.Drawing.Point(211, 332);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 154;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::DVLDPresentationLayer.Properties.Resources.Man_32;
+            this.pictureBox5.Location = new System.Drawing.Point(211, 284);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 153;
+            this.pictureBox5.TabStop = false;
+            // 
             // frmAddUpdateDrivingInstitutes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1062, 504);
+            this.ClientSize = new System.Drawing.Size(1069, 532);
+            this.Controls.Add(this.txtCity);
+            this.Controls.Add(this.txtRegion);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblInstituteID);
@@ -465,6 +537,8 @@ namespace DVLDPresentationLayer
             ((System.ComponentModel.ISupportInitialize)(this.numCapacity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.pnlDocument.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -505,5 +579,11 @@ namespace DVLDPresentationLayer
         private System.Windows.Forms.Label lblDocumentFileName;
         private System.Windows.Forms.Label lblDragInfo;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.TextBox txtCity;
+        private System.Windows.Forms.TextBox txtRegion;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox5;
     }
 }

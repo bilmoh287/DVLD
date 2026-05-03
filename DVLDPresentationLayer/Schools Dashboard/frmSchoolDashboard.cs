@@ -120,8 +120,8 @@ namespace DVLDPresentationLayer
 
         private void btnAttendance_Click(object sender, EventArgs e)
         {
-            //frmTakeAttendance frm = new frmTakeAttendance(1);
-            //frm.ShowDialog();
+            frmAttendance frm = new frmAttendance(1);
+            frm.ShowDialog();
         }
     }
 }
