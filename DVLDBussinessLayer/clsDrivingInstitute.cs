@@ -28,6 +28,8 @@ namespace DVLDBussinessLayer
         public int Capacity { get; set; }
         public string LogoPath { get; set; }
         public string DocumentPath { get; set; }
+        public string City { get; set; }
+        public string Region { get; set; }
 
         public DrivingInstituteDTO InstituteDTO
         {
@@ -36,7 +38,7 @@ namespace DVLDBussinessLayer
                 return new DrivingInstituteDTO(this.InstituteID, this.InstituteName, this.Address,
                     this.Phone, this.Email, this.IsActive, this.CreatedByUserID,
                     this.CommercialLicenseNo, this.LicenseExpiryDate, this.ManagerName,
-                    this.Capacity, this.LogoPath, this.DocumentPath);
+                    this.Capacity, this.LogoPath, this.DocumentPath, this.City, this.Region);
             }
         }
 
@@ -56,6 +58,8 @@ namespace DVLDBussinessLayer
             this.Capacity = 0;
             this.LogoPath = "";
             this.DocumentPath = "";
+            this.City = "";
+            this.Region = "";
 
 
             Mode = enMode.AddNew;
@@ -76,6 +80,8 @@ namespace DVLDBussinessLayer
             this.Capacity = dto.Capacity;
             this.LogoPath = dto.LogoPath;
             this.DocumentPath = dto.DocumentPath;
+            this.City = dto.City;
+            this.Region = dto.Region;
 
             Mode = enMode.Update;
         }

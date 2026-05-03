@@ -60,13 +60,20 @@ namespace DVLDREST_API.Controllers
         }
 
         [HttpGet("institutes")]
-        public IActionResult GetAllInstitutes()
+        public IActionResult GetAllInstitutes([FromQuery] string? city = null, [FromQuery] string? region = null)
         {
             DataTable dt = clsDrivingInstitute.GetAllInstitutes();
             List<DrivingInstituteDTO> institutes = new List<DrivingInstituteDTO>();
 
             foreach (DataRow row in dt.Rows)
             {
+                // Apply filtering if parameters are provided
+                string rowCity = row["City"]?.ToString() ?? "";
+                string rowRegion = row["Region"]?.ToString() ?? "";
+
+                if (!string.IsNullOrEmpty(city) && !rowCity.Equals(city, StringComparison.OrdinalIgnoreCase)) continue;
+                if (!string.IsNullOrEmpty(region) && !rowRegion.Equals(region, StringComparison.OrdinalIgnoreCase)) continue;
+
                 institutes.Add(new DrivingInstituteDTO(
                     (int)row["InstituteID"],
                     (string)row["InstituteName"],
@@ -80,11 +87,32 @@ namespace DVLDREST_API.Controllers
                     row["ManagerName"]?.ToString() ?? "",
                     (int)row["Capacity"],
                     row["LogoPath"]?.ToString() ?? "",
-                    row["DocumentPath"]?.ToString() ?? ""
+                    row["DocumentPath"]?.ToString() ?? "",
+                    row["City"]?.ToString() ?? "",
+                    row["Region"]?.ToString() ?? ""
                 ));
             }
 
             return Ok(institutes);
+        }
+
+        [HttpGet("institutes/filters")]
+        public IActionResult GetInstituteFilters()
+        {
+            DataTable dt = clsDrivingInstitute.GetAllInstitutes();
+            var cities = dt.AsEnumerable()
+                           .Select(r => r.Field<string>("City"))
+                           .Where(c => !string.IsNullOrEmpty(c))
+                           .Distinct()
+                           .ToList();
+
+            var regions = dt.AsEnumerable()
+                            .Select(r => r.Field<string>("Region"))
+                            .Where(r => !string.IsNullOrEmpty(r))
+                            .Distinct()
+                            .ToList();
+
+            return Ok(new { Cities = cities, Regions = regions });
         }
 
         [HttpGet("status/{personId}")]

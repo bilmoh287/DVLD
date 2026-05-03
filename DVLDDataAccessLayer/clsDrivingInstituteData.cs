@@ -63,7 +63,9 @@ namespace DVLDDataAccessLayer
                                 (string)reader["ManagerName"],
                                 Convert.ToInt32(reader["Capacity"]),
                                 reader["LogoPath"] == DBNull.Value ? "" : (string)reader["LogoPath"],
-                                reader["DocumentPath"] == DBNull.Value ? "" : (string)reader["DocumentPath"]
+                                reader["DocumentPath"] == DBNull.Value ? "" : (string)reader["DocumentPath"],
+                                reader["City"] == DBNull.Value ? "" : (string)reader["City"],
+                                reader["Region"] == DBNull.Value ? "" : (string)reader["Region"]
                             );
                         }
                     }
@@ -83,9 +85,9 @@ namespace DVLDDataAccessLayer
         {
             int newID = -1;
             string query = @"INSERT INTO DrivingInstitutes (InstituteName, Address, Phone, Email, IsActive, CreatedByUserID,
-                             CommercialLicenseNo, LicenseExpiryDate, ManagerName, Capacity, LogoPath, DocumentPath)
+                             CommercialLicenseNo, LicenseExpiryDate, ManagerName, Capacity, LogoPath, DocumentPath, City, Region)
                              VALUES (@InstituteName, @Address, @Phone, @Email, @IsActive, @CreatedByUserID,
-                             @CommercialLicenseNo, @LicenseExpiryDate, @ManagerName, @Capacity, @LogoPath, @DocumentPath);
+                             @CommercialLicenseNo, @LicenseExpiryDate, @ManagerName, @Capacity, @LogoPath, @DocumentPath, @City, @Region);
                              SELECT SCOPE_IDENTITY();";
 
 
@@ -104,6 +106,8 @@ namespace DVLDDataAccessLayer
                 command.Parameters.AddWithValue("@Capacity", dto.Capacity);
                 command.Parameters.AddWithValue("@LogoPath", (object)dto.LogoPath ?? DBNull.Value);
                 command.Parameters.AddWithValue("@DocumentPath", (object)dto.DocumentPath ?? DBNull.Value);
+                command.Parameters.AddWithValue("@City", (object)dto.City ?? DBNull.Value);
+                command.Parameters.AddWithValue("@Region", (object)dto.Region ?? DBNull.Value);
 
                 try
                 {
@@ -137,7 +141,9 @@ namespace DVLDDataAccessLayer
                                  ManagerName = @ManagerName,
                                  Capacity = @Capacity,
                                  LogoPath = @LogoPath,
-                                 DocumentPath = @DocumentPath
+                                 DocumentPath = @DocumentPath,
+                                 City = @City,
+                                 Region = @Region
                              WHERE InstituteID = @InstituteID";
 
 
@@ -157,6 +163,8 @@ namespace DVLDDataAccessLayer
                 command.Parameters.AddWithValue("@Capacity", dto.Capacity);
                 command.Parameters.AddWithValue("@LogoPath", (object)dto.LogoPath ?? DBNull.Value);
                 command.Parameters.AddWithValue("@DocumentPath", (object)dto.DocumentPath ?? DBNull.Value);
+                command.Parameters.AddWithValue("@City", (object)dto.City ?? DBNull.Value);
+                command.Parameters.AddWithValue("@Region", (object)dto.Region ?? DBNull.Value);
 
 
                 try

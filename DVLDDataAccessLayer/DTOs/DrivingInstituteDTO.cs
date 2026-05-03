@@ -17,11 +17,12 @@ namespace DVLDDataAccessLayer.DTOs
         public int Capacity { get; set; }
         public string LogoPath { get; set; }
         public string DocumentPath { get; set; }
+        public string City { get; set; }
+        public string Region { get; set; }
 
-        public DrivingInstituteDTO(int instituteID, string instituteName, string address,
-            string phone, string email, bool isActive, int createdByUserID,
-            string commercialLicenseNo, DateTime licenseExpiryDate, string managerName,
-            int capacity, string logoPath, string documentPath)
+        public DrivingInstituteDTO(int instituteID, string instituteName, string address, string phone, string email,
+            bool isActive, int createdByUserID, string commercialLicenseNo, DateTime licenseExpiryDate,
+            string managerName, int capacity, string logoPath, string documentPath, string city, string region)
         {
             this.InstituteID = instituteID;
             this.InstituteName = instituteName;
@@ -36,6 +37,8 @@ namespace DVLDDataAccessLayer.DTOs
             this.Capacity = capacity;
             this.LogoPath = logoPath;
             this.DocumentPath = documentPath;
+            this.City = city;
+            this.Region = region;
         }
     }
 }
