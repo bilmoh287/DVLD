@@ -64,6 +64,8 @@ namespace DVLDPresentationLayer
             pbLogo.Image = null;
             llRemoveLogo.Visible = false;
             lblDocumentFileName.Text = "No file";
+            txtCity.Text = "";
+            txtRegion.Text = "";
         }
 
 
@@ -101,6 +103,9 @@ namespace DVLDPresentationLayer
             {
                 lblDocumentFileName.Text = System.IO.Path.GetFileName(_Institute.DocumentPath);
             }
+
+            txtCity.Text = _Institute.City;
+            txtRegion.Text = _Institute.Region;
         }
 
 
@@ -202,6 +207,8 @@ namespace DVLDPresentationLayer
             _Institute.ManagerName = txtManagerName.Text.Trim();
             _Institute.Capacity = (int)numCapacity.Value;
             _Institute.LogoPath = pbLogo.ImageLocation;
+            _Institute.City = txtCity.Text.Trim();
+            _Institute.Region = txtRegion.Text.Trim();
             // DocumentPath is set during drag/click
 
 
@@ -316,6 +323,32 @@ namespace DVLDPresentationLayer
         {
             _Institute.DocumentPath = filePath;
             lblDocumentFileName.Text = System.IO.Path.GetFileName(filePath);
+        }
+
+        private void txtRegion_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtRegion.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtRegion, "Region is required!");
+            }
+            else
+            {
+                errorProvider1.SetError(txtRegion, null);
+            }
+        }
+
+        private void txtCity_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCity.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtCity, "City is required!");
+            }
+            else
+            {
+                errorProvider1.SetError(txtCity, null);
+            }
         }
     }
 }

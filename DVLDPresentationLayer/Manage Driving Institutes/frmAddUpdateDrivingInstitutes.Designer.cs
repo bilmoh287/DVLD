@@ -430,6 +430,7 @@ namespace DVLDPresentationLayer
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(249, 33);
             this.txtCity.TabIndex = 156;
+            this.txtCity.Validating += new System.ComponentModel.CancelEventHandler(this.txtCity_Validating);
             // 
             // txtRegion
             // 
@@ -439,6 +440,7 @@ namespace DVLDPresentationLayer
             this.txtRegion.Name = "txtRegion";
             this.txtRegion.Size = new System.Drawing.Size(249, 33);
             this.txtRegion.TabIndex = 155;
+            this.txtRegion.Validating += new System.ComponentModel.CancelEventHandler(this.txtRegion_Validating);
             // 
             // label2
             // 
