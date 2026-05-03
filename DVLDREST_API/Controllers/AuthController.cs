@@ -47,19 +47,24 @@ namespace DVLDREST_API.Controllers
             return Ok(response);
         }
 
-        // Generate JWT Token
+        // POST /api/auth/register
         [HttpPost("register")]
         public IActionResult Register([FromBody] RegisterApplicantDTO registerRequest)
         {
             if (registerRequest == null) return BadRequest("Invalid request.");
 
-            // Check if person already exists by NationalNo
+            // 1. Validation Checks
             if (clsPerson.IsPersonExist(registerRequest.NationalNo))
             {
                 return Conflict("A person with this National Number already exists.");
             }
 
-            // 1. Create Person
+            if (clsUser.IsUserExist(registerRequest.Username))
+            {
+                return Conflict("This Username is already taken.");
+            }
+
+            // 2. Create Person Record
             clsPerson person = new clsPerson();
             person.NationalNo = registerRequest.NationalNo;
             person.FirstName = registerRequest.FirstName;
@@ -79,20 +84,20 @@ namespace DVLDREST_API.Controllers
                 return StatusCode(500, "Error occurred while saving person details.");
             }
 
-            // 2. Create User Account
+            // 3. Create User Account
             clsUser user = new clsUser();
             user.PersonID = person.PersonID;
-            user.UserName = registerRequest.NationalNo; // Using NationalNo as default username
+            user.UserName = registerRequest.Username;
             user.SetPassword(registerRequest.Password);
             user.IsActive = true;
 
             if (!user.Save())
             {
-                // Rollback person creation? (Optional for this simplified logic)
+                // Note: In a production app, you might want to delete the person record if user creation fails
                 return StatusCode(500, "Error occurred while creating user account.");
             }
 
-            // 3. Generate Token and Respond
+            // 4. Generate Token and Respond
             string role = "Applicant";
             var token = GenerateJwtToken(user, role);
             var response = new AuthResponseDTO(token, user.UserID, user.PersonID, person.FullName, role);

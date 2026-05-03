@@ -18,6 +18,7 @@ namespace DVLDDataAccessLayer.DTOs
         public string ImagePath { get; set; }
         
         // For User Account creation
+        public string Username { get; set; }
         public string Password { get; set; }
 
         public RegisterApplicantDTO() { }
