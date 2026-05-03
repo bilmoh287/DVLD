@@ -65,6 +65,7 @@
     <Compile Include="clsPersonData.cs" />
     <Compile Include="clsInstituteCourseData.cs" />
     <Compile Include="DTOs\AttendanceDTO.cs" />
+    <Compile Include="DTOs\CountryDTO.cs" />
     <Compile Include="DTOs\DrivingInstituteDTO.cs" />
     <Compile Include="DTOs\PersonDTO.cs" />
     <Compile Include="DTOs\TrainingBatchDTO.cs" />
