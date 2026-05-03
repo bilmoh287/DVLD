@@ -278,6 +278,7 @@ namespace DVLDPresentationLayer
             this.txtCommercialLicenseNo.Name = "txtCommercialLicenseNo";
             this.txtCommercialLicenseNo.Size = new System.Drawing.Size(249, 27);
             this.txtCommercialLicenseNo.TabIndex = 140;
+            this.txtCommercialLicenseNo.Validating += new System.ComponentModel.CancelEventHandler(this.txtCommercialLicenseNo_Validating);
             // 
             // lblExpiryDate
             // 
@@ -315,6 +316,7 @@ namespace DVLDPresentationLayer
             this.txtManagerName.Name = "txtManagerName";
             this.txtManagerName.Size = new System.Drawing.Size(249, 27);
             this.txtManagerName.TabIndex = 144;
+            this.txtManagerName.Validating += new System.ComponentModel.CancelEventHandler(this.txtManagerName_Validating);
             // 
             // lblCapacity
             // 

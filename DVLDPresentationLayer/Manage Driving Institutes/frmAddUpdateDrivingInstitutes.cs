@@ -139,7 +139,7 @@ namespace DVLDPresentationLayer
 
         private void txtAddress_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtInstituteName.Text.Trim()))
+            if (string.IsNullOrEmpty(txtAddress.Text.Trim()))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtAddress, "Institute Address is required!");
@@ -148,7 +148,6 @@ namespace DVLDPresentationLayer
             {
                 errorProvider1.SetError(txtAddress, null);
             }
-
         }
 
         private void txtPhone_Validating(object sender, CancelEventArgs e)
@@ -323,6 +322,32 @@ namespace DVLDPresentationLayer
         {
             _Institute.DocumentPath = filePath;
             lblDocumentFileName.Text = System.IO.Path.GetFileName(filePath);
+        }
+
+        private void txtCommercialLicenseNo_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCommercialLicenseNo.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtCommercialLicenseNo, "Commercial License Number is required!");
+            }
+            else
+            {
+                errorProvider1.SetError(txtCommercialLicenseNo, null);
+            }
+        }
+
+        private void txtManagerName_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtManagerName.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtManagerName, "Manager Name is required!");
+            }
+            else
+            {
+                errorProvider1.SetError(txtManagerName, null);
+            }
         }
 
         private void txtRegion_Validating(object sender, CancelEventArgs e)

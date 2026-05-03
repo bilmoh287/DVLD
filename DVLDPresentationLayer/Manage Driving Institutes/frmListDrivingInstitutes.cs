@@ -32,29 +32,35 @@ namespace DVLDPresentationLayer
                 dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White; // optional, for contrast
 
                 // Set column headers and widths
-                dataGridView1.Columns[0].HeaderText = "Institute ID";
-                dataGridView1.Columns[0].Width = 110;
+                dataGridView1.Columns[0].HeaderText = "ID";
+                dataGridView1.Columns[0].Width = 70;
 
                 dataGridView1.Columns[1].HeaderText = "Institute Name";
-                dataGridView1.Columns[1].Width = 267;
+                dataGridView1.Columns[1].Width = 200;
 
                 dataGridView1.Columns[2].HeaderText = "Address";
                 dataGridView1.Columns[2].Width = 150;
 
-                dataGridView1.Columns[3].HeaderText = "Phone";
-                dataGridView1.Columns[3].Width = 130;
+                dataGridView1.Columns[3].HeaderText = "City";
+                dataGridView1.Columns[3].Width = 100;
 
-                dataGridView1.Columns[4].HeaderText = "Email";
-                dataGridView1.Columns[4].Width = 200;
+                dataGridView1.Columns[4].HeaderText = "Region";
+                dataGridView1.Columns[4].Width = 100;
 
-                dataGridView1.Columns[5].HeaderText = "Manager Name";
-                dataGridView1.Columns[5].Width = 140;
+                dataGridView1.Columns[5].HeaderText = "Phone";
+                dataGridView1.Columns[5].Width = 120;
 
-                dataGridView1.Columns[6].HeaderText = "Capacity";
-                dataGridView1.Columns[6].Width = 80;
+                dataGridView1.Columns[6].HeaderText = "Email";
+                dataGridView1.Columns[6].Width = 180;
 
-                dataGridView1.Columns[7].HeaderText = "Is Active";
-                dataGridView1.Columns[7].Width = 80;
+                dataGridView1.Columns[7].HeaderText = "Manager";
+                dataGridView1.Columns[7].Width = 140;
+
+                dataGridView1.Columns[8].HeaderText = "Cap.";
+                dataGridView1.Columns[8].Width = 60;
+
+                dataGridView1.Columns[9].HeaderText = "Active";
+                dataGridView1.Columns[9].Width = 70;
 
             }
         }
