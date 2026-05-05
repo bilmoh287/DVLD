@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -146,6 +146,7 @@ namespace DVLDBussinessLayer
                     if (_AddNewTestAppointment())
                     {
                         Mode = enMode.Update;
+                        _NotifyApplicant(); // Trigger Notification for Mobile App
                         return true;
                     }
                     else
@@ -156,6 +157,33 @@ namespace DVLDBussinessLayer
 
                 default:
                     return false;
+            }
+        }
+
+        private void _NotifyApplicant()
+        {
+            try
+            {
+                // We need to find the person ID associated with this LDL application
+                clsLocalDrivingLicenseApplication ldla = clsLocalDrivingLicenseApplication.GetLocalDrivingLicenseApplicationInfoByID(this.LocalDrivingLicenseApplicationID);
+                if (ldla == null) return;
+
+                string testName = "Driving Test";
+                switch (this.TestTypeID)
+                {
+                    case 1: testName = "Vision Test"; break;
+                    case 2: testName = "Written Test"; break;
+                    case 3: testName = "Practical Test"; break;
+                }
+
+                string title = "New Test Scheduled";
+                string content = $"Your {testName} has been scheduled for {this.AppointmentDate.ToString("MMMM dd, yyyy")} at {this.AppointmentDate.ToString("hh:mm tt")}. Please make sure to arrive 15 minutes early.";
+
+                clsUserMessage.SendSystemMessage(ldla.ApplicantPersonID, title, content, "Test");
+            }
+            catch (Exception)
+            {
+                // We don't want to crash the main app if notification fails
             }
         }
 

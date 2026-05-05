@@ -219,22 +219,54 @@ namespace DVLDBussinessLayer
 
         public bool Cancel()
         {
-            return clsApplicationData.UpdateStatus(ApplicationID, (byte)enApplicationStatus.Cancelled);
+            if (clsApplicationData.UpdateStatus(ApplicationID, (byte)enApplicationStatus.Cancelled))
+            {
+                _NotifyStatusUpdate("Application Cancelled", "Your application has been successfully cancelled as per your request or administrative action.");
+                return true;
+            }
+            return false;
         }
 
         public bool SetComplete()
         {
-            return clsApplicationData.UpdateStatus(ApplicationID, (byte)enApplicationStatus.Completed);
+            if (clsApplicationData.UpdateStatus(ApplicationID, (byte)enApplicationStatus.Completed))
+            {
+                _NotifyStatusUpdate("Application Completed", "Congratulations! Your application is now complete. You can proceed with the next steps or collect your license.");
+                return true;
+            }
+            return false;
         }
 
         public bool Reject()
         {
-            return clsApplicationData.UpdateStatus(ApplicationID, (byte)enApplicationStatus.Rejected);
+            if (clsApplicationData.UpdateStatus(ApplicationID, (byte)enApplicationStatus.Rejected))
+            {
+                _NotifyStatusUpdate("Application Rejected", "We regret to inform you that your driving license application has been rejected. Please visit the office for more information.");
+                return true;
+            }
+            return false;
         }
 
         public bool Approve()
         {
-            return clsApplicationData.UpdateStatus(ApplicationID, (byte)enApplicationStatus.Approved);
+            if (clsApplicationData.UpdateStatus(ApplicationID, (byte)enApplicationStatus.Approved))
+            {
+                _NotifyStatusUpdate("Application Approved", "Great news! Your application has been approved. You can now proceed to schedule your tests.");
+                return true;
+            }
+            return false;
+        }
+
+        private void _NotifyStatusUpdate(string title, string message)
+        {
+            try
+            {
+                clsUserMessage.SendSystemMessage(this.ApplicantPersonID, title, message, "Status");
+            }
+            catch (Exception)
+            {
+                // Safety catch
+            }
         }
     }
 }
