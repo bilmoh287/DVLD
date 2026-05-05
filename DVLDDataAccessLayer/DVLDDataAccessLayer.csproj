@@ -60,6 +60,7 @@
     <Compile Include="clsTestTypesData.cs" />
     <Compile Include="clsTrainingBatchData.cs" />
     <Compile Include="clsUserData.cs" />
+    <Compile Include="clsUserMessageData.cs" />
     <Compile Include="clsUserRoleData.cs" />
     <Compile Include="DataAccessSetting.cs" />
     <Compile Include="clsPersonData.cs" />
@@ -76,6 +77,8 @@
     <Compile Include="DTOs\TestScheduleRequestDTO.cs" />
     <Compile Include="DTOs\LicenseClassDTO.cs" />
     <Compile Include="DTOs\TestDTOs.cs" />
+    <Compile Include="DTOs\CountryDTO.cs" />
+    <Compile Include="DTOs\UserMessageDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
