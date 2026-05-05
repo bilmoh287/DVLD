@@ -327,20 +327,27 @@ namespace DVLDPresentationLayer
 
             showLicenseToolStripMenuItem.Enabled = LocalDrivingLicenseApplication.IsLicenseIssued();
 
-            //Enabled only if person does not passed all tests and the application status is New.
-            ScheduleTestsMenue.Enabled = (TotalPassedTests != 3 && LocalDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.New);
-            //Enabled only if person passed all tests and Does not have license. 
-            issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = (TotalPassedTests == 3 && !LocalDrivingLicenseApplication.IsLicenseIssued());
+            //Enabled only if person does not passed all tests and the application status is New or Approved.
+            ScheduleTestsMenue.Enabled = (TotalPassedTests != 3 && 
+                (LocalDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.New || 
+                 LocalDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.Approved));
+
+            //Enabled only if person passed all tests and the application is Approved but license not issued yet. 
+            issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = (TotalPassedTests == 3 && 
+                LocalDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.Approved &&
+                !LocalDrivingLicenseApplication.IsLicenseIssued());
 
             //Enable/Disable Cancel Menue Item
-            //We only canel the applications with status=new.
-            CancelApplicaitonToolStripMenuItem.Enabled = (LocalDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.New);
+            //We can cancel applications with status New or Approved.
+            CancelApplicaitonToolStripMenuItem.Enabled = (LocalDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.New || 
+                                                        LocalDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.Approved);
 
             //Enable/Disable Delete Menue Item
-            //We only allow delete incase the application status is new not complete or Cancelled.
-            DeleteApplicationToolStripMenuItem.Enabled = (LocalDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.New);
+            //We allow delete if status is New, Approved (maybe?) or Rejected. We don't delete Completed or already Cancelled.
+            DeleteApplicationToolStripMenuItem.Enabled = (LocalDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.New || 
+                                                        LocalDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.Rejected);
 
-            //We only allow edit incase the application status is new not complete or Cancelled.
+            //We only allow edit incase the application status is new.
             editToolStripMenuItem.Enabled = (LocalDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.New);
 
             showPersonLicenseHistoryToolStripMenuItem.Enabled = LocalDrivingLicenseApplication.IsLicenseIssued();

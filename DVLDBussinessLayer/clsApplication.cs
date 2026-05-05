@@ -251,7 +251,7 @@ namespace DVLDBussinessLayer
         {
             if (clsApplicationData.UpdateStatus(ApplicationID, (byte)enApplicationStatus.Approved))
             {
-                _NotifyStatusUpdate("Application Approved", "Great news! Your application has been approved. You can now proceed to schedule your tests.");
+                _NotifyStatusUpdate("Application Approved", "Great news! Your application has been approved. You can now proceed to the next steps.");
                 return true;
             }
             return false;
