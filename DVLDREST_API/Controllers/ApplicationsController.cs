@@ -37,8 +37,52 @@ namespace DVLDREST_API.Controllers
         {
             if (request == null) return BadRequest("Invalid request.");
 
-            // Standard Application Type ID for 'New Local Driving License' is typically 1
+            // Standard Application Type ID for 'New Local Driving License' is 1
             int newLocalAppTypeID = 1; 
+
+            // 0. Verify the Person exists
+            clsPerson person = clsPerson.Find(request.ApplicantPersonID);
+            if (person == null)
+            {
+                return BadRequest(new { message = $"Person with ID {request.ApplicantPersonID} not found." });
+            }
+
+            // 1. Check if the user has an active application for the same license class
+            // Using explicit (int) cast and literal check
+            int activeApplicationID = clsApplication.GetActiveApplicationIDForLicenseClass(
+                request.ApplicantPersonID, 
+                (clsApplication.enApplicationType)newLocalAppTypeID, 
+                request.LicenseClassID);
+
+            if (activeApplicationID != -1)
+            {
+                return Conflict(new { 
+                    message = "A person already has an active application for this license class.",
+                    activeApplicationID = activeApplicationID,
+                    personID = request.ApplicantPersonID,
+                    licenseClassID = request.LicenseClassID
+                });
+            }
+
+            // 2. Check if user already has a license of the same class
+            if (clsLicenses.IsLicenseExistByPersonIDAndClassID(request.ApplicantPersonID, request.LicenseClassID))
+            {
+                return BadRequest(new { message = "Person already has an active license for this class." });
+            }
+
+            // 3. Age Validation
+            clsLicenseClasses licenseClass = clsLicenseClasses.Find(request.LicenseClassID);
+
+            if (licenseClass != null && person != null)
+            {
+                int applicantAge = DateTime.Now.Year - person.DateOfBirth.Year;
+                if (person.DateOfBirth > DateTime.Now.AddYears(-applicantAge)) applicantAge--; // Precision adjustment
+
+                if (applicantAge < licenseClass.MinimumAllowedAge)
+                {
+                    return BadRequest($"Person is too young for this license class. Minimum age required: {licenseClass.MinimumAllowedAge}.");
+                }
+            }
 
             clsLocalDrivingLicenseApplication application = new clsLocalDrivingLicenseApplication();
             application.ApplicantPersonID = request.ApplicantPersonID;
@@ -47,7 +91,7 @@ namespace DVLDREST_API.Controllers
             application.ApplicationStatus = clsApplication.enApplicationStatus.New;
             application.LastStatusDate = DateTime.Now;
             application.PaidFees = clsApplicationTypes.FindApplicationType(newLocalAppTypeID).ApplicationTypeFees;
-            application.CreatedByUserID = 1; // Default to Admin for now, or extract from JWT claims
+            application.CreatedByUserID = 1; // Default to Admin/System
             application.LicenseClassID = request.LicenseClassID;
             application.InstituteID = request.DrivingInstituteID;
 
