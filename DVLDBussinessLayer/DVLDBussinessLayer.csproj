@@ -62,6 +62,7 @@
     <Compile Include="clsTestTypes.cs" />
     <Compile Include="clsTrainingBatch.cs" />
     <Compile Include="clsUser.cs" />
+    <Compile Include="clsUserMessage.cs" />
     <Compile Include="clsUserPermission.cs" />
     <Compile Include="clsUserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
