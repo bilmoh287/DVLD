@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsAnnouncementData.cs" />
     <Compile Include="clsApplicationData.cs" />
     <Compile Include="clsApplicationTypesData.cs" />
     <Compile Include="clsAttendanceData.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="DataAccessSetting.cs" />
     <Compile Include="clsPersonData.cs" />
     <Compile Include="clsInstituteCourseData.cs" />
+    <Compile Include="DTOs\AnnouncementDTO.cs" />
     <Compile Include="DTOs\AttendanceDTO.cs" />
     <Compile Include="DTOs\CountryDTO.cs" />
     <Compile Include="DTOs\DrivingInstituteDTO.cs" />
@@ -78,7 +80,8 @@
     <Compile Include="DTOs\TestScheduleRequestDTO.cs" />
     <Compile Include="DTOs\LicenseClassDTO.cs" />
     <Compile Include="DTOs\TestDTOs.cs" />
-    <Compile Include="DTOs\CountryDTO.cs" />
+    <Compile Include="DTOs\IssueLicenseRequestDTO.cs" />
+    <Compile Include="DTOs\ScheduleTestRequestDTO.cs" />
     <Compile Include="DTOs\UserMessageDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
