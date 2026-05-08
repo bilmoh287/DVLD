@@ -295,5 +295,33 @@ namespace DVLDDataAccessLayer
             }
             return courseID;
         }
+        public static DataTable GetEnrollmentsByPersonID(int PersonID)
+        {
+            DataTable dt = new DataTable();
+
+            string query = @"
+                SELECT
+                    E.*,
+                    I.InstituteName
+                FROM Enrollments E
+                INNER JOIN DrivingInstitutes I ON E.InstituteID = I.InstituteID
+                WHERE E.PersonID = @PersonID AND E.IsActive = 1;";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@PersonID", PersonID);
+                try
+                {
+                    connection.Open();
+                    dt.Load(command.ExecuteReader());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error loading person enrollments: " + ex.Message);
+                }
+            }
+            return dt;
+        }
     }
 }
