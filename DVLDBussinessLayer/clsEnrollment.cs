@@ -134,5 +134,13 @@ namespace DVLDBussinessLayer
         {
             return clsEnrollmentData.IsPersonAlreadyEnrolled(PersonID, InstituteID, CourseID);
         }
+        public static DataTable GetEnrollmentsByPersonID(int PersonID)
+        {
+            return clsEnrollmentData.GetEnrollmentsByPersonID(PersonID);
+        }
+        public static int GetDefaultCourseIDForInstitute(int InstituteID)
+        {
+            return clsEnrollmentData.GetDefaultCourseIDForInstitute(InstituteID);
+        }
     }
 }
