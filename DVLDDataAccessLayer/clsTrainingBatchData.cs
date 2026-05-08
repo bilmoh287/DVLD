@@ -304,5 +304,33 @@ namespace DVLDDataAccessLayer
             }
             return (rowsAffected > 0);
         }
+        public static DataTable GetBatchByPersonID(int PersonID)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string query = @"SELECT B.* FROM TrainingBatches B
+                                 INNER JOIN ApplicantBatch AB ON B.TrainingBatchID = AB.TrainingBatchID
+                                 INNER JOIN Applications A ON AB.ApplicationID = A.ApplicationID
+                                 WHERE A.ApplicantPersonID = @PersonID";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@PersonID", PersonID);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    dt.Load(reader);
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return dt;
+        }
     }
 }
