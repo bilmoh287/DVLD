@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -234,6 +234,10 @@ namespace DVLDBussinessLayer
         {
             return clsLicensesData.GetDriverLicenses(DriverID);
         }
+        public static DataTable GetPersonLicenses(int PersonID)
+        {
+            return clsLicensesData.GetPersonLicenses(PersonID);
+        }
         public clsLicenses RenewDrivingLicense(string Notes, int CreatedByUserID)
         {
             //First Create Applicaiton 
@@ -271,7 +275,17 @@ namespace DVLDBussinessLayer
             //we need to deactivate the old License.
             if (!DeactivateCurrentLicense())
                 return null;
+
+            // Notify
+            try
+            {
+                clsUserMessage.SendSystemMessage(this.DriverInfo.PersonInfo.PersonID, "License Renewed", 
+                    $"Your driving license (Class: {this.LicenseClassInfo.ClassName}) has been renewed successfully. New Expiration: {NewLicense.ExpirationDate.ToShortDateString()}.", "License");
+            }
+            catch (Exception) { }
+
             return NewLicense;
+
         }
 
         public clsLicenses Replace(enIssueReason IssueReason, int CreatedByUserID)
@@ -313,7 +327,18 @@ namespace DVLDBussinessLayer
             //we need to deactivate the old License.
             if (!DeactivateCurrentLicense())
                 return null;
+
+            // Notify
+            string reasonText = (IssueReason == enIssueReason.ReplacementForLost) ? "Lost" : "Damaged";
+            try
+            {
+                clsUserMessage.SendSystemMessage(this.DriverInfo.PersonInfo.PersonID, "License Replaced", 
+                    $"Your driving license (Class: {this.LicenseClassInfo.ClassName}) has been replaced due to being {reasonText}.", "License");
+            }
+            catch (Exception) { }
+
             return NewLicense;
+
         }
 
         public int Detain(string DetainReason, string DetainPlace, decimal FineFee, int CreatedByUserID)
@@ -359,6 +384,14 @@ namespace DVLDBussinessLayer
             //Release based from clsDetainedLicenses BL
             if (DetainedLicesne.Release(ReleasedByUserID, _Application.ApplicationID))
             {
+                // Notify
+                try
+                {
+                    clsUserMessage.SendSystemMessage(this.DriverInfo.PersonInfo.PersonID, "License Released", 
+                        $"Your driving license (Class: {this.LicenseClassInfo.ClassName}) has been released and is now active.", "License");
+                }
+                catch (Exception) { }
+
                 return _Application.ApplicationID;
             }
             else { return -1; }
