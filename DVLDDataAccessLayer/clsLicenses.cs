@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
@@ -301,6 +301,38 @@ namespace DVLDDataAccessLayer
             }
 
             return (rowsAffected > 0);
+        }
+
+        public static DataTable GetPersonLicenses(int PersonID)
+        {
+            DataTable dt = new DataTable();
+            string query = @"SELECT Licenses.LicenseID, Licenses.ApplicationID, LicenseClasses.ClassName, Licenses.IssueDate, Licenses.ExpirationDate, Licenses.IsActive
+                            FROM     Licenses INNER JOIN
+                                               LicenseClasses ON Licenses.LicenseClass = LicenseClasses.LicenseClassID INNER JOIN
+                                               Drivers ON Licenses.DriverID = Drivers.DriverID
+                            WHERE Drivers.PersonID  = @PersonID
+                            ORDER BY Licenses.ExpirationDate DESC, Licenses.IsActive DESC;";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@PersonID", PersonID);
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error loading Licenses: " + ex.Message);
+                    }
+                }
+            }
+            return dt;
         }
 
     }
