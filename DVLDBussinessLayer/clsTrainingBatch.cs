@@ -122,5 +122,9 @@ namespace DVLDBussinessLayer
         {
             return clsTrainingBatchData.RemoveApplicantFromBatch(ApplicationID, BatchID);
         }
+        public static DataTable GetStudentBatch(int PersonID)
+        {
+            return clsTrainingBatchData.GetBatchByPersonID(PersonID);
+        }
     }
 }
