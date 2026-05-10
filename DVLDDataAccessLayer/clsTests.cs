@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -242,6 +242,32 @@ namespace DVLDDataAccessLayer
             }
 
             return CountPassedTest;
+        }
+        public static DataTable GetTestHistoryByLDLAppID(int LocalDrivingLicenseApplicationID)
+        {
+            DataTable dt = new DataTable();
+            string query = @"SELECT Tests.TestID, TestTypes.TestTypeTitle, Tests.TestResult, Tests.Notes, TestAppointments.AppointmentDate
+                             FROM Tests INNER JOIN
+                                  TestAppointments ON Tests.TestAppointmentID = TestAppointments.TestAppointmentID INNER JOIN
+                                  TestTypes ON TestAppointments.TestTypeID = TestTypes.TestTypeID
+                             WHERE TestAppointments.LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID
+                             ORDER BY Tests.TestID DESC;";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+                try
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        dt.Load(reader);
+                    }
+                }
+                catch (Exception) { }
+            }
+            return dt;
         }
     }
 }
