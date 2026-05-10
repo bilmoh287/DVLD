@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -85,6 +85,7 @@ namespace DVLDBussinessLayer
                     if (_AddNewTest())
                     {
                         Mode = enMode.Update;
+                        _NotifyResult();
                         return true;
                     }
                     return false;
@@ -94,6 +95,38 @@ namespace DVLDBussinessLayer
 
                 default:
                     return false;
+            }
+        }
+
+        private void _NotifyResult()
+        {
+            try
+            {
+                clsTestAppointments appointment = clsTestAppointments.Find(this.TestAppointmentID);
+                if (appointment == null) return;
+
+                clsLocalDrivingLicenseApplication ldla = clsLocalDrivingLicenseApplication.GetLocalDrivingLicenseApplicationInfoByID(appointment.LocalDrivingLicenseApplicationID);
+                if (ldla == null) return;
+
+                string testName = "Driving Test";
+                switch (appointment.TestTypeID)
+                {
+                    case 1: testName = "Vision Test"; break;
+                    case 2: testName = "Written Test"; break;
+                    case 3: testName = "Practical Test"; break;
+                }
+
+                string resultText = this.TestResult ? "PASSED" : "FAILED";
+                string title = $"Test Result: {resultText}";
+                string content = this.TestResult
+                    ? $"Congratulations! You have PASSED your {testName}. You can now proceed to the next stage."
+                    : $"We regret to inform you that you have FAILED your {testName}. Please review the notes and schedule a retake when ready.";
+
+                clsUserMessage.SendSystemMessage(ldla.ApplicantPersonID, title, content, "Test");
+            }
+            catch (Exception)
+            {
+                // Safety catch
             }
         }
 
@@ -125,6 +158,10 @@ namespace DVLDBussinessLayer
         public static int CountPassedTests(int LDLApplicationID)
         {
             return clsTestsData.CountPassedTest(LDLApplicationID);
+        }
+        public static DataTable GetTestHistoryByLDLAppID(int LDLApplicationID)
+        {
+            return clsTestsData.GetTestHistoryByLDLAppID(LDLApplicationID);
         }
     }
 }
