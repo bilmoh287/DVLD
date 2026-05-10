@@ -223,6 +223,14 @@ namespace DVLDBussinessLayer
                 //now we should set the application status to complete.
                 this.SetComplete();
 
+                // Send specific notification
+                try
+                {
+                    clsUserMessage.SendSystemMessage(this.ApplicantPersonID, "License Issued Successfully", 
+                        $"Congratulations! Your driving license (Class: {this.LicesnseClassInfo.ClassName}) has been issued. You can now view it in your digital wallet.", "License");
+                }
+                catch (Exception) { }
+
                 return License.LicenseID;
             }
 
