@@ -207,17 +207,177 @@ namespace DVLDREST_API.Controllers
                 if (personIdObj == DBNull.Value || personIdObj == null) continue;
                 if ((int)personIdObj != personId) continue;
 
+                // Get LDLApplicationID for this record
+                int ldlAppID = (int)row["LocalDrivingLicenseApplicationID"];
+
                 results.Add(new ApplicationStatusResponseDTO
                 {
                     ApplicationID    = (int)row["ApplicationID"],
+                    LDLApplicationID = ldlAppID,
                     ClassName        = row["ClassName"]?.ToString() ?? "",
                     Status           = row["Status"]?.ToString() ?? "",
                     AppliedDate      = (DateTime)row["ApplicationDate"],
-                    PassedExamsCount = 0
+                    PassedExamsCount = clsTests.CountPassedTests(ldlAppID)
                 });
             }
 
             return Ok(results);
+        }
+        // GET /api/applications/fees/{typeId} — Returns fee for a specific application type
+        [HttpGet("fees/{typeId}")]
+        public IActionResult GetApplicationFee(int typeId)
+        {
+            clsApplicationTypes appType = clsApplicationTypes.FindApplicationType(typeId);
+            if (appType == null) return NotFound("Application type not found.");
+            
+            return Ok(new { 
+                ApplicationTypeID = appType.ApplicationTypeID,
+                ApplicationTypeTitle = appType.ApplicationTypeTitle,
+                Fees = appType.ApplicationTypeFees 
+            });
+        }
+
+        // GET /api/applications/test-history/{ldlAppId} — Returns all test attempts for an application
+        [HttpGet("test-history/{ldlAppId}")]
+        public IActionResult GetTestHistory(int ldlAppId)
+        {
+            DataTable dt = clsTests.GetTestHistoryByLDLAppID(ldlAppId);
+            List<object> history = new List<object>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                history.Add(new
+                {
+                    TestID = (int)row["TestID"],
+                    TestType = row["TestTypeTitle"].ToString(),
+                    Result = (bool)row["TestResult"] ? "Pass" : "Fail",
+                    Notes = row["Notes"].ToString(),
+                    Date = (DateTime)row["AppointmentDate"]
+                });
+            }
+
+            return Ok(history);
+        }
+
+        // POST /api/applications/approve/{ldlAppId}
+        [HttpPost("approve/{ldlAppId}")]
+        public IActionResult ApproveApplication(int ldlAppId)
+        {
+            clsLocalDrivingLicenseApplication application = clsLocalDrivingLicenseApplication.GetLocalDrivingLicenseApplicationInfoByID(ldlAppId);
+            if (application == null) return NotFound("Application not found.");
+
+            if (application.Approve()) return Ok(new { message = "Application Approved successfully." });
+            return StatusCode(500, "Error approving application.");
+        }
+
+        // POST /api/applications/reject/{ldlAppId}
+        [HttpPost("reject/{ldlAppId}")]
+        public IActionResult RejectApplication(int ldlAppId)
+        {
+            clsLocalDrivingLicenseApplication application = clsLocalDrivingLicenseApplication.GetLocalDrivingLicenseApplicationInfoByID(ldlAppId);
+            if (application == null) return NotFound("Application not found.");
+
+            if (application.Reject()) return Ok(new { message = "Application Rejected successfully." });
+            return StatusCode(500, "Error rejecting application.");
+        }
+        // GET /api/applications/next-test/{ldlAppId}
+        [HttpGet("next-test/{ldlAppId}")]
+        public IActionResult GetNextTest(int ldlAppId)
+        {
+            clsLocalDrivingLicenseApplication application = clsLocalDrivingLicenseApplication.GetLocalDrivingLicenseApplicationInfoByID(ldlAppId);
+            if (application == null) return NotFound("Application not found.");
+
+            int nextTestId = 0;
+            string nextTestTitle = "All Tests Passed";
+            bool isScheduled = false;
+
+            if (!application.DoesPassTestType(clsTestTypes.enTestType.VisionTest))
+            {
+                nextTestId = 1;
+                nextTestTitle = "Vision Test";
+                isScheduled = application.IsThereAnActiveScheduledTest(1);
+            }
+            else if (!application.DoesPassTestType(clsTestTypes.enTestType.WrittenTest))
+            {
+                nextTestId = 2;
+                nextTestTitle = "Written Test";
+                isScheduled = application.IsThereAnActiveScheduledTest(2);
+            }
+            else if (!application.DoesPassTestType(clsTestTypes.enTestType.StreetTest))
+            {
+                nextTestId = 3;
+                nextTestTitle = "Street Test";
+                isScheduled = application.IsThereAnActiveScheduledTest(3);
+            }
+
+            return Ok(new { 
+                NextTestTypeID = nextTestId, 
+                NextTestTitle = nextTestTitle,
+                IsScheduled = isScheduled
+            });
+        }
+
+        // POST /api/applications/schedule-test
+        [HttpPost("schedule-test")]
+        public IActionResult ScheduleTest([FromBody] ScheduleTestRequestDTO request)
+        {
+            if (request == null) return BadRequest("Invalid request.");
+
+            clsLocalDrivingLicenseApplication ldlApplication = clsLocalDrivingLicenseApplication.GetLocalDrivingLicenseApplicationInfoByID(request.LocalDrivingLicenseApplicationID);
+            if (ldlApplication == null) return NotFound("Local Driving License Application not found.");
+
+            // Check if there is an active scheduled test for the same test type
+            if (ldlApplication.IsThereAnActiveScheduledTest(request.TestTypeID))
+            {
+                return BadRequest("Person already has an active scheduled test for this test type.");
+            }
+
+            // Check if person already passed this test
+            if (ldlApplication.DoesPassTestType((clsTestTypes.enTestType)request.TestTypeID))
+            {
+                return BadRequest("Person already passed this test.");
+            }
+
+            clsTestAppointments appointment = new clsTestAppointments();
+            appointment.LocalDrivingLicenseApplicationID = request.LocalDrivingLicenseApplicationID;
+            appointment.TestTypeID = request.TestTypeID;
+            appointment.AppointmentDate = request.AppointmentDate;
+            appointment.CreatedByUserID = request.CreatedByUserID;
+            
+            clsTestTypes testType = clsTestTypes.Find((clsTestTypes.enTestType)request.TestTypeID);
+            appointment.PaidFees = testType.TestTypeFees;
+
+            // Check if it's a retake
+            if (ldlApplication.TotalTrialsPerTest((clsTestTypes.enTestType)request.TestTypeID) > 0)
+            {
+                // Create Retake Application
+                clsApplication retakeApp = new clsApplication();
+                retakeApp.ApplicantPersonID = ldlApplication.ApplicantPersonID;
+                retakeApp.ApplicationDate = DateTime.Now;
+                retakeApp.ApplicationTypeID = (int)clsApplication.enApplicationType.RetakeTest;
+                retakeApp.ApplicationStatus = clsApplication.enApplicationStatus.Completed; // Paid & closed immediately
+                retakeApp.LastStatusDate = DateTime.Now;
+                retakeApp.CreatedByUserID = request.CreatedByUserID;
+                
+                clsApplicationTypes retakeAppType = clsApplicationTypes.FindApplicationType((int)clsApplication.enApplicationType.RetakeTest);
+                retakeApp.PaidFees = retakeAppType.ApplicationTypeFees;
+
+                if (retakeApp.Save())
+                {
+                    appointment.RetakeTestApplicationID = retakeApp.ApplicationID;
+                }
+                else
+                {
+                    return StatusCode(500, "Error creating retake application.");
+                }
+            }
+
+            if (appointment.Save())
+            {
+                return Ok(new { message = "Test Scheduled successfully.", appointmentID = appointment.TestAppointmentID });
+            }
+
+            return StatusCode(500, "Error scheduling test.");
         }
     }
 }
