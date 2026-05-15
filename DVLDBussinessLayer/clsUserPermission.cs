@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -24,7 +24,9 @@ namespace DVLDBussinessLayer
             ManageDetainedLicenses = 32,
             ManageInstitutes = 64,
 
-            FullAccess = 127
+            InstituteInstructor = 128,
+
+            FullAccess = 255
         }
 
         public static List<string> GetAllRoles()

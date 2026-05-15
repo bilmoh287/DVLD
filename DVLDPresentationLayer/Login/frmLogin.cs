@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 using DVLDBussinessLayer;
 using DVLDPresentationLayer.Global_Classes;
@@ -41,13 +41,28 @@ namespace DVLDPresentationLayer
                 }
 
                 clsGlobal.CurrentUser = _User;
+                clsGlobal.CurrentInstituteID = clsDrivingInstitute.GetInstituteIDByUserID(_User.UserID);
 
                 // collect the user's permissions
                 clsGlobal.CurrentUserPermissions = clsUserPermission.GetUserPermissions(_User.UserID);
 
                 this.Hide();
-                frmMain frm = new frmMain(this);
-                frm.ShowDialog();
+
+                if (clsGlobal.HasPermission(clsUserPermission.enPermissions.InstituteInstructor) && 
+                   !clsGlobal.HasPermission(clsUserPermission.enPermissions.FullAccess))
+                {
+                    int instituteID = clsGlobal.CurrentInstituteID ?? -1;
+                    frmSchoolDashboard frmSchool = new frmSchoolDashboard(instituteID);
+                    frmSchool.ShowDialog();
+                    
+                    // Show login screen again after dashboard is closed (logout/exit)
+                    this.Show();
+                }
+                else
+                {
+                    frmMain frm = new frmMain(this);
+                    frm.ShowDialog();
+                }
             }
             else
             {

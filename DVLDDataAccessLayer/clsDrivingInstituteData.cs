@@ -183,24 +183,52 @@ namespace DVLDDataAccessLayer
         public static bool DeleteInstitute(int InstituteID)
         {
             int rowsAffected = 0;
-            string query = @"DELETE FROM DrivingInstitutes WHERE InstituteID = @InstituteID";
-
-            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
-            using (SqlCommand command = new SqlCommand(query, connection))
+            try
             {
-                command.Parameters.AddWithValue("@InstituteID", InstituteID);
-
-                try
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
                 {
-                    connection.Open();
-                    rowsAffected = command.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error deleting Institute: " + ex.Message);
+                    string query = @"DELETE FROM DrivingInstitutes WHERE InstituteID = @InstituteID;";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@InstituteID", InstituteID);
+                        connection.Open();
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
                 }
             }
-            return (rowsAffected > 0);
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error deleting Institute: " + ex.Message);
+            }
+
+            return rowsAffected > 0;
+        }
+
+        public static int GetInstituteIDByUserID(int UserID)
+        {
+            int InstituteID = -1;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+                {
+                    string query = "SELECT TOP 1 InstituteID FROM InstituteInstructors WHERE UserID = @UserID AND IsActive = 1";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@UserID", UserID);
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+                        if (result != null && int.TryParse(result.ToString(), out int id))
+                        {
+                            InstituteID = id;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            return InstituteID;
         }
 
         public static DataTable GetInstituteMobileDetailByID(int InstituteID)

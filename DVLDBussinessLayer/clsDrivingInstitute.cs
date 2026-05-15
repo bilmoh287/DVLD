@@ -148,6 +148,11 @@ namespace DVLDBussinessLayer
             return clsDrivingInstituteData.DeleteInstitute(InstituteID);
         }
 
+        public static int GetInstituteIDByUserID(int UserID)
+        {
+            return clsDrivingInstituteData.GetInstituteIDByUserID(UserID);
+        }
+
         public static DataTable GetInstituteMobileDetail(int InstituteID)
         {
             return clsDrivingInstituteData.GetInstituteMobileDetailByID(InstituteID);
