@@ -34,23 +34,50 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
 
         private void _LoadData()
         {
-            if (_BatchID == -1) return;
+            DataTable dtBatches = clsTrainingBatch.GetBatchesByInstituteID(clsGlobal.CurrentInstituteID);
+            
+            cbBatches.DataSource = dtBatches;
+            cbBatches.DisplayMember = "BatchName";
+            cbBatches.ValueMember = "BatchID";
 
-            clsTrainingBatch batch = clsTrainingBatch.Find(_BatchID);
-            if (batch == null) return;
+            if (dtBatches.Rows.Count > 0)
+            {
+                if (_BatchID != -1)
+                {
+                    cbBatches.SelectedValue = _BatchID;
+                }
+                else
+                {
+                    cbBatches.SelectedIndex = 0;
+                }
+            }
+            else
+            {
+                dgvAttendance.DataSource = null;
+            }
+        }
 
-            lblBatchName.Text = batch.BatchName;
+        private void cbBatches_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbBatches.SelectedValue == null) return;
+            
+            if (int.TryParse(cbBatches.SelectedValue.ToString(), out int selectedBatchID))
+            {
+                _BatchID = selectedBatchID;
+                clsTrainingBatch batch = clsTrainingBatch.Find(_BatchID);
+                if (batch == null) return;
 
-            dgvAttendance.AutoGenerateColumns = false;
-            dgvAttendance.Columns["ApplicationID"].DataPropertyName = "ApplicationID";
-            dgvAttendance.Columns["FullName"].DataPropertyName = "FullName";
-            dgvAttendance.Columns["ClassName"].DataPropertyName = "ClassName";
+                dgvAttendance.AutoGenerateColumns = false;
+                dgvAttendance.Columns["ApplicationID"].DataPropertyName = "ApplicationID";
+                dgvAttendance.Columns["FullName"].DataPropertyName = "FullName";
+                dgvAttendance.Columns["ClassName"].DataPropertyName = "ClassName";
 
-            dgvAttendance.DataSource = batch.GetApplicants();
+                dgvAttendance.DataSource = batch.GetApplicants();
 
-            dgvAttendance.Columns["FullName"].Visible = true;
-            dgvAttendance.Columns["ClassName"].Visible = true;
-            dgvAttendance.Columns["IsPresent"].Visible = true;
+                dgvAttendance.Columns["FullName"].Visible = true;
+                dgvAttendance.Columns["ClassName"].Visible = true;
+                dgvAttendance.Columns["IsPresent"].Visible = true;
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
