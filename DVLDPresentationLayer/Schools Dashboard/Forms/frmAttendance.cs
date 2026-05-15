@@ -34,8 +34,14 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
 
         private void _LoadData()
         {
-            DataTable dtBatches = clsTrainingBatch.GetBatchesByInstituteID(clsGlobal.CurrentInstituteID);
-            
+            if (!clsGlobal.CurrentInstituteID.HasValue)
+            {
+                MessageBox.Show("Current Institute ID is not set.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            DataTable dtBatches = clsTrainingBatch.GetBatchesByInstituteID(clsGlobal.CurrentInstituteID.Value);
+
             cbBatches.DataSource = dtBatches;
             cbBatches.DisplayMember = "BatchName";
             cbBatches.ValueMember = "BatchID";
