@@ -36,7 +36,7 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
             this.btnClose = new System.Windows.Forms.Button();
             this.dtpAttendanceDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.lblBatchName = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.cbBatches = new Guna.UI2.WinForms.Guna2ComboBox();
             this.dgvAttendance = new Guna.UI2.WinForms.Guna2DataGridView();
             this.ApplicationID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,7 +56,7 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
             this.panelHeader.Controls.Add(this.btnClose);
             this.panelHeader.Controls.Add(this.dtpAttendanceDate);
             this.panelHeader.Controls.Add(this.guna2HtmlLabel1);
-            this.panelHeader.Controls.Add(this.lblBatchName);
+            this.panelHeader.Controls.Add(this.cbBatches);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
             this.panelHeader.Name = "panelHeader";
@@ -108,16 +108,19 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
             this.guna2HtmlLabel1.TabIndex = 2;
             this.guna2HtmlLabel1.Text = "Batch Name:";
             // 
-            // lblBatchName
+            // cbBatches
             // 
-            this.lblBatchName.BackColor = System.Drawing.Color.Transparent;
-            this.lblBatchName.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBatchName.ForeColor = System.Drawing.Color.Black;
-            this.lblBatchName.Location = new System.Drawing.Point(562, 6);
-            this.lblBatchName.Name = "lblBatchName";
-            this.lblBatchName.Size = new System.Drawing.Size(135, 33);
-            this.lblBatchName.TabIndex = 3;
-            this.lblBatchName.Text = "Batch Name:";
+            this.cbBatches.BackColor = System.Drawing.Color.Transparent;
+            this.cbBatches.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbBatches.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbBatches.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbBatches.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbBatches.ItemHeight = 30;
+            this.cbBatches.Location = new System.Drawing.Point(562, 6);
+            this.cbBatches.Name = "cbBatches";
+            this.cbBatches.Size = new System.Drawing.Size(135, 36);
+            this.cbBatches.TabIndex = 3;
+            this.cbBatches.SelectedIndexChanged += new System.EventHandler(this.cbBatches_SelectedIndexChanged);
             // 
             // dgvAttendance
             // 
@@ -282,7 +285,7 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
         private System.Windows.Forms.Button btnClose;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpAttendanceDate;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lblBatchName;
+        private Guna.UI2.WinForms.Guna2ComboBox cbBatches;
         private Guna.UI2.WinForms.Guna2DataGridView dgvAttendance;
         private System.Windows.Forms.DataGridViewTextBoxColumn ApplicationID;
         private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
