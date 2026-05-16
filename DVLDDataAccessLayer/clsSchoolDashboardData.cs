@@ -197,11 +197,17 @@ namespace DVLDDataAccessLayer
         public static decimal GetTotalEarnings(int InstituteID)
         {
             decimal total = 0;
+            // Sum both official DVLD application fees AND school-specific course payments
             string query = @"
-                SELECT SUM(A.PaidFees)
-                FROM   Applications A
-                INNER JOIN LocalDrivingLicenseApplications LDLA ON A.ApplicationID = LDLA.ApplicationID
-                WHERE  LDLA.InstituteID = @InstituteID";
+                SELECT 
+                    (SELECT ISNULL(SUM(A.PaidFees), 0)
+                     FROM   Applications A
+                     INNER JOIN LocalDrivingLicenseApplications LDLA ON A.ApplicationID = LDLA.ApplicationID
+                     WHERE  LDLA.InstituteID = @InstituteID)
+                +
+                    (SELECT ISNULL(SUM(IP.AmountPaid), 0)
+                     FROM   InstitutePayments IP
+                     WHERE  IP.InstituteID = @InstituteID)";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             using (SqlCommand command = new SqlCommand(query, connection))

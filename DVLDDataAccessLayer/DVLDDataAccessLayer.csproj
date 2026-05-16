@@ -51,6 +51,8 @@
     <Compile Include="clsDrivingInstituteData.cs" />
     <Compile Include="clsEnrollmentData.cs" />
     <Compile Include="clsInternationalLicenses.cs" />
+    <Compile Include="clsInstitutePaymentData.cs" />
+    <Compile Include="clsKPIData.cs" />
     <Compile Include="clsLicenseClasses.cs" />
     <Compile Include="clsLicenses.cs" />
     <Compile Include="clsLocalDrivingLicenseApplication.cs" />

@@ -54,6 +54,8 @@
     <Compile Include="clsApplication.cs" />
     <Compile Include="clsApplicationTypes.cs" />
     <Compile Include="clsCountries.cs" />
+    <Compile Include="clsInstitutePayment.cs" />
+    <Compile Include="clsKPI.cs" />
     <Compile Include="clsLicenseClassses.cs" />
     <Compile Include="clsPerson.cs" />
     <Compile Include="clsRole.cs" />

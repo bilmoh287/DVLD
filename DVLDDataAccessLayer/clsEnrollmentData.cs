@@ -322,6 +322,30 @@ namespace DVLDDataAccessLayer
                 }
             }
             return dt;
+        public static decimal GetCourseFee(int CourseID)
+        {
+            decimal fee = 0;
+            string query = "SELECT CourseFee FROM InstituteCourses WHERE CourseID = @CourseID";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@CourseID", CourseID);
+                try
+                {
+                    connection.Open();
+                    object result = command.ExecuteScalar();
+                    if (result != null && decimal.TryParse(result.ToString(), out decimal res))
+                    {
+                        fee = res;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return fee;
         }
     }
 }

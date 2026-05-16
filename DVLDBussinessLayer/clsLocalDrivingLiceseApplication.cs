@@ -144,7 +144,14 @@ namespace DVLDBussinessLayer
                 if (defaultCourseID == -1) return; // No courses set up for this institute
 
                 // Create enrollment
-                clsEnrollmentData.AddNewEnrollment(this.ApplicantPersonID, this.InstituteID, defaultCourseID, this.CreatedByUserID);
+                int enrollmentID = clsEnrollmentData.AddNewEnrollment(this.ApplicantPersonID, this.InstituteID, defaultCourseID, this.CreatedByUserID);
+
+                if (enrollmentID != -1)
+                {
+                    // Record payment for the school course fee
+                    decimal courseFee = clsEnrollmentData.GetCourseFee(defaultCourseID);
+                    clsInstitutePaymentData.AddNewPayment(this.InstituteID, enrollmentID, courseFee, null, this.CreatedByUserID);
+                }
             }
         }
 
