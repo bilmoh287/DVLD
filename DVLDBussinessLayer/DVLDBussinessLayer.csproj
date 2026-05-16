@@ -54,6 +54,7 @@
     <Compile Include="clsApplication.cs" />
     <Compile Include="clsApplicationTypes.cs" />
     <Compile Include="clsCountries.cs" />
+    <Compile Include="clsDriverVehicle.cs" />
     <Compile Include="clsInstitutePayment.cs" />
     <Compile Include="clsKPI.cs" />
     <Compile Include="clsLicenseClassses.cs" />
