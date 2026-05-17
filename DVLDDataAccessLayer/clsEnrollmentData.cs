@@ -322,6 +322,7 @@ namespace DVLDDataAccessLayer
                 }
             }
             return dt;
+        }
         public static decimal GetCourseFee(int CourseID)
         {
             decimal fee = 0;
