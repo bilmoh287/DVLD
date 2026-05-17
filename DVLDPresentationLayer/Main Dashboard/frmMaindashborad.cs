@@ -1,12 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLDBussinessLayer;
+using DVLDPresentationLayer.Global_Classes;
 using DVLDPresentationLayer.Main_Dashboard.User_Controls;
 
 namespace DVLDPresentationLayer
@@ -20,16 +16,30 @@ namespace DVLDPresentationLayer
 
         private void _LoadUserControl(UserControl userControl)
         {
-            // Clear current content
             if (panel2.Controls.Count > 0)
                 panel2.Controls.Clear();
-
-            // Setup the new control to fill the panel (handles Maximized state)
             userControl.Dock = DockStyle.Fill;
-            
-            // Add to panel
             panel2.Controls.Add(userControl);
         }
+
+        private void _ApplyPermissions()
+        {
+            // Dashboard — visible to all
+            btnDashboard.Visible       = true;
+            // Applicants — visible to all
+            btnApplicants.Visible      = true;
+
+            btnApplications.Visible    = clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageApplications);
+            btnTestManagement.Visible  = clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageTests);
+            btnLicenses.Visible        = clsGlobal.HasPermission(clsUserPermission.enPermissions.IssueLicense);
+            btnVehicles.Visible        = clsGlobal.HasPermission(clsUserPermission.enPermissions.ViewPeople);
+            btnReports.Visible         = clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageApplications);
+            btnComplaints.Visible      = clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageUsers);
+            btnNotifications.Visible   = true; // everyone
+            btnSettings.Visible        = clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageUsers);
+        }
+
+        // ── Sidebar Handlers ────────────────────────────────────────────────
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
@@ -37,16 +47,69 @@ namespace DVLDPresentationLayer
             _LoadUserControl(new ucDashboard());
         }
 
-        private void frmMaindashborad_Load(object sender, EventArgs e)
-        {
-            // Automatically load dashboard on startup
-            btnDashboard_Click(null, null);
-        }
-
         private void btnApplicants_Click(object sender, EventArgs e)
         {
-            lblHeader.Text = "HELLO";
+            lblHeader.Text = "APPLICANTS";
             _LoadUserControl(new ucApplicants());
+        }
+
+        private void btnApplications_Click(object sender, EventArgs e)
+        {
+            lblHeader.Text = "APPLICATIONS";
+            _LoadUserControl(new ucApplications());
+        }
+
+        private void btnTestManagement_Click(object sender, EventArgs e)
+        {
+            lblHeader.Text = "TEST MANAGEMENT";
+            _LoadUserControl(new ucTestManagement());
+        }
+
+        private void btnLicenses_Click(object sender, EventArgs e)
+        {
+            lblHeader.Text = "LICENSES";
+            _LoadUserControl(new ucLicenses());
+        }
+
+        private void btnVehicles_Click(object sender, EventArgs e)
+        {
+            lblHeader.Text = "DRIVERS & VEHICLES";
+            _LoadUserControl(new ucVehicles());
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            lblHeader.Text = "REPORTS & REVIEW";
+            // Opens the Under Review form as a dialog from this hub
+            new frmUnderReview().ShowDialog();
+        }
+
+        private void btnComplaints_Click(object sender, EventArgs e)
+        {
+            lblHeader.Text = "COMPLAINTS INBOX";
+            // Wire to frmComplaints when you build it
+            MessageBox.Show("Complaints form coming soon.", "Coming Soon", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnNotifications_Click(object sender, EventArgs e)
+        {
+            lblHeader.Text = "NOTIFICATIONS";
+            MessageBox.Show("Notifications form coming soon.", "Coming Soon", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            lblHeader.Text = "SETTINGS";
+            _LoadUserControl(new ucSettings());
+        }
+
+        // ── Form Events ──────────────────────────────────────────────────────
+
+        private void frmMaindashborad_Load(object sender, EventArgs e)
+        {
+            _ApplyPermissions();
+            btnDashboard_Click(null, null);
         }
     }
 }
+

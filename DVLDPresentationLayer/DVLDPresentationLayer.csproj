@@ -207,6 +207,21 @@
     <Compile Include="Main Dashboard\User Controls\ucApplicants.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Main Dashboard\User Controls\ucApplications.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main Dashboard\User Controls\ucLicenses.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main Dashboard\User Controls\ucSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main Dashboard\User Controls\ucTestManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main Dashboard\User Controls\ucVehicles.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Main Dashboard\User Controls\ucApplicants.Designer.cs">
       <DependentUpon>ucApplicants.cs</DependentUpon>
     </Compile>
