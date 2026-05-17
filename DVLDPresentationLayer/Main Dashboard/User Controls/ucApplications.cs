@@ -1,7 +1,11 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using DVLDPresentationLayer;
 using DVLDPresentationLayer.Applications.International_Driving_License;
+using DVLDPresentationLayer.Applications.Application_Types;
+using DVLDPresentationLayer.Applications.Local_Driving_License;
 
 namespace DVLDPresentationLayer.Main_Dashboard.User_Controls
 {

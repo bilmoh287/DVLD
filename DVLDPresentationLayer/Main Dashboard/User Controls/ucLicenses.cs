@@ -1,7 +1,10 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 using DVLDBussinessLayer;
+using DVLDPresentationLayer;
+using DVLDPresentationLayer.Licenses;
 using DVLDPresentationLayer.Applications.Renew_Local_License;
 using DVLDPresentationLayer.Applications.Replace_Lost_or_Damaged_License;
 using DVLDPresentationLayer.Applications.Relesease_Detained_Licenses;
@@ -42,7 +45,7 @@ namespace DVLDPresentationLayer.Main_Dashboard.User_Controls
             {
                 ("Local Licenses", "Browse and manage all issued local licenses.", "📋", () => { new frmListLocalDrivingLicenseApplications().ShowDialog(); }),
                 ("License History", "View full license history for a specific person.", "🕒", () => { new frmShowPersonLicenseHistory().ShowDialog(); }),
-                ("Issue License", "Issue a first-time driver license.", "🪪", () => { new frmIssueDriverLicenseFirstTime().ShowDialog(); }),
+                ("Issue License", "Issue a first-time driver license.", "🪪", () => { MessageBox.Show("Please open Local Licenses list, right-click an approved application, and select Issue Driving License.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information); }),
                 ("Renew License", "Process a license renewal application.", "🔄", () => { new frmRenewlLocalDrivingLicenseApplication().ShowDialog(); }),
                 ("Replace License", "Replace a lost or damaged license.", "🔁", () => { new frmReplaceLostOrDamagedLicense().ShowDialog(); }),
                 ("Detain License", "Record a license detention.", "🔒", () => { new frmDetainLicenseApplication().ShowDialog(); }),

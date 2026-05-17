@@ -1,6 +1,8 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using DVLDPresentationLayer;
 
 namespace DVLDPresentationLayer.Main_Dashboard.User_Controls
 {
@@ -34,7 +36,7 @@ namespace DVLDPresentationLayer.Main_Dashboard.User_Controls
 
             var cards = new (string Title, string Desc, string Icon, Action OnClick)[]
             {
-                ("Test Appointments", "View all scheduled test appointments.", "📅", () => { new frmListTestApppointments().ShowDialog(); }),
+                ("Test Appointments", "View all scheduled test appointments.", "📅", () => { MessageBox.Show("Please open Local Licenses list, right-click an application, and select Schedule Tests.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information); }),
                 ("Test Types", "Configure available test types.", "⚙️", () => { new frmListTestTypes().ShowDialog(); }),
             };
 
