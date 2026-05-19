@@ -1,4 +1,4 @@
-﻿namespace DVLDPresentationLayer.Main_Dashboard.User_Controls
+namespace DVLDPresentationLayer.Main_Dashboard.User_Controls
 {
     partial class ucTestManagement
     {
@@ -36,10 +36,12 @@
             this.btnScheduleStreetTest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
+            // 
             // guna2HtmlLabel1
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(58)))), ((int)(((byte)(96)))));
             this.guna2HtmlLabel1.Location = new System.Drawing.Point(360, 75);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(322, 48);
@@ -48,26 +50,30 @@
             // 
             // btnRetakeTest
             // 
-            this.btnRetakeTest.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnRetakeTest.FlatAppearance.BorderSize = 2;
+            this.btnRetakeTest.BackColor = System.Drawing.Color.White;
+            this.btnRetakeTest.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRetakeTest.FlatAppearance.BorderSize = 0;
             this.btnRetakeTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRetakeTest.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRetakeTest.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRetakeTest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(58)))), ((int)(((byte)(96)))));
             this.btnRetakeTest.Location = new System.Drawing.Point(201, 423);
             this.btnRetakeTest.Name = "btnRetakeTest";
             this.btnRetakeTest.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.btnRetakeTest.Size = new System.Drawing.Size(191, 92);
             this.btnRetakeTest.TabIndex = 8;
-            this.btnRetakeTest.Text = "        RetakeTest";
+            this.btnRetakeTest.Text = "        Retake Test";
             this.btnRetakeTest.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnRetakeTest.UseVisualStyleBackColor = true;
+            this.btnRetakeTest.UseVisualStyleBackColor = false;
             this.btnRetakeTest.Click += new System.EventHandler(this.btnRetakeTest_Click);
             // 
             // btnScheduleVisonTest
             // 
-            this.btnScheduleVisonTest.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnScheduleVisonTest.FlatAppearance.BorderSize = 2;
+            this.btnScheduleVisonTest.BackColor = System.Drawing.Color.White;
+            this.btnScheduleVisonTest.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnScheduleVisonTest.FlatAppearance.BorderSize = 0;
             this.btnScheduleVisonTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnScheduleVisonTest.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnScheduleVisonTest.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnScheduleVisonTest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(58)))), ((int)(((byte)(96)))));
             this.btnScheduleVisonTest.Location = new System.Drawing.Point(201, 294);
             this.btnScheduleVisonTest.Name = "btnScheduleVisonTest";
             this.btnScheduleVisonTest.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
@@ -75,14 +81,16 @@
             this.btnScheduleVisonTest.TabIndex = 7;
             this.btnScheduleVisonTest.Text = "Schedule Vision Test";
             this.btnScheduleVisonTest.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnScheduleVisonTest.UseVisualStyleBackColor = true;
+            this.btnScheduleVisonTest.UseVisualStyleBackColor = false;
             // 
             // btnListFailedStudents
             // 
-            this.btnListFailedStudents.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnListFailedStudents.FlatAppearance.BorderSize = 2;
+            this.btnListFailedStudents.BackColor = System.Drawing.Color.White;
+            this.btnListFailedStudents.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnListFailedStudents.FlatAppearance.BorderSize = 0;
             this.btnListFailedStudents.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnListFailedStudents.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnListFailedStudents.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnListFailedStudents.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(58)))), ((int)(((byte)(96)))));
             this.btnListFailedStudents.Location = new System.Drawing.Point(436, 423);
             this.btnListFailedStudents.Name = "btnListFailedStudents";
             this.btnListFailedStudents.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
@@ -90,14 +98,16 @@
             this.btnListFailedStudents.TabIndex = 10;
             this.btnListFailedStudents.Text = "Failed Students";
             this.btnListFailedStudents.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnListFailedStudents.UseVisualStyleBackColor = true;
+            this.btnListFailedStudents.UseVisualStyleBackColor = false;
             // 
             // btnScheduleWrittenTest
             // 
-            this.btnScheduleWrittenTest.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnScheduleWrittenTest.FlatAppearance.BorderSize = 2;
+            this.btnScheduleWrittenTest.BackColor = System.Drawing.Color.White;
+            this.btnScheduleWrittenTest.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnScheduleWrittenTest.FlatAppearance.BorderSize = 0;
             this.btnScheduleWrittenTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnScheduleWrittenTest.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnScheduleWrittenTest.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnScheduleWrittenTest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(58)))), ((int)(((byte)(96)))));
             this.btnScheduleWrittenTest.Location = new System.Drawing.Point(436, 294);
             this.btnScheduleWrittenTest.Name = "btnScheduleWrittenTest";
             this.btnScheduleWrittenTest.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
@@ -105,27 +115,30 @@
             this.btnScheduleWrittenTest.TabIndex = 11;
             this.btnScheduleWrittenTest.Text = "Schedule Written Test";
             this.btnScheduleWrittenTest.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnScheduleWrittenTest.UseVisualStyleBackColor = true;
+            this.btnScheduleWrittenTest.UseVisualStyleBackColor = false;
             // 
             // btnScheduleStreetTest
             // 
-            this.btnScheduleStreetTest.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnScheduleStreetTest.FlatAppearance.BorderSize = 2;
+            this.btnScheduleStreetTest.BackColor = System.Drawing.Color.White;
+            this.btnScheduleStreetTest.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnScheduleStreetTest.FlatAppearance.BorderSize = 0;
             this.btnScheduleStreetTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnScheduleStreetTest.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnScheduleStreetTest.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnScheduleStreetTest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(58)))), ((int)(((byte)(96)))));
             this.btnScheduleStreetTest.Location = new System.Drawing.Point(667, 294);
             this.btnScheduleStreetTest.Name = "btnScheduleStreetTest";
             this.btnScheduleStreetTest.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.btnScheduleStreetTest.Size = new System.Drawing.Size(191, 92);
             this.btnScheduleStreetTest.TabIndex = 12;
-            this.btnScheduleStreetTest.Text = "  Schdule Street Test";
+            this.btnScheduleStreetTest.Text = "  Schedule Street Test";
             this.btnScheduleStreetTest.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnScheduleStreetTest.UseVisualStyleBackColor = true;
+            this.btnScheduleStreetTest.UseVisualStyleBackColor = false;
             // 
             // ucTestManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.Controls.Add(this.btnScheduleStreetTest);
             this.Controls.Add(this.btnScheduleWrittenTest);
             this.Controls.Add(this.btnListFailedStudents);

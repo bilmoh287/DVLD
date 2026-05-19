@@ -1,4 +1,4 @@
-﻿namespace DVLDPresentationLayer.Main_Dashboard.User_Controls
+namespace DVLDPresentationLayer.Main_Dashboard.User_Controls
 {
     partial class ucUsers
     {
@@ -33,12 +33,15 @@
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.SuspendLayout();
             // 
+            // 
             // button1
             // 
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.button1.FlatAppearance.BorderSize = 2;
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(58)))), ((int)(((byte)(96)))));
             this.button1.Location = new System.Drawing.Point(523, 366);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
@@ -46,14 +49,16 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "Add/Update Users";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // btnListUsers
             // 
-            this.btnListUsers.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnListUsers.FlatAppearance.BorderSize = 2;
+            this.btnListUsers.BackColor = System.Drawing.Color.White;
+            this.btnListUsers.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnListUsers.FlatAppearance.BorderSize = 0;
             this.btnListUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnListUsers.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnListUsers.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnListUsers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(58)))), ((int)(((byte)(96)))));
             this.btnListUsers.Location = new System.Drawing.Point(277, 366);
             this.btnListUsers.Name = "btnListUsers";
             this.btnListUsers.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
@@ -61,12 +66,13 @@
             this.btnListUsers.TabIndex = 3;
             this.btnListUsers.Text = "      List Users";
             this.btnListUsers.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnListUsers.UseVisualStyleBackColor = true;
+            this.btnListUsers.UseVisualStyleBackColor = false;
             // 
             // guna2HtmlLabel1
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(58)))), ((int)(((byte)(96)))));
             this.guna2HtmlLabel1.Location = new System.Drawing.Point(345, 55);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(261, 48);
@@ -77,6 +83,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.Controls.Add(this.guna2HtmlLabel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnListUsers);

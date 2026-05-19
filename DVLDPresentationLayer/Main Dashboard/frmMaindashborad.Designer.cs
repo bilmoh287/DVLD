@@ -91,6 +91,7 @@ namespace DVLDPresentationLayer
             this.btnNotifications.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNotifications.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNotifications.UseVisualStyleBackColor = true;
+            this.btnNotifications.Click += new System.EventHandler(this.btnNotifications_Click);
             // 
             // btnComplaints
             // 
@@ -109,6 +110,7 @@ namespace DVLDPresentationLayer
             this.btnComplaints.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnComplaints.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnComplaints.UseVisualStyleBackColor = true;
+            this.btnComplaints.Click += new System.EventHandler(this.btnComplaints_Click);
             // 
             // btnVehicles
             // 
@@ -127,6 +129,7 @@ namespace DVLDPresentationLayer
             this.btnVehicles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVehicles.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnVehicles.UseVisualStyleBackColor = true;
+            this.btnVehicles.Click += new System.EventHandler(this.btnVehicles_Click);
             // 
             // btnDrivers
             // 
@@ -163,6 +166,7 @@ namespace DVLDPresentationLayer
             this.btnLicenses.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLicenses.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLicenses.UseVisualStyleBackColor = true;
+            this.btnLicenses.Click += new System.EventHandler(this.btnLicenses_Click);
             // 
             // btnTestManagement
             // 
@@ -181,6 +185,7 @@ namespace DVLDPresentationLayer
             this.btnTestManagement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTestManagement.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTestManagement.UseVisualStyleBackColor = true;
+            this.btnTestManagement.Click += new System.EventHandler(this.btnTestManagement_Click);
             // 
             // btnApplications
             // 
@@ -199,6 +204,7 @@ namespace DVLDPresentationLayer
             this.btnApplications.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnApplications.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnApplications.UseVisualStyleBackColor = true;
+            this.btnApplications.Click += new System.EventHandler(this.btnApplications_Click);
             // 
             // panelLogo
             // 
@@ -293,6 +299,7 @@ namespace DVLDPresentationLayer
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnSettings
             // 
@@ -313,6 +320,7 @@ namespace DVLDPresentationLayer
             this.btnSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // btnUsers
             // 
@@ -329,7 +337,7 @@ namespace DVLDPresentationLayer
             this.btnUsers.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnUsers.Size = new System.Drawing.Size(241, 50);
             this.btnUsers.TabIndex = 2;
-            this.btnUsers.Text = "   Users";
+            this.btnUsers.Text = "   Applicants";
             this.btnUsers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUsers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnUsers.UseVisualStyleBackColor = true;

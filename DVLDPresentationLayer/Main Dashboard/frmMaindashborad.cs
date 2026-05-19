@@ -112,6 +112,12 @@ namespace DVLDPresentationLayer
             lblHeader.Text = "SETTINGS";
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            lblHeader.Text = "USERS";
+            _LoadUserControl(new ucUsers());
+        }
+
         // ── Form Events ──────────────────────────────────────────────────────
 
         private void frmMaindashborad_Load(object sender, EventArgs e)
