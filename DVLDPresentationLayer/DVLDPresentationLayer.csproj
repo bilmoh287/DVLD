@@ -207,21 +207,6 @@
     <Compile Include="Main Dashboard\User Controls\ucApplicants.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Main Dashboard\User Controls\ucApplications.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Main Dashboard\User Controls\ucLicenses.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Main Dashboard\User Controls\ucSettings.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Main Dashboard\User Controls\ucTestManagement.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Main Dashboard\User Controls\ucVehicles.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="Main Dashboard\User Controls\ucApplicants.Designer.cs">
       <DependentUpon>ucApplicants.cs</DependentUpon>
     </Compile>
@@ -236,6 +221,24 @@
     </Compile>
     <Compile Include="Main Dashboard\User Controls\ucDashboard2.Designer.cs">
       <DependentUpon>ucDashboard2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main Dashboard\User Controls\ucPeople.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main Dashboard\User Controls\ucPeople.Designer.cs">
+      <DependentUpon>ucPeople.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main Dashboard\User Controls\ucTestManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main Dashboard\User Controls\ucTestManagement.Designer.cs">
+      <DependentUpon>ucTestManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main Dashboard\User Controls\ucUsers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main Dashboard\User Controls\ucUsers.Designer.cs">
+      <DependentUpon>ucUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="Schools Dashboard\Forms\frmAttendance.cs">
       <SubType>Form</SubType>
@@ -466,6 +469,12 @@
     <Compile Include="testForm.Designer.cs">
       <DependentUpon>testForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vehicles\LiestVehicles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vehicles\LiestVehicles.Designer.cs">
+      <DependentUpon>LiestVehicles.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Applications\Application Types\frmListApplicationTypes.resx">
       <DependentUpon>frmListApplicationTypes.cs</DependentUpon>
     </EmbeddedResource>
@@ -543,6 +552,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main Dashboard\User Controls\ucDashboard.resx">
       <DependentUpon>ucDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main Dashboard\User Controls\ucPeople.resx">
+      <DependentUpon>ucPeople.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main Dashboard\User Controls\ucTestManagement.resx">
+      <DependentUpon>ucTestManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main Dashboard\User Controls\ucUsers.resx">
+      <DependentUpon>ucUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Schools Dashboard\Forms\frmAttendance.resx">
       <DependentUpon>frmAttendance.cs</DependentUpon>
@@ -653,6 +671,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="testForm.resx">
       <DependentUpon>testForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vehicles\LiestVehicles.resx">
+      <DependentUpon>LiestVehicles.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

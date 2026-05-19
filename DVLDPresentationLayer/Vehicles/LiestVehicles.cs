@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DVLDPresentationLayer.Main_Dashboard.User_Controls
+namespace DVLDPresentationLayer.Vehicles
 {
-    public partial class ucTestManagement : UserControl
+    public partial class LiestVehicles : Form
     {
-        public ucTestManagement()
+        public LiestVehicles()
         {
             InitializeComponent();
-        }
-
-        private void btnRetakeTest_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

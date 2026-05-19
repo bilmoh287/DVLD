@@ -24,19 +24,19 @@ namespace DVLDPresentationLayer
 
         private void _ApplyPermissions()
         {
-            // Dashboard — visible to all
-            btnDashboard.Visible       = true;
-            // Applicants — visible to all
-            btnApplicants.Visible      = true;
+            //// Dashboard — visible to all
+            //btnDashboard.Visible       = true;
+            //// Applicants — visible to all
+            //btnApplicants.Visible      = true;
 
-            btnApplications.Visible    = clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageApplications);
-            btnTestManagement.Visible  = clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageTests);
-            btnLicenses.Visible        = clsGlobal.HasPermission(clsUserPermission.enPermissions.IssueLicense);
-            btnVehicles.Visible        = clsGlobal.HasPermission(clsUserPermission.enPermissions.ViewPeople);
-            btnReports.Visible         = clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageApplications);
-            btnComplaints.Visible      = clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageUsers);
-            btnNotifications.Visible   = true; // everyone
-            btnSettings.Visible        = clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageUsers);
+            //btnApplications.Visible    = clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageApplications);
+            //btnTestManagement.Visible  = clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageTests);
+            //btnLicenses.Visible        = clsGlobal.HasPermission(clsUserPermission.enPermissions.IssueLicense);
+            //btnVehicles.Visible        = clsGlobal.HasPermission(clsUserPermission.enPermissions.ViewPeople);
+            //btnReports.Visible         = clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageApplications);
+            //btnComplaints.Visible      = clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageUsers);
+            //btnNotifications.Visible   = true; // everyone
+            //btnSettings.Visible        = clsGlobal.HasPermission(clsUserPermission.enPermissions.ManageUsers);
         }
 
         // ── Sidebar Handlers ────────────────────────────────────────────────
@@ -56,25 +56,22 @@ namespace DVLDPresentationLayer
         private void btnApplications_Click(object sender, EventArgs e)
         {
             lblHeader.Text = "APPLICATIONS";
-            _LoadUserControl(new ucApplications());
         }
 
         private void btnTestManagement_Click(object sender, EventArgs e)
         {
             lblHeader.Text = "TEST MANAGEMENT";
-            _LoadUserControl(new ucTestManagement());
+
         }
 
         private void btnLicenses_Click(object sender, EventArgs e)
         {
-            lblHeader.Text = "LICENSES";
-            _LoadUserControl(new ucLicenses());
+
         }
 
         private void btnVehicles_Click(object sender, EventArgs e)
         {
-            lblHeader.Text = "DRIVERS & VEHICLES";
-            _LoadUserControl(new ucVehicles());
+
         }
 
         private void btnReports_Click(object sender, EventArgs e)
@@ -100,7 +97,6 @@ namespace DVLDPresentationLayer
         private void btnSettings_Click(object sender, EventArgs e)
         {
             lblHeader.Text = "SETTINGS";
-            _LoadUserControl(new ucSettings());
         }
 
         // ── Form Events ──────────────────────────────────────────────────────

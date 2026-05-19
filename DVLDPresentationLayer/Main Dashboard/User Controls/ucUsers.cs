@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace DVLDPresentationLayer.Main_Dashboard.User_Controls
 {
-    public partial class ucTestManagement : UserControl
+    public partial class ucUsers : UserControl
     {
-        public ucTestManagement()
+        public ucUsers()
         {
             InitializeComponent();
-        }
-
-        private void btnRetakeTest_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
