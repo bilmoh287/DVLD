@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using DVLDBussinessLayer;
 using DVLDPresentationLayer.Global_Classes;
 using DVLDPresentationLayer.Main_Dashboard.User_Controls;
+using DVLDPresentationLayer.Vehicles;
 
 namespace DVLDPresentationLayer
 {
@@ -55,23 +56,35 @@ namespace DVLDPresentationLayer
 
         private void btnApplications_Click(object sender, EventArgs e)
         {
-            lblHeader.Text = "APPLICATIONS";
+            lblHeader.Text = "PEOPLE";
+            _LoadUserControl(new ucPeople());
         }
 
         private void btnTestManagement_Click(object sender, EventArgs e)
         {
             lblHeader.Text = "TEST MANAGEMENT";
-
+            _LoadUserControl(new ucTestManagement());
         }
 
         private void btnLicenses_Click(object sender, EventArgs e)
         {
-
+            lblHeader.Text = "USERS";
+            _LoadUserControl(new ucUsers());
         }
 
         private void btnVehicles_Click(object sender, EventArgs e)
         {
-
+            lblHeader.Text = "VEHICLES";
+            
+            // To embed the form inside the panel instead of popping it up, we could do:
+            LiestVehicles frm = new LiestVehicles();
+            frm.TopLevel = false;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+            if (panel2.Controls.Count > 0)
+                panel2.Controls.Clear();
+            panel2.Controls.Add(frm);
+            frm.Show();
         }
 
         private void btnReports_Click(object sender, EventArgs e)
