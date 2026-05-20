@@ -3,6 +3,9 @@ using DVLDBussinessLayer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
+using MediatR;
+using DVLDREST_API.Workflows.TestScheduling;
+using System.Threading.Tasks;
 
 namespace DVLDREST_API.Controllers
 {
@@ -11,6 +14,13 @@ namespace DVLDREST_API.Controllers
     [Authorize]
     public class TestsController : ControllerBase
     {
+        private readonly IMediator _mediator;
+
+        public TestsController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
         [HttpGet("appointments/{localAppId}/{testTypeId}")]
         public IActionResult GetAppointments(int localAppId, int testTypeId)
         {
@@ -33,39 +43,26 @@ namespace DVLDREST_API.Controllers
         }
 
         [HttpPost("schedule")]
-        public IActionResult ScheduleTest([FromBody] TestScheduleRequestDTO request)
+        public async Task<IActionResult> ScheduleTest([FromBody] TestScheduleRequestDTO request)
         {
             if (request == null) return BadRequest("Invalid request.");
 
-            // Check if person has already passed this test type
-            clsLocalDrivingLicenseApplication ldlApp = clsLocalDrivingLicenseApplication.GetLocalDrivingLicenseApplicationInfoByID(request.LocalDrivingLicenseApplicationID);
-            if (ldlApp == null) return NotFound("Application not found.");
-
-            if (ldlApp.DoesPassTestType((clsTestTypes.enTestType)request.TestTypeID))
+            var command = new ScheduleTestCommand
             {
-                return BadRequest("Applicant already passed this test.");
+                LocalDrivingLicenseApplicationID = request.LocalDrivingLicenseApplicationID,
+                TestTypeID = request.TestTypeID,
+                AppointmentDate = request.AppointmentDate,
+                CreatedByUserID = request.CreatedByUserID
+            };
+
+            var result = await _mediator.Send(command);
+
+            if (result.IsSuccess)
+            {
+                return Ok(new { Message = "Test scheduled successfully.", AppointmentID = result.AppointmentID });
             }
 
-            // Check for active scheduled tests
-            if (ldlApp.IsThereAnActiveScheduledTest(request.TestTypeID))
-            {
-                return BadRequest("Applicant already has an active scheduled test for this type.");
-            }
-
-            clsTestAppointments appointment = new clsTestAppointments();
-            appointment.TestTypeID = request.TestTypeID;
-            appointment.LocalDrivingLicenseApplicationID = request.LocalDrivingLicenseApplicationID;
-            appointment.AppointmentDate = request.AppointmentDate;
-            appointment.PaidFees = clsTestTypes.Find((clsTestTypes.enTestType)request.TestTypeID).TestTypeFees;
-            appointment.CreatedByUserID = request.CreatedByUserID;
-            appointment.IsLocked = false;
-
-            if (appointment.Save())
-            {
-                return Ok(new { Message = "Test scheduled successfully.", AppointmentID = appointment.TestAppointmentID });
-            }
-
-            return StatusCode(500, "Error occurred while scheduling the test.");
+            return BadRequest(result.ErrorMessage);
         }
 
         [HttpGet("results/{localAppId}")]
