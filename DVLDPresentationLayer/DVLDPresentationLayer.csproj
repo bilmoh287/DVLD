@@ -210,17 +210,17 @@
     <Compile Include="Main Dashboard\User Controls\ucApplicants.Designer.cs">
       <DependentUpon>ucApplicants.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main Dashboard\User Controls\ucComliants.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main Dashboard\User Controls\ucComliants.Designer.cs">
+      <DependentUpon>ucComliants.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main Dashboard\User Controls\ucDashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Main Dashboard\User Controls\ucDashboard.Designer.cs">
       <DependentUpon>ucDashboard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Main Dashboard\User Controls\ucDashboard2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Main Dashboard\User Controls\ucDashboard2.Designer.cs">
-      <DependentUpon>ucDashboard2.cs</DependentUpon>
     </Compile>
     <Compile Include="Main Dashboard\User Controls\ucPeople.cs">
       <SubType>UserControl</SubType>
@@ -532,6 +532,9 @@
     <EmbeddedResource Include="frmListTrainingBatches.resx">
       <DependentUpon>frmListTrainingBatches.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmRegisterApplicant.resx">
+      <DependentUpon>frmRegisterApplicant.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main Dashboard\frmDashboardContent.resx">
       <DependentUpon>frmDashboardContent.cs</DependentUpon>
     </EmbeddedResource>
@@ -549,6 +552,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main Dashboard\User Controls\ucApplicants.resx">
       <DependentUpon>ucApplicants.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main Dashboard\User Controls\ucComliants.resx">
+      <DependentUpon>ucComliants.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main Dashboard\User Controls\ucDashboard.resx">
       <DependentUpon>ucDashboard.cs</DependentUpon>
@@ -693,6 +699,10 @@
     <ProjectReference Include="..\DVLDBussinessLayer\DVLDBussinessLayer.csproj">
       <Project>{cc16ed7d-7945-4d3c-a2d4-f1fa7152fd04}</Project>
       <Name>DVLDBussinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WPFPLDashboards\WPFPLDashboards.csproj">
+      <Project>{c25650de-96d0-40b7-aab2-b6ece0347529}</Project>
+      <Name>WPFPLDashboards</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

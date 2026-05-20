@@ -1,4 +1,4 @@
-using System;
+  using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
@@ -72,6 +72,11 @@ namespace DVLDPresentationLayer
                 
             if (cmbGender.Items.Count > 0)
                 cmbGender.SelectedIndex = 0;
+        }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
