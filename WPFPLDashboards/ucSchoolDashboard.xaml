@@ -82,7 +82,7 @@
             <Setter Property="HeadersVisibility" Value="Column"/>
         </Style>
 
-        <Style TargetType="DataGridColumnHeader">
+        <Style x:Key="DataGridColumnHeader" TargetType="DataGridColumnHeader">
             <Setter Property="Background" Value="#171720"/>
             <Setter Property="Foreground" Value="#8F92A1"/>
             <Setter Property="Padding" Value="10,12"/>
