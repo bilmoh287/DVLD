@@ -49,9 +49,9 @@ namespace WPFPLDashboards
                 txtTotalEarnings.Text = _stats.TotalEarnings.ToString("C0");
 
                 // Populate Pass Rates
-                SetPassRate(progressVision, txtVisionRate, _stats.PassRateVision);
-                SetPassRate(progressTheory, txtTheoryRate, _stats.PassRateTheory);
-                SetPassRate(progressRoad, txtRoadRate, _stats.PassRateRoad);
+                // SetPassRate(progressVision, txtVisionRate, _stats.PassRateVision);
+                // SetPassRate(progressTheory, txtTheoryRate, _stats.PassRateTheory);
+                // SetPassRate(progressRoad, txtRoadRate, _stats.PassRateRoad);
 
                 // Load Recent Students
                 LoadRecentStudents();
