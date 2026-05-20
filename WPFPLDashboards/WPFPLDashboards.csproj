@@ -61,12 +61,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Include="UserControl1.xaml">
+    <Page Include="ucSchoolDashboard.xaml">
        <Generator>MSBuild:Compile</Generator>
        <SubType>Designer</SubType>
     </Page>
-    <Compile Include="UserControl1.xaml.cs">
-      <DependentUpon>UserControl1.xaml</DependentUpon>
+    <Compile Include="ucSchoolDashboard.xaml.cs">
+      <DependentUpon>ucSchoolDashboard.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -99,5 +99,11 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DVLDBussinessLayer\DVLDBussinessLayer.csproj">
+      <Project>{cc16ed7d-7945-4d3c-a2d4-f1fa7152fd04}</Project>
+      <Name>DVLDBussinessLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
