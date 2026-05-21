@@ -406,15 +406,19 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Text="Weekly Lesson Schedule" FontSize="18" FontWeight="Bold" Foreground="{StaticResource TextPrimary}" VerticalAlignment="Center"/>
                                     <StackPanel Grid.Column="1" Orientation="Horizontal">
-                                        <Button Background="Transparent" BorderBrush="{StaticResource BorderColor}" BorderThickness="1" Padding="8,4" CornerRadius="4,0,0,4">
-                                            <Path Data="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" Fill="{StaticResource TextSecondary}" Width="16" Height="16" Stretch="Uniform"/>
-                                        </Button>
+                                        <Border BorderBrush="{StaticResource BorderColor}" BorderThickness="1" CornerRadius="4,0,0,4">
+                                            <Button Background="Transparent" BorderThickness="0" Padding="8,4">
+                                                <Path Data="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" Fill="{StaticResource TextSecondary}" Width="16" Height="16" Stretch="Uniform"/>
+                                            </Button>
+                                        </Border>
                                         <Border BorderBrush="{StaticResource BorderColor}" BorderThickness="0,1" Padding="16,4" Background="White">
                                             <TextBlock Text="Oct 23 - Oct 27" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}" VerticalAlignment="Center"/>
                                         </Border>
-                                        <Button Background="Transparent" BorderBrush="{StaticResource BorderColor}" BorderThickness="1" Padding="8,4" CornerRadius="0,4,4,0" Margin="0,0,16,0">
-                                            <Path Data="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" Fill="{StaticResource TextSecondary}" Width="16" Height="16" Stretch="Uniform"/>
-                                        </Button>
+                                        <Border BorderBrush="{StaticResource BorderColor}" BorderThickness="1" CornerRadius="0,4,4,0" Margin="0,0,16,0">
+                                            <Button Background="Transparent" BorderThickness="0" Padding="8,4">
+                                                <Path Data="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" Fill="{StaticResource TextSecondary}" Width="16" Height="16" Stretch="Uniform"/>
+                                            </Button>
+                                        </Border>
                                     </StackPanel>
                                 </Grid>
 
@@ -483,7 +487,7 @@
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
                                     
-                                    <DataGridTextColumn Header="Enrollment Date" Binding="{Binding EnrollmentDate, StringFormat={}{0:MMM dd, yyyy}}" Width="*" />
+                                    <DataGridTextColumn Header="Enrollment Date" Binding="{Binding EnrollmentDate, StringFormat='{}{0:MMM dd, yyyy}'}" Width="*" />
                                     <DataGridTextColumn Header="Course Type" Binding="{Binding CourseName}" Width="*" />
                                     
                                     <DataGridTemplateColumn Header="Status" Width="*">
