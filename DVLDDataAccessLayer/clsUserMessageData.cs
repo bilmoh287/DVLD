@@ -85,6 +85,27 @@ namespace DVLDDataAccessLayer
             return rowsAffected > 0;
         }
 
+        public static bool UpdateReadStatus(int MessageID, bool IsRead)
+        {
+            int rowsAffected = 0;
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string query = "UPDATE UserMessages SET IsRead = @IsRead WHERE MessageID = @MessageID";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@MessageID", MessageID);
+                    command.Parameters.AddWithValue("@IsRead", IsRead);
+                    try
+                    {
+                        connection.Open();
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex) { }
+                }
+            }
+            return rowsAffected > 0;
+        }
+
         public static int GetUnreadCount(int PersonID)
         {
             int count = 0;

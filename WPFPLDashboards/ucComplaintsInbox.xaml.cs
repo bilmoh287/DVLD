@@ -6,7 +6,6 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using DVLDBussinessLayer;
-using DVLDDataAccessLayer.DTOs;
 
 namespace WPFPLDashboards
 {
@@ -32,37 +31,6 @@ namespace WPFPLDashboards
             public string ApplicationType { get; set; }
         }
 
-        // Fields mapped to XAML controls
-        private TextBlock txtHeaderUnreadCount;
-        private TextBlock txtHeaderTotalCount;
-        private TextBox txtSearch;
-        private TextBlock lblSearchPlaceholder;
-        private ComboBox comboTypeFilter;
-        private ListBox lstMessages;
-        private TextBlock txtShowingCount;
-        
-        private Grid gridDetailPanel;
-        private Grid gridNoSelectionPlaceholder;
-        private Border borderDetailTypeBadge;
-        private Path pathDetailTypeIcon;
-        private TextBlock txtDetailTypeBadge;
-        private Border borderDetailReadBadge;
-        private TextBlock txtDetailReadBadge;
-        private TextBlock txtDetailTitle;
-        private TextBlock txtDetailDate;
-        
-        private TextBlock txtDetailName;
-        private TextBlock txtDetailNationalNo;
-        private TextBlock txtDetailEmail;
-        private TextBlock txtDetailPhone;
-        private TextBlock txtDetailAppType;
-        private TextBlock txtDetailContent;
-        
-        private TextBox txtReplyBox;
-        private TextBlock lblReplyPlaceholder;
-        private Button btnMarkRead;
-        private Button btnSendReply;
-
         // Data caches
         private List<ComplaintMessageViewModel> _allMessages = new List<ComplaintMessageViewModel>();
         private List<ComplaintMessageViewModel> _filteredMessages = new List<ComplaintMessageViewModel>();
@@ -71,85 +39,42 @@ namespace WPFPLDashboards
 
         public ucComplaintsInbox()
         {
-            // Use manual XAML loading to bypass .NET Framework WPF class library CLI build constraints
             InitializeComponent();
+            WireEvents();
         }
 
-        private void InitializeComponent()
+        private void WireEvents()
         {
-            try
+            Loaded += ucComplaintsInbox_Loaded;
+            
+            if (txtSearch != null)
             {
-                // Load XAML dynamically
-                Uri resourceUri = new Uri("/WPFPLDashboards;component/ucComplaintsInbox.xaml", UriKind.Relative);
-                System.Windows.Application.LoadComponent(this, resourceUri);
-
-                // Map fields to XAML controls using FindName
-                txtHeaderUnreadCount = (TextBlock)FindName("txtHeaderUnreadCount");
-                txtHeaderTotalCount = (TextBlock)FindName("txtHeaderTotalCount");
-                txtSearch = (TextBox)FindName("txtSearch");
-                lblSearchPlaceholder = (TextBlock)FindName("lblSearchPlaceholder");
-                comboTypeFilter = (ComboBox)FindName("comboTypeFilter");
-                lstMessages = (ListBox)FindName("lstMessages");
-                txtShowingCount = (TextBlock)FindName("txtShowingCount");
-                
-                gridDetailPanel = (Grid)FindName("gridDetailPanel");
-                gridNoSelectionPlaceholder = (Grid)FindName("gridNoSelectionPlaceholder");
-                borderDetailTypeBadge = (Border)FindName("borderDetailTypeBadge");
-                pathDetailTypeIcon = (Path)FindName("pathDetailTypeIcon");
-                txtDetailTypeBadge = (TextBlock)FindName("txtDetailTypeBadge");
-                borderDetailReadBadge = (Border)FindName("borderDetailReadBadge");
-                txtDetailReadBadge = (TextBlock)FindName("txtDetailReadBadge");
-                txtDetailTitle = (TextBlock)FindName("txtDetailTitle");
-                txtDetailDate = (TextBlock)FindName("txtDetailDate");
-                
-                txtDetailName = (TextBlock)FindName("txtDetailName");
-                txtDetailNationalNo = (TextBlock)FindName("txtDetailNationalNo");
-                txtDetailEmail = (TextBlock)FindName("txtDetailEmail");
-                txtDetailPhone = (TextBlock)FindName("txtDetailPhone");
-                txtDetailAppType = (TextBlock)FindName("txtDetailAppType");
-                txtDetailContent = (TextBlock)FindName("txtDetailContent");
-                
-                txtReplyBox = (TextBox)FindName("txtReplyBox");
-                lblReplyPlaceholder = (TextBlock)FindName("lblReplyPlaceholder");
-                btnMarkRead = (Button)FindName("btnMarkRead");
-                btnSendReply = (Button)FindName("btnSendReply");
-
-                // Wire Events
-                Loaded += ucComplaintsInbox_Loaded;
-                
-                if (txtSearch != null)
-                {
-                    txtSearch.TextChanged += txtSearch_TextChanged;
-                }
-                
-                if (comboTypeFilter != null)
-                {
-                    comboTypeFilter.SelectionChanged += comboTypeFilter_SelectionChanged;
-                }
-                
-                if (lstMessages != null)
-                {
-                    lstMessages.SelectionChanged += lstMessages_SelectionChanged;
-                }
-                
-                if (txtReplyBox != null)
-                {
-                    txtReplyBox.TextChanged += txtReplyBox_TextChanged;
-                }
-                
-                if (btnMarkRead != null)
-                {
-                    btnMarkRead.Click += btnMarkRead_Click;
-                }
-                
-                if (btnSendReply != null)
-                {
-                    btnSendReply.Click += btnSendReply_Click;
-                }
+                txtSearch.TextChanged += txtSearch_TextChanged;
             }
-            catch (Exception ex)
+            
+            if (comboTypeFilter != null)
             {
-                MessageBox.Show("Error initializing Complaints Inbox: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                comboTypeFilter.SelectionChanged += comboTypeFilter_SelectionChanged;
+            }
+            
+            if (lstMessages != null)
+            {
+                lstMessages.SelectionChanged += lstMessages_SelectionChanged;
+            }
+            
+            if (txtReplyBox != null)
+            {
+                txtReplyBox.TextChanged += txtReplyBox_TextChanged;
+            }
+            
+            if (btnMarkRead != null)
+            {
+                btnMarkRead.Click += btnMarkRead_Click;
+            }
+            
+            if (btnSendReply != null)
+            {
+                btnSendReply.Click += btnSendReply_Click;
             }
         }
 
@@ -187,7 +112,7 @@ namespace WPFPLDashboards
             try
             {
                 // Fetch messages from database for active Person ID
-                List<UserMessageDTO> dbMessages = clsUserMessage.GetUserMessages(_currentUserId);
+                List<clsUserMessage> dbMessages = clsUserMessage.GetUserMessages(_currentUserId);
 
                 // Auto-seed demo messages if none exist in the database yet
                 if (dbMessages == null || dbMessages.Count == 0)
@@ -332,7 +257,7 @@ namespace WPFPLDashboards
                     "Complaint");
 
                 // Mark items 3, 4, 5, 6 as Read in the DB so they show as green dots to match the mockup
-                List<UserMessageDTO> freshMsgs = clsUserMessage.GetUserMessages(_currentUserId);
+                List<clsUserMessage> freshMsgs = clsUserMessage.GetUserMessages(_currentUserId);
                 if (freshMsgs != null && freshMsgs.Count >= 7)
                 {
                     // Items are returned DESC, so the first items are the latest (7 is first, 1 is last)
@@ -529,31 +454,9 @@ namespace WPFPLDashboards
             {
                 bool newState = !_selectedMessage.IsRead;
 
-                if (newState)
+                if (clsUserMessage.UpdateReadStatus(_selectedMessage.MessageID, newState))
                 {
-                    // Call BL to mark read
-                    if (clsUserMessage.MarkAsRead(_selectedMessage.MessageID))
-                    {
-                        _selectedMessage.IsRead = true;
-                    }
-                }
-                else
-                {
-                    // For marking unread, we update local and custom DB state
-                    // The standard mark unread is just a simple state update
-                    using (System.Data.SqlClient.SqlConnection connection = new System.Data.SqlClient.SqlConnection(clsDataAccessLayer.clsDataAccessSetting.ConnectionString))
-                    {
-                        string query = "UPDATE UserMessages SET IsRead = 0 WHERE MessageID = @MessageID";
-                        using (System.Data.SqlClient.SqlCommand command = new System.Data.SqlClient.SqlCommand(query, connection))
-                        {
-                            command.Parameters.AddWithValue("@MessageID", _selectedMessage.MessageID);
-                            connection.Open();
-                            if (command.ExecuteNonQuery() > 0)
-                            {
-                                _selectedMessage.IsRead = false;
-                            }
-                        }
-                    }
+                    _selectedMessage.IsRead = newState;
                 }
 
                 // Update stats and refresh lists

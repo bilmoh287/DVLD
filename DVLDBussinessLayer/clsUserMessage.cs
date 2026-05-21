@@ -39,23 +39,24 @@ namespace DVLDBussinessLayer
             return clsUserMessageData.AddNewMessage(PersonID, SenderID, Title, Content, MessageType) != -1;
         }
 
-        public static List<UserMessageDTO> GetUserMessages(int PersonID)
+        public static List<clsUserMessage> GetUserMessages(int PersonID)
         {
-            List<UserMessageDTO> messages = new List<UserMessageDTO>();
+            List<clsUserMessage> messages = new List<clsUserMessage>();
             DataTable dt = clsUserMessageData.GetMessagesByPersonID(PersonID);
 
             foreach (DataRow row in dt.Rows)
             {
-                messages.Add(new UserMessageDTO(
-                    (int)row["MessageID"],
-                    (int)row["PersonID"],
-                    row["SenderID"] == DBNull.Value ? (int?)null : (int)row["SenderID"],
-                    (string)row["Title"],
-                    (string)row["Content"],
-                    (bool)row["IsRead"],
-                    (DateTime)row["CreatedAt"],
-                    (string)row["MessageType"]
-                ));
+                messages.Add(new clsUserMessage
+                {
+                    MessageID = (int)row["MessageID"],
+                    PersonID = (int)row["PersonID"],
+                    SenderID = row["SenderID"] == DBNull.Value ? (int?)null : (int)row["SenderID"],
+                    Title = (string)row["Title"],
+                    Content = (string)row["Content"],
+                    IsRead = (bool)row["IsRead"],
+                    CreatedAt = (DateTime)row["CreatedAt"],
+                    MessageType = (string)row["MessageType"]
+                });
             }
 
             return messages;
@@ -64,6 +65,11 @@ namespace DVLDBussinessLayer
         public static bool MarkAsRead(int MessageID)
         {
             return clsUserMessageData.MarkAsRead(MessageID);
+        }
+
+        public static bool UpdateReadStatus(int MessageID, bool IsRead)
+        {
+            return clsUserMessageData.UpdateReadStatus(MessageID, IsRead);
         }
 
         public static int GetUnreadCount(int PersonID)

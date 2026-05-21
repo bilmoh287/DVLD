@@ -21,38 +21,14 @@ namespace WPFPLDashboards
         public event EventHandler StudentsClicked;
         public event EventHandler FleetClicked;
 
-        private TextBlock txtTotalStudents;
-        private TextBlock txtTodayLessons;
-        private TextBlock txtActiveVehicles;
-        private TextBlock txtAvailability;
-        private DataGrid dgvRecentStudents;
-        private Grid gridSchedule;
-        private TextBox txtSearch;
-        private Button btnStudentsSidebar;
-        private Button btnFleetSidebar;
-        private Button btnStudentsViewDetails;
-        private Button btnFleetStatus;
-        private Button btnNewLesson;
-
-        private void InitializeComponent()
+        public ucDriveWayDashboard()
         {
-            System.Uri resourceLocater = new System.Uri("/WPFPLDashboards;component/ucDriveWayDashboard.xaml", System.UriKind.Relative);
-            System.Windows.Application.LoadComponent(this, resourceLocater);
-            
-            txtTotalStudents = (TextBlock)this.FindName("txtTotalStudents");
-            txtTodayLessons = (TextBlock)this.FindName("txtTodayLessons");
-            txtActiveVehicles = (TextBlock)this.FindName("txtActiveVehicles");
-            txtAvailability = (TextBlock)this.FindName("txtAvailability");
-            dgvRecentStudents = (DataGrid)this.FindName("dgvRecentStudents");
-            gridSchedule = (Grid)this.FindName("gridSchedule");
-            txtSearch = (TextBox)this.FindName("txtSearch");
-            
-            btnStudentsSidebar = (Button)this.FindName("btnStudentsSidebar");
-            btnFleetSidebar = (Button)this.FindName("btnFleetSidebar");
-            btnStudentsViewDetails = (Button)this.FindName("btnStudentsViewDetails");
-            btnFleetStatus = (Button)this.FindName("btnFleetStatus");
-            btnNewLesson = (Button)this.FindName("btnNewLesson");
+            InitializeComponent();
+            WireEvents();
+        }
 
+        private void WireEvents()
+        {
             if (txtSearch != null)
             {
                 txtSearch.TextChanged += txtSearch_TextChanged;
@@ -64,11 +40,6 @@ namespace WPFPLDashboards
             if (btnStudentsViewDetails != null) btnStudentsViewDetails.Click += btnStudentsSidebar_Click;
             if (btnFleetStatus != null) btnFleetStatus.Click += btnFleetSidebar_Click;
             if (btnNewLesson != null) btnNewLesson.Click += btnNewLesson_Click;
-        }
-
-        public ucDriveWayDashboard()
-        {
-            InitializeComponent();
         }
 
         public void InitializeDashboard(int instituteID)
