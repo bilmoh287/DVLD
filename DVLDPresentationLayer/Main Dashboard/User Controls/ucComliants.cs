@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +15,14 @@ namespace DVLDPresentationLayer.Main_Dashboard.User_Controls
         public ucComliants()
         {
             InitializeComponent();
+        }
+
+        private void ucComliants_Load(object sender, EventArgs e)
+        {
+            if (!this.DesignMode)
+            {
+                this.elementHost1.Child = new WPFPLDashboards.ucComplaintsInbox();
+            }
         }
     }
 }

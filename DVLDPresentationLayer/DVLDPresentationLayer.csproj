@@ -264,6 +264,12 @@
     <Compile Include="Schools Dashboard\Forms\frmDashboard.Designer.cs">
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Schools Dashboard\Forms\frmDriveWayDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Schools Dashboard\Forms\frmDriveWayDashboard.Designer.cs">
+      <DependentUpon>frmDriveWayDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Schools Dashboard\Forms\frmStudents.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -585,6 +591,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Schools Dashboard\Forms\frmDashboard.resx">
       <DependentUpon>frmDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schools Dashboard\Forms\frmDriveWayDashboard.resx">
+      <DependentUpon>frmDriveWayDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Schools Dashboard\Forms\frmStudents.resx">
       <DependentUpon>frmStudents.cs</DependentUpon>

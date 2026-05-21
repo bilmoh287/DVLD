@@ -69,6 +69,22 @@
       <DependentUpon>ucSchoolDashboard.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ucDriveWayDashboard.xaml">
+       <Generator>MSBuild:Compile</Generator>
+       <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="ucDriveWayDashboard.xaml.cs">
+      <DependentUpon>ucDriveWayDashboard.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="ucComplaintsInbox.xaml">
+       <Generator>MSBuild:Compile</Generator>
+       <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="ucComplaintsInbox.xaml.cs">
+      <DependentUpon>ucComplaintsInbox.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
