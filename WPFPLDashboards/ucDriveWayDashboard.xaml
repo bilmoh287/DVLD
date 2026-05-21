@@ -298,7 +298,7 @@
                         <!-- Card 1: Total Students -->
                         <Border Grid.Column="0" Margin="0,0,12,0" CornerRadius="12" Padding="24" Background="{StaticResource BrandBlue}">
                             <Border.Effect>
-                                <DropShadowEffect Color="{StaticResource BrandBlue}" Direction="270" ShadowDepth="4" BlurRadius="12" Opacity="0.3"/>
+                                <DropShadowEffect Color="#3B82F6" Direction="270" ShadowDepth="4" BlurRadius="12" Opacity="0.3"/>
                             </Border.Effect>
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -327,7 +327,7 @@
                         <!-- Card 2: Active Vehicles -->
                         <Border Grid.Column="1" Margin="12,0" CornerRadius="12" Padding="24" Background="{StaticResource BrandGreen}">
                             <Border.Effect>
-                                <DropShadowEffect Color="{StaticResource BrandGreen}" Direction="270" ShadowDepth="4" BlurRadius="12" Opacity="0.3"/>
+                                <DropShadowEffect Color="#10B981" Direction="270" ShadowDepth="4" BlurRadius="12" Opacity="0.3"/>
                             </Border.Effect>
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -356,7 +356,7 @@
                         <!-- Card 3: Today's Lessons -->
                         <Border Grid.Column="2" Margin="12,0,0,0" CornerRadius="12" Padding="24" Background="{StaticResource BrandOrange}">
                             <Border.Effect>
-                                <DropShadowEffect Color="{StaticResource BrandOrange}" Direction="270" ShadowDepth="4" BlurRadius="12" Opacity="0.3"/>
+                                <DropShadowEffect Color="#F59E0B" Direction="270" ShadowDepth="4" BlurRadius="12" Opacity="0.3"/>
                             </Border.Effect>
                             <Grid>
                                 <Grid.RowDefinitions>

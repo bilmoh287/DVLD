@@ -137,8 +137,7 @@ namespace DVLDPresentationLayer
         {
             _ActivateButton(sender);
             lblHeader.Text = "COMPLAINTS INBOX";
-            // Wire to frmComplaints when you build it
-            MessageBox.Show("Complaints form coming soon.", "Coming Soon", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            _LoadUserControl(new ucComliants());
         }
 
         private void btnNotifications_Click(object sender, EventArgs e)
