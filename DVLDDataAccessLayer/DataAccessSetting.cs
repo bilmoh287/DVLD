@@ -8,6 +8,6 @@ namespace DVLDDataAccessLayer
 {
     public class clsDataAccessSetting
     {
-        public static string ConnectionString = "Server=localhost\\SQL22;Database=My_DVLD;Trusted_Connection=True;";
+        public static string ConnectionString = "Server=DESKTOP-U6SU3FU;Database=My_DVLD;Trusted_Connection=True;TrustServerCertificate=True;";
     }
 }

@@ -37,9 +37,10 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
   <ItemGroup>
-
+    <PackageReference Include="Guna.UI2.WinForms">
+      <Version>2.0.4.7</Version>
+    </PackageReference>
     <PackageReference Include="System.Resources.Extensions" Version="7.0.0" />
-
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
