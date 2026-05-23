@@ -452,25 +452,53 @@ namespace DVLDREST_API.Controllers
             }
             return Ok(list);
         }
+        // GET: api/DrivingInstitutes/{id}/students
+        [HttpGet("{id}/students")]
+        public IActionResult GetInstituteStudents(int id)
+        {
+            DataTable dt = clsEnrollment.GetAllByInstitute(id);
+            var students = new List<object>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                students.Add(new
+                {
+                    EnrollmentID = (int)row["EnrollmentID"],
+                    PersonID = (int)row["PersonID"],
+                    FullName = row["FullName"]?.ToString() ?? "",
+                    Phone = row["Phone"]?.ToString() ?? "",
+                    CourseName = row["CourseName"]?.ToString() ?? "",
+                    EnrollmentDate = (DateTime)row["EnrollmentDate"],
+                    IsActive = (bool)row["IsActive"]
+                });
+            }
+
+            return Ok(students);
+        }
+
         // GET: api/DrivingInstitutes/{id}/vehicles
         [HttpGet("{id}/vehicles")]
         public IActionResult GetInstituteVehicles(int id)
         {
-            // Note: Currently returns all vehicles catalog, can be filtered by institute later
-            DataTable dt = clsDriverVehicle.GetVehiclesCatalog();
+            DataTable dt = clsDriverVehicle.GetDriverHistory(id);
             var list = new List<object>();
             foreach (DataRow row in dt.Rows)
             {
                 list.Add(new
                 {
                     OwnershipID = (int)row["OwnershipID"],
-                    DriverID = row["DriverID"] != DBNull.Value ? (int)row["DriverID"] : 0,
-                    VehicleID = (int)row["VehicleID"],
+                    DriverID = id,
                     PlateNumber = row["PlateNumber"]?.ToString() ?? "",
                     VIN = row["VIN"]?.ToString() ?? "",
                     Color = row["Color"]?.ToString() ?? "",
+                    Make = row["Make"]?.ToString() ?? "",
+                    ModelName = row["ModelName"]?.ToString() ?? "",
+                    Year = row["Year"] != DBNull.Value ? Convert.ToInt32(row["Year"]) : 0,
+                    VehicleDisplayName = row["Vehicle_Display_Name"]?.ToString() ?? "",
                     PurchaseDate = (DateTime)row["PurchaseDate"],
-                    PurchasePrice = (decimal)row["PurchasePrice"]
+                    SaleDate = row["SaleDate"] != DBNull.Value ? (DateTime?)row["SaleDate"] : null,
+                    PurchasePrice = (decimal)row["PurchasePrice"],
+                    Status = row["Status"]?.ToString() ?? ""
                 });
             }
             return Ok(list);
@@ -511,6 +539,8 @@ namespace DVLDREST_API.Controllers
                 {
                     PaymentID = (int)row["PaymentID"],
                     EnrollmentID = (int)row["EnrollmentID"],
+                    StudentName = row["StudentName"]?.ToString() ?? "",
+                    CourseName = row["CourseName"]?.ToString() ?? "",
                     AmountPaid = (decimal)row["AmountPaid"],
                     PaymentDate = (DateTime)row["PaymentDate"],
                     ChapaTransactionRef = row["ChapaTransactionRef"]?.ToString() ?? ""

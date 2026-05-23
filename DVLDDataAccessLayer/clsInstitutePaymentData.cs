@@ -54,10 +54,12 @@ namespace DVLDDataAccessLayer
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
                 {
                     string query = @"
-                        SELECT p.PaymentID, p.EnrollmentID, c.CourseName, p.AmountPaid, p.PaymentDate, p.ChapaTransactionRef
+                        SELECT p.PaymentID, p.EnrollmentID, c.CourseName, p.AmountPaid, p.PaymentDate, p.ChapaTransactionRef,
+                               pe.FirstName + ' ' + ISNULL(pe.SecondName, '') + ' ' + ISNULL(pe.ThirdName, '') + ' ' + pe.LastName AS StudentName
                         FROM InstitutePayments p
                         INNER JOIN Enrollments e ON p.EnrollmentID = e.EnrollmentID
                         INNER JOIN InstituteCourses c ON e.CourseID = c.CourseID
+                        INNER JOIN People pe ON e.PersonID = pe.PersonID
                         WHERE p.InstituteID = @InstituteID
                         ORDER BY p.PaymentDate DESC";
                     
