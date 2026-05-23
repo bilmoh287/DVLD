@@ -86,6 +86,7 @@
     <Compile Include="DTOs\IssueLicenseRequestDTO.cs" />
     <Compile Include="DTOs\ScheduleTestRequestDTO.cs" />
     <Compile Include="DTOs\UserMessageDTO.cs" />
+    <Compile Include="DTOs\InstituteRequestDTOs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

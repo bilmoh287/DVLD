@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Data;
 
 namespace DVLDREST_API.Controllers
 {
@@ -35,14 +36,42 @@ namespace DVLDREST_API.Controllers
                 return Unauthorized("Invalid credentials or inactive account.");
             }
 
-            // For now, mapping role based on permissions or assuming 'Applicant'
-            // To make it simpler, we just assign the role based on internal logic.
-            // For a mobile app, this is typically an applicant.
-            string role = "Applicant"; // In a real app, query UserRole or Permissions
+            // Find role and check school association
+            int instituteId = clsDrivingInstitute.GetInstituteIDByUserID(user.UserID);
+            
+            // Query roles
+            DataTable dtRoles = clsUserRole.GetRolesByUserID(user.UserID);
+            string role = "Applicant"; // Default role
+            
+            if (dtRoles.Rows.Count > 0)
+            {
+                role = dtRoles.Rows[0]["RoleName"].ToString();
+            }
+            else
+            {
+                int permissions = clsUserPermission.GetUserPermissions(user.UserID);
+                if (permissions == (int)clsUserPermission.enPermissions.FullAccess)
+                {
+                    role = "SystemAdmin";
+                }
+                else if (instituteId > 0)
+                {
+                    bool isInstructor = clsUserPermission.HasPermission(permissions, clsUserPermission.enPermissions.InstituteInstructor);
+                    role = isInstructor ? "InstituteInstructor" : "InstituteManager";
+                }
+                else if (permissions > 0)
+                {
+                    role = "Officer";
+                }
+            }
+
+            // Fetch person details for dynamic full name
+            clsPerson person = clsPerson.Find(user.PersonID);
+            string fullName = person != null ? person.FullName : user.UserName;
 
             var token = GenerateJwtToken(user, role);
 
-            var response = new AuthResponseDTO(token, user.UserID, user.PersonID, user.UserName, role);
+            var response = new AuthResponseDTO(token, user.UserID, user.PersonID, fullName, role, instituteId > 0 ? instituteId : (int?)null);
 
             return Ok(response);
         }
