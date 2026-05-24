@@ -103,7 +103,7 @@ namespace DVLDPresentationLayer.Schools_Dashboard.Forms
                 if (row.Cells["IsPresent"].Value != null && row.Cells["IsPresent"].Value != DBNull.Value)
                     isPresent = Convert.ToBoolean(row.Cells["IsPresent"].Value);
 
-                if (clsAttendance.MarkAttendance(appID, _BatchID, attendanceDate, isPresent, markedByUserID))
+                if (clsAttendance.MarkAttendance(appID, _BatchID, attendanceDate, isPresent, true, markedByUserID))
                 {
                     savedCount++;
                 }
