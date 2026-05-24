@@ -430,5 +430,45 @@ namespace DVLDDataAccessLayer
             }
             return dt;
         }
+
+        public static DataTable GetStudentsEligibleForTestScheduling()
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string query = @"SELECT 
+                                     AB.ApplicationID, 
+                                     L.LocalDrivingLicenseApplicationID,
+                                     A.ApplicantPersonID AS PersonID,
+                                     P.FirstName + ' ' + P.LastName AS FullName,
+                                     C.ClassName,
+                                     P.Phone,
+                                     I.InstituteName,
+                                     L.LicenseClassID
+                                 FROM ApplicantBatch AB
+                                 INNER JOIN Applications A ON AB.ApplicationID = A.ApplicationID
+                                 INNER JOIN LocalDrivingLicenseApplications L ON AB.ApplicationID = L.ApplicationID
+                                 INNER JOIN LicenseClasses C ON L.LicenseClassID = C.LicenseClassID
+                                 INNER JOIN People P ON A.ApplicantPersonID = P.PersonID
+                                 INNER JOIN DrivingInstitutes I ON L.InstituteID = I.InstituteID
+                                 WHERE AB.IsEligibleForTest = 1";
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    dt.Load(reader);
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return dt;
+        }
     }
 }

@@ -64,6 +64,7 @@
     <Compile Include="clsTestAppointments.cs" />
     <Compile Include="clsTests.cs" />
     <Compile Include="clsTestTypes.cs" />
+    <Compile Include="clsTestSchedulePublisher.cs" />
     <Compile Include="clsTrainingBatch.cs" />
     <Compile Include="clsUser.cs" />
     <Compile Include="clsUserMessage.cs" />

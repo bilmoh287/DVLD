@@ -1,5 +1,7 @@
 using System;
 using System.Data;
+using System.Data.SqlClient;
+using System.Collections.Generic;
 using DVLDDataAccessLayer;
 using DVLDDataAccessLayer.DTOs;
 
@@ -145,6 +147,137 @@ namespace DVLDBussinessLayer
         public static bool SetStudentEligibility(int ApplicationID, int BatchID, bool isEligible)
         {
             return clsTrainingBatchData.SetStudentEligibility(ApplicationID, BatchID, isEligible);
+        }
+
+        public static DataTable GetStudentsEligibleForTestScheduling()
+        {
+            return clsTrainingBatchData.GetStudentsEligibleForTestScheduling();
+        }
+
+        public static void BatchScheduleTest(int testTypeID, DateTime appointmentDate, int createdByUserID, out int scheduledCount, out int skippedCount)
+        {
+            scheduledCount = 0;
+            skippedCount = 0;
+
+            // 1. Get all students marked as eligible for tests
+            DataTable dtEligible = GetStudentsEligibleForTestScheduling();
+            if (dtEligible.Rows.Count == 0) return;
+
+            // 2. Pre-fetch active scheduled appointments (IsLocked = 0) to avoid SQL in loop
+            HashSet<string> activeAppointments = new HashSet<string>();
+            HashSet<string> passedTests = new HashSet<string>();
+
+            // Query active appointments
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string query = "SELECT LocalDrivingLicenseApplicationID, TestTypeID FROM TestAppointments WHERE IsLocked = 0";
+                SqlCommand command = new SqlCommand(query, connection);
+                try
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int appId = reader.GetInt32(0);
+                            int typeId = reader.GetInt32(1);
+                            activeAppointments.Add(appId + "_" + typeId);
+                        }
+                    }
+                }
+                catch (Exception) { }
+            }
+
+            // Query passed tests
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string query = @"SELECT TA.LocalDrivingLicenseApplicationID, TA.TestTypeID 
+                                 FROM Tests T 
+                                 INNER JOIN TestAppointments TA ON T.TestAppointmentID = TA.TestAppointmentID 
+                                 WHERE T.TestResult = 1";
+                SqlCommand command = new SqlCommand(query, connection);
+                try
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int appId = reader.GetInt32(0);
+                            int typeId = reader.GetInt32(1);
+                            passedTests.Add(appId + "_" + typeId);
+                        }
+                    }
+                }
+                catch (Exception) { }
+            }
+
+            decimal testFees = clsTestTypes.Find((clsTestTypes.enTestType)testTypeID).TestTypeFees;
+
+            // 3. Process loop with high-efficiency dictionary lookup (O(1))
+            List<int> appsToSchedule = new List<int>();
+
+            foreach (DataRow row in dtEligible.Rows)
+            {
+                int appId = (int)row["LocalDrivingLicenseApplicationID"];
+
+                // Constraint checks
+                bool isEligible = false;
+
+                if (testTypeID == 1) // Vision
+                {
+                    isEligible = !passedTests.Contains(appId + "_1") && !activeAppointments.Contains(appId + "_1");
+                }
+                else if (testTypeID == 2) // Written/Theory
+                {
+                    isEligible = passedTests.Contains(appId + "_1") && // Must pass Vision
+                                 !passedTests.Contains(appId + "_2") && 
+                                 !activeAppointments.Contains(appId + "_2");
+                }
+                else if (testTypeID == 3) // Street/Practical
+                {
+                    isEligible = passedTests.Contains(appId + "_2") && // Must pass Written
+                                 !passedTests.Contains(appId + "_3") && 
+                                 !activeAppointments.Contains(appId + "_3");
+                }
+
+                if (isEligible)
+                {
+                    appsToSchedule.Add(appId);
+                }
+                else
+                {
+                    skippedCount++;
+                }
+            }
+
+            // 4. Save appointments in batch. We can parallelize this for high performance.
+            int localScheduled = 0;
+
+            System.Threading.Tasks.Parallel.ForEach(appsToSchedule, (appId) =>
+            {
+                clsTestAppointments appointment = new clsTestAppointments();
+                appointment.LocalDrivingLicenseApplicationID = appId;
+                appointment.TestTypeID = testTypeID;
+                appointment.AppointmentDate = appointmentDate;
+                appointment.PaidFees = testFees;
+                appointment.CreatedByUserID = createdByUserID;
+                appointment.IsLocked = false;
+
+                if (appointment.Save())
+                {
+                    // Find personID to publish event
+                    clsLocalDrivingLicenseApplication ldla = clsLocalDrivingLicenseApplication.GetLocalDrivingLicenseApplicationInfoByID(appId);
+                    if (ldla != null)
+                    {
+                        clsTestSchedulePublisher.Publish(ldla.ApplicantPersonID, testTypeID, appointmentDate, appointment.TestAppointmentID);
+                    }
+
+                    System.Threading.Interlocked.Increment(ref localScheduled);
+                }
+            });
+
+            scheduledCount = localScheduled;
         }
     }
 }

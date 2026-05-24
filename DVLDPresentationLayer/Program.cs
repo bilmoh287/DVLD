@@ -18,8 +18,13 @@ namespace DVLDPresentationLayer
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             
-            // Temporarily changed from frmLogin() to frmRegistration() for testing
-            Application.Run(new frmLogin());
+            // Register Pub/Sub Subscribers for test scheduling
+            DVLDBussinessLayer.clsTestSchedulePublisher.Subscribe(new DVLDBussinessLayer.clsStudentMobileSubscriber());
+            DVLDBussinessLayer.clsTestSchedulePublisher.Subscribe(new DVLDBussinessLayer.clsSchoolDashboardSubscriber());
+            DVLDBussinessLayer.clsTestSchedulePublisher.Subscribe(new DVLDBussinessLayer.clsEmailSmtpSubscriber());
+
+            // Temporarily changed from frmLogin() to frmSchoolDashboard() for testing
+            Application.Run(new frmSchoolDashboard(1));
         }
     }
 }
