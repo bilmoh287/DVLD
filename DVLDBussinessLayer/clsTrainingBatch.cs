@@ -122,9 +122,29 @@ namespace DVLDBussinessLayer
         {
             return clsTrainingBatchData.RemoveApplicantFromBatch(ApplicationID, BatchID);
         }
+
         public static DataTable GetStudentBatch(int PersonID)
         {
             return clsTrainingBatchData.GetBatchByPersonID(PersonID);
+        }
+
+        /// <summary>
+        /// Returns all students in a batch with their attendance counts and eligibility flag.
+        /// Used by the school web portal to let instructors review who is ready to be cleared for tests.
+        /// </summary>
+        public static DataTable GetBatchStudentsForEligibilityReview(int BatchID)
+        {
+            return clsTrainingBatchData.GetBatchStudentsForEligibilityReview(BatchID);
+        }
+
+        /// <summary>
+        /// Marks a specific student as eligible (or not eligible) for tests within a batch.
+        /// This is the school instructor's deliberate action that clears the student
+        /// to appear in the DVLD officer's scheduling list.
+        /// </summary>
+        public static bool SetStudentEligibility(int ApplicationID, int BatchID, bool isEligible)
+        {
+            return clsTrainingBatchData.SetStudentEligibility(ApplicationID, BatchID, isEligible);
         }
     }
 }

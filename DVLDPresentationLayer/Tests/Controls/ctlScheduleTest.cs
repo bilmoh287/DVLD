@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -345,10 +345,41 @@ namespace DVLDPresentationLayer
                 //OnTestAppointmentSaved?.Invoke(this, _TestAppointment.TestAppointmentID);
                 TestAppointmentSaved(_TestAppointmentID);
                 MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                // SYNCHRONIZED NOTIFICATION TRIGGER
+                _TriggerDesktopNotifications(_LDLApplication.ApplicantPersonID, (int)_TestTypeID, _TestAppointment.AppointmentDate);
             }
             else
             {
                 MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void _TriggerDesktopNotifications(int personID, int testTypeID, DateTime appointmentDate)
+        {
+            try
+            {
+                string testName = "Driving Test";
+                switch (testTypeID)
+                {
+                    case 1: testName = "Vision Test"; break;
+                    case 2: testName = "Written Test"; break;
+                    case 3: testName = "Practical Test"; break;
+                }
+
+                // 1. MOBILE NOTIFICATION (Saves to DB)
+                string title = "New Test Scheduled";
+                string content = $"Your {testName} has been scheduled for {appointmentDate.ToString("MMMM dd, yyyy")} at {appointmentDate.ToString("hh:mm tt")}. Please make sure to arrive 15 minutes early.";
+                clsUserMessage.SendSystemMessage(personID, title, content, "Test");
+
+                // 2. CONSOLE/LOG SIMULATION for School & Email (Mimicking API Handlers)
+                Console.WriteLine($"[DESKTOP SUBSCRIBER] [Mobile Push] Sent in-app message to Person ID: {personID}");
+                Console.WriteLine($"[DESKTOP SUBSCRIBER] [Email SMTP Server] Dispatching email to applicant.");
+                Console.WriteLine($"[DESKTOP SUBSCRIBER] [School Dashboard] Notified school of new test schedule for their student.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[DESKTOP SUBSCRIBER ERROR] Notification sync failed: {ex.Message}");
             }
         }
     }

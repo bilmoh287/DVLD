@@ -622,5 +622,63 @@ namespace DVLDREST_API.Controllers
             }
             return StatusCode(500, "Error updating institute profile.");
         }
+
+        // ============================================================
+        // ELIGIBILITY ENDPOINTS — Used by the School Web Portal
+        // ============================================================
+
+        /// <summary>
+        /// GET: api/DrivingInstitutes/batches/{batchId}/eligibility
+        /// Returns all students in a batch with their attendance stats and current eligibility flag.
+        /// The school instructor uses this to decide who to mark as eligible for tests.
+        /// </summary>
+        [HttpGet("batches/{batchId}/eligibility")]
+        public IActionResult GetBatchEligibilityReview(int batchId)
+        {
+            DataTable dt = clsTrainingBatch.GetBatchStudentsForEligibilityReview(batchId);
+            var students = new List<object>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                students.Add(new
+                {
+                    ApplicantBatchID   = (int)row["ApplicantBatchID"],
+                    ApplicationID      = (int)row["ApplicationID"],
+                    PersonID           = (int)row["PersonID"],
+                    FullName           = row["FullName"].ToString(),
+                    Phone              = row["Phone"].ToString(),
+                    ClassName          = row["ClassName"].ToString(),
+                    IsEligibleForTest  = (bool)row["IsEligibleForTest"],
+                    AssignedDate       = row["AssignedDate"] != DBNull.Value ? (DateTime?)row["AssignedDate"] : null,
+                    TotalSessions      = (int)row["TotalSessions"],
+                    PresentCount       = (int)row["PresentCount"],
+                    AttendanceRate     = (int)row["TotalSessions"] == 0 ? 0
+                                            : Math.Round((double)(int)row["PresentCount"] / (int)row["TotalSessions"] * 100, 1)
+                });
+            }
+
+            return Ok(students);
+        }
+
+        /// <summary>
+        /// PUT: api/DrivingInstitutes/batches/{batchId}/eligibility/{applicationId}
+        /// Sets a student's IsEligibleForTest flag. The school instructor marks the student
+        /// as eligible once they have met attendance / training requirements.
+        /// When set to true, the student becomes visible on the DVLD officer's test-scheduling list.
+        /// </summary>
+        [HttpPut("batches/{batchId}/eligibility/{applicationId}")]
+        public IActionResult SetStudentEligibility(int batchId, int applicationId, [FromBody] SetEligibilityRequestDTO request)
+        {
+            if (request == null)
+                return BadRequest("Request body is required.");
+
+            bool success = clsTrainingBatch.SetStudentEligibility(applicationId, batchId, request.IsEligible);
+
+            if (!success)
+                return NotFound("Student not found in the specified batch, or update failed.");
+
+            string status = request.IsEligible ? "eligible" : "ineligible";
+            return Ok(new { message = $"Student ApplicationID={applicationId} has been marked {status} for testing in batch {batchId}." });
+        }
     }
 }

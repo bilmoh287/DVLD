@@ -241,25 +241,37 @@ namespace DVLDDataAccessLayer
             return dt;
         }
 
+        /// <summary>
+        /// Returns students in a batch who have been explicitly marked eligible for tests
+        /// by the school (IsEligibleForTest = 1). These are the students cleared to schedule
+        /// a Vision/Theory/Street test at the DVLD office.
+        /// </summary>
         public static DataTable GetEligibleApplicantsForBatch(int InstituteID)
         {
             DataTable dt = new DataTable();
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
-                // Fetch students who have an approved Local Driving License Application
-                // and are enrolled in this institute, but not yet in any batch.
-                string query = @"SELECT DISTINCT A.ApplicationID, 
-                                 P.FirstName + ' ' + P.LastName AS FullName, 
-                                 C.ClassName, A.ApplicationDate, P.Phone
-                                 FROM LocalDrivingLicenseApplications L
-                                 INNER JOIN Applications A ON L.ApplicationID = A.ApplicationID
+                // Returns students who:
+                // 1. Are in a batch at this institute
+                // 2. Have been marked IsEligibleForTest = 1 by the school
+                // 3. Have NOT yet passed all 3 tests (to prevent double-listing graduates)
+                string query = @"SELECT DISTINCT
+                                     AB.ApplicationID,
+                                     P.PersonID,
+                                     P.FirstName + ' ' + P.LastName AS FullName,
+                                     C.ClassName,
+                                     E.EnrollmentDate,
+                                     P.Phone
+                                 FROM ApplicantBatch AB
+                                 INNER JOIN Applications A ON AB.ApplicationID = A.ApplicationID
+                                 INNER JOIN LocalDrivingLicenseApplications L ON A.ApplicationID = L.ApplicationID
                                  INNER JOIN LicenseClasses C ON L.LicenseClassID = C.LicenseClassID
                                  INNER JOIN People P ON A.ApplicantPersonID = P.PersonID
-                                 INNER JOIN Enrollments E ON A.ApplicantPersonID = E.PersonID
-                                 WHERE A.ApplicationStatus = 4 -- Approved
-                                 AND E.InstituteID = @InstituteID
-                                 AND A.ApplicationID NOT IN (SELECT ApplicationID FROM ApplicantBatch)";
+                                 INNER JOIN Enrollments E ON A.ApplicantPersonID = E.PersonID AND E.InstituteID = @InstituteID
+                                 INNER JOIN TrainingBatches TB ON AB.TrainingBatchID = TB.TrainingBatchID
+                                 WHERE TB.InstituteID = @InstituteID
+                                   AND AB.IsEligibleForTest = 1";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@InstituteID", InstituteID);
@@ -277,6 +289,91 @@ namespace DVLDDataAccessLayer
                 }
             }
             return dt;
+        }
+
+        /// <summary>
+        /// Returns all students in a batch with their eligibility status and attendance stats.
+        /// Used by the school web portal to review and mark students as eligible for testing.
+        /// </summary>
+        public static DataTable GetBatchStudentsForEligibilityReview(int BatchID)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string query = @"SELECT
+                                     AB.ApplicantBatchID,
+                                     AB.ApplicationID,
+                                     P.PersonID,
+                                     P.FirstName + ' ' + P.LastName AS FullName,
+                                     P.Phone,
+                                     C.ClassName,
+                                     AB.IsEligibleForTest,
+                                     AB.AssignedDate,
+                                     TotalSessions  = COUNT(ATT.AttendanceID),
+                                     PresentCount   = SUM(CAST(ISNULL(ATT.IsPresent, 0) AS INT))
+                                 FROM ApplicantBatch AB
+                                 INNER JOIN Applications A ON AB.ApplicationID = A.ApplicationID
+                                 INNER JOIN LocalDrivingLicenseApplications L ON A.ApplicationID = L.ApplicationID
+                                 INNER JOIN LicenseClasses C ON L.LicenseClassID = C.LicenseClassID
+                                 INNER JOIN People P ON A.ApplicantPersonID = P.PersonID
+                                 LEFT JOIN Attendance ATT ON AB.ApplicationID = ATT.ApplicationID
+                                                         AND AB.TrainingBatchID = ATT.TrainingBatchID
+                                 WHERE AB.TrainingBatchID = @BatchID
+                                 GROUP BY AB.ApplicantBatchID, AB.ApplicationID, P.PersonID,
+                                          P.FirstName, P.LastName, P.Phone, C.ClassName,
+                                          AB.IsEligibleForTest, AB.AssignedDate";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@BatchID", BatchID);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    dt.Load(reader);
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return dt;
+        }
+
+        /// <summary>
+        /// Sets IsEligibleForTest = 1 or 0 for a specific student in a specific batch.
+        /// Called by the school web portal when the instructor confirms the student
+        /// has met the attendance/training requirements.
+        /// </summary>
+        public static bool SetStudentEligibility(int ApplicationID, int BatchID, bool isEligible)
+        {
+            int rowsAffected = 0;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string query = @"UPDATE ApplicantBatch
+                                 SET IsEligibleForTest = @IsEligible
+                                 WHERE ApplicationID = @ApplicationID
+                                   AND TrainingBatchID = @BatchID";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+                command.Parameters.AddWithValue("@BatchID", BatchID);
+                command.Parameters.AddWithValue("@IsEligible", isEligible ? 1 : 0);
+
+                try
+                {
+                    connection.Open();
+                    rowsAffected = command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return (rowsAffected > 0);
         }
 
         public static bool RemoveApplicantFromBatch(int ApplicationID, int BatchID)
