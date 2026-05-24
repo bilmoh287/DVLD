@@ -14,6 +14,7 @@ using DVLDPresentationLayer.Applications.Renew_Local_License;
 using DVLDPresentationLayer.Applications.Replace_Lost_or_Damaged_License;
 using DVLDPresentationLayer.Global_Classes;
 using DVLDPresentationLayer.Licenses.Detain_License;
+using DVLDPresentationLayer.Tests;
 
 namespace DVLDPresentationLayer
 {
@@ -216,6 +217,12 @@ namespace DVLDPresentationLayer
         private void newApplicantStudentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmUnderReview frm = new frmUnderReview();
+            frm.ShowDialog();
+        }
+
+        private void scheduleTestForStudetsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSheduleTestForAllStudets frm = new frmSheduleTestForAllStudets();
             frm.ShowDialog();
         }
     }
