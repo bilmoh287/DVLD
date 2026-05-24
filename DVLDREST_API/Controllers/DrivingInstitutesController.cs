@@ -75,7 +75,8 @@ namespace DVLDREST_API.Controllers
                     AttendanceID = (int)row["AttendanceID"],
                     FullName = (string)row["FullName"],
                     Date = (DateTime)row["AttendanceDate"],
-                    IsPresent = (bool)row["IsPresent"]
+                    IsPresent = (bool)row["IsPresent"],
+                    IsLate = row.Table.Columns.Contains("IsLate") && row["IsLate"] != DBNull.Value ? (bool)row["IsLate"] : false
                 });
             }
 
@@ -88,7 +89,7 @@ namespace DVLDREST_API.Controllers
         {
             if (request == null) return BadRequest("Invalid request.");
 
-            if (clsAttendance.MarkAttendance(request.ApplicationID, request.BatchID, request.Date, request.IsPresent, request.MarkedByUserID))
+            if (clsAttendance.MarkAttendance(request.ApplicationID, request.BatchID, request.Date, request.IsPresent, request.IsLate, request.MarkedByUserID))
             {
                 return Ok(new { message = "Attendance marked successfully." });
             }

@@ -7,7 +7,7 @@ namespace DVLDBussinessLayer
 {
     public class clsAttendance
     {
-        public static bool MarkAttendance(int ApplicationID, int BatchID, DateTime Date, bool IsPresent, int MarkedByUserID)
+        public static bool MarkAttendance(int ApplicationID, int BatchID, DateTime Date, bool IsPresent, bool IsLate, int MarkedByUserID)
         {
             AttendanceDTO attendanceDTO = new AttendanceDTO(
                 -1, // ID not needed for insert
@@ -15,6 +15,7 @@ namespace DVLDBussinessLayer
                 BatchID,
                 Date,
                 IsPresent,
+                IsLate,
                 MarkedByUserID
             );
 

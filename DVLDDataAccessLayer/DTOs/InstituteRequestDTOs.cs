@@ -6,6 +6,7 @@ namespace DVLDDataAccessLayer.DTOs
         public int BatchID { get; set; }
         public System.DateTime Date { get; set; }
         public bool IsPresent { get; set; }
+        public bool IsLate { get; set; }
         public int MarkedByUserID { get; set; }
     }
 

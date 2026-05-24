@@ -13,8 +13,8 @@ namespace DVLDDataAccessLayer
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
-                string query = @"INSERT INTO Attendance (ApplicationID, TrainingBatchID, AttendanceDate, IsPresent, MarkedByUserID)
-                                 VALUES (@ApplicationID, @BatchID, @Date, @IsPresent, @MarkedByUserID);
+                string query = @"INSERT INTO Attendance (ApplicationID, TrainingBatchID, AttendanceDate, IsPresent, IsLate, MarkedByUserID)
+                                 VALUES (@ApplicationID, @BatchID, @Date, @IsPresent, @IsLate, @MarkedByUserID);
                                  SELECT SCOPE_IDENTITY();";
 
                 SqlCommand command = new SqlCommand(query, connection);
@@ -22,6 +22,7 @@ namespace DVLDDataAccessLayer
                 command.Parameters.AddWithValue("@BatchID", attendanceDTO.BatchID);
                 command.Parameters.AddWithValue("@Date", attendanceDTO.AttendanceDate);
                 command.Parameters.AddWithValue("@IsPresent", attendanceDTO.IsPresent);
+                command.Parameters.AddWithValue("@IsLate", attendanceDTO.IsLate);
                 command.Parameters.AddWithValue("@MarkedByUserID", attendanceDTO.MarkedByUserID);
 
                 try
@@ -48,7 +49,7 @@ namespace DVLDDataAccessLayer
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
                 string query = @"SELECT AT.AttendanceID, P.FirstName + ' ' + P.LastName AS FullName, 
-                                        AT.AttendanceDate, AT.IsPresent
+                                        AT.AttendanceDate, AT.IsPresent, AT.IsLate
                                  FROM Attendance AT
                                  INNER JOIN Applications A ON AT.ApplicationID = A.ApplicationID
                                  INNER JOIN People P ON A.ApplicantPersonID = P.PersonID
