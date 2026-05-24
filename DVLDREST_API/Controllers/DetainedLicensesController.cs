@@ -102,5 +102,52 @@ namespace DVLDREST_API.Controllers
 
             return StatusCode(500, "Error creating release application.");
         }
+
+        public class DetainRequestDTO
+        {
+            public int LicenseID { get; set; }
+            public decimal FineFees { get; set; }
+            public int CreatedByUserID { get; set; }
+            public string DetainReason { get; set; } = "";
+            public string DetainPlace { get; set; } = "Mobile";
+        }
+
+        // POST /api/detainedlicenses/detain
+        [HttpPost("detain")]
+        public IActionResult DetainLicense([FromBody] DetainRequestDTO request)
+        {
+            if (request == null) return BadRequest("Invalid request.");
+
+            // 1. Check if license is already detained
+            if (clsDetainedLicenses.IsLicenseDetained(request.LicenseID))
+            {
+                return BadRequest("License is already detained.");
+            }
+
+            // 2. Find license to make sure it exists and is active
+            clsLicenses license = clsLicenses.Find(request.LicenseID);
+            if (license == null) return NotFound("License not found.");
+            if (!license.IsActive) return BadRequest("Cannot detain an inactive license.");
+
+            // 3. Create Detained License record
+            clsDetainedLicenses detainInfo = new clsDetainedLicenses();
+            detainInfo.LicenseID = request.LicenseID;
+            detainInfo.DetainDate = DateTime.Now;
+            detainInfo.FineFees = request.FineFees;
+            detainInfo.CreatedByUserID = request.CreatedByUserID;
+            detainInfo.DetainReason = request.DetainReason;
+            detainInfo.DetainPlace = request.DetainPlace;
+
+            if (detainInfo.Save())
+            {
+                return Ok(new {
+                    message = "License detained successfully.",
+                    detainID = detainInfo.DetainID
+                });
+            }
+
+            return StatusCode(500, "Error occurred while detaining license.");
+        }
     }
 }
+

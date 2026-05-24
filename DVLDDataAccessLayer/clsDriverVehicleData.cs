@@ -76,6 +76,38 @@ namespace DVLDDataAccessLayer
             return dt;
         }
 
+        public static DataTable GetVehiclesCatalog(string search, int limit)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+                {
+                    string query = @"
+                        SELECT TOP (@Limit) ID, Vehicle_Display_Name, Year, Make, ModelName 
+                        FROM VehicleMakesDB.dbo.VehicleMasterDetails 
+                        WHERE (@Search IS NULL OR Vehicle_Display_Name LIKE '%' + @Search + '%' OR Make LIKE '%' + @Search + '%')
+                        ORDER BY Vehicle_Display_Name";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Limit", limit);
+                        command.Parameters.AddWithValue("@Search", (object)search ?? DBNull.Value);
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows) dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            return dt;
+        }
+
         public static int AddNewOwnership(int DriverID, int VehicleID, string PlateNumber, string VIN, string Color, DateTime PurchaseDate, decimal PurchasePrice, int CreatedByUserID)
         {
             int OwnershipID = -1;

@@ -476,6 +476,26 @@ namespace DVLDREST_API.Controllers
             return Ok(students);
         }
 
+        // GET: api/DrivingInstitutes/vehicles/catalog
+        [HttpGet("vehicles/catalog")]
+        public IActionResult GetVehiclesCatalog([FromQuery] string search = null, [FromQuery] int limit = 10)
+        {
+            DataTable dt = clsDriverVehicle.GetVehiclesCatalog(search, limit);
+            var list = new List<object>();
+            foreach (DataRow row in dt.Rows)
+            {
+                list.Add(new
+                {
+                    ID = (int)row["ID"],
+                    VehicleDisplayName = row["Vehicle_Display_Name"]?.ToString() ?? "",
+                    Year = row["Year"] != DBNull.Value ? Convert.ToInt32(row["Year"]) : 0,
+                    Make = row["Make"]?.ToString() ?? "",
+                    ModelName = row["ModelName"]?.ToString() ?? ""
+                });
+            }
+            return Ok(list);
+        }
+
         // GET: api/DrivingInstitutes/{id}/vehicles
         [HttpGet("{id}/vehicles")]
         public IActionResult GetInstituteVehicles(int id)

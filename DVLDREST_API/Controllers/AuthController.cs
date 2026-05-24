@@ -46,6 +46,12 @@ namespace DVLDREST_API.Controllers
             if (dtRoles.Rows.Count > 0)
             {
                 role = dtRoles.Rows[0]["RoleName"].ToString();
+                
+                // Map database specific officer roles to standard 'Officer' for unified mobile authentication
+                if (role == "Registration Officer" || role == "Test Officer" || role == "License Issuer")
+                {
+                    role = "Officer";
+                }
             }
             else
             {

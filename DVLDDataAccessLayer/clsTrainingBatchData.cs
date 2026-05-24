@@ -213,6 +213,7 @@ namespace DVLDDataAccessLayer
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
                 string query = @"SELECT AB.ApplicationID, 
+                                 P.PersonID,
                                  P.FirstName + ' ' + P.LastName AS FullName, 
                                  C.ClassName, P.Phone, AB.AssignedDate
                                  FROM ApplicantBatch AB
