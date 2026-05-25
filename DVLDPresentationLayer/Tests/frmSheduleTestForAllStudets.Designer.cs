@@ -1,4 +1,4 @@
-﻿namespace DVLDPresentationLayer.Tests
+namespace DVLDPresentationLayer.Tests
 {
     partial class frmSheduleTestForAllStudets
     {
@@ -37,6 +37,8 @@
             this.btnScheduleVisionTest = new System.Windows.Forms.Button();
             this.btnScheduleWrittenTest = new System.Windows.Forms.Button();
             this.btnScheduleStreetTest = new System.Windows.Forms.Button();
+            this.lblAppointmentDate = new System.Windows.Forms.Label();
+            this.dtpAppointmentDate = new System.Windows.Forms.DateTimePicker();
             this.panelEligibleStduents.SuspendLayout();
             this.panelButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -59,6 +61,8 @@
             this.panelButtons.Controls.Add(this.btnScheduleWrittenTest);
             this.panelButtons.Controls.Add(this.btnClose);
             this.panelButtons.Controls.Add(this.btnScheduleStreetTest);
+            this.panelButtons.Controls.Add(this.lblAppointmentDate);
+            this.panelButtons.Controls.Add(this.dtpAppointmentDate);
             this.panelButtons.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelButtons.Location = new System.Drawing.Point(1040, 0);
             this.panelButtons.Name = "panelButtons";
@@ -166,6 +170,24 @@
             this.btnScheduleStreetTest.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnScheduleStreetTest.UseVisualStyleBackColor = true;
             // 
+            // lblAppointmentDate
+            // 
+            this.lblAppointmentDate.AutoSize = true;
+            this.lblAppointmentDate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblAppointmentDate.Location = new System.Drawing.Point(35, 480);
+            this.lblAppointmentDate.Name = "lblAppointmentDate";
+            this.lblAppointmentDate.Size = new System.Drawing.Size(227, 28);
+            this.lblAppointmentDate.Text = "Batch Test Date/Time:";
+            // 
+            // dtpAppointmentDate
+            // 
+            this.dtpAppointmentDate.CustomFormat = "yyyy-MM-dd HH:mm";
+            this.dtpAppointmentDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpAppointmentDate.Location = new System.Drawing.Point(35, 515);
+            this.dtpAppointmentDate.Name = "dtpAppointmentDate";
+            this.dtpAppointmentDate.Size = new System.Drawing.Size(227, 35);
+            this.dtpAppointmentDate.Font = new System.Drawing.Font("Segoe UI", 10F);
+            // 
             // frmSheduleTestForAllStudets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -197,5 +219,7 @@
         private System.Windows.Forms.Button btnScheduleVisionTest;
         private System.Windows.Forms.Button btnScheduleWrittenTest;
         private System.Windows.Forms.Button btnScheduleStreetTest;
+        private System.Windows.Forms.Label lblAppointmentDate;
+        private System.Windows.Forms.DateTimePicker dtpAppointmentDate;
     }
 }
