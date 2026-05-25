@@ -216,27 +216,43 @@ namespace DVLDREST_API.Controllers
         [HttpGet("status/{personId}")]
         public IActionResult GetApplicationStatus(int personId)
         {
-            DataTable dt = clsLocalDrivingLicenseApplication.GetAllLocalDrivingLiceseApplications();
+            DataTable dt = clsApplication.GetPersonApplications(personId);
             List<ApplicationStatusResponseDTO> results = new List<ApplicationStatusResponseDTO>();
 
             foreach (DataRow row in dt.Rows)
             {
-                // The view exposes PersonID from the Applications table (not ApplicantPersonID)
-                object personIdObj = row["PersonID"];
-                if (personIdObj == DBNull.Value || personIdObj == null) continue;
-                if ((int)personIdObj != personId) continue;
+                int ldlAppID = row["LocalDrivingLicenseApplicationID"] == DBNull.Value ? 0 : (int)row["LocalDrivingLicenseApplicationID"];
+                
+                string title = "";
+                int typeId = (int)row["ApplicationTypeID"];
+                if (typeId == 1)
+                {
+                    title = row["ClassName"] == DBNull.Value ? "Local Driving License" : (string)row["ClassName"];
+                }
+                else
+                {
+                    title = (string)row["ApplicationTypeTitle"];
+                }
 
-                // Get LDLApplicationID for this record
-                int ldlAppID = (int)row["LocalDrivingLicenseApplicationID"];
+                byte status = Convert.ToByte(row["ApplicationStatus"]);
+                string statusText = "New";
+                switch (status)
+                {
+                    case 1: statusText = "New"; break;
+                    case 2: statusText = "Cancelled"; break;
+                    case 3: statusText = "Completed"; break;
+                    case 4: statusText = "Approved"; break;
+                    case 5: statusText = "Rejected"; break;
+                }
 
                 results.Add(new ApplicationStatusResponseDTO
                 {
                     ApplicationID    = (int)row["ApplicationID"],
                     LDLApplicationID = ldlAppID,
-                    ClassName        = row["ClassName"]?.ToString() ?? "",
-                    Status           = row["Status"]?.ToString() ?? "",
+                    ClassName        = title,
+                    Status           = statusText,
                     AppliedDate      = (DateTime)row["ApplicationDate"],
-                    PassedExamsCount = clsTests.CountPassedTests(ldlAppID)
+                    PassedExamsCount = ldlAppID > 0 ? clsTests.CountPassedTests(ldlAppID) : 0
                 });
             }
 

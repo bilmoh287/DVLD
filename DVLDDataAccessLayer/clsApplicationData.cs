@@ -423,5 +423,48 @@ namespace DVLDDataAccessLayer
             }
             return ActiveApplicationID;
         }
+
+        public static DataTable GetPersonApplications(int PersonID)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string query = @"SELECT 
+                                    A.ApplicationID,
+                                    A.ApplicationDate,
+                                    A.ApplicationStatus,
+                                    A.ApplicationTypeID,
+                                    T.ApplicationTypeTitle,
+                                    LDA.LocalDrivingLicenseApplicationID,
+                                    LC.ClassName
+                                 FROM Applications A
+                                 INNER JOIN ApplicationTypes T ON A.ApplicationTypeID = T.ApplicationTypeID
+                                 LEFT JOIN LocalDrivingLicenseApplications LDA ON A.ApplicationID = LDA.ApplicationID
+                                 LEFT JOIN LicenseClasses LC ON LDA.LicenseClassID = LC.LicenseClassID
+                                 WHERE A.ApplicantPersonID = @PersonID
+                                 ORDER BY A.ApplicationDate DESC;";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@PersonID", PersonID);
+
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error: " + ex.Message);
+                    }
+                }
+            }
+
+            return dt;
+        }
     }
 }

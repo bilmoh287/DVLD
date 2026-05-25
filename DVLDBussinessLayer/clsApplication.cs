@@ -307,5 +307,10 @@ namespace DVLDBussinessLayer
         {
             return clsApplicationData.GetActiveApplicationID(PersonID, ApplicationTypeID);
         }
+
+        public static DataTable GetPersonApplications(int PersonID)
+        {
+            return clsApplicationData.GetPersonApplications(PersonID);
+        }
     }
 }
