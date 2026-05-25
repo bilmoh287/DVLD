@@ -147,22 +147,10 @@ namespace DVLDBussinessLayer
 
         public static clsApplication Find(int ApplicationID)
         {
-            int ApplicantPersonID = -1;
-            DateTime ApplicationDate = DateTime.Now;
-            int ApplicationTypeID = -1;
-            byte ApplicationStatus = 0;
-            DateTime LastStatusDate = DateTime.Now;
-            decimal PaidFees = 0;
-            int CreatedByUserID = -1;
-
-            bool isFound = clsApplicationData.GetApplicationInfoByID(ApplicationID,
-                ref ApplicantPersonID, ref ApplicationDate, ref ApplicationTypeID,
-                ref ApplicationStatus, ref LastStatusDate, ref PaidFees, ref CreatedByUserID);
-
-            if (isFound)
+            clsApplication application = new clsApplication();
+            if (application.LoadApplicationDetails(ApplicationID))
             {
-                return new clsApplication(ApplicationID, ApplicantPersonID, ApplicationDate,
-                    ApplicationTypeID, (enApplicationStatus)ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID);
+                return application;
             }
             else
                 return null;
@@ -283,6 +271,11 @@ namespace DVLDBussinessLayer
             {
                 // Safety catch
             }
+        }
+
+        public static int GetActiveApplicationID(int PersonID, int ApplicationTypeID)
+        {
+            return clsApplicationData.GetActiveApplicationID(PersonID, ApplicationTypeID);
         }
     }
 }

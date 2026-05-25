@@ -89,6 +89,31 @@ namespace DVLDREST_API.Controllers
                 "Payment"
             );
 
+            // Handle completing the application and issuing the new license if it's approved and paying
+            if (app.ApplicationStatus == clsApplication.enApplicationStatus.Approved)
+            {
+                if (app.ApplicationTypeID == (int)clsApplication.enApplicationType.RenewDrivingLicense ||
+                    app.ApplicationTypeID == (int)clsApplication.enApplicationType.ReplaceDamagedDrivingLicense)
+                {
+                    clsDrivers driver = clsDrivers.FindByPersonID(app.ApplicantPersonID);
+                    if (driver != null)
+                    {
+                        clsLicenses oldLicense = clsLicenses.GetActiveLicenseByDriverID(driver.DriverID);
+                        if (oldLicense != null)
+                        {
+                            if (app.ApplicationTypeID == (int)clsApplication.enApplicationType.RenewDrivingLicense)
+                            {
+                                oldLicense.CompleteRenewalAfterPayment(app, "Renewed via Mobile App", app.CreatedByUserID);
+                            }
+                            else if (app.ApplicationTypeID == (int)clsApplication.enApplicationType.ReplaceDamagedDrivingLicense)
+                            {
+                                oldLicense.CompleteReplacementDamagedAfterPayment(app, app.CreatedByUserID);
+                            }
+                        }
+                    }
+                }
+            }
+
             return Ok(new
             {
                 success    = true,

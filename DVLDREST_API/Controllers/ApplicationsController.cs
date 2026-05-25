@@ -242,6 +242,35 @@ namespace DVLDREST_API.Controllers
 
             return Ok(results);
         }
+
+        // GET /api/applications/active — Check if person has an active general application of a specific type
+        [HttpGet("active")]
+        public IActionResult GetActiveApplication([FromQuery] int personId, [FromQuery] int typeId)
+        {
+            int activeAppId = clsApplication.GetActiveApplicationID(personId, typeId);
+            if (activeAppId == -1)
+            {
+                return Ok(new { hasActive = false });
+            }
+
+            clsApplication app = clsApplication.Find(activeAppId);
+            if (app == null)
+            {
+                return Ok(new { hasActive = false });
+            }
+
+            decimal fees = clsApplicationTypes.FindApplicationType(app.ApplicationTypeID)?.ApplicationTypeFees ?? 0;
+
+            return Ok(new {
+                hasActive = true,
+                applicationID = app.ApplicationID,
+                applicationStatus = (int)app.ApplicationStatus,
+                statusText = app.StatusText,
+                paidFees = fees,
+                applicationDate = app.ApplicationDate
+            });
+        }
+
         // GET /api/applications/fees/{typeId} — Returns fee for a specific application type
         [HttpGet("fees/{typeId}")]
         public IActionResult GetApplicationFee(int typeId)

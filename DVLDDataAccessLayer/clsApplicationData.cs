@@ -387,5 +387,41 @@ namespace DVLDDataAccessLayer
 
             return (rowsAffected > 0);
         }
+
+        public static int GetActiveApplicationID(int PersonID, int ApplicationTypeID)
+        {
+            int ActiveApplicationID = -1;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string query = @"SELECT TOP 1 ApplicationID
+                                 FROM Applications 
+                                 WHERE ApplicantPersonID = @PersonID AND ApplicationTypeID = @ApplicationTypeID
+                                       AND ApplicationStatus IN (1, 4)
+                                 ORDER BY ApplicationID DESC;";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@PersonID", PersonID);
+                    command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+
+                    try
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+
+                        if (result != null && int.TryParse(result.ToString(), out int AppID))
+                        {
+                            ActiveApplicationID = AppID;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+            return ActiveApplicationID;
+        }
     }
 }

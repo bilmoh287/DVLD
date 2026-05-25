@@ -335,5 +335,39 @@ namespace DVLDDataAccessLayer
             return dt;
         }
 
+        public static int GetActiveLicenseIDByDriverID(int DriverID)
+        {
+            int LicenseID = -1;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string query = @"SELECT TOP 1 LicenseID
+                                 FROM Licenses
+                                 WHERE DriverID = @DriverID AND IsActive = 1
+                                 ORDER BY ExpirationDate ASC;";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@DriverID", DriverID);
+
+                    try
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+
+                        if (result != null && int.TryParse(result.ToString(), out int returnedID))
+                        {
+                            LicenseID = returnedID;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error: " + ex.Message);
+                    }
+                }
+            }
+
+            return LicenseID;
+        }
     }
 }

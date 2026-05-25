@@ -495,5 +495,15 @@ namespace DVLDBussinessLayer
             }
             else { return -1; }
         }
+
+        public static clsLicenses GetActiveLicenseByDriverID(int DriverID)
+        {
+            int licenseID = clsLicensesData.GetActiveLicenseIDByDriverID(DriverID);
+            if (licenseID != -1)
+            {
+                return clsLicenses.Find(licenseID);
+            }
+            return null;
+        }
     }
 }
