@@ -68,6 +68,7 @@ namespace DVLDPresentationLayer.Applications.Application_Reviews
             if (_Application != null)
             {
                 _Application.ApplicationStatus = clsApplication.enApplicationStatus.Approved;
+                _Application.CreatedByUserID = clsGlobal.CurrentUser.UserID;
                 if (_Application.Save())
                 {
                     MessageBox.Show("Application Approved successfully. User will be notified to pay.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -81,6 +82,7 @@ namespace DVLDPresentationLayer.Applications.Application_Reviews
             if (_Application != null)
             {
                 _Application.ApplicationStatus = clsApplication.enApplicationStatus.Rejected;
+                _Application.CreatedByUserID = clsGlobal.CurrentUser.UserID;
                 if (_Application.Save())
                 {
                     MessageBox.Show("Application Rejected.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
