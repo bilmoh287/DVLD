@@ -1,6 +1,6 @@
 ﻿namespace DVLDPresentationLayer.Applications.Application_Reviews
 {
-    partial class frmReviewRenewalApplications
+    partial class frmReviewApplicationForLost
     {
         /// <summary>
         /// Required designer variable.
@@ -33,9 +33,9 @@
             this.btnApprove = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
             this.ctlPersonCard1 = new DVLDPresentationLayer.ctlPersonCard();
-            this.dgvUnderReviewList = new System.Windows.Forms.DataGridView();
-            this.btnClose = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.dgvUnderReviewList = new System.Windows.Forms.DataGridView();
             this.pbIdpictrue = new System.Windows.Forms.PictureBox();
             this.panelDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnderReviewList)).BeginInit();
@@ -50,10 +50,10 @@
             this.panelDetail.Controls.Add(this.label1);
             this.panelDetail.Controls.Add(this.pbIdpictrue);
             this.panelDetail.Controls.Add(this.ctlPersonCard1);
-            this.panelDetail.Location = new System.Drawing.Point(15, 61);
+            this.panelDetail.Location = new System.Drawing.Point(14, 61);
             this.panelDetail.Name = "panelDetail";
-            this.panelDetail.Size = new System.Drawing.Size(998, 298);
-            this.panelDetail.TabIndex = 6;
+            this.panelDetail.Size = new System.Drawing.Size(998, 304);
+            this.panelDetail.TabIndex = 138;
             this.panelDetail.Visible = false;
             // 
             // btnReject
@@ -91,7 +91,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(35, 790);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(254, 25);
+            this.label1.Size = new System.Drawing.Size(172, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "Vision health Medical Proof:";
             // 
@@ -105,39 +105,39 @@
             this.ctlPersonCard1.Size = new System.Drawing.Size(841, 285);
             this.ctlPersonCard1.TabIndex = 0;
             // 
+            // lblTitle
+            // 
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblTitle.Location = new System.Drawing.Point(174, 9);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(588, 49);
+            this.lblTitle.TabIndex = 140;
+            this.lblTitle.Text = "Review Renewal Application\r\n";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(875, 677);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(120, 39);
+            this.btnClose.TabIndex = 139;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            // 
             // dgvUnderReviewList
             // 
             this.dgvUnderReviewList.AllowUserToAddRows = false;
             this.dgvUnderReviewList.AllowUserToDeleteRows = false;
             this.dgvUnderReviewList.BackgroundColor = System.Drawing.Color.White;
             this.dgvUnderReviewList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUnderReviewList.Location = new System.Drawing.Point(14, 387);
+            this.dgvUnderReviewList.Location = new System.Drawing.Point(13, 387);
             this.dgvUnderReviewList.Name = "dgvUnderReviewList";
             this.dgvUnderReviewList.ReadOnly = true;
             this.dgvUnderReviewList.RowHeadersWidth = 51;
             this.dgvUnderReviewList.RowTemplate.Height = 24;
             this.dgvUnderReviewList.Size = new System.Drawing.Size(983, 283);
-            this.dgvUnderReviewList.TabIndex = 5;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(876, 677);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(120, 39);
-            this.btnClose.TabIndex = 8;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTitle.Location = new System.Drawing.Point(175, 9);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(588, 49);
-            this.lblTitle.TabIndex = 136;
-            this.lblTitle.Text = "Review Renewal Application\r\n";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.dgvUnderReviewList.TabIndex = 137;
             // 
             // pbIdpictrue
             // 
@@ -148,20 +148,18 @@
             this.pbIdpictrue.TabIndex = 1;
             this.pbIdpictrue.TabStop = false;
             // 
-            // frmReviewRenewalApplications
+            // frmReviewApplicationForLost
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1020, 723);
+            this.Controls.Add(this.panelDetail);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.panelDetail);
             this.Controls.Add(this.dgvUnderReviewList);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "frmReviewRenewalApplications";
-            this.Text = "frmReviewRenewalApplications";
+            this.Name = "frmReviewApplicationForLost";
+            this.Text = "frmReviewApplicationForLost";
             this.panelDetail.ResumeLayout(false);
             this.panelDetail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnderReviewList)).EndInit();
@@ -178,8 +176,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pbIdpictrue;
         private ctlPersonCard ctlPersonCard1;
-        private System.Windows.Forms.DataGridView dgvUnderReviewList;
-        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.DataGridView dgvUnderReviewList;
     }
 }

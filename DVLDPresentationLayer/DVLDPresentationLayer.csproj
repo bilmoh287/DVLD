@@ -67,6 +67,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Applications\Application Reviews\frmReviewApplicationForLost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Application Reviews\frmReviewApplicationForLost.Designer.cs">
+      <DependentUpon>frmReviewApplicationForLost.cs</DependentUpon>
+    </Compile>
     <Compile Include="Applications\Application Reviews\frmReviewForDamagedLicense.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -513,6 +519,9 @@
     <Compile Include="Vehicles\LiestVehicles.Designer.cs">
       <DependentUpon>LiestVehicles.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Applications\Application Reviews\frmReviewApplicationForLost.resx">
+      <DependentUpon>frmReviewApplicationForLost.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Applications\Application Reviews\frmReviewForDamagedLicense.resx">
       <DependentUpon>frmReviewForDamagedLicense.cs</DependentUpon>
     </EmbeddedResource>

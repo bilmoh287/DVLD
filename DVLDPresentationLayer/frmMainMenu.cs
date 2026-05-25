@@ -1,4 +1,13 @@
-﻿using System;
+﻿using DVLDBussinessLayer;
+using DVLDPresentationLayer.Applications.Application_Reviews;
+using DVLDPresentationLayer.Applications.International_Driving_License;
+using DVLDPresentationLayer.Applications.Relesease_Detained_Licenses;
+using DVLDPresentationLayer.Applications.Renew_Local_License;
+using DVLDPresentationLayer.Applications.Replace_Lost_or_Damaged_License;
+using DVLDPresentationLayer.Global_Classes;
+using DVLDPresentationLayer.Licenses.Detain_License;
+using DVLDPresentationLayer.Tests;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,14 +16,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DVLDBussinessLayer;
-using DVLDPresentationLayer.Applications.International_Driving_License;
-using DVLDPresentationLayer.Applications.Relesease_Detained_Licenses;
-using DVLDPresentationLayer.Applications.Renew_Local_License;
-using DVLDPresentationLayer.Applications.Replace_Lost_or_Damaged_License;
-using DVLDPresentationLayer.Global_Classes;
-using DVLDPresentationLayer.Licenses.Detain_License;
-using DVLDPresentationLayer.Tests;
 
 namespace DVLDPresentationLayer
 {
@@ -228,7 +229,14 @@ namespace DVLDPresentationLayer
 
         private void reviewApplicartionsForReplacementToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmReplaceLostOrDamagedLicenseReview frm = new frmReplaceLostOrDamagedLicenseReview();
+            frmReviewRenewalApplications frm = new frmReviewRenewalApplications();
+            frm.ShowDialog();
+        }
+
+        private void reviewApplicationForLostOrDamagedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReviewForDamagedLicense frm = new frmReviewForDamagedLicense();
+            frm.ShowDialog();
         }
     }
 }

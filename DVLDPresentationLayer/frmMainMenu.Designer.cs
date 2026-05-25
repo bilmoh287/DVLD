@@ -435,6 +435,7 @@
             this.reviewApplicationForLostOrDamagedToolStripMenuItem.Name = "reviewApplicationForLostOrDamagedToolStripMenuItem";
             this.reviewApplicationForLostOrDamagedToolStripMenuItem.Size = new System.Drawing.Size(421, 28);
             this.reviewApplicationForLostOrDamagedToolStripMenuItem.Text = "Review Application for Lost or Damaged";
+            this.reviewApplicationForLostOrDamagedToolStripMenuItem.Click += new System.EventHandler(this.reviewApplicationForLostOrDamagedToolStripMenuItem_Click);
             // 
             // frmMain
             // 
