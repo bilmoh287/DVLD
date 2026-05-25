@@ -45,6 +45,12 @@ namespace DVLDPresentationLayer.Tests
                 dataGridView1.Columns["ClassName"].HeaderText = "License Class";
                 dataGridView1.Columns["Phone"].HeaderText = "Phone";
                 dataGridView1.Columns["InstituteName"].HeaderText = "Institute Name";
+                
+                if (dataGridView1.Columns.Contains("NextTestName"))
+                {
+                    dataGridView1.Columns["NextTestName"].HeaderText = "Next Test";
+                    dataGridView1.Columns["NextTestName"].Width = 150;
+                }
 
                 dataGridView1.Columns["FullName"].Width = 200;
                 dataGridView1.Columns["ClassName"].Width = 200;

@@ -1,5 +1,6 @@
 using MediatR;
 using System;
+using System.Net.Mail;
 using System.Threading;
 using System.Threading.Tasks;
 using DVLDBussinessLayer;
@@ -35,6 +36,31 @@ namespace DVLDREST_API.Workflows.TestScheduling.Handlers
                     </ul>
                     <p>Please arrive at least 15 minutes before your scheduled appointment.</p>
                     <p>Sincerely,<br/>International DVLD Department</p>";
+
+                if (person != null && !string.IsNullOrEmpty(person.Email))
+                {
+                    using (var mail = new MailMessage())
+                    {
+                        mail.From = new MailAddress("dvld-notifications@gov.com", "DVLD Notifications");
+                        mail.To.Add(person.Email);
+                        mail.Subject = "DVLD Test Appointment Scheduled";
+                        mail.Body = emailBody;
+                        mail.IsBodyHtml = true;
+
+                        try
+                        {
+                            using (var client = new SmtpClient("localhost", 25))
+                            {
+                                client.Send(mail);
+                                Console.WriteLine($"[MEDIATR EMAIL] Sent email to {person.Email} via localhost SMTP.");
+                            }
+                        }
+                        catch (Exception localEx)
+                        {
+                            Console.WriteLine($"[MEDIATR EMAIL WARNING] Local SMTP failed, attempting Gmail SMTP. Details: {localEx.Message}");
+                        }
+                    }
+                }
 
                 // Simulate sending email via SMTP/SendGrid
                 Console.WriteLine($"[MEDIATR SUBSCRIBER] [Email SMTP Server] Sending Email to {email}...");

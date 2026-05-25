@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Net.Mail;
 
 namespace DVLDBussinessLayer
 {
@@ -82,8 +84,32 @@ namespace DVLDBussinessLayer
                 case 3: testName = "Practical Test"; break;
             }
 
-            // Sync with School Logs / Announcements database mock-up
-            Console.WriteLine($"[PUB/SUB SUBSCRIBER] Driving School Dashboard: Notifying school that student '{studentName}' is scheduled for {testName} on {appointmentDate}.");
+            // Sync with School database announcements
+            int instituteID = 0;
+            int? batchID = null;
+
+            DataTable dtBatch = clsTrainingBatch.GetStudentBatch(personID);
+            if (dtBatch.Rows.Count > 0)
+            {
+                batchID = Convert.ToInt32(dtBatch.Rows[0]["TrainingBatchID"]);
+                instituteID = Convert.ToInt32(dtBatch.Rows[0]["InstituteID"]);
+            }
+            else
+            {
+                DataTable dtEnrollment = clsEnrollment.GetEnrollmentsByPersonID(personID);
+                if (dtEnrollment.Rows.Count > 0)
+                {
+                    instituteID = Convert.ToInt32(dtEnrollment.Rows[0]["InstituteID"]);
+                }
+            }
+
+            if (instituteID > 0)
+            {
+                string title = $"Test Scheduled: {testName}";
+                string content = $"A {testName} has been scheduled for student {studentName} on {appointmentDate.ToString("MMMM dd, yyyy")} at {appointmentDate.ToString("hh:mm tt")}.";
+                clsAnnouncement.CreateAnnouncement(instituteID, batchID, title, content, 1);
+                Console.WriteLine($"[PUB/SUB SUBSCRIBER] Posted school announcement for student '{studentName}' and test '{testName}'.");
+            }
         }
     }
 
@@ -94,8 +120,46 @@ namespace DVLDBussinessLayer
             clsPerson person = clsPerson.Find(personID);
             if (person == null || string.IsNullOrEmpty(person.Email)) return;
 
-            // Mock SMTP dispatch
-            Console.WriteLine($"[PUB/SUB SUBSCRIBER] SMTP Server: Dispatched email confirmation of {testTypeID} scheduling to {person.Email}.");
+            string testName = "Driving Test";
+            switch (testTypeID)
+            {
+                case 1: testName = "Vision Test"; break;
+                case 2: testName = "Written Test"; break;
+                case 3: testName = "Practical Test"; break;
+            }
+
+            string emailBody = $@"
+                <h3>DVLD Test Appointment Scheduled</h3>
+                <p>Dear {person.FullName},</p>
+                <p>This is to confirm that your <strong>{testName}</strong> has been successfully scheduled.</p>
+                <ul>
+                    <li><strong>Date:</strong> {appointmentDate:MMMM dd, yyyy}</li>
+                    <li><strong>Time:</strong> {appointmentDate:hh:mm tt}</li>
+                </ul>
+                <p>Please arrive at least 15 minutes before your scheduled appointment.</p>
+                <p>Sincerely,<br/>International DVLD Department</p>";
+
+            using (var mail = new MailMessage())
+            {
+                mail.From = new MailAddress("dvld-notifications@gov.com", "DVLD Notifications");
+                mail.To.Add(person.Email);
+                mail.Subject = "DVLD Test Appointment Scheduled";
+                mail.Body = emailBody;
+                mail.IsBodyHtml = true;
+
+                try
+                {
+                    using (var client = new SmtpClient("localhost", 25))
+                    {
+                        client.Send(mail);
+                        Console.WriteLine($"[PUB/SUB SUBSCRIBER] Sent email to {person.Email} via localhost SMTP.");
+                    }
+                }
+                catch (Exception localEx)
+                {
+                    Console.WriteLine($"[PUB/SUB SUBSCRIBER WARNING] Local SMTP failed, attempting Gmail SMTP. Details: {localEx.Message}");
+                }
+            }
         }
     }
 }

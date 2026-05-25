@@ -346,6 +346,9 @@ namespace DVLDPresentationLayer
                 TestAppointmentSaved(_TestAppointmentID);
                 MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
+                // Reset student eligibility flag
+                clsTrainingBatch.ResetStudentEligibility(_LDLApplication.ApplicationID);
+
                 // SYNCHRONIZED NOTIFICATION TRIGGER
                 _TriggerDesktopNotifications(_LDLApplication.ApplicantPersonID, (int)_TestTypeID, _TestAppointment.AppointmentDate, _TestAppointment.TestAppointmentID);
             }
