@@ -184,23 +184,53 @@ namespace DVLDBussinessLayer
 
         public bool Save()
         {
+            enApplicationStatus oldStatus = enApplicationStatus.New;
+            if (Mode == enMode.Update)
+            {
+                clsApplication oldApp = clsApplication.Find(this.ApplicationID);
+                if (oldApp != null)
+                {
+                    oldStatus = oldApp.ApplicationStatus;
+                }
+            }
+
+            bool success = false;
             switch (Mode)
             {
                 case enMode.AddNew:
                     if (_AddNewApplication())
                     {
                         Mode = enMode.Update;
-                        return true;
+                        success = true;
                     }
-                    else
-                        return false;
+                    break;
 
                 case enMode.Update:
-                    return _UpdateApplication();
-
-                default:
-                    return false;
+                    success = _UpdateApplication();
+                    break;
             }
+
+            if (success && Mode == enMode.Update && oldStatus != this.ApplicationStatus)
+            {
+                if (this.ApplicationStatus == enApplicationStatus.Approved)
+                {
+                    _NotifyStatusUpdate("Application Approved", "Great news! Your application has been approved. You can now proceed to the next steps.");
+                }
+                else if (this.ApplicationStatus == enApplicationStatus.Rejected)
+                {
+                    _NotifyStatusUpdate("Application Rejected", "We regret to inform you that your driving license application has been rejected. Please visit the office for more information.");
+                }
+                else if (this.ApplicationStatus == enApplicationStatus.Completed)
+                {
+                    _NotifyStatusUpdate("Application Completed", "Congratulations! Your application is now complete. You can proceed with the next steps or collect your license.");
+                }
+                else if (this.ApplicationStatus == enApplicationStatus.Cancelled)
+                {
+                    _NotifyStatusUpdate("Application Cancelled", "Your application has been successfully cancelled as per your request or administrative action.");
+                }
+            }
+
+            return success;
         }
 
         public bool SaveDocuments(string front, string back, string birthCert, string transcript)

@@ -385,6 +385,56 @@ namespace DVLDBussinessLayer
             return NewLicense;
         }
 
+        public clsApplication ApplyForReplacementLost(string imagePath, int createdByUserID)
+        {
+            clsApplication _Application = new clsApplication();
+            _Application.ApplicationTypeID = (int)clsApplication.enApplicationType.ReplaceLostDrivingLicense;
+            _Application.ApplicantPersonID = this.DriverInfo.PersonInfo.PersonID;
+            _Application.ApplicationStatus = clsApplication.enApplicationStatus.New;
+            _Application.ApplicationDate = DateTime.Now;
+            _Application.LastStatusDate = DateTime.Now;
+            _Application.PaidFees = 0; // Not paid yet
+            _Application.CreatedByUserID = createdByUserID;
+            _Application.DocumentPath = imagePath;
+
+            if (!_Application.Save()) return null;
+            return _Application;
+        }
+
+        public clsLicenses CompleteReplacementLostAfterPayment(clsApplication _Application, int CreatedByUserID)
+        {
+            _Application.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
+            _Application.PaidFees = clsApplicationTypes.FindApplicationType((int)clsApplication.enApplicationType.ReplaceLostDrivingLicense).ApplicationTypeFees;
+            _Application.LastStatusDate = DateTime.Now;
+            _Application.Save();
+
+            clsLicenses NewLicense = new clsLicenses();
+            NewLicense.ApplicationID = _Application.ApplicationID;
+            NewLicense.DriverID = this.DriverID;
+            NewLicense.LicenseClass = this.LicenseClass;
+            NewLicense.IssueDate = DateTime.Now;
+            NewLicense.ExpirationDate = DateTime.Now.AddYears(this.LicenseClassInfo.DefaultValidityLength);
+            NewLicense.Notes = this.Notes;
+            NewLicense.PaidFees = 0; // Replacement has no class fees
+            NewLicense.IsActive = true;
+            NewLicense.IssueReason = enIssueReason.ReplacementForLost;
+            NewLicense.CreatedByUserID = CreatedByUserID;
+
+            if (!NewLicense.Save()) return null;
+            if (!DeactivateCurrentLicense()) return null;
+
+            try
+            {
+                clsUserMessage.SendSystemMessage(this.DriverInfo.PersonInfo.PersonID, "License Replaced", 
+                    $"Your driving license (Class: {this.LicenseClassInfo.ClassName}) has been replaced due to being Lost.", "License");
+            }
+            catch (Exception) { }
+
+            return NewLicense;
+        }
+
+
+
 
         public clsLicenses Replace(enIssueReason IssueReason, int CreatedByUserID)
         {

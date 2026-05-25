@@ -93,7 +93,8 @@ namespace DVLDREST_API.Controllers
             if (app.ApplicationStatus == clsApplication.enApplicationStatus.Approved)
             {
                 if (app.ApplicationTypeID == (int)clsApplication.enApplicationType.RenewDrivingLicense ||
-                    app.ApplicationTypeID == (int)clsApplication.enApplicationType.ReplaceDamagedDrivingLicense)
+                    app.ApplicationTypeID == (int)clsApplication.enApplicationType.ReplaceDamagedDrivingLicense ||
+                    app.ApplicationTypeID == (int)clsApplication.enApplicationType.ReplaceLostDrivingLicense)
                 {
                     clsDrivers driver = clsDrivers.FindByPersonID(app.ApplicantPersonID);
                     if (driver != null)
@@ -108,6 +109,10 @@ namespace DVLDREST_API.Controllers
                             else if (app.ApplicationTypeID == (int)clsApplication.enApplicationType.ReplaceDamagedDrivingLicense)
                             {
                                 oldLicense.CompleteReplacementDamagedAfterPayment(app, app.CreatedByUserID);
+                            }
+                            else if (app.ApplicationTypeID == (int)clsApplication.enApplicationType.ReplaceLostDrivingLicense)
+                            {
+                                oldLicense.CompleteReplacementLostAfterPayment(app, app.CreatedByUserID);
                             }
                         }
                     }
@@ -128,7 +133,7 @@ namespace DVLDREST_API.Controllers
     public class PaymentConfirmRequest
     {
         public int ApplicationID { get; set; }
-        public string PaymentMethod { get; set; } = "Cash";
-        public string ChapaTransactionRef { get; set; } = null;
+        public string? PaymentMethod { get; set; } = "Cash";
+        public string? ChapaTransactionRef { get; set; } = null;
     }
 }

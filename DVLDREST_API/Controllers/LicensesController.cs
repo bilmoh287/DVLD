@@ -188,6 +188,36 @@ namespace DVLDREST_API.Controllers
             return StatusCode(500, new { message = "Error submitting replacement application." });
         }
 
+        [HttpPost("apply-replacement-lost")]
+        public IActionResult ApplyForReplacementLost([FromBody] ApplyForRenewalRequestDTO request)
+        {
+            if (request == null) return BadRequest(new { message = "Invalid request." });
+
+            clsLicenses oldLicense = clsLicenses.Find(request.LicenseID);
+            if (oldLicense == null) return NotFound(new { message = "License not found." });
+
+            if (!oldLicense.IsActive) return BadRequest(new { message = "Cannot replace an inactive license." });
+
+            clsApplication application = oldLicense.ApplyForReplacementLost("", request.CreatedByUserID);
+
+            if (application != null)
+            {
+                if (!string.IsNullOrEmpty(request.ImageBase64))
+                {
+                    string imagePath = SaveImageToDisk(request.ImageBase64, application.ApplicationID, "LostLicenseReport");
+                    application.SaveDocuments(imagePath, "", "", "");
+                }
+
+                return Ok(new { 
+                    message = "Application submitted successfully.", 
+                    applicationID = application.ApplicationID
+                });
+            }
+            return StatusCode(500, new { message = "Error submitting replacement application." });
+        }
+
+
+
         private string SaveImageToDisk(string base64String, int applicationId, string docType)
         {
             if (string.IsNullOrEmpty(base64String)) return null;
