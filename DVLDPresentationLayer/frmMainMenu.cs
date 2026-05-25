@@ -225,5 +225,10 @@ namespace DVLDPresentationLayer
             frmSheduleTestForAllStudets frm = new frmSheduleTestForAllStudets();
             frm.ShowDialog();
         }
+
+        private void reviewApplicartionsForReplacementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReplaceLostOrDamagedLicenseReview frm = new frmReplaceLostOrDamagedLicenseReview();
+        }
     }
 }

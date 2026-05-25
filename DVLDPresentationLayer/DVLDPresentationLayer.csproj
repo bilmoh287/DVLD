@@ -193,6 +193,7 @@
     <Compile Include="frmListTrainingBatches.Designer.cs">
       <DependentUpon>frmListTrainingBatches.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReviewApplicationsForReplacement.cs" />
     <Compile Include="Main Dashboard\frmDashboardContent.cs">
       <SubType>Form</SubType>
     </Compile>
