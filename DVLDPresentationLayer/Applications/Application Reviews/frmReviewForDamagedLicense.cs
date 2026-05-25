@@ -49,9 +49,15 @@ namespace DVLDPresentationLayer.Applications.Application_Reviews
                 panelDetail.Visible = true;
                 ctlPersonCard1.LoadPersonInfo(_Application.ApplicantPersonID);
 
-                if (!string.IsNullOrEmpty(_Application.DocumentPath))
+                if (!System.IO.File.Exists(_Application.DocumentPath))
                 {
-                    try { pbIdpictrue.ImageLocation = _Application.DocumentPath; } catch { }
+                    MessageBox.Show("Image file not found at: " + _Application.DocumentPath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    pbIdpictrue.Image = null;
+                }
+                else if (!string.IsNullOrEmpty(_Application.DocumentPath))
+                {
+                    try { pbIdpictrue.Image = Image.FromFile(_Application.DocumentPath); } 
+                    catch (Exception ex) { MessageBox.Show("Error loading image: " + ex.Message); }
                 }
                 else { pbIdpictrue.Image = null; }
             }
