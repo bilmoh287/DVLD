@@ -35,24 +35,44 @@ namespace DVLDPresentationLayer
         {
             if (dgvEligibleStudents.Columns.Count == 0) return;
 
-            dgvEligibleStudents.Columns["ApplicationID"].HeaderText = "App ID";
-            dgvEligibleStudents.Columns["ApplicationID"].Width = 80;
-            dgvEligibleStudents.Columns["ApplicationID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            if (dgvEligibleStudents.Columns["ApplicationID"] != null)
+            {
+                dgvEligibleStudents.Columns["ApplicationID"].HeaderText = "App ID";
+                dgvEligibleStudents.Columns["ApplicationID"].Width = 80;
+                dgvEligibleStudents.Columns["ApplicationID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            }
 
-            dgvEligibleStudents.Columns["FullName"].HeaderText = "Full Name";
-            dgvEligibleStudents.Columns["FullName"].Width = 300;
-            dgvEligibleStudents.Columns["FullName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            if (dgvEligibleStudents.Columns["FullName"] != null)
+            {
+                dgvEligibleStudents.Columns["FullName"].HeaderText = "Full Name";
+                dgvEligibleStudents.Columns["FullName"].Width = 300;
+                dgvEligibleStudents.Columns["FullName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            }
 
-            dgvEligibleStudents.Columns["ClassName"].HeaderText = "License Class";
-            dgvEligibleStudents.Columns["ClassName"].Width = 280;
-            dgvEligibleStudents.Columns["ClassName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            if (dgvEligibleStudents.Columns["ClassName"] != null)
+            {
+                dgvEligibleStudents.Columns["ClassName"].HeaderText = "License Class";
+                dgvEligibleStudents.Columns["ClassName"].Width = 280;
+                dgvEligibleStudents.Columns["ClassName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            }
 
-            dgvEligibleStudents.Columns["Phone"].HeaderText = "Phone";
-            dgvEligibleStudents.Columns["Phone"].Width = 150;
-            dgvEligibleStudents.Columns["Phone"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            if (dgvEligibleStudents.Columns["Phone"] != null)
+            {
+                dgvEligibleStudents.Columns["Phone"].HeaderText = "Phone";
+                dgvEligibleStudents.Columns["Phone"].Width = 150;
+                dgvEligibleStudents.Columns["Phone"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            }
 
-            dgvEligibleStudents.Columns["ApplicationDate"].HeaderText = "Application Date";
-            dgvEligibleStudents.Columns["ApplicationDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            if (dgvEligibleStudents.Columns["EnrollmentDate"] != null)
+            {
+                dgvEligibleStudents.Columns["EnrollmentDate"].HeaderText = "Enrollment Date";
+                dgvEligibleStudents.Columns["EnrollmentDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+            else if (dgvEligibleStudents.Columns["ApplicationDate"] != null)
+            {
+                dgvEligibleStudents.Columns["ApplicationDate"].HeaderText = "Application Date";
+                dgvEligibleStudents.Columns["ApplicationDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
         }
 
         private void frmAssignStudentToBatch_Load(object sender, EventArgs e)
@@ -101,7 +121,10 @@ namespace DVLDPresentationLayer
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-             _dtEligibleStudents.DefaultView.RowFilter = string.Format("[FullName] LIKE '{0}%'", txtSearch.Text.Trim());
+             if (_dtEligibleStudents != null)
+             {
+                 _dtEligibleStudents.DefaultView.RowFilter = string.Format("[FullName] LIKE '{0}%'", txtSearch.Text.Trim());
+             }
         }
     }
 }

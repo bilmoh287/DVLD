@@ -35,24 +35,39 @@ namespace DVLDPresentationLayer
         {
             if (dgvStudents.Columns.Count == 0) return;
 
-            dgvStudents.Columns["ApplicationID"].HeaderText = "App ID";
-            dgvStudents.Columns["ApplicationID"].Width = 80;
-            dgvStudents.Columns["ApplicationID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            if (dgvStudents.Columns["ApplicationID"] != null)
+            {
+                dgvStudents.Columns["ApplicationID"].HeaderText = "App ID";
+                dgvStudents.Columns["ApplicationID"].Width = 80;
+                dgvStudents.Columns["ApplicationID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            }
 
-            dgvStudents.Columns["FullName"].HeaderText = "Full Name";
-            dgvStudents.Columns["FullName"].Width = 280;
-            dgvStudents.Columns["FullName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            if (dgvStudents.Columns["FullName"] != null)
+            {
+                dgvStudents.Columns["FullName"].HeaderText = "Full Name";
+                dgvStudents.Columns["FullName"].Width = 280;
+                dgvStudents.Columns["FullName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            }
 
-            dgvStudents.Columns["ClassName"].HeaderText = "License Class";
-            dgvStudents.Columns["ClassName"].Width = 280;
-            dgvStudents.Columns["ClassName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            if (dgvStudents.Columns["ClassName"] != null)
+            {
+                dgvStudents.Columns["ClassName"].HeaderText = "License Class";
+                dgvStudents.Columns["ClassName"].Width = 280;
+                dgvStudents.Columns["ClassName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            }
 
-            dgvStudents.Columns["Phone"].HeaderText = "Phone";
-            dgvStudents.Columns["Phone"].Width = 150;
-            dgvStudents.Columns["Phone"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            if (dgvStudents.Columns["Phone"] != null)
+            {
+                dgvStudents.Columns["Phone"].HeaderText = "Phone";
+                dgvStudents.Columns["Phone"].Width = 150;
+                dgvStudents.Columns["Phone"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            }
 
-            dgvStudents.Columns["AssignedDate"].HeaderText = "Assigned Date";
-            dgvStudents.Columns["AssignedDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            if (dgvStudents.Columns["AssignedDate"] != null)
+            {
+                dgvStudents.Columns["AssignedDate"].HeaderText = "Assigned Date";
+                dgvStudents.Columns["AssignedDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
         }
 
         private void frmManageBatchStudents_Load(object sender, EventArgs e)
