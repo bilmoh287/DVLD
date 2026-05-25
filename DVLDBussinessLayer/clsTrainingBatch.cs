@@ -154,6 +154,11 @@ namespace DVLDBussinessLayer
             return clsTrainingBatchData.SetStudentEligibility(ApplicationID, BatchID, isEligible);
         }
 
+        public static bool ResetStudentEligibility(int ApplicationID)
+        {
+            return clsTrainingBatchData.ResetStudentEligibility(ApplicationID);
+        }
+
         public static DataTable GetStudentsEligibleForTestScheduling()
         {
             return clsTrainingBatchData.GetStudentsEligibleForTestScheduling();
@@ -225,6 +230,14 @@ namespace DVLDBussinessLayer
             foreach (DataRow row in dtEligible.Rows)
             {
                 int appId = (int)row["LocalDrivingLicenseApplicationID"];
+                int nextTestTypeID = (row["NextTestTypeID"] != DBNull.Value) ? (int)row["NextTestTypeID"] : 0;
+
+                // Ensure we only schedule the test that the student is actually due for next
+                if (nextTestTypeID != testTypeID)
+                {
+                    skippedCount++;
+                    continue;
+                }
 
                 // Constraint checks
                 bool isEligible = false;
@@ -276,6 +289,7 @@ namespace DVLDBussinessLayer
                     if (ldla != null)
                     {
                         clsTestSchedulePublisher.Publish(ldla.ApplicantPersonID, testTypeID, appointmentDate, appointment.TestAppointmentID);
+                        ResetStudentEligibility(ldla.ApplicationID);
                     }
 
                     System.Threading.Interlocked.Increment(ref localScheduled);

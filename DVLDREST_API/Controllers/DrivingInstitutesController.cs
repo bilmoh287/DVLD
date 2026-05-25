@@ -673,7 +673,11 @@ namespace DVLDREST_API.Controllers
                     TotalSessions      = (int)row["TotalSessions"],
                     PresentCount       = (int)row["PresentCount"],
                     AttendanceRate     = (int)row["TotalSessions"] == 0 ? 0
-                                            : Math.Round((double)(int)row["PresentCount"] / (int)row["TotalSessions"] * 100, 1)
+                                            : Math.Round((double)(int)row["PresentCount"] / (int)row["TotalSessions"] * 100, 1),
+                    NextTestTypeID     = row["NextTestTypeID"] != DBNull.Value ? (int)row["NextTestTypeID"] : 4,
+                    NextTestName       = row["NextTestName"].ToString(),
+                    HasPendingTest     = row["HasPendingTest"] != DBNull.Value && (int)row["HasPendingTest"] == 1,
+                    HasFailedLast      = row["HasFailedLast"] != DBNull.Value && (int)row["HasFailedLast"] == 1
                 });
             }
 

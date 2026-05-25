@@ -342,7 +342,109 @@ namespace DVLDDataAccessLayer
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
-                string query = @"SELECT
+                string query = @"WITH TestStatusCTE AS (
+                                     SELECT 
+                                         L.LocalDrivingLicenseApplicationID,
+                                         PassedVision = CASE WHEN EXISTS (
+                                             SELECT 1 FROM Tests T 
+                                             INNER JOIN TestAppointments TA ON T.TestAppointmentID = TA.TestAppointmentID 
+                                             WHERE TA.LocalDrivingLicenseApplicationID = L.LocalDrivingLicenseApplicationID AND TA.TestTypeID = 1 AND T.TestResult = 1
+                                         ) THEN 1 ELSE 0 END,
+                                         PassedWritten = CASE WHEN EXISTS (
+                                             SELECT 1 FROM Tests T 
+                                             INNER JOIN TestAppointments TA ON T.TestAppointmentID = TA.TestAppointmentID 
+                                             WHERE TA.LocalDrivingLicenseApplicationID = L.LocalDrivingLicenseApplicationID AND TA.TestTypeID = 2 AND T.TestResult = 1
+                                         ) THEN 1 ELSE 0 END,
+                                         PassedStreet = CASE WHEN EXISTS (
+                                             SELECT 1 FROM Tests T 
+                                             INNER JOIN TestAppointments TA ON T.TestAppointmentID = TA.TestAppointmentID 
+                                             WHERE TA.LocalDrivingLicenseApplicationID = L.LocalDrivingLicenseApplicationID AND TA.TestTypeID = 3 AND T.TestResult = 1
+                                         ) THEN 1 ELSE 0 END,
+                                         
+                                         PendingVision = CASE WHEN EXISTS (
+                                             SELECT 1 FROM TestAppointments 
+                                             WHERE LocalDrivingLicenseApplicationID = L.LocalDrivingLicenseApplicationID AND TestTypeID = 1 AND IsLocked = 0
+                                         ) THEN 1 ELSE 0 END,
+                                         PendingWritten = CASE WHEN EXISTS (
+                                             SELECT 1 FROM TestAppointments 
+                                             WHERE LocalDrivingLicenseApplicationID = L.LocalDrivingLicenseApplicationID AND TestTypeID = 2 AND IsLocked = 0
+                                         ) THEN 1 ELSE 0 END,
+                                         PendingStreet = CASE WHEN EXISTS (
+                                             SELECT 1 FROM TestAppointments 
+                                             WHERE LocalDrivingLicenseApplicationID = L.LocalDrivingLicenseApplicationID AND TestTypeID = 3 AND IsLocked = 0
+                                         ) THEN 1 ELSE 0 END,
+
+                                         FailedVision = CASE WHEN EXISTS (
+                                             SELECT 1 FROM Tests T 
+                                             INNER JOIN TestAppointments TA ON T.TestAppointmentID = TA.TestAppointmentID 
+                                             WHERE TA.LocalDrivingLicenseApplicationID = L.LocalDrivingLicenseApplicationID AND TA.TestTypeID = 1
+                                             AND T.TestID = (
+                                                 SELECT TOP 1 T2.TestID 
+                                                 FROM Tests T2 
+                                                 INNER JOIN TestAppointments TA2 ON T2.TestAppointmentID = TA2.TestAppointmentID 
+                                                 WHERE TA2.LocalDrivingLicenseApplicationID = L.LocalDrivingLicenseApplicationID AND TA2.TestTypeID = 1
+                                                 ORDER BY TA2.AppointmentDate DESC, T2.TestID DESC
+                                             )
+                                             AND T.TestResult = 0
+                                         ) THEN 1 ELSE 0 END,
+                                         FailedWritten = CASE WHEN EXISTS (
+                                             SELECT 1 FROM Tests T 
+                                             INNER JOIN TestAppointments TA ON T.TestAppointmentID = TA.TestAppointmentID 
+                                             WHERE TA.LocalDrivingLicenseApplicationID = L.LocalDrivingLicenseApplicationID AND TA.TestTypeID = 2
+                                             AND T.TestID = (
+                                                 SELECT TOP 1 T2.TestID 
+                                                 FROM Tests T2 
+                                                 INNER JOIN TestAppointments TA2 ON T2.TestAppointmentID = TA2.TestAppointmentID 
+                                                 WHERE TA2.LocalDrivingLicenseApplicationID = L.LocalDrivingLicenseApplicationID AND TA2.TestTypeID = 2
+                                                 ORDER BY TA2.AppointmentDate DESC, T2.TestID DESC
+                                             )
+                                             AND T.TestResult = 0
+                                         ) THEN 1 ELSE 0 END,
+                                         FailedStreet = CASE WHEN EXISTS (
+                                             SELECT 1 FROM Tests T 
+                                             INNER JOIN TestAppointments TA ON T.TestAppointmentID = TA.TestAppointmentID 
+                                             WHERE TA.LocalDrivingLicenseApplicationID = L.LocalDrivingLicenseApplicationID AND TA.TestTypeID = 3
+                                             AND T.TestID = (
+                                                 SELECT TOP 1 T2.TestID 
+                                                 FROM Tests T2 
+                                                 INNER JOIN TestAppointments TA2 ON T2.TestAppointmentID = TA2.TestAppointmentID 
+                                                 WHERE TA2.LocalDrivingLicenseApplicationID = L.LocalDrivingLicenseApplicationID AND TA2.TestTypeID = 3
+                                                 ORDER BY TA2.AppointmentDate DESC, T2.TestID DESC
+                                             )
+                                             AND T.TestResult = 0
+                                         ) THEN 1 ELSE 0 END
+                                     FROM LocalDrivingLicenseApplications L
+                                 ),
+                                 ComputedNextTest AS (
+                                     SELECT 
+                                         LocalDrivingLicenseApplicationID,
+                                         NextTestTypeID = CASE 
+                                             WHEN PassedVision = 0 THEN 1 
+                                             WHEN PassedWritten = 0 THEN 2 
+                                             WHEN PassedStreet = 0 THEN 3 
+                                             ELSE 4 
+                                         END,
+                                         NextTestName = CASE 
+                                             WHEN PassedVision = 0 THEN 'Vision Test' 
+                                             WHEN PassedWritten = 0 THEN 'Written Test' 
+                                             WHEN PassedStreet = 0 THEN 'Street Test' 
+                                             ELSE 'Passed All' 
+                                         END,
+                                         HasPendingTest = CASE 
+                                             WHEN PassedVision = 0 THEN PendingVision 
+                                             WHEN PassedWritten = 0 THEN PendingWritten 
+                                             WHEN PassedStreet = 0 THEN PendingStreet 
+                                             ELSE 0 
+                                         END,
+                                         HasFailedLast = CASE 
+                                             WHEN PassedVision = 0 THEN FailedVision 
+                                             WHEN PassedWritten = 0 THEN FailedWritten 
+                                             WHEN PassedStreet = 0 THEN FailedStreet 
+                                             ELSE 0 
+                                         END
+                                     FROM TestStatusCTE
+                                 )
+                                 SELECT
                                      AB.ApplicantBatchID,
                                      AB.ApplicationID,
                                      P.PersonID,
@@ -352,7 +454,11 @@ namespace DVLDDataAccessLayer
                                      AB.IsEligibleForTest,
                                      AB.AssignedDate,
                                      TotalSessions  = COUNT(ATT.AttendanceID),
-                                     PresentCount   = SUM(CAST(ISNULL(ATT.IsPresent, 0) AS INT))
+                                     PresentCount   = SUM(CAST(ISNULL(ATT.IsPresent, 0) AS INT)),
+                                     NT.NextTestTypeID,
+                                     NT.NextTestName,
+                                     NT.HasPendingTest,
+                                     NT.HasFailedLast
                                  FROM ApplicantBatch AB
                                  INNER JOIN Applications A ON AB.ApplicationID = A.ApplicationID
                                  INNER JOIN LocalDrivingLicenseApplications L ON A.ApplicationID = L.ApplicationID
@@ -360,10 +466,12 @@ namespace DVLDDataAccessLayer
                                  INNER JOIN People P ON A.ApplicantPersonID = P.PersonID
                                  LEFT JOIN Attendance ATT ON AB.ApplicationID = ATT.ApplicationID
                                                          AND AB.TrainingBatchID = ATT.TrainingBatchID
+                                 LEFT JOIN ComputedNextTest NT ON L.LocalDrivingLicenseApplicationID = NT.LocalDrivingLicenseApplicationID
                                  WHERE AB.TrainingBatchID = @BatchID
                                  GROUP BY AB.ApplicantBatchID, AB.ApplicationID, P.PersonID,
                                           P.FirstName, P.LastName, P.Phone, C.ClassName,
-                                          AB.IsEligibleForTest, AB.AssignedDate";
+                                          AB.IsEligibleForTest, AB.AssignedDate,
+                                          NT.NextTestTypeID, NT.NextTestName, NT.HasPendingTest, NT.HasFailedLast";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@BatchID", BatchID);
@@ -403,6 +511,35 @@ namespace DVLDDataAccessLayer
                 command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
                 command.Parameters.AddWithValue("@BatchID", BatchID);
                 command.Parameters.AddWithValue("@IsEligible", isEligible ? 1 : 0);
+
+                try
+                {
+                    connection.Open();
+                    rowsAffected = command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return (rowsAffected > 0);
+        }
+
+        /// <summary>
+        /// Resets IsEligibleForTest = 0 for a student after they have been scheduled for a test.
+        /// </summary>
+        public static bool ResetStudentEligibility(int ApplicationID)
+        {
+            int rowsAffected = 0;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string query = @"UPDATE ApplicantBatch
+                                 SET IsEligibleForTest = 0
+                                 WHERE ApplicationID = @ApplicationID";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
 
                 try
                 {
@@ -478,7 +615,44 @@ namespace DVLDDataAccessLayer
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
-                string query = @"SELECT 
+                string query = @"WITH TestStatusCTE AS (
+                                     SELECT 
+                                         L.LocalDrivingLicenseApplicationID,
+                                         PassedVision = CASE WHEN EXISTS (
+                                             SELECT 1 FROM Tests T 
+                                             INNER JOIN TestAppointments TA ON T.TestAppointmentID = TA.TestAppointmentID 
+                                             WHERE TA.LocalDrivingLicenseApplicationID = L.LocalDrivingLicenseApplicationID AND TA.TestTypeID = 1 AND T.TestResult = 1
+                                         ) THEN 1 ELSE 0 END,
+                                         PassedWritten = CASE WHEN EXISTS (
+                                             SELECT 1 FROM Tests T 
+                                             INNER JOIN TestAppointments TA ON T.TestAppointmentID = TA.TestAppointmentID 
+                                             WHERE TA.LocalDrivingLicenseApplicationID = L.LocalDrivingLicenseApplicationID AND TA.TestTypeID = 2 AND T.TestResult = 1
+                                         ) THEN 1 ELSE 0 END,
+                                         PassedStreet = CASE WHEN EXISTS (
+                                             SELECT 1 FROM Tests T 
+                                             INNER JOIN TestAppointments TA ON T.TestAppointmentID = TA.TestAppointmentID 
+                                             WHERE TA.LocalDrivingLicenseApplicationID = L.LocalDrivingLicenseApplicationID AND TA.TestTypeID = 3 AND T.TestResult = 1
+                                         ) THEN 1 ELSE 0 END
+                                     FROM LocalDrivingLicenseApplications L
+                                 ),
+                                 ComputedNextTest AS (
+                                     SELECT 
+                                         LocalDrivingLicenseApplicationID,
+                                         NextTestTypeID = CASE 
+                                             WHEN PassedVision = 0 THEN 1 
+                                             WHEN PassedWritten = 0 THEN 2 
+                                             WHEN PassedStreet = 0 THEN 3 
+                                             ELSE 4 
+                                         END,
+                                         NextTestName = CASE 
+                                             WHEN PassedVision = 0 THEN 'Vision Test' 
+                                             WHEN PassedWritten = 0 THEN 'Written Test' 
+                                             WHEN PassedStreet = 0 THEN 'Street Test' 
+                                             ELSE 'Passed All' 
+                                         END
+                                     FROM TestStatusCTE
+                                 )
+                                 SELECT 
                                      AB.ApplicationID, 
                                      L.LocalDrivingLicenseApplicationID,
                                      A.ApplicantPersonID AS PersonID,
@@ -486,13 +660,16 @@ namespace DVLDDataAccessLayer
                                      C.ClassName,
                                      P.Phone,
                                      I.InstituteName,
-                                     L.LicenseClassID
+                                     L.LicenseClassID,
+                                     NT.NextTestTypeID,
+                                     NT.NextTestName
                                  FROM ApplicantBatch AB
                                  INNER JOIN Applications A ON AB.ApplicationID = A.ApplicationID
                                  INNER JOIN LocalDrivingLicenseApplications L ON AB.ApplicationID = L.ApplicationID
                                  INNER JOIN LicenseClasses C ON L.LicenseClassID = C.LicenseClassID
                                  INNER JOIN People P ON A.ApplicantPersonID = P.PersonID
                                  INNER JOIN DrivingInstitutes I ON L.InstituteID = I.InstituteID
+                                 LEFT JOIN ComputedNextTest NT ON L.LocalDrivingLicenseApplicationID = NT.LocalDrivingLicenseApplicationID
                                  WHERE AB.IsEligibleForTest = 1";
 
                 SqlCommand command = new SqlCommand(query, connection);
