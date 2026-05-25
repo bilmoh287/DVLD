@@ -3,6 +3,9 @@ using DVLDBussinessLayer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
+using MediatR;
+using DVLDREST_API.Workflows.TestScheduling;
+using System.Threading.Tasks;
 
 namespace DVLDREST_API.Controllers
 {
@@ -11,6 +14,13 @@ namespace DVLDREST_API.Controllers
     [Authorize] // Requires JWT token for all endpoints
     public class ApplicationsController : ControllerBase
     {
+        private readonly IMediator _mediator;
+
+        public ApplicationsController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
         [HttpGet("classes")]
         public IActionResult GetAllLicenseClasses()
         {
@@ -319,7 +329,7 @@ namespace DVLDREST_API.Controllers
 
         // POST /api/applications/schedule-test
         [HttpPost("schedule-test")]
-        public IActionResult ScheduleTest([FromBody] ScheduleTestRequestDTO request)
+        public async Task<IActionResult> ScheduleTest([FromBody] ScheduleTestRequestDTO request)
         {
             if (request == null) return BadRequest("Invalid request.");
 
@@ -374,6 +384,15 @@ namespace DVLDREST_API.Controllers
 
             if (appointment.Save())
             {
+                // Publish domain event/notification so all handlers (Mobile, SMS, Email, School, Audit) can execute asynchronously
+                await _mediator.Publish(new TestScheduledNotification(
+                    appointment.TestAppointmentID,
+                    appointment.LocalDrivingLicenseApplicationID,
+                    appointment.TestTypeID,
+                    appointment.AppointmentDate,
+                    ldlApplication.ApplicantPersonID
+                ));
+
                 return Ok(new { message = "Test Scheduled successfully.", appointmentID = appointment.TestAppointmentID });
             }
 
