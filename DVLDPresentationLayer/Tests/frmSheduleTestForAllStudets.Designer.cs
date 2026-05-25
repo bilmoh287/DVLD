@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.panelEligibleStduents = new System.Windows.Forms.Panel();
-            this.panelButtons = new System.Windows.Forms.Panel();
             this.lblRecordsCount = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnClose = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panelButtons = new System.Windows.Forms.Panel();
             this.btnScheduleVisionTest = new System.Windows.Forms.Button();
             this.btnScheduleWrittenTest = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.btnScheduleStreetTest = new System.Windows.Forms.Button();
             this.panelEligibleStduents.SuspendLayout();
-            this.panelButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panelButtons.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelEligibleStduents
@@ -52,18 +52,6 @@
             this.panelEligibleStduents.Name = "panelEligibleStduents";
             this.panelEligibleStduents.Size = new System.Drawing.Size(980, 745);
             this.panelEligibleStduents.TabIndex = 0;
-            // 
-            // panelButtons
-            // 
-            this.panelButtons.Controls.Add(this.btnScheduleVisionTest);
-            this.panelButtons.Controls.Add(this.btnScheduleWrittenTest);
-            this.panelButtons.Controls.Add(this.btnClose);
-            this.panelButtons.Controls.Add(this.btnScheduleStreetTest);
-            this.panelButtons.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelButtons.Location = new System.Drawing.Point(1040, 0);
-            this.panelButtons.Name = "panelButtons";
-            this.panelButtons.Size = new System.Drawing.Size(289, 745);
-            this.panelButtons.TabIndex = 1;
             // 
             // lblRecordsCount
             // 
@@ -87,21 +75,6 @@
             this.label2.TabIndex = 129;
             this.label2.Text = "# Records:";
             // 
-            // btnClose
-            // 
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Image = global::DVLDPresentationLayer.Properties.Resources.Close_32;
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(136, 694);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(126, 37);
-            this.btnClose.TabIndex = 128;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -116,6 +89,18 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(942, 476);
             this.dataGridView1.TabIndex = 126;
+            // 
+            // panelButtons
+            // 
+            this.panelButtons.Controls.Add(this.btnScheduleVisionTest);
+            this.panelButtons.Controls.Add(this.btnScheduleWrittenTest);
+            this.panelButtons.Controls.Add(this.btnClose);
+            this.panelButtons.Controls.Add(this.btnScheduleStreetTest);
+            this.panelButtons.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelButtons.Location = new System.Drawing.Point(1040, 0);
+            this.panelButtons.Name = "panelButtons";
+            this.panelButtons.Size = new System.Drawing.Size(289, 745);
+            this.panelButtons.TabIndex = 1;
             // 
             // btnScheduleVisionTest
             // 
@@ -132,6 +117,7 @@
             this.btnScheduleVisionTest.Text = "Schudule Vision Test";
             this.btnScheduleVisionTest.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnScheduleVisionTest.UseVisualStyleBackColor = true;
+            this.btnScheduleVisionTest.Click += new System.EventHandler(this.btnScheduleVisionTest_Click_1);
             // 
             // btnScheduleWrittenTest
             // 
@@ -149,6 +135,21 @@
             this.btnScheduleWrittenTest.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnScheduleWrittenTest.UseVisualStyleBackColor = true;
             this.btnScheduleWrittenTest.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Image = global::DVLDPresentationLayer.Properties.Resources.Close_32;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(136, 694);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(126, 37);
+            this.btnClose.TabIndex = 128;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
             // 
             // btnScheduleStreetTest
             // 
@@ -180,8 +181,8 @@
             this.Text = "frmSheduleTestForAllStudets";
             this.panelEligibleStduents.ResumeLayout(false);
             this.panelEligibleStduents.PerformLayout();
-            this.panelButtons.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panelButtons.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

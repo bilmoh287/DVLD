@@ -24,7 +24,7 @@ namespace DVLDPresentationLayer
             DVLDBussinessLayer.clsTestSchedulePublisher.Subscribe(new DVLDBussinessLayer.clsEmailSmtpSubscriber());
 
             // Temporarily changed from frmLogin() to frmSchoolDashboard() for testing
-            Application.Run(new frmSchoolDashboard(1));
+            Application.Run(new frmLogin());
         }
     }
 }
