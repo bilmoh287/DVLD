@@ -44,16 +44,27 @@ namespace DVLDPresentationLayer
 
                 if (!string.IsNullOrEmpty(_Application.DocumentPath))
                 {
-                    try
-                    {
-                        pbIdpictruefront.ImageLocation = _Application.DocumentPath;
-                    }
-                    catch { }
+                    try { pbIdpictruefront.ImageLocation = _Application.DocumentPath; } catch { }
                 }
-                else
+                else { pbIdpictruefront.Image = null; }
+
+                if (!string.IsNullOrEmpty(_Application.NationalIDBackPath))
                 {
-                    pbIdpictruefront.Image = null;
+                    try { pbidpictureback.ImageLocation = _Application.NationalIDBackPath; } catch { }
                 }
+                else { pbidpictureback.Image = null; }
+
+                if (!string.IsNullOrEmpty(_Application.BirthCertificatePath))
+                {
+                    try { pbBirthCertificate.ImageLocation = _Application.BirthCertificatePath; } catch { }
+                }
+                else { pbBirthCertificate.Image = null; }
+
+                if (!string.IsNullOrEmpty(_Application.Transcript12thPath))
+                {
+                    try { pb12thTranscript.ImageLocation = _Application.Transcript12thPath; } catch { }
+                }
+                else { pb12thTranscript.Image = null; }
             }
 
         }

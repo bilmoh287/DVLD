@@ -25,7 +25,7 @@ namespace DVLDREST_API.Controllers
         {
             if (string.IsNullOrEmpty(loginRequest.Username) || string.IsNullOrEmpty(loginRequest.Password))
             {
-                return BadRequest("Username and Password are required.");
+                return BadRequest(new { message = "Username and Password are required." });
             }
 
             // Find user in the business layer
@@ -33,7 +33,7 @@ namespace DVLDREST_API.Controllers
 
             if (user == null || !user.IsActive)
             {
-                return Unauthorized("Invalid credentials or inactive account.");
+                return Unauthorized(new { message = "Invalid credentials or inactive account." });
             }
 
             // Find role and check school association
@@ -86,17 +86,17 @@ namespace DVLDREST_API.Controllers
         [HttpPost("register")]
         public IActionResult Register([FromBody] RegisterApplicantDTO registerRequest)
         {
-            if (registerRequest == null) return BadRequest("Invalid request.");
+            if (registerRequest == null) return BadRequest(new { message = "Invalid request." });
 
             // 1. Validation Checks
             if (clsPerson.IsPersonExist(registerRequest.NationalNo))
             {
-                return Conflict("A person with this National Number already exists.");
+                return Conflict(new { message = "A person with this National Number already exists." });
             }
 
             if (clsUser.IsUserExist(registerRequest.Username))
             {
-                return Conflict("This Username is already taken.");
+                return Conflict(new { message = "This Username is already taken." });
             }
 
             // 2. Create Person Record
@@ -116,7 +116,7 @@ namespace DVLDREST_API.Controllers
 
             if (!person.Save())
             {
-                return StatusCode(500, "Error occurred while saving person details.");
+                return StatusCode(500, new { message = "Error occurred while saving person details." });
             }
 
             // 3. Create User Account
@@ -129,7 +129,7 @@ namespace DVLDREST_API.Controllers
             if (!user.Save())
             {
                 // Note: In a production app, you might want to delete the person record if user creation fails
-                return StatusCode(500, "Error occurred while creating user account.");
+                return StatusCode(500, new { message = "Error occurred while creating user account." });
             }
 
             // 4. Generate Token and Respond

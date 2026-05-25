@@ -255,6 +255,40 @@ namespace DVLDDataAccessLayer
             return (rowsAffected > 0);
         }
 
+
+        public static DataTable GetUnderReviewApplicationsByType(int applicationTypeID)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                // Status 1 is 'New' (Under Review)
+                string query = @"SELECT A.ApplicationID, 
+                                        (P.FirstName + ' ' + ISNULL(P.SecondName + ' ', '') + ISNULL(P.ThirdName + ' ', '') + P.LastName) as FullName,  
+                                        P.NationalNo, A.ApplicationDate, 'New' as ApplicationStatus
+                                 FROM Applications A
+                                 INNER JOIN People P ON A.ApplicantPersonID = P.PersonID
+                                 WHERE A.ApplicationStatus = 1 AND A.ApplicationTypeID = @ApplicationTypeID;";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ApplicationTypeID", applicationTypeID);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    dt.Load(reader);
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+
+            return dt;
+        }
+
         public static DataTable GetUnderReviewApplications()
         {
             DataTable dt = new DataTable();
@@ -320,19 +354,25 @@ namespace DVLDDataAccessLayer
             return (dt.Rows.Count > 0) ? dt.Rows[0] : null;
         }
 
-        public static bool UpdateDocumentPath(int applicationID, string path)
+        public static bool UpdateApplicationDocuments(int applicationID, string frontPath, string backPath, string birthCertPath, string transcriptPath)
         {
             int rowsAffected = 0;
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
                 string query = @"UPDATE Applications 
-                                 SET DocumentPath = @Path 
+                                 SET DocumentPath = @FrontPath,
+                                     NationalIDBackPath = @BackPath,
+                                     BirthCertificatePath = @BirthCertPath,
+                                     Transcript12thPath = @TranscriptPath
                                  WHERE ApplicationID = @ApplicationID";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@ApplicationID", applicationID);
-                command.Parameters.AddWithValue("@Path", (object)path ?? DBNull.Value);
+                command.Parameters.AddWithValue("@FrontPath", (object)frontPath ?? DBNull.Value);
+                command.Parameters.AddWithValue("@BackPath", (object)backPath ?? DBNull.Value);
+                command.Parameters.AddWithValue("@BirthCertPath", (object)birthCertPath ?? DBNull.Value);
+                command.Parameters.AddWithValue("@TranscriptPath", (object)transcriptPath ?? DBNull.Value);
 
                 try
                 {

@@ -127,6 +127,100 @@ namespace DVLDREST_API.Controllers
             }
         }
 
+
+        public class ApplyForRenewalRequestDTO
+        {
+            public int LicenseID { get; set; }
+            public int CreatedByUserID { get; set; }
+            public string ImageBase64 { get; set; }
+        }
+
+        [HttpPost("apply-renewal")]
+        public IActionResult ApplyForRenewal([FromBody] ApplyForRenewalRequestDTO request)
+        {
+            if (request == null) return BadRequest(new { message = "Invalid request." });
+
+            clsLicenses oldLicense = clsLicenses.Find(request.LicenseID);
+            if (oldLicense == null) return NotFound(new { message = "License not found." });
+
+            if (!oldLicense.IsActive) return BadRequest(new { message = "Cannot renew an inactive license." });
+            if (!oldLicense.IsLicenseExpired()) return BadRequest(new { message = "License is not expired yet." });
+
+            // Apply for renewal without issuing the license
+            clsApplication application = oldLicense.ApplyForRenewal("", request.CreatedByUserID);
+
+            if (application != null)
+            {
+                // Save image and update application
+                string imagePath = SaveImageToDisk(request.ImageBase64, application.ApplicationID, "OldLicense");
+                application.DocumentPath = imagePath;
+                application.Save(); // Update path
+
+                return Ok(new { 
+                    message = "Application submitted successfully.", 
+                    applicationID = application.ApplicationID
+                });
+            }
+            return StatusCode(500, new { message = "Error submitting renewal application." });
+        }
+
+        [HttpPost("apply-replacement-damaged")]
+        public IActionResult ApplyForReplacementDamaged([FromBody] ApplyForRenewalRequestDTO request)
+        {
+            if (request == null) return BadRequest(new { message = "Invalid request." });
+
+            clsLicenses oldLicense = clsLicenses.Find(request.LicenseID);
+            if (oldLicense == null) return NotFound(new { message = "License not found." });
+
+            if (!oldLicense.IsActive) return BadRequest(new { message = "Cannot replace an inactive license." });
+
+            clsApplication application = oldLicense.ApplyForReplacementDamaged("", request.CreatedByUserID);
+
+            if (application != null)
+            {
+                string imagePath = SaveImageToDisk(request.ImageBase64, application.ApplicationID, "DamagedLicense");
+                application.DocumentPath = imagePath;
+                application.Save();
+
+                return Ok(new { 
+                    message = "Application submitted successfully.", 
+                    applicationID = application.ApplicationID
+                });
+            }
+            return StatusCode(500, new { message = "Error submitting replacement application." });
+        }
+
+        private string SaveImageToDisk(string base64String, int applicationId, string docType)
+        {
+            if (string.IsNullOrEmpty(base64String)) return null;
+
+            try
+            {
+                string folderPath = @"C:\DVLD_Uploads\Applications";
+                if (!System.IO.Directory.Exists(folderPath))
+                {
+                    System.IO.Directory.CreateDirectory(folderPath);
+                }
+
+                if (base64String.Contains(","))
+                {
+                    base64String = base64String.Substring(base64String.IndexOf(",") + 1);
+                }
+
+                byte[] imageBytes = Convert.FromBase64String(base64String);
+                string fileName = $"APP_{applicationId}_{docType}_{Guid.NewGuid().ToString("N")}.jpg";
+                string fullPath = System.IO.Path.Combine(folderPath, fileName);
+
+                System.IO.File.WriteAllBytes(fullPath, imageBytes);
+                return fullPath;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saving image for Application {applicationId}: {ex.Message}");
+                return null;
+            }
+        }
+
         // GET /api/licenses/person/{personId}
         [HttpGet("person/{personId}")]
         public IActionResult GetPersonLicenses(int personId)

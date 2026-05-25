@@ -6,6 +6,7 @@ using System.Data;
 using MediatR;
 using DVLDREST_API.Workflows.TestScheduling;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace DVLDREST_API.Controllers
 {
@@ -107,6 +108,14 @@ namespace DVLDREST_API.Controllers
 
             if (application.SaveLDLA())
             {
+                // Process Documents
+                string frontPath = SaveImageToDisk(request.FrontIdBase64, application.ApplicationID, "FrontID");
+                string backPath = SaveImageToDisk(request.BackIdBase64, application.ApplicationID, "BackID");
+                string birthCertPath = SaveImageToDisk(request.BirthCertBase64, application.ApplicationID, "BirthCert");
+                string transcriptPath = SaveImageToDisk(request.TranscriptBase64, application.ApplicationID, "Transcript");
+
+                application.SaveDocuments(frontPath, backPath, birthCertPath, transcriptPath);
+
                 return CreatedAtAction(nameof(GetApplicationStatus), new { personId = request.ApplicantPersonID }, application);
             }
 
@@ -397,6 +406,38 @@ namespace DVLDREST_API.Controllers
             }
 
             return StatusCode(500, "Error scheduling test.");
+        }
+
+        private string SaveImageToDisk(string base64String, int applicationId, string docType)
+        {
+            if (string.IsNullOrEmpty(base64String)) return null;
+
+            try
+            {
+                string folderPath = @"C:\DVLD_Uploads\Applications";
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+
+                // If the base64 string contains metadata like data:image/jpeg;base64, remove it
+                if (base64String.Contains(","))
+                {
+                    base64String = base64String.Substring(base64String.IndexOf(",") + 1);
+                }
+
+                byte[] imageBytes = Convert.FromBase64String(base64String);
+                string fileName = $"APP_{applicationId}_{docType}_{Guid.NewGuid().ToString("N")}.jpg";
+                string fullPath = Path.Combine(folderPath, fileName);
+
+                System.IO.File.WriteAllBytes(fullPath, imageBytes);
+                return fullPath;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saving image for Application {applicationId}: {ex.Message}");
+                return null;
+            }
         }
     }
 }

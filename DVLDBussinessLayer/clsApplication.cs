@@ -67,8 +67,9 @@ namespace DVLDBussinessLayer
         public int CreatedByUserID { get; set; }
         public clsUser CreatedByUserInfo;
         public string DocumentPath { get; set; }
-
-
+        public string NationalIDBackPath { get; set; }
+        public string BirthCertificatePath { get; set; }
+        public string Transcript12thPath { get; set; }
         public clsApplication()
         {
             ApplicationID = -1;
@@ -80,6 +81,9 @@ namespace DVLDBussinessLayer
             PaidFees = 0;
             CreatedByUserID = -1;
             DocumentPath = "";
+            NationalIDBackPath = "";
+            BirthCertificatePath = "";
+            Transcript12thPath = "";
             Mode = enMode.AddNew;
         }
         public clsApplication(int ApplicationID, int ApplicantPersonID,
@@ -105,6 +109,12 @@ namespace DVLDBussinessLayer
             return clsApplicationData.GetAllApplicationsList();
         }
 
+
+        public static DataTable GetUnderReviewApplicationsByType(int applicationTypeID)
+        {
+            return clsApplicationData.GetUnderReviewApplicationsByType(applicationTypeID);
+        }
+
         public static DataTable GetUnderReviewApplications()
         {
             return clsApplicationData.GetUnderReviewApplications();
@@ -125,6 +135,9 @@ namespace DVLDBussinessLayer
                 this.PaidFees = Convert.ToDecimal(row["PaidFees"]);
                 this.CreatedByUserID = (int)row["CreatedByUserID"];
                 this.DocumentPath = row["DocumentPath"] != DBNull.Value ? row["DocumentPath"].ToString() : "";
+                this.NationalIDBackPath = row["NationalIDBackPath"] != DBNull.Value ? row["NationalIDBackPath"].ToString() : "";
+                this.BirthCertificatePath = row["BirthCertificatePath"] != DBNull.Value ? row["BirthCertificatePath"].ToString() : "";
+                this.Transcript12thPath = row["Transcript12thPath"] != DBNull.Value ? row["Transcript12thPath"].ToString() : "";
                 
                 this.Mode = enMode.Update;
                 return true;
@@ -202,11 +215,14 @@ namespace DVLDBussinessLayer
             }
         }
 
-        public bool SaveDocument(string path)
+        public bool SaveDocuments(string front, string back, string birthCert, string transcript)
         {
-            if (clsApplicationData.UpdateDocumentPath(this.ApplicationID, path))
+            if (clsApplicationData.UpdateApplicationDocuments(this.ApplicationID, front, back, birthCert, transcript))
             {
-                this.DocumentPath = path;
+                this.DocumentPath = front;
+                this.NationalIDBackPath = back;
+                this.BirthCertificatePath = birthCert;
+                this.Transcript12thPath = transcript;
                 return true;
             }
             return false;
