@@ -120,6 +120,11 @@ namespace DVLDBussinessLayer
             return clsTrainingBatchData.GetEligibleApplicantsForBatch(InstituteID);
         }
 
+        public static DataTable GetEligibleApplicantsForTestSchedule(int InstituteID)
+        {
+            return clsTrainingBatchData.GetEligibleApplicantsForTestSchedule(InstituteID);
+        }
+
         public static bool RemoveApplicant(int ApplicationID, int BatchID)
         {
             return clsTrainingBatchData.RemoveApplicantFromBatch(ApplicationID, BatchID);

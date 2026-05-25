@@ -6,6 +6,9 @@
 - **Desktop UI Enhancements:** Developed the Main Dashboard (`frmMaindashborad.cs`) and added new user controls such as the complaints module (`ucComliants.cs`).
 - **WPF Integration:** Began introducing WPF dashboards (`WPFPLDashboards`) to modernize the desktop interface alongside traditional WinForms.
 - **Student Eligibility Tracking (`IsEligibleForTest`)**: Added `IsEligibleForTest` tracking in `ApplicantBatch`, wired up through DAL/BLL (`clsTrainingBatchData`, `clsTrainingBatch`), and exposed via `DVLDREST_API` so Driving Institutes can approve students for tests from the web portal.
+- **Two Separate Eligibility Flows**:
+  - `GetEligibleApplicantsForBatch` fetches enrolled students waiting for batch assignment.
+  - `GetEligibleApplicantsForTestSchedule` fetches batch students cleared for test scheduling.
 - **Batch Test Scheduling & WinForms UI**: Built `frmSheduleTestForAllStudets.cs` integrating O(1) `HashSet` lookups and `Parallel.ForEach` to safely and concurrently bulk-schedule 10,000+ eligible students for vision/written/street tests without N+1 query bottlenecks.
 - **C# Pub/Sub Observer Pattern**: Designed and implemented a decoupled Publisher-Subscriber pattern (`clsTestSchedulePublisher.cs`) to synchronize WinForms desktop test scheduling with external systems. Concrete subscribers (`clsStudentMobileSubscriber`, `clsSchoolDashboardSubscriber`, `clsEmailSmtpSubscriber`) are registered at app startup in `Program.cs`.
 

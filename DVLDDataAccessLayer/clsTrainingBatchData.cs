@@ -242,9 +242,7 @@ namespace DVLDDataAccessLayer
         }
 
         /// <summary>
-        /// Returns students in a batch who have been explicitly marked eligible for tests
-        /// by the school (IsEligibleForTest = 1). These are the students cleared to schedule
-        /// a Vision/Theory/Street test at the DVLD office.
+        /// Returns students who are enrolled at this institute and are waiting to be assigned to a batch.
         /// </summary>
         public static DataTable GetEligibleApplicantsForBatch(int InstituteID)
         {
@@ -253,9 +251,52 @@ namespace DVLDDataAccessLayer
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
                 // Returns students who:
-                // 1. Are in a batch at this institute
-                // 2. Have been marked IsEligibleForTest = 1 by the school
-                // 3. Have NOT yet passed all 3 tests (to prevent double-listing graduates)
+                // 1. Are enrolled at this institute (active enrollment)
+                // 2. Have applications that are Approved
+                // 3. Are not yet assigned to any batch
+                string query = @"SELECT DISTINCT
+                                     A.ApplicationID,
+                                     P.PersonID,
+                                     P.FirstName + ' ' + P.LastName AS FullName,
+                                     C.ClassName,
+                                     E.EnrollmentDate,
+                                     P.Phone
+                                 FROM Applications A
+                                 INNER JOIN LocalDrivingLicenseApplications L ON A.ApplicationID = L.ApplicationID
+                                 INNER JOIN LicenseClasses C ON L.LicenseClassID = C.LicenseClassID
+                                 INNER JOIN People P ON A.ApplicantPersonID = P.PersonID
+                                 INNER JOIN Enrollments E ON A.ApplicantPersonID = E.PersonID AND E.InstituteID = @InstituteID
+                                 WHERE E.InstituteID = @InstituteID
+                                   AND A.ApplicationStatus IN (4) --  Approved
+                                   AND A.ApplicationID NOT IN (SELECT ApplicationID FROM ApplicantBatch)";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@InstituteID", InstituteID);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    dt.Load(reader);
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return dt;
+        }
+
+        /// <summary>
+        /// Returns students who are in a batch at this institute and have been marked eligible for tests (IsEligibleForTest = 1).
+        /// </summary>
+        public static DataTable GetEligibleApplicantsForTestSchedule(int InstituteID)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
                 string query = @"SELECT DISTINCT
                                      AB.ApplicationID,
                                      P.PersonID,

@@ -453,6 +453,26 @@ namespace DVLDREST_API.Controllers
             }
             return Ok(list);
         }
+
+        // GET: api/DrivingInstitutes/{id}/eligible-test-students
+        [HttpGet("{id}/eligible-test-students")]
+        public IActionResult GetEligibleTestStudents(int id)
+        {
+            DataTable dt = clsTrainingBatch.GetEligibleApplicantsForTestSchedule(id);
+            var list = new List<object>();
+            foreach (DataRow row in dt.Rows)
+            {
+                list.Add(new
+                {
+                    ApplicationID = (int)row["ApplicationID"],
+                    PersonID = (int)row["PersonID"],
+                    FullName = row["FullName"]?.ToString() ?? "",
+                    Phone = row["Phone"]?.ToString() ?? "",
+                    EnrollmentDate = (DateTime)row["EnrollmentDate"]
+                });
+            }
+            return Ok(list);
+        }
         // GET: api/DrivingInstitutes/{id}/students
         [HttpGet("{id}/students")]
         public IActionResult GetInstituteStudents(int id)
