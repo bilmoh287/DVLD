@@ -46,13 +46,13 @@ namespace DVLDPresentationLayer
                 {
                     try
                     {
-                        pbIdpictrue.ImageLocation = _Application.DocumentPath;
+                        pbIdpictruefront.ImageLocation = _Application.DocumentPath;
                     }
                     catch { }
                 }
                 else
                 {
-                    pbIdpictrue.Image = null;
+                    pbIdpictruefront.Image = null;
                 }
             }
 

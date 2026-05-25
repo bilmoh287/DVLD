@@ -113,5 +113,10 @@ namespace DVLDPresentationLayer.Tests
         {
             this.Close();
         }
+
+        private void btnScheduleVisionTest_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
