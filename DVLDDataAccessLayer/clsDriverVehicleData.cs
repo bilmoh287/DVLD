@@ -13,28 +13,31 @@ namespace DVLDDataAccessLayer
             {
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
                 {
-                    // Cross-database query joining Driver history with the Vehicle catalog
+                    // Cross-database query joining Driver history with base Vehicle tables (not the heavy view)
                     string query = @"
                         SELECT 
                             DV.OwnershipID,
                             DV.PlateNumber,
                             DV.VIN,
                             DV.Color,
-                            VM.Make,
-                            VM.ModelName,
-                            VM.Year,
-                            VM.Vehicle_Display_Name,
+                            M.Make,
+                            MM.ModelName,
+                            VD.Year,
+                            VD.Vehicle_Display_Name,
                             DV.PurchaseDate,
                             DV.SaleDate,
                             DV.PurchasePrice,
                             Status = CASE WHEN DV.SaleDate IS NULL THEN 'Currently Owned' ELSE 'Sold' END
                         FROM My_DVLD.dbo.DriverVehicles DV
-                        INNER JOIN VehicleMakesDB.dbo.VehicleMasterDetails VM ON DV.VehicleID = VM.ID
+                        INNER LOOP JOIN VehicleMakesDB.dbo.VehicleDetails VD ON DV.VehicleID = VD.ID
+                        INNER LOOP JOIN VehicleMakesDB.dbo.Makes M ON VD.MakeID = M.MakeID
+                        INNER LOOP JOIN VehicleMakesDB.dbo.MakeModels MM ON VD.ModelID = MM.ModelID
                         WHERE DV.DriverID = @DriverID
                         ORDER BY DV.PurchaseDate DESC";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
+                        command.CommandTimeout = 30;
                         command.Parameters.AddWithValue("@DriverID", DriverID);
                         connection.Open();
                         using (SqlDataReader reader = command.ExecuteReader())
@@ -58,9 +61,16 @@ namespace DVLDDataAccessLayer
             {
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
                 {
-                    string query = "SELECT ID, Vehicle_Display_Name, Year, Make, ModelName FROM VehicleMakesDB.dbo.VehicleMasterDetails ORDER BY Vehicle_Display_Name";
+                    // Query base tables directly instead of the heavy 7-table VehicleMasterDetails view
+                    string query = @"
+                        SELECT TOP 100 VD.ID, VD.Vehicle_Display_Name, VD.Year, M.Make, MM.ModelName 
+                        FROM VehicleMakesDB.dbo.VehicleDetails VD
+                        INNER LOOP JOIN VehicleMakesDB.dbo.Makes M ON VD.MakeID = M.MakeID
+                        INNER LOOP JOIN VehicleMakesDB.dbo.MakeModels MM ON VD.ModelID = MM.ModelID
+                        ORDER BY VD.Vehicle_Display_Name";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
+                        command.CommandTimeout = 30;
                         connection.Open();
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -83,14 +93,18 @@ namespace DVLDDataAccessLayer
             {
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
                 {
+                    // Query base tables directly instead of the heavy 7-table VehicleMasterDetails view
                     string query = @"
-                        SELECT TOP (@Limit) ID, Vehicle_Display_Name, Year, Make, ModelName 
-                        FROM VehicleMakesDB.dbo.VehicleMasterDetails 
-                        WHERE (@Search IS NULL OR Vehicle_Display_Name LIKE '%' + @Search + '%' OR Make LIKE '%' + @Search + '%')
-                        ORDER BY Vehicle_Display_Name";
+                        SELECT TOP (@Limit) VD.ID, VD.Vehicle_Display_Name, VD.Year, M.Make, MM.ModelName 
+                        FROM VehicleMakesDB.dbo.VehicleDetails VD
+                        INNER LOOP JOIN VehicleMakesDB.dbo.Makes M ON VD.MakeID = M.MakeID
+                        INNER LOOP JOIN VehicleMakesDB.dbo.MakeModels MM ON VD.ModelID = MM.ModelID
+                        WHERE (@Search IS NULL OR VD.Vehicle_Display_Name LIKE '%' + @Search + '%' OR M.Make LIKE '%' + @Search + '%')
+                        ORDER BY VD.Vehicle_Display_Name";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
+                        command.CommandTimeout = 30;
                         command.Parameters.AddWithValue("@Limit", limit);
                         command.Parameters.AddWithValue("@Search", (object)search ?? DBNull.Value);
                         connection.Open();
