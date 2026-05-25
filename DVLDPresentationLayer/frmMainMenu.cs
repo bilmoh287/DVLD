@@ -1,4 +1,4 @@
-﻿using DVLDBussinessLayer;
+using DVLDBussinessLayer;
 using DVLDPresentationLayer.Applications.Application_Reviews;
 using DVLDPresentationLayer.Applications.International_Driving_License;
 using DVLDPresentationLayer.Applications.Relesease_Detained_Licenses;
@@ -236,6 +236,12 @@ namespace DVLDPresentationLayer
         private void reviewApplicationForLostOrDamagedToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmReviewForDamagedLicense frm = new frmReviewForDamagedLicense();
+            frm.ShowDialog();
+        }
+
+        private void reviewApplicationForLostToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReviewApplicationForLost frm = new frmReviewApplicationForLost();
             frm.ShowDialog();
         }
     }

@@ -1,4 +1,4 @@
-﻿namespace DVLDPresentationLayer
+namespace DVLDPresentationLayer
 {
     partial class frmMain
     {
@@ -69,6 +69,7 @@
             this.panelWindowScreen = new System.Windows.Forms.Panel();
             this.reviewApplicartionsForReplacementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reviewApplicationForLostOrDamagedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reviewApplicationForLostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msMainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -174,7 +175,8 @@
             // replacementForLostOrDamagedLicenseToolStripMenuItem
             // 
             this.replacementForLostOrDamagedLicenseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.reviewApplicationForLostOrDamagedToolStripMenuItem});
+            this.reviewApplicationForLostOrDamagedToolStripMenuItem,
+            this.reviewApplicationForLostToolStripMenuItem});
             this.replacementForLostOrDamagedLicenseToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.Damaged_Driving_License_32;
             this.replacementForLostOrDamagedLicenseToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.replacementForLostOrDamagedLicenseToolStripMenuItem.Name = "replacementForLostOrDamagedLicenseToolStripMenuItem";
@@ -434,8 +436,15 @@
             // 
             this.reviewApplicationForLostOrDamagedToolStripMenuItem.Name = "reviewApplicationForLostOrDamagedToolStripMenuItem";
             this.reviewApplicationForLostOrDamagedToolStripMenuItem.Size = new System.Drawing.Size(421, 28);
-            this.reviewApplicationForLostOrDamagedToolStripMenuItem.Text = "Review Application for Lost or Damaged";
+            this.reviewApplicationForLostOrDamagedToolStripMenuItem.Text = "Review Application for Damaged";
             this.reviewApplicationForLostOrDamagedToolStripMenuItem.Click += new System.EventHandler(this.reviewApplicationForLostOrDamagedToolStripMenuItem_Click);
+            // 
+            // reviewApplicationForLostToolStripMenuItem
+            // 
+            this.reviewApplicationForLostToolStripMenuItem.Name = "reviewApplicationForLostToolStripMenuItem";
+            this.reviewApplicationForLostToolStripMenuItem.Size = new System.Drawing.Size(421, 28);
+            this.reviewApplicationForLostToolStripMenuItem.Text = "Review Application for Lost";
+            this.reviewApplicationForLostToolStripMenuItem.Click += new System.EventHandler(this.reviewApplicationForLostToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -504,6 +513,7 @@
         private System.Windows.Forms.ToolStripMenuItem scheduleTestForStudetsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reviewApplicartionsForReplacementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reviewApplicationForLostOrDamagedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reviewApplicationForLostToolStripMenuItem;
     }
 }
 
