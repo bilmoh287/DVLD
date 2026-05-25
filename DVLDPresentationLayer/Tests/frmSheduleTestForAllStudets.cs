@@ -28,6 +28,10 @@ namespace DVLDPresentationLayer.Tests
         private void frmSheduleTestForAllStudets_Load(object sender, EventArgs e)
         {
             _LoadEligibleStudents();
+
+            // Set default date to tomorrow morning at 9:00 AM
+            DateTime tomorrow = DateTime.Now.AddDays(1);
+            dtpAppointmentDate.Value = new DateTime(tomorrow.Year, tomorrow.Month, tomorrow.Day, 9, 0, 0);
         }
 
         private void _LoadEligibleStudents()
@@ -60,9 +64,14 @@ namespace DVLDPresentationLayer.Tests
 
         private void _BatchSchedule(int testTypeID, string testName)
         {
-            // Schedule test for tomorrow morning at 9:00 AM as general scheduling
-            DateTime appointmentDate = DateTime.Now.AddDays(1);
-            appointmentDate = new DateTime(appointmentDate.Year, appointmentDate.Month, appointmentDate.Day, 9, 0, 0);
+            // Read date and time from the DateTimePicker
+            DateTime appointmentDate = dtpAppointmentDate.Value;
+
+            if (appointmentDate < DateTime.Now)
+            {
+                MessageBox.Show("The test appointment date/time cannot be in the past.", "Invalid Date/Time", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             // Confirm prompt
             DialogResult confirm = MessageBox.Show($"Are you sure you want to batch schedule a {testName} for all eligible students on {appointmentDate:yyyy-MM-dd HH:mm}?", 
