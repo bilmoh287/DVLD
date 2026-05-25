@@ -67,6 +67,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Applications\Application Reviews\frmReviewForDamagedLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Application Reviews\frmReviewForDamagedLicense.Designer.cs">
+      <DependentUpon>frmReviewForDamagedLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\Application Reviews\frmReviewRenewalApplications.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Application Reviews\frmReviewRenewalApplications.Designer.cs">
+      <DependentUpon>frmReviewRenewalApplications.cs</DependentUpon>
+    </Compile>
     <Compile Include="Applications\Application Types\frmListApplicationTypes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -500,6 +512,12 @@
     <Compile Include="Vehicles\LiestVehicles.Designer.cs">
       <DependentUpon>LiestVehicles.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Applications\Application Reviews\frmReviewForDamagedLicense.resx">
+      <DependentUpon>frmReviewForDamagedLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Application Reviews\frmReviewRenewalApplications.resx">
+      <DependentUpon>frmReviewRenewalApplications.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Applications\Application Types\frmListApplicationTypes.resx">
       <DependentUpon>frmListApplicationTypes.cs</DependentUpon>
     </EmbeddedResource>
