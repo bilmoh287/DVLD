@@ -153,8 +153,7 @@ namespace DVLDREST_API.Controllers
             {
                 // Save image and update application
                 string imagePath = SaveImageToDisk(request.ImageBase64, application.ApplicationID, "OldLicense");
-                application.DocumentPath = imagePath;
-                application.Save(); // Update path
+                application.SaveDocuments(imagePath, "", "", "");
 
                 return Ok(new { 
                     message = "Application submitted successfully.", 
@@ -179,8 +178,7 @@ namespace DVLDREST_API.Controllers
             if (application != null)
             {
                 string imagePath = SaveImageToDisk(request.ImageBase64, application.ApplicationID, "DamagedLicense");
-                application.DocumentPath = imagePath;
-                application.Save();
+                application.SaveDocuments(imagePath, "", "", "");
 
                 return Ok(new { 
                     message = "Application submitted successfully.", 
