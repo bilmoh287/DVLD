@@ -169,6 +169,12 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Drivers\frmAssinVehiclesForDrivers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drivers\frmAssinVehiclesForDrivers.Designer.cs">
+      <DependentUpon>frmAssinVehiclesForDrivers.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddUpdateBatch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -569,6 +575,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Drivers\frmAssinVehiclesForDrivers.resx">
+      <DependentUpon>frmAssinVehiclesForDrivers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddUpdateBatch.resx">
       <DependentUpon>frmAddUpdateBatch.cs</DependentUpon>

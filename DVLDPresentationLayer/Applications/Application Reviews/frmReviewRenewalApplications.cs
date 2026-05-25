@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLDBussinessLayer;
+using DVLDPresentationLayer.Global_Classes;
 
 namespace DVLDPresentationLayer.Applications.Application_Reviews
 {
