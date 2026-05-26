@@ -10,6 +10,7 @@ namespace DVLDDataAccessLayer.DTOs
         public string BackIdBase64 { get; set; }
         public string BirthCertBase64 { get; set; }
         public string TranscriptBase64 { get; set; }
+        public string ProfilePicBase64 { get; set; }
 
         public NewApplicationRequestDTO() { }
     }

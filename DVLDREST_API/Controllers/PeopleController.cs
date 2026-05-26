@@ -86,5 +86,31 @@ namespace DVLDREST_API.Controllers
 
             return StatusCode(500, "Error updating profile.");
         }
+
+        [HttpGet("{id}/image")]
+        [AllowAnonymous]
+        public IActionResult GetPersonImage(int id)
+        {
+            clsPerson person = clsPerson.Find(id);
+            if (person == null || string.IsNullOrEmpty(person.ImagePath))
+            {
+                return NotFound("No image found.");
+            }
+
+            if (!System.IO.File.Exists(person.ImagePath))
+            {
+                return NotFound("Image file not found on disk.");
+            }
+
+            try
+            {
+                var imageBytes = System.IO.File.ReadAllBytes(person.ImagePath);
+                return File(imageBytes, "image/jpeg");
+            }
+            catch (System.Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
     }
 }

@@ -6,6 +6,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Data;
+using System.IO;
 
 namespace DVLDREST_API.Controllers
 {
@@ -124,7 +125,9 @@ namespace DVLDREST_API.Controllers
             person.Phone = registerRequest.Phone;
             person.Email = registerRequest.Email;
             person.CountryID = registerRequest.NationalityCountryID;
-            person.ImagePath = registerRequest.ImagePath;
+            
+            // Save Profile Image to Disk if provided
+            person.ImagePath = SaveProfileImageToDisk(registerRequest.ImagePath, registerRequest.NationalNo);
 
             if (!person.Save())
             {
@@ -150,6 +153,37 @@ namespace DVLDREST_API.Controllers
             var response = new AuthResponseDTO(token, user.UserID, user.PersonID, person.FullName, role);
 
             return Ok(response);
+        }
+
+        private string SaveProfileImageToDisk(string base64String, string nationalNo)
+        {
+            if (string.IsNullOrEmpty(base64String)) return "";
+
+            try
+            {
+                string folderPath = @"C:\DVLD_Uploads\Profiles";
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+
+                if (base64String.Contains(","))
+                {
+                    base64String = base64String.Substring(base64String.IndexOf(",") + 1);
+                }
+
+                byte[] imageBytes = Convert.FromBase64String(base64String);
+                string fileName = $"PROFILE_{nationalNo}_{Guid.NewGuid().ToString("N")}.jpg";
+                string fullPath = Path.Combine(folderPath, fileName);
+
+                System.IO.File.WriteAllBytes(fullPath, imageBytes);
+                return fullPath;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saving profile image: {ex.Message}");
+                return "";
+            }
         }
 
         private string GenerateJwtToken(clsUser user, string role)

@@ -116,6 +116,20 @@ namespace DVLDREST_API.Controllers
 
                 application.SaveDocuments(frontPath, backPath, birthCertPath, transcriptPath);
 
+                // Update person profile picture if provided
+                if (!string.IsNullOrEmpty(request.ProfilePicBase64))
+                {
+                    if (person != null)
+                    {
+                        string profilePath = SaveImageToDisk(request.ProfilePicBase64, application.ApplicationID, "ProfilePic");
+                        if (!string.IsNullOrEmpty(profilePath))
+                        {
+                            person.ImagePath = profilePath;
+                            person.Save();
+                        }
+                    }
+                }
+
                 return CreatedAtAction(nameof(GetApplicationStatus), new { personId = request.ApplicantPersonID }, application);
             }
 
