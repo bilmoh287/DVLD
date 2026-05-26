@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -75,6 +75,23 @@ namespace DVLDBussinessLayer
             bool IsActive = true;
 
             if (clsUserData.GetUserInfoByPersonID(PersonID, ref UserID, ref UserName, ref Password, ref IsActive))
+            {
+                return new clsUser(UserID, PersonID, UserName, Password, IsActive);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static clsUser FindByUserName(string UserName)
+        {
+            int UserID = -1;
+            int PersonID = -1;
+            string Password = "";
+            bool IsActive = true;
+
+            if (clsUserData.GetUserInfoByUsername(UserName, ref UserID, ref PersonID, ref Password, ref IsActive))
             {
                 return new clsUser(UserID, PersonID, UserName, Password, IsActive);
             }

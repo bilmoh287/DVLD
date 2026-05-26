@@ -704,5 +704,87 @@ namespace DVLDREST_API.Controllers
             string status = request.IsEligible ? "eligible" : "ineligible";
             return Ok(new { message = $"Student ApplicationID={applicationId} has been marked {status} for testing in batch {batchId}." });
         }
+
+        // GET: api/DrivingInstitutes/{id}/instructors
+        [HttpGet("{id}/instructors")]
+        public IActionResult GetInstituteInstructors(int id)
+        {
+            DataTable dt = clsDrivingInstitute.GetInstructorsByInstituteID(id);
+            var instructors = new List<object>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                instructors.Add(new
+                {
+                    InstructorID = (int)row["InstructorID"],
+                    UserID = (int)row["UserID"],
+                    UserName = (string)row["UserName"],
+                    FullName = (string)row["FullName"],
+                    Phone = row["Phone"]?.ToString() ?? "",
+                    Email = row["Email"]?.ToString() ?? "",
+                    IsActive = (bool)row["IsActive"],
+                    IsManager = (bool)row["IsManager"],
+                    HireDate = (DateTime)row["HireDate"]
+                });
+            }
+
+            return Ok(instructors);
+        }
+
+        // POST: api/DrivingInstitutes/{id}/instructors
+        [HttpPost("{id}/instructors")]
+        public IActionResult AddInstructor(int id, [FromBody] AddInstructorRequestDTO request)
+        {
+            if (request == null || string.IsNullOrWhiteSpace(request.Username))
+            {
+                return BadRequest("Username is required.");
+            }
+
+            clsUser user = clsUser.FindByUserName(request.Username.Trim());
+            if (user == null)
+            {
+                return NotFound("User not found with the provided username.");
+            }
+
+            if (!clsDrivingInstitute.AddInstructorToInstitute(id, user.UserID))
+            {
+                return StatusCode(500, "Error adding instructor to the institute.");
+            }
+
+            DataTable dtRoles = clsUserRole.GetRolesByUserID(user.UserID);
+            bool hasInstructorRole = false;
+            foreach (DataRow row in dtRoles.Rows)
+            {
+                if ((int)row["RoleID"] == 7)
+                {
+                    hasInstructorRole = true;
+                    break;
+                }
+            }
+
+            if (!hasInstructorRole)
+            {
+                clsUserRole.AssignRole(user.UserID, 7);
+            }
+
+            return Ok(new { message = "Instructor added successfully.", userId = user.UserID });
+        }
+
+        // DELETE: api/DrivingInstitutes/{id}/instructors/{userId}
+        [HttpDelete("{id}/instructors/{userId}")]
+        public IActionResult RemoveInstructor(int id, int userId)
+        {
+            if (clsDrivingInstitute.RemoveInstructorFromInstitute(id, userId))
+            {
+                return Ok(new { message = "Instructor removed successfully." });
+            }
+
+            return StatusCode(500, "Error removing instructor from the institute.");
+        }
+    }
+
+    public class AddInstructorRequestDTO
+    {
+        public string Username { get; set; }
     }
 }

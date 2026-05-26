@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
@@ -103,6 +103,43 @@ namespace DVLDDataAccessLayer
                         {
                             PersonID = (int)Reader["PersonID"];    
                             UserName = (string)Reader["UserName"];
+                            Password = (string)Reader["Password"];
+                            IsActive = (bool)Reader["IsActive"];
+
+                            IsFound = true;
+                        }
+                    }
+                    catch (Exception Ex)
+                    {
+                        Console.WriteLine(Ex.Message);
+                    }
+                }
+            }
+
+            return IsFound;
+        }
+
+        public static bool GetUserInfoByUsername(string UserName, ref int UserID, ref int PersonID, ref string Password, ref bool IsActive)
+        {
+            bool IsFound = false;
+
+            using (SqlConnection Connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string Query = "SELECT * FROM Users WHERE UserName = @UserName;";
+
+                using (SqlCommand Command = new SqlCommand(Query, Connection))
+                {
+                    Command.Parameters.AddWithValue("@UserName", UserName);
+
+                    try
+                    {
+                        Connection.Open();
+                        SqlDataReader Reader = Command.ExecuteReader();
+
+                        if (Reader.Read())
+                        {
+                            UserID = (int)Reader["UserID"];
+                            PersonID = (int)Reader["PersonID"];
                             Password = (string)Reader["Password"];
                             IsActive = (bool)Reader["IsActive"];
 

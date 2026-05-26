@@ -87,7 +87,7 @@ namespace DVLDDataAccessLayer
         {
             int count = 0;
             string query = @"
-                SELECT COUNT(*) FROM Instructors
+                SELECT COUNT(*) FROM InstituteInstructors
                 WHERE InstituteID = @InstituteID";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
@@ -176,8 +176,8 @@ namespace DVLDDataAccessLayer
                     {
                         if (reader.Read())
                         {
-                            int total  = Convert.ToInt32(reader["Total"]);
-                            int passed = Convert.ToInt32(reader["Passed"]);
+                            int total  = reader["Total"] != DBNull.Value ? Convert.ToInt32(reader["Total"]) : 0;
+                            int passed = reader["Passed"] != DBNull.Value ? Convert.ToInt32(reader["Passed"]) : 0;
                             if (total == 0) return -1;
                             return (int)Math.Round((double)passed / total * 100);
                         }
@@ -363,7 +363,7 @@ namespace DVLDDataAccessLayer
                         if (reader.Read() && reader["Total"] != DBNull.Value)
                         {
                             int total = Convert.ToInt32(reader["Total"]);
-                            int present = Convert.ToInt32(reader["Present"]);
+                            int present = reader["Present"] != DBNull.Value ? Convert.ToInt32(reader["Present"]) : 0;
                             if (total == 0) return 0;
                             return (int)Math.Round((double)present / total * 100);
                         }

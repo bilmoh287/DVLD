@@ -382,5 +382,105 @@ namespace DVLDDataAccessLayer
             }
             return UserID;
         }
+
+        public static DataTable GetInstructorsByInstituteID(int InstituteID)
+        {
+            DataTable dt = new DataTable();
+            string query = @"
+                SELECT ii.InstructorID, ii.UserID, u.UserName, 
+                       p.FirstName + ' ' + p.LastName as FullName, 
+                       p.Phone, p.Email, ii.IsActive, ii.IsManager, ii.HireDate 
+                FROM InstituteInstructors ii 
+                INNER JOIN Users u ON ii.UserID = u.UserID 
+                INNER JOIN People p ON u.PersonID = p.PersonID 
+                WHERE ii.InstituteID = @InstituteID";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@InstituteID", InstituteID);
+                try
+                {
+                    connection.Open();
+                    dt.Load(command.ExecuteReader());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error getting instructors: " + ex.Message);
+                }
+            }
+            return dt;
+        }
+
+        public static bool AddInstructorToInstitute(int InstituteID, int UserID)
+        {
+            int rowsAffected = 0;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+                {
+                    connection.Open();
+                    // 1. Check if record exists
+                    bool exists = false;
+                    string queryCheck = "SELECT COUNT(*) FROM InstituteInstructors WHERE InstituteID = @InstituteID AND UserID = @UserID";
+                    using (SqlCommand cmdCheck = new SqlCommand(queryCheck, connection))
+                    {
+                        cmdCheck.Parameters.AddWithValue("@InstituteID", InstituteID);
+                        cmdCheck.Parameters.AddWithValue("@UserID", UserID);
+                        exists = ((int)cmdCheck.ExecuteScalar() > 0);
+                    }
+
+                    // 2. Insert or Update
+                    string querySave = "";
+                    if (exists)
+                    {
+                        querySave = "UPDATE InstituteInstructors SET IsActive = 1, IsManager = 0, HireDate = GETDATE() WHERE InstituteID = @InstituteID AND UserID = @UserID";
+                    }
+                    else
+                    {
+                        querySave = "INSERT INTO InstituteInstructors (InstituteID, UserID, IsManager, IsActive, HireDate) VALUES (@InstituteID, @UserID, 0, 1, GETDATE())";
+                    }
+
+                    using (SqlCommand cmdSave = new SqlCommand(querySave, connection))
+                    {
+                        cmdSave.Parameters.AddWithValue("@InstituteID", InstituteID);
+                        cmdSave.Parameters.AddWithValue("@UserID", UserID);
+                        rowsAffected = cmdSave.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error adding instructor: " + ex.Message);
+                return false;
+            }
+            return rowsAffected > 0;
+        }
+
+        public static bool RemoveInstructorFromInstitute(int InstituteID, int UserID)
+        {
+            int rowsAffected = 0;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+                {
+                    connection.Open();
+                    // We deactivate the instructor: IsActive = 0
+                    string query = "UPDATE InstituteInstructors SET IsActive = 0 WHERE InstituteID = @InstituteID AND UserID = @UserID";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@InstituteID", InstituteID);
+                        command.Parameters.AddWithValue("@UserID", UserID);
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error removing instructor: " + ex.Message);
+                return false;
+            }
+            return rowsAffected > 0;
+        }
     }
 }

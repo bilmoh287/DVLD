@@ -172,5 +172,20 @@ namespace DVLDBussinessLayer
         {
             return clsDrivingInstituteData.GetInstituteManagerUserID(InstituteID);
         }
+
+        public static DataTable GetInstructorsByInstituteID(int InstituteID)
+        {
+            return clsDrivingInstituteData.GetInstructorsByInstituteID(InstituteID);
+        }
+
+        public static bool AddInstructorToInstitute(int InstituteID, int UserID)
+        {
+            return clsDrivingInstituteData.AddInstructorToInstitute(InstituteID, UserID);
+        }
+
+        public static bool RemoveInstructorFromInstitute(int InstituteID, int UserID)
+        {
+            return clsDrivingInstituteData.RemoveInstructorFromInstitute(InstituteID, UserID);
+        }
     }
 }

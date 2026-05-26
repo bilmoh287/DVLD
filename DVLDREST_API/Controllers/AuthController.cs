@@ -47,10 +47,22 @@ namespace DVLDREST_API.Controllers
             {
                 role = dtRoles.Rows[0]["RoleName"].ToString();
                 
-                // Map database specific officer roles to standard 'Officer' for unified mobile authentication
-                if (role == "Registration Officer" || role == "Test Officer" || role == "License Issuer")
+                // Normalize role names to standard camel-case tokens used by Next.js and Flutter clients
+                if (role == "Registration Officer" || role == "Test Officer" || role == "License Issuer" || role == "Officer")
                 {
                     role = "Officer";
+                }
+                else if (role == "Admin" || role == "SystemAdmin")
+                {
+                    role = "SystemAdmin";
+                }
+                else if (role == "Institute Manager" || role == "InstituteManager")
+                {
+                    role = "InstituteManager";
+                }
+                else if (role == "Institute Instructor" || role == "InstituteInstructor")
+                {
+                    role = "InstituteInstructor";
                 }
             }
             else
