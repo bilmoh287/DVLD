@@ -200,9 +200,11 @@ namespace DVLDPresentationLayer.Drivers
         private void BtnSearchCatalog_Click(object sender, EventArgs e)
         {
             // Open the vehicles catalog list form so the user can double-click/select a vehicle
-            LiestVehicles frm = new LiestVehicles();
-            // Standard catalog selector logic can be added here if LiestVehicles returns a selection
-            frm.ShowDialog();
+            Vehicles.LiestVehicles frm = new Vehicles.LiestVehicles();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                txtVehicleID.Text = frm.SelectedVehicleID.ToString();
+            }
         }
 
         private void BtnSave_Click(object sender, EventArgs e)

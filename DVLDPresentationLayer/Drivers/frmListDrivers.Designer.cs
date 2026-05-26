@@ -1,4 +1,4 @@
-﻿namespace DVLDPresentationLayer
+namespace DVLDPresentationLayer
 {
     partial class frmListDrivers
     {
@@ -40,6 +40,8 @@
             this.issueInternationalLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.showPersonLicenseHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.manageAssignedVehiclesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.txtFilterValue = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -116,9 +118,11 @@
             this.toolStripSeparator2,
             this.issueInternationalLicenseToolStripMenuItem,
             this.toolStripSeparator1,
-            this.showPersonLicenseHistoryToolStripMenuItem});
+            this.showPersonLicenseHistoryToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.manageAssignedVehiclesToolStripMenuItem});
             this.cmsDrivers.Name = "contextMenuStrip1";
-            this.cmsDrivers.Size = new System.Drawing.Size(326, 136);
+            this.cmsDrivers.Size = new System.Drawing.Size(326, 216);
             // 
             // showDetailsToolStripMenuItem
             // 
@@ -156,6 +160,20 @@
             this.showPersonLicenseHistoryToolStripMenuItem.Size = new System.Drawing.Size(325, 40);
             this.showPersonLicenseHistoryToolStripMenuItem.Text = "Show Person License History";
             this.showPersonLicenseHistoryToolStripMenuItem.Click += new System.EventHandler(this.showPersonLicenseHistoryToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(322, 6);
+            // 
+            // manageAssignedVehiclesToolStripMenuItem
+            // 
+            this.manageAssignedVehiclesToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.LocalDriving_License;
+            this.manageAssignedVehiclesToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.manageAssignedVehiclesToolStripMenuItem.Name = "manageAssignedVehiclesToolStripMenuItem";
+            this.manageAssignedVehiclesToolStripMenuItem.Size = new System.Drawing.Size(325, 40);
+            this.manageAssignedVehiclesToolStripMenuItem.Text = "Manage Assigned Vehicles";
+            this.manageAssignedVehiclesToolStripMenuItem.Click += new System.EventHandler(this.manageAssignedVehiclesToolStripMenuItem_Click);
             // 
             // cbFilterBy
             // 
@@ -270,5 +288,7 @@
         private System.Windows.Forms.PictureBox pbDriverImage;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.ToolStripMenuItem issueInternationalLicenseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem manageAssignedVehiclesToolStripMenuItem;
     }
 }

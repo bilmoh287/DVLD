@@ -60,5 +60,10 @@ namespace DVLDBussinessLayer
         {
             return clsDriverVehicleData.GetVehiclesCatalog(search, limit);
         }
+
+        public static bool ReleaseVehicle(int OwnershipID)
+        {
+            return clsDriverVehicleData.ReleaseVehicle(OwnershipID, DateTime.Now);
+        }
     }
 }

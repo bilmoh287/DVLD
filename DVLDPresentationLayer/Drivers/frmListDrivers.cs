@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -185,6 +185,15 @@ namespace DVLDPresentationLayer
             int PersonID = (int)dgvDrivers.CurrentRow.Cells[1].Value;
             frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(PersonID);
             frm.ShowDialog();
+        }
+
+        private void manageAssignedVehiclesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvDrivers.CurrentRow == null) return;
+            int DriverID = (int)dgvDrivers.CurrentRow.Cells[0].Value;
+            Drivers.frmAssinVehiclesForDrivers frm = new Drivers.frmAssinVehiclesForDrivers(DriverID);
+            frm.ShowDialog();
+            _RefreshList();
         }
     }
 }

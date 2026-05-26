@@ -177,5 +177,34 @@ namespace DVLDDataAccessLayer
             }
             return OwnershipID;
         }
+
+        public static bool ReleaseVehicle(int OwnershipID, DateTime SaleDate)
+        {
+            int rowsAffected = 0;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+                {
+                    string query = @"
+                        UPDATE DriverVehicles 
+                        SET SaleDate = @SaleDate
+                        WHERE OwnershipID = @OwnershipID AND SaleDate IS NULL";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@SaleDate", SaleDate);
+                        command.Parameters.AddWithValue("@OwnershipID", OwnershipID);
+
+                        connection.Open();
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            return (rowsAffected > 0);
+        }
     }
 }
