@@ -281,5 +281,106 @@ namespace DVLDDataAccessLayer
             }
             return exists;
         }
+        public static bool LinkManagerToInstitute(int InstituteID, int UserID)
+        {
+            int rowsAffected = 0;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+                {
+                    connection.Open();
+                    using (SqlTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            // 1. Deactivate existing manager of this institute
+                            string query1 = "UPDATE InstituteInstructors SET IsActive = 0 WHERE InstituteID = @InstituteID AND IsManager = 1";
+                            using (SqlCommand cmd1 = new SqlCommand(query1, connection, transaction))
+                            {
+                                cmd1.Parameters.AddWithValue("@InstituteID", InstituteID);
+                                cmd1.ExecuteNonQuery();
+                            }
+
+                            // 2. Deactivate this user as manager from any other institute
+                            string query2 = "UPDATE InstituteInstructors SET IsActive = 0 WHERE UserID = @UserID AND IsManager = 1";
+                            using (SqlCommand cmd2 = new SqlCommand(query2, connection, transaction))
+                            {
+                                cmd2.Parameters.AddWithValue("@UserID", UserID);
+                                cmd2.ExecuteNonQuery();
+                            }
+
+                            // 3. Check if record exists
+                            bool exists = false;
+                            string query3 = "SELECT COUNT(*) FROM InstituteInstructors WHERE InstituteID = @InstituteID AND UserID = @UserID";
+                            using (SqlCommand cmd3 = new SqlCommand(query3, connection, transaction))
+                            {
+                                cmd3.Parameters.AddWithValue("@InstituteID", InstituteID);
+                                cmd3.Parameters.AddWithValue("@UserID", UserID);
+                                exists = ((int)cmd3.ExecuteScalar() > 0);
+                            }
+
+                            // 4. Update or Insert
+                            string query4 = "";
+                            if (exists)
+                            {
+                                query4 = "UPDATE InstituteInstructors SET IsManager = 1, IsActive = 1, HireDate = GETDATE() WHERE InstituteID = @InstituteID AND UserID = @UserID";
+                            }
+                            else
+                            {
+                                query4 = "INSERT INTO InstituteInstructors (InstituteID, UserID, IsManager, IsActive, HireDate) VALUES (@InstituteID, @UserID, 1, 1, GETDATE())";
+                            }
+
+                            using (SqlCommand cmd4 = new SqlCommand(query4, connection, transaction))
+                            {
+                                cmd4.Parameters.AddWithValue("@InstituteID", InstituteID);
+                                cmd4.Parameters.AddWithValue("@UserID", UserID);
+                                rowsAffected = cmd4.ExecuteNonQuery();
+                            }
+
+                            transaction.Commit();
+                            return true;
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            Console.WriteLine("Transaction Error: " + ex.Message);
+                            return false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Connection Error: " + ex.Message);
+                return false;
+            }
+        }
+
+        public static int GetInstituteManagerUserID(int InstituteID)
+        {
+            int UserID = -1;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+                {
+                    string query = "SELECT TOP 1 UserID FROM InstituteInstructors WHERE InstituteID = @InstituteID AND IsManager = 1 AND IsActive = 1";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@InstituteID", InstituteID);
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+                        if (result != null && int.TryParse(result.ToString(), out int id))
+                        {
+                            UserID = id;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error getting manager UserID: " + ex.Message);
+            }
+            return UserID;
+        }
     }
 }

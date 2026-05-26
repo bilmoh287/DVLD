@@ -24,6 +24,7 @@ namespace DVLDPresentationLayer
         private int _InstituteID = -1;
         private clsDrivingInstitute _Institute  = new clsDrivingInstitute();
         enMode _Mode = enMode.AddNew;
+        private int _ManagerUserID = -1;
         public frmAddUpdateDrivingInstitutes()
         {
             InitializeComponent();
@@ -60,6 +61,7 @@ namespace DVLDPresentationLayer
             txtCommercialLicenseNo.Text = "";
             dtpLicenseExpiryDate.Value = DateTime.Now;
             lblManagerName.Text = "N/A";
+            _ManagerUserID = -1;
             numCapacity.Value = 0;
             pbLogo.Image = null;
             llRemoveLogo.Visible = false;
@@ -87,6 +89,7 @@ namespace DVLDPresentationLayer
             txtPhone.Text = _Institute.Phone;
             txtEmail.Text = _Institute.Email;
             chkIsActive.Checked = _Institute.IsActive;
+            _ManagerUserID = clsDrivingInstitute.GetInstituteManagerUserID(_InstituteID);
 
             txtCommercialLicenseNo.Text = _Institute.CommercialLicenseNo;
             dtpLicenseExpiryDate.Value = _Institute.LicenseExpiryDate;
@@ -217,6 +220,10 @@ namespace DVLDPresentationLayer
             if (_Institute.Save())
             {
                 lblInstituteID.Text = _Institute.InstituteID.ToString();
+                if (_ManagerUserID > 0)
+                {
+                    clsDrivingInstitute.LinkManagerToInstitute(_Institute.InstituteID, _ManagerUserID);
+                }
                 _Mode = enMode.Update; // Change mode to update after first save
                 //lblTitle.Text = "Update Driving Institute";
 
@@ -367,6 +374,7 @@ namespace DVLDPresentationLayer
                  {
                      _Institute.ManagerName = person.FullName;
                      lblManagerName.Text = person.FullName;
+                     _ManagerUserID = UserID;
                      this.ValidateChildren();
                  }
              }

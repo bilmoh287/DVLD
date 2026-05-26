@@ -163,5 +163,14 @@ namespace DVLDBussinessLayer
         {
             return clsDrivingInstituteData.IsInstituteExist(InstituteID);
         }
+        public static bool LinkManagerToInstitute(int InstituteID, int UserID)
+        {
+            return clsDrivingInstituteData.LinkManagerToInstitute(InstituteID, UserID);
+        }
+
+        public static int GetInstituteManagerUserID(int InstituteID)
+        {
+            return clsDrivingInstituteData.GetInstituteManagerUserID(InstituteID);
+        }
     }
 }
