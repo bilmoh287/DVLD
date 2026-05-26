@@ -59,15 +59,16 @@ namespace DVLDDataAccessLayer
             DataTable dt = new DataTable();
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+                string connString = clsDataAccessSetting.ConnectionString.Replace("Database=My_DVLD", "Database=VehicleMakesDB");
+                using (SqlConnection connection = new SqlConnection(connString))
                 {
-                    // Query base tables directly instead of the heavy 7-table VehicleMasterDetails view
+                    // Query base tables directly in local VehicleMakesDB context
                     string query = @"
                         SELECT TOP 100 VD.ID, VD.Vehicle_Display_Name, VD.Year, M.Make, MM.ModelName 
-                        FROM VehicleMakesDB.dbo.VehicleDetails VD
-                        INNER LOOP JOIN VehicleMakesDB.dbo.Makes M ON VD.MakeID = M.MakeID
-                        INNER LOOP JOIN VehicleMakesDB.dbo.MakeModels MM ON VD.ModelID = MM.ModelID
-                        ORDER BY VD.Vehicle_Display_Name";
+                        FROM VehicleDetails VD
+                        INNER JOIN Makes M ON VD.MakeID = M.MakeID
+                        INNER JOIN MakeModels MM ON VD.ModelID = MM.ModelID
+                        ORDER BY VD.ID";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.CommandTimeout = 30;
@@ -91,22 +92,38 @@ namespace DVLDDataAccessLayer
             DataTable dt = new DataTable();
             try
             {
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+                string connString = clsDataAccessSetting.ConnectionString.Replace("Database=My_DVLD", "Database=VehicleMakesDB");
+                using (SqlConnection connection = new SqlConnection(connString))
                 {
-                    // Query base tables directly instead of the heavy 7-table VehicleMasterDetails view
-                    string query = @"
-                        SELECT TOP (@Limit) VD.ID, VD.Vehicle_Display_Name, VD.Year, M.Make, MM.ModelName 
-                        FROM VehicleMakesDB.dbo.VehicleDetails VD
-                        INNER LOOP JOIN VehicleMakesDB.dbo.Makes M ON VD.MakeID = M.MakeID
-                        INNER LOOP JOIN VehicleMakesDB.dbo.MakeModels MM ON VD.ModelID = MM.ModelID
-                        WHERE (@Search IS NULL OR VD.Vehicle_Display_Name LIKE '%' + @Search + '%' OR M.Make LIKE '%' + @Search + '%')
-                        ORDER BY VD.Vehicle_Display_Name";
+                    string query;
+                    if (string.IsNullOrWhiteSpace(search))
+                    {
+                        query = @"
+                            SELECT TOP (@Limit) VD.ID, VD.Vehicle_Display_Name, VD.Year, M.Make, MM.ModelName 
+                            FROM VehicleDetails VD
+                            INNER JOIN Makes M ON VD.MakeID = M.MakeID
+                            INNER JOIN MakeModels MM ON VD.ModelID = MM.ModelID
+                            ORDER BY VD.ID";
+                    }
+                    else
+                    {
+                        query = @"
+                            SELECT TOP (@Limit) VD.ID, VD.Vehicle_Display_Name, VD.Year, M.Make, MM.ModelName 
+                            FROM VehicleDetails VD
+                            INNER JOIN Makes M ON VD.MakeID = M.MakeID
+                            INNER JOIN MakeModels MM ON VD.ModelID = MM.ModelID
+                            WHERE (VD.Vehicle_Display_Name LIKE '%' + @Search + '%' OR M.Make LIKE '%' + @Search + '%')
+                            ORDER BY VD.ID";
+                    }
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.CommandTimeout = 30;
                         command.Parameters.AddWithValue("@Limit", limit);
-                        command.Parameters.AddWithValue("@Search", (object)search ?? DBNull.Value);
+                        if (!string.IsNullOrWhiteSpace(search))
+                        {
+                            command.Parameters.AddWithValue("@Search", search);
+                        }
                         connection.Open();
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
