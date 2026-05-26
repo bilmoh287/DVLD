@@ -398,10 +398,7 @@ namespace DVLDPresentationLayer
             }
         }
 
-        private void llSelectManager_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
 
-        }
     }
 }
 
