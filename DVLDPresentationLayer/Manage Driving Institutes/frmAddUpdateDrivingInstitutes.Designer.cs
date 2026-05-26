@@ -52,7 +52,8 @@ namespace DVLDPresentationLayer
             this.lblExpiryDate = new System.Windows.Forms.Label();
             this.dtpLicenseExpiryDate = new System.Windows.Forms.DateTimePicker();
             this.lblManager = new System.Windows.Forms.Label();
-            this.txtManagerName = new System.Windows.Forms.TextBox();
+            this.lblManagerName = new System.Windows.Forms.Label();
+            this.llSelectManager = new System.Windows.Forms.LinkLabel();
             this.lblCapacity = new System.Windows.Forms.Label();
             this.numCapacity = new System.Windows.Forms.NumericUpDown();
             this.pbLogo = new System.Windows.Forms.PictureBox();
@@ -309,14 +310,29 @@ namespace DVLDPresentationLayer
             this.lblManager.TabIndex = 143;
             this.lblManager.Text = "Manager:";
             // 
-            // txtManagerName
             // 
-            this.txtManagerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
-            this.txtManagerName.Location = new System.Drawing.Point(792, 176);
-            this.txtManagerName.Name = "txtManagerName";
-            this.txtManagerName.Size = new System.Drawing.Size(249, 27);
-            this.txtManagerName.TabIndex = 144;
-            this.txtManagerName.Validating += new System.ComponentModel.CancelEventHandler(this.txtManagerName_Validating);
+            // lblManagerName
+            // 
+            this.lblManagerName.AutoSize = true;
+            this.lblManagerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblManagerName.Location = new System.Drawing.Point(792, 180);
+            this.lblManagerName.Name = "lblManagerName";
+            this.lblManagerName.Size = new System.Drawing.Size(48, 25);
+            this.lblManagerName.TabIndex = 144;
+            this.lblManagerName.Text = "N/A";
+            // 
+            // llSelectManager
+            // 
+            this.llSelectManager.AutoSize = true;
+            this.llSelectManager.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llSelectManager.Location = new System.Drawing.Point(920, 182);
+            this.llSelectManager.Name = "llSelectManager";
+            this.llSelectManager.Size = new System.Drawing.Size(95, 20);
+            this.llSelectManager.TabIndex = 145;
+            this.llSelectManager.TabStop = true;
+            this.llSelectManager.Text = "Select/Add";
+            this.llSelectManager.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llSelectManager_LinkClicked);
+            this.llSelectManager.Validating += new System.ComponentModel.CancelEventHandler(this.llSelectManager_Validating);
             // 
             // lblCapacity
             // 
@@ -519,7 +535,8 @@ namespace DVLDPresentationLayer
             this.Controls.Add(this.lblExpiryDate);
             this.Controls.Add(this.dtpLicenseExpiryDate);
             this.Controls.Add(this.lblManager);
-            this.Controls.Add(this.txtManagerName);
+            this.Controls.Add(this.lblManagerName);
+            this.Controls.Add(this.llSelectManager);
             this.Controls.Add(this.lblCapacity);
             this.Controls.Add(this.numCapacity);
             this.Controls.Add(this.pbLogo);
@@ -572,7 +589,8 @@ namespace DVLDPresentationLayer
         private System.Windows.Forms.Label lblExpiryDate;
         private System.Windows.Forms.DateTimePicker dtpLicenseExpiryDate;
         private System.Windows.Forms.Label lblManager;
-        private System.Windows.Forms.TextBox txtManagerName;
+        private System.Windows.Forms.Label lblManagerName;
+        private System.Windows.Forms.LinkLabel llSelectManager;
         private System.Windows.Forms.Label lblCapacity;
         private System.Windows.Forms.NumericUpDown numCapacity;
         private System.Windows.Forms.PictureBox pbLogo;
