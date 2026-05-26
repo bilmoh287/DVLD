@@ -59,7 +59,7 @@ namespace DVLDPresentationLayer
             chkIsActive.Checked = true;
             txtCommercialLicenseNo.Text = "";
             dtpLicenseExpiryDate.Value = DateTime.Now;
-            txtManagerName.Text = "";
+            lblManagerName.Text = "N/A";
             numCapacity.Value = 0;
             pbLogo.Image = null;
             llRemoveLogo.Visible = false;
@@ -90,7 +90,7 @@ namespace DVLDPresentationLayer
 
             txtCommercialLicenseNo.Text = _Institute.CommercialLicenseNo;
             dtpLicenseExpiryDate.Value = _Institute.LicenseExpiryDate;
-            txtManagerName.Text = _Institute.ManagerName;
+            lblManagerName.Text = string.IsNullOrEmpty(_Institute.ManagerName) ? "N/A" : _Institute.ManagerName;
             numCapacity.Value = _Institute.Capacity;
             
             if (!string.IsNullOrEmpty(_Institute.LogoPath))
@@ -203,7 +203,7 @@ namespace DVLDPresentationLayer
 
             _Institute.CommercialLicenseNo = txtCommercialLicenseNo.Text.Trim();
             _Institute.LicenseExpiryDate = dtpLicenseExpiryDate.Value;
-            _Institute.ManagerName = txtManagerName.Text.Trim();
+            _Institute.ManagerName = (lblManagerName.Text == "N/A") ? "" : lblManagerName.Text;
             _Institute.Capacity = (int)numCapacity.Value;
             _Institute.LogoPath = pbLogo.ImageLocation;
             _Institute.City = txtCity.Text.Trim();
@@ -337,18 +337,40 @@ namespace DVLDPresentationLayer
             }
         }
 
-        private void txtManagerName_Validating(object sender, CancelEventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtManagerName.Text.Trim()))
-            {
-                e.Cancel = true;
-                errorProvider1.SetError(txtManagerName, "Manager Name is required!");
-            }
-            else
-            {
-                errorProvider1.SetError(txtManagerName, null);
-            }
-        }
+         private void llSelectManager_Validating(object sender, CancelEventArgs e)
+         {
+             if (string.IsNullOrEmpty(_Institute.ManagerName) || lblManagerName.Text == "N/A")
+             {
+                 e.Cancel = true;
+                 errorProvider1.SetError(llSelectManager, "Manager is required!");
+             }
+             else
+             {
+                 errorProvider1.SetError(llSelectManager, null);
+             }
+         }
+ 
+         private void llSelectManager_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+         {
+             frmAddUpdateUser frm = new frmAddUpdateUser();
+             frm.OnUserSaved += OnManagerSaved;
+             frm.ShowDialog();
+         }
+ 
+         private void OnManagerSaved(object sender, int UserID)
+         {
+             clsUser user = clsUser.FindByUserID(UserID);
+             if (user != null)
+             {
+                 clsPerson person = clsPerson.Find(user.PersonID);
+                 if (person != null)
+                 {
+                     _Institute.ManagerName = person.FullName;
+                     lblManagerName.Text = person.FullName;
+                     this.ValidateChildren();
+                 }
+             }
+         }
 
         private void txtRegion_Validating(object sender, CancelEventArgs e)
         {
