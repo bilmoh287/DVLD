@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -49,11 +49,11 @@ namespace DVLDPresentationLayer
             lblApplicationID.Text = _Application.ApplicationID.ToString();
             lblStatus.Text = _Application.StatusText;
             lblFees.Text = _Application.PaidFees.ToString();
-            lblType.Text = _Application.ApplicationTypeInfo.ApplicationTypeTitle;
+            lblType.Text = _Application.ApplicationTypeInfo != null ? _Application.ApplicationTypeInfo.ApplicationTypeTitle : "Unknown";
             lblApplicant.Text = _Application.FullName;
             lblDate.Text = clsFormat.DateToShort(_Application.ApplicationDate);
             lblStatusDate.Text = clsFormat.DateToShort(_Application.LastStatusDate); ;
-            lblCreatedByUser.Text = _Application.CreatedByUserInfo.UserName;
+            lblCreatedByUser.Text = _Application.CreatedByUserInfo != null ? _Application.CreatedByUserInfo.UserName : "System (ID: " + _Application.CreatedByUserID + ")";
         }
 
         public void LoadBasicApplicationInfo(int ApplicationID)
