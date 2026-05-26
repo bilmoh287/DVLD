@@ -30,23 +30,23 @@ namespace DVLDPresentationLayer
         {
             this.dgvUnderReviewList = new System.Windows.Forms.DataGridView();
             this.panelDetail = new System.Windows.Forms.Panel();
-            this.btnReject = new Guna.UI2.WinForms.Guna2Button();
-            this.btnApprove = new Guna.UI2.WinForms.Guna2Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.ctlPersonCard1 = new DVLDPresentationLayer.ctlPersonCard();
+            this.pb12thTranscript = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pbidpictureback = new System.Windows.Forms.PictureBox();
             this.pbBirthCertificate = new System.Windows.Forms.PictureBox();
+            this.btnReject = new Guna.UI2.WinForms.Guna2Button();
+            this.btnApprove = new Guna.UI2.WinForms.Guna2Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.pbIdpictruefront = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pb12thTranscript = new System.Windows.Forms.PictureBox();
+            this.ctlPersonCard1 = new DVLDPresentationLayer.ctlPersonCard();
             this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnderReviewList)).BeginInit();
             this.panelDetail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb12thTranscript)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbidpictureback)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBirthCertificate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIdpictruefront)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb12thTranscript)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvUnderReviewList
@@ -83,6 +83,51 @@ namespace DVLDPresentationLayer
             this.panelDetail.TabIndex = 3;
             this.panelDetail.Visible = false;
             this.panelDetail.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDetail_Paint);
+            // 
+            // pb12thTranscript
+            // 
+            this.pb12thTranscript.Location = new System.Drawing.Point(551, 479);
+            this.pb12thTranscript.Name = "pb12thTranscript";
+            this.pb12thTranscript.Size = new System.Drawing.Size(421, 244);
+            this.pb12thTranscript.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb12thTranscript.TabIndex = 9;
+            this.pb12thTranscript.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(497, 344);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(147, 25);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "ID picture back:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(461, 168);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 25);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "ID picture:";
+            // 
+            // pbidpictureback
+            // 
+            this.pbidpictureback.Location = new System.Drawing.Point(645, 293);
+            this.pbidpictureback.Name = "pbidpictureback";
+            this.pbidpictureback.Size = new System.Drawing.Size(327, 170);
+            this.pbidpictureback.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbidpictureback.TabIndex = 6;
+            this.pbidpictureback.TabStop = false;
+            // 
+            // pbBirthCertificate
+            // 
+            this.pbBirthCertificate.Location = new System.Drawing.Point(70, 479);
+            this.pbBirthCertificate.Name = "pbBirthCertificate";
+            this.pbBirthCertificate.Size = new System.Drawing.Size(421, 244);
+            this.pbBirthCertificate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbBirthCertificate.TabIndex = 5;
+            this.pbBirthCertificate.TabStop = false;
             // 
             // btnReject
             // 
@@ -125,6 +170,15 @@ namespace DVLDPresentationLayer
             this.label1.TabIndex = 2;
             this.label1.Text = "ID picture front:";
             // 
+            // pbIdpictruefront
+            // 
+            this.pbIdpictruefront.Location = new System.Drawing.Point(161, 293);
+            this.pbIdpictruefront.Name = "pbIdpictruefront";
+            this.pbIdpictruefront.Size = new System.Drawing.Size(330, 170);
+            this.pbIdpictruefront.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbIdpictruefront.TabIndex = 1;
+            this.pbIdpictruefront.TabStop = false;
+            // 
             // ctlPersonCard1
             // 
             this.ctlPersonCard1.BackColor = System.Drawing.Color.White;
@@ -134,56 +188,6 @@ namespace DVLDPresentationLayer
             this.ctlPersonCard1.Name = "ctlPersonCard1";
             this.ctlPersonCard1.Size = new System.Drawing.Size(841, 285);
             this.ctlPersonCard1.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(461, 168);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 25);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "ID picture:";
-            // 
-            // pbidpictureback
-            // 
-            this.pbidpictureback.Location = new System.Drawing.Point(645, 293);
-            this.pbidpictureback.Name = "pbidpictureback";
-            this.pbidpictureback.Size = new System.Drawing.Size(327, 170);
-            this.pbidpictureback.TabIndex = 6;
-            this.pbidpictureback.TabStop = false;
-            // 
-            // pbBirthCertificate
-            // 
-            this.pbBirthCertificate.Location = new System.Drawing.Point(70, 479);
-            this.pbBirthCertificate.Name = "pbBirthCertificate";
-            this.pbBirthCertificate.Size = new System.Drawing.Size(421, 244);
-            this.pbBirthCertificate.TabIndex = 5;
-            this.pbBirthCertificate.TabStop = false;
-            // 
-            // pbIdpictruefront
-            // 
-            this.pbIdpictruefront.Location = new System.Drawing.Point(161, 293);
-            this.pbIdpictruefront.Name = "pbIdpictruefront";
-            this.pbIdpictruefront.Size = new System.Drawing.Size(330, 170);
-            this.pbIdpictruefront.TabIndex = 1;
-            this.pbIdpictruefront.TabStop = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(497, 344);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(147, 25);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "ID picture back:";
-            // 
-            // pb12thTranscript
-            // 
-            this.pb12thTranscript.Location = new System.Drawing.Point(551, 479);
-            this.pb12thTranscript.Name = "pb12thTranscript";
-            this.pb12thTranscript.Size = new System.Drawing.Size(421, 244);
-            this.pb12thTranscript.TabIndex = 9;
-            this.pb12thTranscript.TabStop = false;
             // 
             // btnClose
             // 
@@ -212,10 +216,10 @@ namespace DVLDPresentationLayer
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnderReviewList)).EndInit();
             this.panelDetail.ResumeLayout(false);
             this.panelDetail.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb12thTranscript)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbidpictureback)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBirthCertificate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIdpictruefront)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb12thTranscript)).EndInit();
             this.ResumeLayout(false);
 
         }
