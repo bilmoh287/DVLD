@@ -28,7 +28,7 @@ namespace DVLDPresentationLayer.Vehicles
         private void LiestVehicles_Load(object sender, EventArgs e)
         {
             cbFilterBy.Items.Clear();
-            cbFilterBy.Items.AddRange(new object[] { "None", "Vehicle ID", "Display Name", "Make" });
+            cbFilterBy.Items.AddRange(new object[] { "None", "Vehicle ID", "Make", "Model" });
             cbFilterBy.SelectedIndex = 0;
 
             // Wire up handlers programmatically
@@ -51,7 +51,7 @@ namespace DVLDPresentationLayer.Vehicles
             }
 
             // Load from database (top 100 matching items to avoid memory semaphore bottleneck)
-            _dtVehiclesCatalog = DVLDBussinessLayer.clsDriverVehicle.GetVehiclesCatalog(search, 100);
+            _dtVehiclesCatalog = DVLDBussinessLayer.clsDriverVehicle.GetVehiclesCatalog(cbFilterBy.Text, search, 100);
             dgvListPeople.DataSource = _dtVehiclesCatalog;
             lblRecord.Text = dgvListPeople.Rows.Count.ToString();
 

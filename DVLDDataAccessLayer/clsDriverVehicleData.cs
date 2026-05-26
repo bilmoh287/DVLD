@@ -139,6 +139,79 @@ namespace DVLDDataAccessLayer
             return dt;
         }
 
+        public static DataTable GetVehiclesCatalog(string filterColumn, string search, int limit)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                string connString = clsDataAccessSetting.ConnectionString.Replace("Database=My_DVLD", "Database=VehicleMakesDB");
+                using (SqlConnection connection = new SqlConnection(connString))
+                {
+                    string query;
+                    if (string.IsNullOrWhiteSpace(search) || string.IsNullOrWhiteSpace(filterColumn) || filterColumn == "None")
+                    {
+                        query = @"
+                            SELECT TOP (@Limit) VD.ID, VD.Vehicle_Display_Name, VD.Year, M.Make, MM.ModelName 
+                            FROM VehicleDetails VD
+                            INNER JOIN Makes M ON VD.MakeID = M.MakeID
+                            INNER JOIN MakeModels MM ON VD.ModelID = MM.ModelID
+                            ORDER BY VD.ID";
+                    }
+                    else
+                    {
+                        string whereClause = "";
+                        if (filterColumn == "Vehicle ID" || filterColumn == "ID")
+                        {
+                            if (int.TryParse(search, out _))
+                                whereClause = "WHERE VD.ID = @Search";
+                            else
+                                return dt;
+                        }
+                        else if (filterColumn == "Make")
+                        {
+                            whereClause = "WHERE M.Make LIKE @Search + '%'";
+                        }
+                        else if (filterColumn == "Model")
+                        {
+                            whereClause = "WHERE VD.Vehicle_Display_Name LIKE '%' + @Search + '%'";
+                        }
+                        else
+                        {
+                            whereClause = "WHERE (VD.Vehicle_Display_Name LIKE '%' + @Search + '%' OR M.Make LIKE '%' + @Search + '%')";
+                        }
+
+                        query = $@"
+                            SELECT TOP (@Limit) VD.ID, VD.Vehicle_Display_Name, VD.Year, M.Make, MM.ModelName 
+                            FROM VehicleDetails VD
+                            INNER JOIN Makes M ON VD.MakeID = M.MakeID
+                            INNER JOIN MakeModels MM ON VD.ModelID = MM.ModelID
+                            {whereClause}
+                            ORDER BY VD.ID";
+                    }
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.CommandTimeout = 30;
+                        command.Parameters.AddWithValue("@Limit", limit);
+                        if (!string.IsNullOrWhiteSpace(search) && filterColumn != "None")
+                        {
+                            command.Parameters.AddWithValue("@Search", search);
+                        }
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows) dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            return dt;
+        }
+
         public static int AddNewOwnership(int DriverID, int VehicleID, string PlateNumber, string VIN, string Color, DateTime PurchaseDate, decimal PurchasePrice, int CreatedByUserID)
         {
             int OwnershipID = -1;

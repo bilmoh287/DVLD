@@ -30,7 +30,6 @@ namespace DVLDPresentationLayer.Drivers
         private void frmAssinVehiclesForDrivers_Load(object sender, EventArgs e)
         {
             lblTitle.Text = "Driver Vehicles Assignment";
-            pbPersonImage.Image = global::DVLDPresentationLayer.Properties.Resources.Local_32;
 
             // Setup filters
             cbFilterBy.Items.Clear();

@@ -61,6 +61,11 @@ namespace DVLDBussinessLayer
             return clsDriverVehicleData.GetVehiclesCatalog(search, limit);
         }
 
+        public static DataTable GetVehiclesCatalog(string filterColumn, string search, int limit = 10)
+        {
+            return clsDriverVehicleData.GetVehiclesCatalog(filterColumn, search, limit);
+        }
+
         public static bool ReleaseVehicle(int OwnershipID)
         {
             return clsDriverVehicleData.ReleaseVehicle(OwnershipID, DateTime.Now);
