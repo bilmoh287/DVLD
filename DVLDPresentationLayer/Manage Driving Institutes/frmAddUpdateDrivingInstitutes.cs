@@ -375,6 +375,11 @@ namespace DVLDPresentationLayer
                 errorProvider1.SetError(txtCity, null);
             }
         }
+
+        private void llSelectManager_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
     }
 }
 

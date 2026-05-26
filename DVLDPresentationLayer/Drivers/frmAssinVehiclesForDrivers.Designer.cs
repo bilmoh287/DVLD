@@ -29,15 +29,8 @@ namespace DVLDPresentationLayer.Drivers
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnAddNewApplication = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.showVehicleInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparatorVehicle1 = new System.Windows.Forms.ToolStripSeparator();
-            this.assignNewVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparatorVehicle2 = new System.Windows.Forms.ToolStripSeparator();
-            this.releaseVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pbPersonImage = new System.Windows.Forms.PictureBox();
             this.cmsApplications = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.txtFilterValue = new System.Windows.Forms.TextBox();
@@ -48,99 +41,26 @@ namespace DVLDPresentationLayer.Drivers
             this.lblRecordsCount = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvLocalDrivingLicenseApplications = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
+            this.btnAddNewApplication = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.pbPersonImage = new System.Windows.Forms.PictureBox();
+            this.showVehicleInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.assignNewVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.releaseVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsApplications.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocalDrivingLicenseApplications)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Image = global::DVLDPresentationLayer.Properties.Resources.Local_32;
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(745, 69);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(78, 58);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 151;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnAddNewApplication
-            // 
-            this.btnAddNewApplication.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddNewApplication.Image = global::DVLDPresentationLayer.Properties.Resources.New_Application_64;
-            this.btnAddNewApplication.Location = new System.Drawing.Point(1251, 219);
-            this.btnAddNewApplication.Name = "btnAddNewApplication";
-            this.btnAddNewApplication.Size = new System.Drawing.Size(88, 75);
-            this.btnAddNewApplication.TabIndex = 150;
-            this.btnAddNewApplication.UseVisualStyleBackColor = true;
-            // 
-            // btnClose
-            // 
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnClose.Image = global::DVLDPresentationLayer.Properties.Resources.closeBlack32;
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(1214, 684);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(124, 39);
-            this.btnClose.TabIndex = 143;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            // 
-            // showVehicleInfoToolStripMenuItem
-            // 
-            this.showVehicleInfoToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.PersonDetails_32;
-            this.showVehicleInfoToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.showVehicleInfoToolStripMenuItem.Name = "showVehicleInfoToolStripMenuItem";
-            this.showVehicleInfoToolStripMenuItem.Size = new System.Drawing.Size(308, 38);
-            this.showVehicleInfoToolStripMenuItem.Text = "Show Vehicle Info";
-            this.showVehicleInfoToolStripMenuItem.Click += new System.EventHandler(this.showVehicleInfoToolStripMenuItem_Click);
             // 
             // toolStripSeparatorVehicle1
             // 
             this.toolStripSeparatorVehicle1.Name = "toolStripSeparatorVehicle1";
-            this.toolStripSeparatorVehicle1.Size = new System.Drawing.Size(305, 6);
-            // 
-            // assignNewVehicleToolStripMenuItem
-            // 
-            this.assignNewVehicleToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.AddPerson_32;
-            this.assignNewVehicleToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.assignNewVehicleToolStripMenuItem.Name = "assignNewVehicleToolStripMenuItem";
-            this.assignNewVehicleToolStripMenuItem.Size = new System.Drawing.Size(308, 38);
-            this.assignNewVehicleToolStripMenuItem.Text = "Assign New Vehicle";
-            this.assignNewVehicleToolStripMenuItem.Click += new System.EventHandler(this.assignNewVehicleToolStripMenuItem_Click);
+            this.toolStripSeparatorVehicle1.Size = new System.Drawing.Size(223, 6);
             // 
             // toolStripSeparatorVehicle2
             // 
             this.toolStripSeparatorVehicle2.Name = "toolStripSeparatorVehicle2";
-            this.toolStripSeparatorVehicle2.Size = new System.Drawing.Size(305, 6);
-            // 
-            // releaseVehicleToolStripMenuItem
-            // 
-            this.releaseVehicleToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.Delete_32;
-            this.releaseVehicleToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.releaseVehicleToolStripMenuItem.Name = "releaseVehicleToolStripMenuItem";
-            this.releaseVehicleToolStripMenuItem.Size = new System.Drawing.Size(308, 38);
-            this.releaseVehicleToolStripMenuItem.Text = "Release/Sell Vehicle";
-            this.releaseVehicleToolStripMenuItem.Click += new System.EventHandler(this.releaseVehicleToolStripMenuItem_Click);
-            // 
-            // pbPersonImage
-            // 
-            this.pbPersonImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbPersonImage.Image = global::DVLDPresentationLayer.Properties.Resources.Applications;
-            this.pbPersonImage.InitialImage = null;
-            this.pbPersonImage.Location = new System.Drawing.Point(569, 2);
-            this.pbPersonImage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pbPersonImage.Name = "pbPersonImage";
-            this.pbPersonImage.Size = new System.Drawing.Size(220, 189);
-            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPersonImage.TabIndex = 149;
-            this.pbPersonImage.TabStop = false;
-            // 
+            this.toolStripSeparatorVehicle2.Size = new System.Drawing.Size(223, 6);
             // 
             // cmsApplications
             // 
@@ -152,7 +72,7 @@ namespace DVLDPresentationLayer.Drivers
             this.toolStripSeparatorVehicle2,
             this.releaseVehicleToolStripMenuItem});
             this.cmsApplications.Name = "contextMenuStrip1";
-            this.cmsApplications.Size = new System.Drawing.Size(309, 160);
+            this.cmsApplications.Size = new System.Drawing.Size(227, 130);
             // 
             // cbFilterBy
             // 
@@ -257,13 +177,76 @@ namespace DVLDPresentationLayer.Drivers
             this.dgvLocalDrivingLicenseApplications.Size = new System.Drawing.Size(1327, 376);
             this.dgvLocalDrivingLicenseApplications.TabIndex = 142;
             // 
+            // btnAddNewApplication
+            // 
+            this.btnAddNewApplication.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddNewApplication.Image = global::DVLDPresentationLayer.Properties.Resources.New_Application_64;
+            this.btnAddNewApplication.Location = new System.Drawing.Point(1251, 219);
+            this.btnAddNewApplication.Name = "btnAddNewApplication";
+            this.btnAddNewApplication.Size = new System.Drawing.Size(88, 75);
+            this.btnAddNewApplication.TabIndex = 150;
+            this.btnAddNewApplication.UseVisualStyleBackColor = true;
+            // 
+            // btnClose
+            // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnClose.Image = global::DVLDPresentationLayer.Properties.Resources.closeBlack32;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(1214, 684);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(124, 39);
+            this.btnClose.TabIndex = 143;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            // 
+            // pbPersonImage
+            // 
+            this.pbPersonImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbPersonImage.Image = global::DVLDPresentationLayer.Properties.Resources.Vehicle;
+            this.pbPersonImage.InitialImage = null;
+            this.pbPersonImage.Location = new System.Drawing.Point(569, 2);
+            this.pbPersonImage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pbPersonImage.Name = "pbPersonImage";
+            this.pbPersonImage.Size = new System.Drawing.Size(220, 189);
+            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPersonImage.TabIndex = 149;
+            this.pbPersonImage.TabStop = false;
+            // 
+            // showVehicleInfoToolStripMenuItem
+            // 
+            this.showVehicleInfoToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.PersonDetails_32;
+            this.showVehicleInfoToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.showVehicleInfoToolStripMenuItem.Name = "showVehicleInfoToolStripMenuItem";
+            this.showVehicleInfoToolStripMenuItem.Size = new System.Drawing.Size(226, 38);
+            this.showVehicleInfoToolStripMenuItem.Text = "Show Vehicle Info";
+            this.showVehicleInfoToolStripMenuItem.Click += new System.EventHandler(this.showVehicleInfoToolStripMenuItem_Click);
+            // 
+            // assignNewVehicleToolStripMenuItem
+            // 
+            this.assignNewVehicleToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.AddPerson_32;
+            this.assignNewVehicleToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.assignNewVehicleToolStripMenuItem.Name = "assignNewVehicleToolStripMenuItem";
+            this.assignNewVehicleToolStripMenuItem.Size = new System.Drawing.Size(226, 38);
+            this.assignNewVehicleToolStripMenuItem.Text = "Assign New Vehicle";
+            this.assignNewVehicleToolStripMenuItem.Click += new System.EventHandler(this.assignNewVehicleToolStripMenuItem_Click);
+            // 
+            // releaseVehicleToolStripMenuItem
+            // 
+            this.releaseVehicleToolStripMenuItem.Image = global::DVLDPresentationLayer.Properties.Resources.Delete_32;
+            this.releaseVehicleToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.releaseVehicleToolStripMenuItem.Name = "releaseVehicleToolStripMenuItem";
+            this.releaseVehicleToolStripMenuItem.Size = new System.Drawing.Size(226, 38);
+            this.releaseVehicleToolStripMenuItem.Text = "Release/Sell Vehicle";
+            this.releaseVehicleToolStripMenuItem.Click += new System.EventHandler(this.releaseVehicleToolStripMenuItem_Click);
+            // 
             // frmAssinVehiclesForDrivers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1351, 729);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnAddNewApplication);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.pbPersonImage);
@@ -279,19 +262,17 @@ namespace DVLDPresentationLayer.Drivers
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmAssinVehiclesForDrivers";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmAssinVehiclesForDrivers";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
             this.cmsApplications.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocalDrivingLicenseApplications)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnAddNewApplication;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.ToolStripMenuItem showVehicleInfoToolStripMenuItem;

@@ -52,7 +52,6 @@ namespace DVLDPresentationLayer
             this.lblExpiryDate = new System.Windows.Forms.Label();
             this.dtpLicenseExpiryDate = new System.Windows.Forms.DateTimePicker();
             this.lblManager = new System.Windows.Forms.Label();
-            this.txtManagerName = new System.Windows.Forms.TextBox();
             this.lblCapacity = new System.Windows.Forms.Label();
             this.numCapacity = new System.Windows.Forms.NumericUpDown();
             this.pbLogo = new System.Windows.Forms.PictureBox();
@@ -69,6 +68,7 @@ namespace DVLDPresentationLayer
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.llSelectManager = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -309,15 +309,6 @@ namespace DVLDPresentationLayer
             this.lblManager.TabIndex = 143;
             this.lblManager.Text = "Manager:";
             // 
-            // txtManagerName
-            // 
-            this.txtManagerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
-            this.txtManagerName.Location = new System.Drawing.Point(792, 176);
-            this.txtManagerName.Name = "txtManagerName";
-            this.txtManagerName.Size = new System.Drawing.Size(249, 27);
-            this.txtManagerName.TabIndex = 144;
-            this.txtManagerName.Validating += new System.ComponentModel.CancelEventHandler(this.txtManagerName_Validating);
-            // 
             // lblCapacity
             // 
             this.lblCapacity.AutoSize = true;
@@ -484,12 +475,25 @@ namespace DVLDPresentationLayer
             this.pictureBox5.TabIndex = 153;
             this.pictureBox5.TabStop = false;
             // 
+            // llSelectManager
+            // 
+            this.llSelectManager.AutoSize = true;
+            this.llSelectManager.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llSelectManager.Location = new System.Drawing.Point(789, 185);
+            this.llSelectManager.Name = "llSelectManager";
+            this.llSelectManager.Size = new System.Drawing.Size(97, 20);
+            this.llSelectManager.TabIndex = 157;
+            this.llSelectManager.TabStop = true;
+            this.llSelectManager.Text = "Select User";
+            this.llSelectManager.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llSelectManager_LinkClicked);
+            // 
             // frmAddUpdateDrivingInstitutes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1069, 532);
+            this.Controls.Add(this.llSelectManager);
             this.Controls.Add(this.txtCity);
             this.Controls.Add(this.txtRegion);
             this.Controls.Add(this.label2);
@@ -519,7 +523,6 @@ namespace DVLDPresentationLayer
             this.Controls.Add(this.lblExpiryDate);
             this.Controls.Add(this.dtpLicenseExpiryDate);
             this.Controls.Add(this.lblManager);
-            this.Controls.Add(this.txtManagerName);
             this.Controls.Add(this.lblCapacity);
             this.Controls.Add(this.numCapacity);
             this.Controls.Add(this.pbLogo);
@@ -572,7 +575,6 @@ namespace DVLDPresentationLayer
         private System.Windows.Forms.Label lblExpiryDate;
         private System.Windows.Forms.DateTimePicker dtpLicenseExpiryDate;
         private System.Windows.Forms.Label lblManager;
-        private System.Windows.Forms.TextBox txtManagerName;
         private System.Windows.Forms.Label lblCapacity;
         private System.Windows.Forms.NumericUpDown numCapacity;
         private System.Windows.Forms.PictureBox pbLogo;
@@ -589,5 +591,6 @@ namespace DVLDPresentationLayer
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.LinkLabel llSelectManager;
     }
 }
