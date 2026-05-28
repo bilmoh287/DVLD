@@ -100,7 +100,7 @@
             this.pbIdpictrue.Location = new System.Drawing.Point(254, 287);
             this.pbIdpictrue.Name = "pbIdpictrue";
             this.pbIdpictrue.Size = new System.Drawing.Size(445, 325);
-            this.pbIdpictrue.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbIdpictrue.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbIdpictrue.TabIndex = 1;
             this.pbIdpictrue.TabStop = false;
             // 

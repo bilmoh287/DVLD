@@ -32,14 +32,14 @@
             this.btnReject = new Guna.UI2.WinForms.Guna2Button();
             this.btnApprove = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.pbIdpictrue = new System.Windows.Forms.PictureBox();
             this.ctlPersonCard1 = new DVLDPresentationLayer.ctlPersonCard();
             this.dgvUnderReviewList = new System.Windows.Forms.DataGridView();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.pbIdpictrue = new System.Windows.Forms.PictureBox();
             this.panelDetail.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUnderReviewList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIdpictrue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUnderReviewList)).BeginInit();
             this.SuspendLayout();
             // 
             // panelDetail
@@ -95,6 +95,15 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Vision health Medical Proof:";
             // 
+            // pbIdpictrue
+            // 
+            this.pbIdpictrue.Location = new System.Drawing.Point(303, 719);
+            this.pbIdpictrue.Name = "pbIdpictrue";
+            this.pbIdpictrue.Size = new System.Drawing.Size(445, 411);
+            this.pbIdpictrue.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbIdpictrue.TabIndex = 1;
+            this.pbIdpictrue.TabStop = false;
+            // 
             // ctlPersonCard1
             // 
             this.ctlPersonCard1.BackColor = System.Drawing.Color.White;
@@ -139,15 +148,6 @@
             this.lblTitle.Text = "Review Renewal Application\r\n";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pbIdpictrue
-            // 
-            this.pbIdpictrue.Location = new System.Drawing.Point(303, 719);
-            this.pbIdpictrue.Name = "pbIdpictrue";
-            this.pbIdpictrue.Size = new System.Drawing.Size(445, 411);
-            this.pbIdpictrue.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbIdpictrue.TabIndex = 1;
-            this.pbIdpictrue.TabStop = false;
-            // 
             // frmReviewRenewalApplications
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -164,8 +164,8 @@
             this.Text = "frmReviewRenewalApplications";
             this.panelDetail.ResumeLayout(false);
             this.panelDetail.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUnderReviewList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIdpictrue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUnderReviewList)).EndInit();
             this.ResumeLayout(false);
 
         }
